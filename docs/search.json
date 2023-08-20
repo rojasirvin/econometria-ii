@@ -74,14 +74,14 @@
     "href": "lecturas.html#semana-8",
     "title": "Lecturas",
     "section": "Semana 8",
-    "text": "Semana 8\n\nVariables instrumentales\n\nW, Capítulo 5.\nCT, Capítulo 4 (secciones 4.8 y 4.9)\n\nMC2E\n\nCT, Capítulo 6 (secciones 6.1 - 6.4)\nVI: Hackett, L., & Marquez-Padilla, F. (2019). Working for Change: the Effect of Female Labor Force Participation on Fertility. SSRN Working Paper 3354753.\nVI: López-Feldman, A., & Chávez, E. (2017). Remittances and natural resource extraction: Evidence from Mexico. Ecological Economics, 132, 69-79.\n\nOtras aplicaciones de VI\n\n* VI: Campos-Vazquez, R. M., & Nuñez, R. (2019). Obesity and labor market outcomes in Mexico/Obesidad y el mercado de trabajo en México. Estudios Económicos, 34(2), 159-196.\n* MC2E2M: Mocetti, S. (2007). Intergenerational earnings mobility in Italy. The BE Journal of Economic Analysis & Policy, 7(2).\n\n* Poisson + VI: Hirvonen, K., & Hoddinott, J. (2017). Agricultural production and children’s diets: Evidence from rural Ethiopia. Agricultural Economics, 48(4), 469-480."
+    "text": "Semana 8\n\nVariables instrumentales\n\nW, Capítulo 5.\nCT, Capítulo 4 (secciones 4.8 y 4.9)\n\nMC2E\n\nCT, Capítulo 6 (secciones 6.1 - 6.4)\nVI: Hackett, L., & Marquez-Padilla, F. (2019). Working for Change: the Effect of Female Labor Force Participation on Fertility. SSRN Working Paper 3354753.\n* VI: López-Feldman, A., & Chávez, E. (2017). Remittances and natural resource extraction: Evidence from Mexico. Ecological Economics, 132, 69-79.\n\nOtras aplicaciones de VI\n\n* VI: Campos-Vazquez, R. M., & Nuñez, R. (2019). Obesity and labor market outcomes in Mexico/Obesidad y el mercado de trabajo en México. Estudios Económicos, 34(2), 159-196.\n* MC2E2M: Mocetti, S. (2007). Intergenerational earnings mobility in Italy. The BE Journal of Economic Analysis & Policy, 7(2).\n\n* Poisson + VI: Hirvonen, K., & Hoddinott, J. (2017). Agricultural production and children’s diets: Evidence from rural Ethiopia. Agricultural Economics, 48(4), 469-480."
   },
   {
     "objectID": "lecturas.html#semana-9",
     "href": "lecturas.html#semana-9",
     "title": "Lecturas",
     "section": "Semana 9",
-    "text": "Semana 9\n\nModelos y estimadores de panel\n\nCT, Capítulo 21\nPanel: Kagin, J., Taylor, J. E., & Yúnez-Naude, A. (2016). Inverse productivity or inverse efficiency? Evidence from Mexico. The Journal of Development Studies, 52(3), 396-411.\nPanel: Bwalya, S. M. (2006). Foreign direct investment and technology spillovers: Evidence from panel data analysis of manufacturing firms in Zambia. Journal of development economics, 81(2), 514-526.\n* Panel + DID: Estrada, R. (2019). Rules versus discretion in public service: Teacher hiring in Mexico. Journal of Labor Economics, 37(2), 545-579."
+    "text": "Semana 9\n\nModelos y estimadores de panel\n\nCT, Capítulo 21\nPanel: Kagin, J., Taylor, J. E., & Yúnez-Naude, A. (2016). Inverse productivity or inverse efficiency? Evidence from Mexico. The Journal of Development Studies, 52(3), 396-411.\n* Panel: Bwalya, S. M. (2006). Foreign direct investment and technology spillovers: Evidence from panel data analysis of manufacturing firms in Zambia. Journal of development economics, 81(2), 514-526.\n* Panel + DID: Estrada, R. (2019). Rules versus discretion in public service: Teacher hiring in Mexico. Journal of Labor Economics, 37(2), 545-579."
   },
   {
     "objectID": "lecturas.html#semana-10",
@@ -95,7 +95,7 @@
     "href": "lecturas.html#semana-11",
     "title": "Lecturas",
     "section": "Semana 11",
-    "text": "Semana 11\n\nBootstrap\n\nCT, Capítulo 11\n* Bootstrap: Li, H., & Maddala, G. S. (1999). Bootstrap variance estimation of nonlinear functions of parameters: an application to long-run elasticities of energy demand. Review of Economics and Statistics, 81(4), 728-733.\n\nPanel con endogeneidad\n\nCT, Capítulo 22 (secciones 22.1 - 22.5)\n* Panel + VI: Antman, F. M. (2011). The intergenerational effects of paternal migration on schooling and work: What can we learn from children’s time allocations?. Journal of Development Economics, 96(2), 200-208.\n* Wooldridge, J. (2012). Panel data models with heterogeneity and endogeneity. Institute for Fiscal Studies.\n* Semykina, A., & Wooldridge, J. M. (2010). Estimating panel data models in the presence of endogeneity and selection. Journal of Econometrics, 157(2), 375-380."
+    "text": "Semana 11\n\nBootstrap\n\nCT, Capítulo 11\n* Bootstrap: Li, H., & Maddala, G. S. (1999). Bootstrap variance estimation of nonlinear functions of parameters: an application to long-run elasticities of energy demand. Review of Economics and Statistics, 81(4), 728-733.\n\nPanel con endogeneidad\n\nCT, Capítulo 22 (secciones 22.1 - 22.5)\nPanel + VI: Antman, F. M. (2011). The intergenerational effects of paternal migration on schooling and work: What can we learn from children’s time allocations?. Journal of Development Economics, 96(2), 200-208.\n* Wooldridge, J. (2012). Panel data models with heterogeneity and endogeneity. Institute for Fiscal Studies.\n* Semykina, A., & Wooldridge, J. M. (2010). Estimating panel data models in the presence of endogeneity and selection. Journal of Econometrics, 157(2), 375-380."
   },
   {
     "objectID": "lecturas.html#semana-12",
@@ -130,7 +130,7 @@
     "href": "presentaciones.html",
     "title": "Presentaciones",
     "section": "",
-    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación."
+    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación.\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
   },
   {
     "objectID": "programa.html",

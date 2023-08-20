@@ -75,7 +75,7 @@ Semana de examen parcial.
 * MC2E
   + CT, Capítulo 6 (secciones 6.1 - 6.4)
   + **VI**: Hackett, L., & Marquez-Padilla, F. (2019). Working for Change: the Effect of Female Labor Force Participation on Fertility. SSRN Working Paper 3354753.
-  + **VI**: López-Feldman, A., & Chávez, E. (2017). Remittances and natural resource extraction: Evidence from Mexico. *Ecological Economics*, 132, 69-79.
+  + \* **VI**: López-Feldman, A., & Chávez, E. (2017). Remittances and natural resource extraction: Evidence from Mexico. *Ecological Economics*, 132, 69-79.
 
 * Otras aplicaciones de VI
   + \* **VI**: Campos-Vazquez, R. M., & Nuñez, R. (2019). Obesity and labor market outcomes in Mexico/Obesidad y el mercado de trabajo en México. *Estudios Económicos*, 34(2), 159-196.
@@ -87,7 +87,7 @@ Semana de examen parcial.
 * Modelos y estimadores de panel
   + CT, Capítulo 21
   + **Panel**: Kagin, J., Taylor, J. E., & Yúnez-Naude, A. (2016). Inverse productivity or inverse efficiency? Evidence from Mexico. *The Journal of Development Studies*, 52(3), 396-411.
-  + **Panel**: Bwalya, S. M. (2006). Foreign direct investment and technology spillovers: Evidence from panel data analysis of manufacturing firms in Zambia. *Journal of development economics*, 81(2), 514-526.
+  + \* **Panel**: Bwalya, S. M. (2006). Foreign direct investment and technology spillovers: Evidence from panel data analysis of manufacturing firms in Zambia. *Journal of development economics*, 81(2), 514-526.
   + \* **Panel + DID**: Estrada, R. (2019). Rules versus discretion in public service: Teacher hiring in Mexico. *Journal of Labor Economics*, 37(2), 545-579.
 
 ## Semana 10
@@ -101,7 +101,7 @@ Semana de examen parcial.
   
 * Panel con endogeneidad
   + CT, Capítulo 22 (secciones 22.1 - 22.5)
-  + \* **Panel + VI**: Antman, F. M. (2011). The intergenerational effects of paternal migration on schooling and work: What can we learn from children's time allocations?. *Journal of Development Economics*, 96(2), 200-208.
+  + **Panel + VI**: Antman, F. M. (2011). The intergenerational effects of paternal migration on schooling and work: What can we learn from children's time allocations?. *Journal of Development Economics*, 96(2), 200-208.
   + \* Wooldridge, J. (2012). Panel data models with heterogeneity and endogeneity. Institute for Fiscal Studies.
   + \* Semykina, A., & Wooldridge, J. M. (2010). Estimating panel data models in the presence of endogeneity and selection. _Journal of Econometrics_, 157(2), 375-380.
 
