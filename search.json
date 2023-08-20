@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "tareas.html",
-    "href": "tareas.html",
-    "title": "Tareas",
+    "objectID": "presentaciones.html",
+    "href": "presentaciones.html",
+    "title": "Presentaciones",
     "section": "",
-    "text": "Ya vienen las tareas."
+    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación."
   },
   {
     "objectID": "lecturas.html",
@@ -126,27 +126,6 @@
     "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nHorario de clases: lunes y miércoles (8:00 a 9:30).\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: por definir.\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas."
   },
   {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
-    "section": "",
-    "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
-  },
-  {
-    "objectID": "materials.html",
-    "href": "materials.html",
-    "title": "Course Materials",
-    "section": "",
-    "text": "Datasets\nSlides"
-  },
-  {
-    "objectID": "presentaciones.html",
-    "href": "presentaciones.html",
-    "title": "Presentaciones",
-    "section": "",
-    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación."
-  },
-  {
     "objectID": "reglas.html",
     "href": "reglas.html",
     "title": "Reglas",
@@ -215,5 +194,26 @@
     "title": "Programa",
     "section": "Exposición",
     "text": "Exposición\nCada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio."
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Course Materials",
+    "section": "",
+    "text": "Datasets\nSlides"
+  },
+  {
+    "objectID": "tareas.html",
+    "href": "tareas.html",
+    "title": "Tareas",
+    "section": "",
+    "text": "Ya vienen las tareas."
   }
 ]
