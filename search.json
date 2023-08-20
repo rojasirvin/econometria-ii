@@ -1,10 +1,129 @@
 [
   {
-    "objectID": "materials.html",
-    "href": "materials.html",
-    "title": "Course Materials",
+    "objectID": "tareas.html",
+    "href": "tareas.html",
+    "title": "Tareas",
     "section": "",
-    "text": "Datasets\nSlides"
+    "text": "Ya vienen las tareas."
+  },
+  {
+    "objectID": "lecturas.html",
+    "href": "lecturas.html",
+    "title": "Lecturas",
+    "section": "",
+    "text": "Las lecturas obligatorias (marcadas con “*”) permiten una discusión informada en la clase. Las lecturas que serán presentadas en exposiciones también son obligatorias y están marcadas con “+”. El resto de las lecturas no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión."
+  },
+  {
+    "objectID": "lecturas.html#prerrequisitos",
+    "href": "lecturas.html#prerrequisitos",
+    "title": "Lecturas",
+    "section": "Prerrequisitos",
+    "text": "Prerrequisitos\n\nModelos lineales\n\nW, Capítulos 1-4"
+  },
+  {
+    "objectID": "lecturas.html#semana-1",
+    "href": "lecturas.html#semana-1",
+    "title": "Lecturas",
+    "section": "Semana 1",
+    "text": "Semana 1\n\nIntroducción\n\nAngrist, J. D., & Pischke, J. S. (2017). Undergraduate Econometrics Instruction: Through Our Classes, Darkly. Journal of Economic Perspectives,31(2), 125-44.\n* Nakamura, E., & Steinsson, J. (2018). Identification in macroeconomics. Journal of Economic Perspectives, 32(3), 59-86.\n\nMCO\n\nCT, Capítulo 4 (secciones 4.1 a 4.3)"
+  },
+  {
+    "objectID": "lecturas.html#semana-2",
+    "href": "lecturas.html#semana-2",
+    "title": "Lecturas",
+    "section": "Semana 2",
+    "text": "Semana 2\n\nTeoría asintótica\n\nCT, Capítulo 4, (sección 4.4)\n\nEstimadores extremos\n\nCT, Capítulo 5"
+  },
+  {
+    "objectID": "lecturas.html#semana-3",
+    "href": "lecturas.html#semana-3",
+    "title": "Lecturas",
+    "section": "Semana 3",
+    "text": "Semana 3\n\nPrueba de hipótesis\n\nCT, Capítulo 7"
+  },
+  {
+    "objectID": "lecturas.html#semana-4",
+    "href": "lecturas.html#semana-4",
+    "title": "Lecturas",
+    "section": "Semana 4",
+    "text": "Semana 4\n\nVariable dependiente binaria\n\nCT, Capítulo 14 (secciones 14.1 - 14.4)\nBinaria: Avila-Foucat, V. S., & Pérez-Campuzano, E. (2015). Municipality socioeconomic characteristics and the probability of occurrence of Wildlife Management Units in Mexico. Environmental Science & Policy, 45, 146-153.\n* Ordenados: Conigliani, C., Manca, A., & Tancredi, A. (2015). Prediction of patient-reported outcome measures via multivariate ordered probit models. Journal of the Royal Statistical Society. Series A (Statistics in Society), 567-591.\n\nVariable dependiente categórica\n\nCT, Capítulo 15 (secciones 15.1 - 15.4)\n* Multinomial: Kveder, C. L. M., & Flahaux, M. L. (2013). Returning to Dakar: A mixed methods analysis of the role of migration experience for occupational status. World Development, 45, 223-238."
+  },
+  {
+    "objectID": "lecturas.html#semana-5",
+    "href": "lecturas.html#semana-5",
+    "title": "Lecturas",
+    "section": "Semana 5",
+    "text": "Semana 5\n\nModelos de conteo\n\nCT, Capítulo 20 (secciones 21.1 - 20.4).\n* Poisson: White, K., & Buckley, C. J. (2011). Exposure to international migration and its effect on childbearing in Turkey. International Migration Review, 45(1), 123-147.\n* Negativo binomial: Antón, J. I., & De Bustillo, R. M. (2010). Health care utilisation and immigration in Spain. The European Journal of Health Economics, 11(5), 487-498.\n* Inflado en cero: Young, J. D., Anderson, N. M., Naughton, H. T., & Mullan, K. (2018). Economic and policy factors driving adoption of institutional woody biomass heating systems in the US. Energy Economics, 69, 456-470.\n* Dos partes: Colchero, M. A., Molina, M., & Guerrero-López, C. M. (2017). After Mexico implemented a tax, purchases of sugar-sweetened beverages decreased and water increased: difference by place of residence, household composition, and income level. The Journal of nutrition, 147(8), 1552-1557."
+  },
+  {
+    "objectID": "lecturas.html#semana-6",
+    "href": "lecturas.html#semana-6",
+    "title": "Lecturas",
+    "section": "Semana 6",
+    "text": "Semana 6\n\nModelos de selección\n\nCT, Capítulo 16 (secciones 16.1 – 16.6)\nTobit: Zou, B., & Luo, B. (2019). Rural Household Energy Consumption Characteristics and Determinants in China. Energy.\n* Heckman: Parey, M., Ruhose, J., Waldinger, F., & Netz, N. (2017). The selection of high-skilled emigrants. Review of Economics and Statistics, 99(5), 776-792.\n* Ordenado + selección: Alemi, F., Circella, G., Mokhtarian, P., & Handy, S. (2019). What drives the use of ridehailing in California? Ordered probit models of the usage frequency of Uber and Lyft. Transportation Research Part C: Emerging Technologies, 102, 233-248."
+  },
+  {
+    "objectID": "lecturas.html#semana-7",
+    "href": "lecturas.html#semana-7",
+    "title": "Lecturas",
+    "section": "Semana 7",
+    "text": "Semana 7\nSemana de examen parcial."
+  },
+  {
+    "objectID": "lecturas.html#semana-8",
+    "href": "lecturas.html#semana-8",
+    "title": "Lecturas",
+    "section": "Semana 8",
+    "text": "Semana 8\n\nVariables instrumentales\n\nW, Capítulo 5.\nCT, Capítulo 4 (secciones 4.8 y 4.9)\n\nMC2E\n\nCT, Capítulo 6 (secciones 6.1 - 6.4)\nVI: Hackett, L., & Marquez-Padilla, F. (2019). Working for Change: the Effect of Female Labor Force Participation on Fertility. SSRN Working Paper 3354753.\nVI: López-Feldman, A., & Chávez, E. (2017). Remittances and natural resource extraction: Evidence from Mexico. Ecological Economics, 132, 69-79.\n\nOtras aplicaciones de VI\n\n* VI: Campos-Vazquez, R. M., & Nuñez, R. (2019). Obesity and labor market outcomes in Mexico/Obesidad y el mercado de trabajo en México. Estudios Económicos, 34(2), 159-196.\n* MC2E2M: Mocetti, S. (2007). Intergenerational earnings mobility in Italy. The BE Journal of Economic Analysis & Policy, 7(2).\n\n* Poisson + VI: Hirvonen, K., & Hoddinott, J. (2017). Agricultural production and children’s diets: Evidence from rural Ethiopia. Agricultural Economics, 48(4), 469-480."
+  },
+  {
+    "objectID": "lecturas.html#semana-9",
+    "href": "lecturas.html#semana-9",
+    "title": "Lecturas",
+    "section": "Semana 9",
+    "text": "Semana 9\n\nModelos y estimadores de panel\n\nCT, Capítulo 21\nPanel: Kagin, J., Taylor, J. E., & Yúnez-Naude, A. (2016). Inverse productivity or inverse efficiency? Evidence from Mexico. The Journal of Development Studies, 52(3), 396-411.\nPanel: Bwalya, S. M. (2006). Foreign direct investment and technology spillovers: Evidence from panel data analysis of manufacturing firms in Zambia. Journal of development economics, 81(2), 514-526.\n* Panel + DID: Estrada, R. (2019). Rules versus discretion in public service: Teacher hiring in Mexico. Journal of Labor Economics, 37(2), 545-579."
+  },
+  {
+    "objectID": "lecturas.html#semana-10",
+    "href": "lecturas.html#semana-10",
+    "title": "Lecturas",
+    "section": "Semana 10",
+    "text": "Semana 10\n\nMHE, Capítulo 8"
+  },
+  {
+    "objectID": "lecturas.html#semana-11",
+    "href": "lecturas.html#semana-11",
+    "title": "Lecturas",
+    "section": "Semana 11",
+    "text": "Semana 11\n\nBootstrap\n\nCT, Capítulo 11\n* Bootstrap: Li, H., & Maddala, G. S. (1999). Bootstrap variance estimation of nonlinear functions of parameters: an application to long-run elasticities of energy demand. Review of Economics and Statistics, 81(4), 728-733.\n\nPanel con endogeneidad\n\nCT, Capítulo 22 (secciones 22.1 - 22.5)\n* Panel + VI: Antman, F. M. (2011). The intergenerational effects of paternal migration on schooling and work: What can we learn from children’s time allocations?. Journal of Development Economics, 96(2), 200-208.\n* Wooldridge, J. (2012). Panel data models with heterogeneity and endogeneity. Institute for Fiscal Studies.\n* Semykina, A., & Wooldridge, J. M. (2010). Estimating panel data models in the presence of endogeneity and selection. Journal of Econometrics, 157(2), 375-380."
+  },
+  {
+    "objectID": "lecturas.html#semana-12",
+    "href": "lecturas.html#semana-12",
+    "title": "Lecturas",
+    "section": "Semana 12",
+    "text": "Semana 12\n\nPanel no lineal\n\nCT, Capítulo 23\n* Panel Poisson: Castillo, J. C., Mejía, D., & Restrepo, P. (2020). Scarcity without leviathan: The violent effects of cocaine supply shortages in the mexican drug war. Review of Economics and Statistics, 102(2), 269-286."
+  },
+  {
+    "objectID": "lecturas.html#semana-13",
+    "href": "lecturas.html#semana-13",
+    "title": "Lecturas",
+    "section": "Semana 13",
+    "text": "Semana 13\n\nRegresión cuantil\n\nCT, Capítulo 4 (sección 4.6)\nCuantil: Engelhardt, G. V., & Kumar, A. (2011). Pensions and household wealth accumulation. Journal of Human Resources, 46(1), 203-236.\n\nModelos de riesgo y sobrevivencia\n\nCT, Capítulo 17 (secciones 17.1 – 17.4 y 17.6-17.11)\n* Riesgo: De Uña-Alvarez, J., Otero-Giráldez, M. S., & Alvarez-Llorente, G. (2003). Estimation under length-bias and right-censoring: an application to unemployment duration analysis for married women. Journal of Applied Statistics, 30(3), 283-291."
+  },
+  {
+    "objectID": "lecturas.html#semana-14",
+    "href": "lecturas.html#semana-14",
+    "title": "Lecturas",
+    "section": "Semana 14",
+    "text": "Semana 14\n\nMétodos semiparamétricos\n\nCT, Capítulo 9\nSemiparamétrico: Hussinger, K. (2008). R&D and subsidies at the firm level: An application of parametric and semiparametric two‐step selection models. Journal of applied econometrics, 23(6), 729-747."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Econometría II 2023",
+    "section": "",
+    "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nHorario de clases: lunes y miércoles (8:00 a 9:30).\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: por definir.\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas."
   },
   {
     "objectID": "schedule.html",
@@ -14,10 +133,87 @@
     "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Course Title",
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Course Materials",
     "section": "",
-    "text": "Course info & details here"
+    "text": "Datasets\nSlides"
+  },
+  {
+    "objectID": "presentaciones.html",
+    "href": "presentaciones.html",
+    "title": "Presentaciones",
+    "section": "",
+    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación."
+  },
+  {
+    "objectID": "reglas.html",
+    "href": "reglas.html",
+    "title": "Reglas",
+    "section": "",
+    "text": "No se tolerarán actos de discriminación. Se procura un ambiente de respeto entre todos los miembros de la clase.\nToda la comunicación relativa al curso se dará por medio del correo institucional del CIDE.\nLas tareas y exámenes se entregarán a través de Teams.\nLos participantes en la sesión deberán procurar que haya un ambiente silencioso para el desarrollo de la clase.\nSe aplicarán estrictamente los lineamientos generales contenidos en el código de ética del CIDE en términos de plagio y fraude en tareas y exámenes."
+  },
+  {
+    "objectID": "programa.html",
+    "href": "programa.html",
+    "title": "Programa",
+    "section": "",
+    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual."
+  },
+  {
+    "objectID": "programa.html#objetivos",
+    "href": "programa.html#objetivos",
+    "title": "Programa",
+    "section": "",
+    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual."
+  },
+  {
+    "objectID": "programa.html#referencias",
+    "href": "programa.html#referencias",
+    "title": "Programa",
+    "section": "Referencias",
+    "text": "Referencias\nEl curso se basa en los siguientes textos:\n\n(MHE) Angrist, J.D. y Pischke, J.S. (2013). Mostly Harmless Econometrics: An Empiricists Companion. Princeton University Press.\n* (CT) Cameron, A.C. y Trivedi, P.K. (2005). Microeconometrics: Methods and applications. Oxford University Press.\nHansen, B. (2022). Econometrics. Princeton University Press.\nHayashi, F. (2000). Econometrics. Princeton University Press.\n* (W) Wooldridge, J.M. (2010). Econometric analysis of cross section and panel data. Segunda edición, MIT Press."
+  },
+  {
+    "objectID": "programa.html#contenido-temático",
+    "href": "programa.html#contenido-temático",
+    "title": "Programa",
+    "section": "Contenido temático",
+    "text": "Contenido temático\nUnidad 1. Introducción + Revisión de fundamentos de estadística y regresión lineal + Teoría asintótica + Estimadores extremos + Máxima verosimilitud + Mínimos cuadrados no lineales + Inferencia estadística\nUnidad 2. Modelos de variable dependiente no continua\n+ Modelos de variable dependiente binaria\n+ Modelos de conteo\nUnidad 3. Modelos de selección + Modelo de Tobit + Modelo de Heckman\nUnidad 4. Endogeneidad + Variables instrumentales + Método generalizado de momentos + Estimación con instrumentos débiles\nUnidad 5. Datos de panel + Modelos de efectos fijos y de efectos aleatorios + Estimadores between y within + Estimadores de primeras diferencias y de efectos aleatorios + Errores estándar agrupados\nUnidad 6. Extensiones + Bootstrap + Modelos de riesgo y de sobrevivencia + Regresión por cuantiles + Modelos de panel con endogeneidad + Modelos de panel no lineales + Métodos semi paramétricos y no paramétricos"
+  },
+  {
+    "objectID": "programa.html#evaluación-del-curso",
+    "href": "programa.html#evaluación-del-curso",
+    "title": "Programa",
+    "section": "Evaluación del curso",
+    "text": "Evaluación del curso\n\nExamen parcial: 30%.\nExamen final acumulativo: 45%\nTareas (4): 20% (5% cada una)\nExposición: 5%"
+  },
+  {
+    "objectID": "programa.html#tareas",
+    "href": "programa.html#tareas",
+    "title": "Programa",
+    "section": "Tareas",
+    "text": "Tareas\nCuatro tareas teórico-prácticas. Las tareas deben entregarse de manera individual, pero se recomienda ampliamente colaborar en grupos de estudio. Las tareas deberán entregarse en Teams antes de la fecha y hora señalada. No se aceptarán tareas fuera de tiempo. Por favor, no comprima los archivos en carpetas comprimidas. Las tareas deberán contener dos archivos:\nUn primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad de manera aleatoria."
+  },
+  {
+    "objectID": "programa.html#software",
+    "href": "programa.html#software",
+    "title": "Programa",
+    "section": "Software",
+    "text": "Software\nR será el paquete standard usado en las sesiones prácticas. Más aún, el uso de cualquier software es aceptado siempre que se cumplan con los requisitos de replicabilidad y reportes de las tareas y exámenes. Habrá una sesión especial para introducir el uso de RMarkdown para la generación de reportes científicos."
+  },
+  {
+    "objectID": "programa.html#exámenes",
+    "href": "programa.html#exámenes",
+    "title": "Programa",
+    "section": "Exámenes",
+    "text": "Exámenes\n\nExamen parcial: miércoles 4 de octubre en el horario de clase.\nExamen final: por definir."
+  },
+  {
+    "objectID": "programa.html#exposición",
+    "href": "programa.html#exposición",
+    "title": "Programa",
+    "section": "Exposición",
+    "text": "Exposición\nCada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio."
   }
 ]
