@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Course Title"
+  title: "Econometría II 2023"
   sidebar:
     background: primary
     # logo: "images/logo.png"
@@ -11,18 +11,22 @@ website:
     align: center
     tools:
       - icon: github
-        href: https://github.com/Pakillo/quarto-course-website-template
+        href: https://github.com/rojasirvin/econometria-ii
         text: GitHub
     style: docked
     contents:
       - href: index.qmd
         text: Home
-      - href: schedule.qmd
-        text: Schedule
-      - href: materials.qmd
-        text: Materials
-      - href: https://github.com/Pakillo/quarto-course-website-template/discussions
-        text: Forum
+      - href: programa.qmd
+        text: Programa
+      - href: reglas.qmd
+        text: Reglas
+      - href: lecturas.qmd
+        text: Lecturas
+      - href: presentaciones.qmd
+        text: Presentaciones
+      - href: tareas.qmd
+        text: Tareas
 
 format:
   html:
