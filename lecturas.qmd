@@ -2,7 +2,7 @@
 title: "Lecturas"
 ---
 
-Las lecturas obligatorias (marcadas con “*”) permiten una discusión informada en la clase. Las lecturas que serán presentadas en exposiciones también son obligatorias y están marcadas con “+”. El resto de las lecturas no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión.
+Todas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión.
 
 
 ## Prerrequisitos
@@ -39,7 +39,7 @@ Las lecturas obligatorias (marcadas con “*”) permiten una discusión informa
 
 * Variable dependiente categórica
   + CT, Capítulo 15 (secciones 15.1 - 15.4)
-  + \* **Multinomial**: Kveder, C. L. M., & Flahaux, M. L. (2013). Returning to Dakar: A mixed methods analysis of the role of migration experience for occupational status. *World Development*, 45, 223-238.
+  + **Multinomial**: Kveder, C. L. M., & Flahaux, M. L. (2013). Returning to Dakar: A mixed methods analysis of the role of migration experience for occupational status. *World Development*, 45, 223-238.
 
 
 ## Semana 5

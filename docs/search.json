@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Econometría II 2023",
     "section": "",
-    "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nHorario de clases: lunes y miércoles (8:00 a 9:30).\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: por definir.\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas."
+    "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nLaboratoristas: Alejandro Parada (alejandro.parada@alumnos.cide.edu).\nHorario de clases: lunes y miércoles (11:20 a 12:50).\nHorario de laboratorio: por definir.\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: por definir.\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas."
   },
   {
     "objectID": "lecturas.html",
     "href": "lecturas.html",
     "title": "Lecturas",
     "section": "",
-    "text": "Las lecturas obligatorias (marcadas con “*”) permiten una discusión informada en la clase. Las lecturas que serán presentadas en exposiciones también son obligatorias y están marcadas con “+”. El resto de las lecturas no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión."
+    "text": "Todas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión."
   },
   {
     "objectID": "lecturas.html#prerrequisitos",
@@ -46,7 +46,7 @@
     "href": "lecturas.html#semana-4",
     "title": "Lecturas",
     "section": "Semana 4",
-    "text": "Semana 4\n\nVariable dependiente binaria\n\nCT, Capítulo 14 (secciones 14.1 - 14.4)\nBinaria: Avila-Foucat, V. S., & Pérez-Campuzano, E. (2015). Municipality socioeconomic characteristics and the probability of occurrence of Wildlife Management Units in Mexico. Environmental Science & Policy, 45, 146-153.\n* Ordenados: Conigliani, C., Manca, A., & Tancredi, A. (2015). Prediction of patient-reported outcome measures via multivariate ordered probit models. Journal of the Royal Statistical Society. Series A (Statistics in Society), 567-591.\n\nVariable dependiente categórica\n\nCT, Capítulo 15 (secciones 15.1 - 15.4)\n* Multinomial: Kveder, C. L. M., & Flahaux, M. L. (2013). Returning to Dakar: A mixed methods analysis of the role of migration experience for occupational status. World Development, 45, 223-238."
+    "text": "Semana 4\n\nVariable dependiente binaria\n\nCT, Capítulo 14 (secciones 14.1 - 14.4)\nBinaria: Avila-Foucat, V. S., & Pérez-Campuzano, E. (2015). Municipality socioeconomic characteristics and the probability of occurrence of Wildlife Management Units in Mexico. Environmental Science & Policy, 45, 146-153.\n* Ordenados: Conigliani, C., Manca, A., & Tancredi, A. (2015). Prediction of patient-reported outcome measures via multivariate ordered probit models. Journal of the Royal Statistical Society. Series A (Statistics in Society), 567-591.\n\nVariable dependiente categórica\n\nCT, Capítulo 15 (secciones 15.1 - 15.4)\nMultinomial: Kveder, C. L. M., & Flahaux, M. L. (2013). Returning to Dakar: A mixed methods analysis of the role of migration experience for occupational status. World Development, 45, 223-238."
   },
   {
     "objectID": "lecturas.html#semana-5",
@@ -194,6 +194,13 @@
     "title": "Programa",
     "section": "Exposición",
     "text": "Exposición\nCada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio."
+  },
+  {
+    "objectID": "programa.html#lista-de-lecturas",
+    "href": "programa.html#lista-de-lecturas",
+    "title": "Programa",
+    "section": "Lista de lecturas",
+    "text": "Lista de lecturas\nTodas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión. La lista de lecturas está disponible aquí"
   },
   {
     "objectID": "reglas.html",
