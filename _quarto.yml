@@ -6,7 +6,7 @@ website:
   title: "Econometría II 2023"
   sidebar:
     background: primary
-    # logo: "images/logo.png"
+    logo: "iconoEconometria.jpg"
     pinned: true
     align: center
     tools:
@@ -31,9 +31,7 @@ website:
 format:
   html:
     theme: cosmo
-    # css: styles.css
+    css: styles.css
     toc: true
 
-execute:
-  freeze: auto
 
