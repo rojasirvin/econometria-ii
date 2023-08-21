@@ -5,21 +5,10 @@ title: "Presentaciones"
 
 Por favor, seleccione una de las lecturas marcadas con una "+" de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación.
 
-
-|     |                Morning              |          Afternoon                     |
-|:---:|:-----------------------------------:|:--------------------------------------:|
-|  L  | Intro + Data manipulation           | git / GitHub                           |
-|  M  | Generalised Linear Models           | Data visualisation                     |
-|  X  | Mixed models / GAM / Bayes          | Functional programming + Students work |
-|  J  | Multivariate analyses               | Reproducible workflows                 |
-|  V  | Using R as GIS + Students work      | Project presentations                  |
-
-
-
 | **Autores** | **Tema** | **Presentador o presentadora** | **Fecha de exposición** |
 | --- | --- | --- | --- |
 | Avila-Foucat et al. (2015) | Binaria  | | 2 de octubre |  
-| Kveder & Flahaux (2013) | Multinomiales | | 2 de octubre |
+| Kveder & Flahaux (2013) | Multinomiales | Paola Guarneros | 2 de octubre |
 | Zou & Luo (2019) | Tobit |   | 2 de octubre |
 | Hackett & Marquez-Padilla (2019) | VI |  | 9 de octubre |
 | López-Feldman & Chávez (2017) | VI | | 9 de octubre |
