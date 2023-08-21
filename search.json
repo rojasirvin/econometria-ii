@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "tareas.html",
-    "href": "tareas.html",
-    "title": "Tareas",
+    "objectID": "presentaciones.html",
+    "href": "presentaciones.html",
+    "title": "Presentaciones",
     "section": "",
-    "text": "Ya vienen las tareas."
+    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación.\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations\n\n\n\n\n\n\n\n\n\n\n\n\nAutores\nTema\nPresentador o presentadora\nFecha de exposición\n\n\n\n\nAvila-Foucat et al. (2015)\nBinaria\n\n4 de octubre\n\n\nZou & Luo (2019)\nTobit\n\n4 de octubre\n\n\nLópez-Feldman & Chávez (2017)\nVI\n\n18 de octubre\n\n\nHackett & Márquez (2019)\nVI\n\n18 de octubre\n\n\nBwalya (2006)\nPanel\n\n3 de noviembre\n\n\nKagin et al. (2016)\nPanel\n\n3 de noviembre\n\n\nEngelhardt & Kumar (2011)\nCuantil\n\n24 de noviembre\n\n\nHussinger (2008)\nSemiparamétrico\n\n24 de noviembre"
   },
   {
     "objectID": "lecturas.html",
@@ -126,27 +126,6 @@
     "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nLaboratoristas: Alejandro Parada (alejandro.parada@alumnos.cide.edu).\nHorario de clases: lunes y miércoles (11:20 a 12:50).\nHorario de laboratorio: por definir.\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: por definir.\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas."
   },
   {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
-    "section": "",
-    "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
-  },
-  {
-    "objectID": "materials.html",
-    "href": "materials.html",
-    "title": "Course Materials",
-    "section": "",
-    "text": "Datasets\nSlides"
-  },
-  {
-    "objectID": "presentaciones.html",
-    "href": "presentaciones.html",
-    "title": "Presentaciones",
-    "section": "",
-    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación.\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations\n\n\n\n\n\n\n\n\n\n\n\n\nAutores\nTema\nPresentador o presentadora\nFecha de exposición\n\n\n\n\nAvila-Foucat et al. (2015)\nBinaria\n\n4 de octubre\n\n\nZou & Luo (2019)\nTobit\n\n4 de octubre\n\n\nLópez-Feldman & Chávez (2017)\nVI\n\n18 de octubre\n\n\nHackett & Márquez (2019)\nVI\n\n18 de octubre\n\n\nBwalya (2006)\nPanel\n\n3 de noviembre\n\n\nKagin et al. (2016)\nPanel\n\n3 de noviembre\n\n\nEngelhardt & Kumar (2011)\nCuantil\n\n24 de noviembre\n\n\nHussinger (2008)\nSemiparamétrico\n\n24 de noviembre"
-  },
-  {
     "objectID": "reglas.html",
     "href": "reglas.html",
     "title": "Reglas",
@@ -222,5 +201,26 @@
     "title": "Programa",
     "section": "Lista de lecturas",
     "text": "Lista de lecturas\nTodas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión. La lista de lecturas está disponible aquí."
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Course Materials",
+    "section": "",
+    "text": "Datasets\nSlides"
+  },
+  {
+    "objectID": "tareas.html",
+    "href": "tareas.html",
+    "title": "Tareas",
+    "section": "",
+    "text": "Ya vienen las tareas."
   }
 ]
