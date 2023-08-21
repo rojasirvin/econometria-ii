@@ -75,7 +75,7 @@ Semana de examen parcial.
 * MC2E
   + CT, Capítulo 6 (secciones 6.1 - 6.4)
   + **VI**: Hackett, L., & Marquez-Padilla, F. (2019). Working for Change: the Effect of Female Labor Force Participation on Fertility. SSRN Working Paper 3354753.
-  + \* **VI**: López-Feldman, A., & Chávez, E. (2017). Remittances and natural resource extraction: Evidence from Mexico. *Ecological Economics*, 132, 69-79.
+    + \* **VI**: López-Feldman, A., & Chávez, E. (2017). Remittances and natural resource extraction: Evidence from Mexico. *Ecological Economics*, 132, 69-79.
 
 * Otras aplicaciones de VI
   + \* **VI**: Campos-Vazquez, R. M., & Nuñez, R. (2019). Obesity and labor market outcomes in Mexico/Obesidad y el mercado de trabajo en México. *Estudios Económicos*, 34(2), 159-196.
