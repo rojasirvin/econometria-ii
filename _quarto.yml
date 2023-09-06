@@ -25,7 +25,7 @@ website:
         text: Lecturas
       - href: presentaciones.qmd
         text: Presentaciones
-      - href: tareas.qmd
+      - href: tareas/index.qmd
         text: Tareas
 
 format:
