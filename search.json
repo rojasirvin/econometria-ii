@@ -1,10 +1,178 @@
 [
   {
-    "objectID": "tareas.html",
-    "href": "tareas.html",
+    "objectID": "programa.html",
+    "href": "programa.html",
+    "title": "Programa",
+    "section": "",
+    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual."
+  },
+  {
+    "objectID": "programa.html#objetivos",
+    "href": "programa.html#objetivos",
+    "title": "Programa",
+    "section": "",
+    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual."
+  },
+  {
+    "objectID": "programa.html#referencias",
+    "href": "programa.html#referencias",
+    "title": "Programa",
+    "section": "Referencias",
+    "text": "Referencias\nEl curso se basa en los siguientes textos:\n\n(MHE) Angrist, J.D. y Pischke, J.S. (2013). Mostly Harmless Econometrics: An Empiricists Companion. Princeton University Press.\n* (CT) Cameron, A.C. y Trivedi, P.K. (2005). Microeconometrics: Methods and applications. Oxford University Press.\nHansen, B. (2022). Econometrics. Princeton University Press.\nHayashi, F. (2000). Econometrics. Princeton University Press.\n* (W) Wooldridge, J.M. (2010). Econometric analysis of cross section and panel data. Segunda edición, MIT Press."
+  },
+  {
+    "objectID": "programa.html#contenido-temático",
+    "href": "programa.html#contenido-temático",
+    "title": "Programa",
+    "section": "Contenido temático",
+    "text": "Contenido temático\nUnidad 1. Introducción + Revisión de fundamentos de estadística y regresión lineal + Teoría asintótica + Estimadores extremos + Máxima verosimilitud + Mínimos cuadrados no lineales + Inferencia estadística\nUnidad 2. Modelos de variable dependiente no continua\n+ Modelos de variable dependiente binaria\n+ Modelos de conteo\nUnidad 3. Modelos de selección + Modelo de Tobit + Modelo de Heckman\nUnidad 4. Endogeneidad + Variables instrumentales + Método generalizado de momentos + Estimación con instrumentos débiles\nUnidad 5. Datos de panel + Modelos de efectos fijos y de efectos aleatorios + Estimadores between y within + Estimadores de primeras diferencias y de efectos aleatorios + Errores estándar agrupados\nUnidad 6. Extensiones + Bootstrap + Modelos de riesgo y de sobrevivencia + Regresión por cuantiles + Modelos de panel con endogeneidad + Modelos de panel no lineales + Métodos semi paramétricos y no paramétricos"
+  },
+  {
+    "objectID": "programa.html#evaluación-del-curso",
+    "href": "programa.html#evaluación-del-curso",
+    "title": "Programa",
+    "section": "Evaluación del curso",
+    "text": "Evaluación del curso\n\nExamen parcial: 30%.\nExamen final acumulativo: 45%\nTareas (4): 20% (5% cada una)\nExposición: 5%"
+  },
+  {
+    "objectID": "programa.html#tareas",
+    "href": "programa.html#tareas",
+    "title": "Programa",
+    "section": "Tareas",
+    "text": "Tareas\nCuatro tareas teórico-prácticas. Las tareas deben entregarse de manera individual, pero se recomienda ampliamente colaborar en grupos de estudio. Las tareas deberán entregarse en Teams antes de la fecha y hora señalada. No se aceptarán tareas fuera de tiempo. Por favor, no comprima los archivos en carpetas comprimidas. Las tareas deberán contener dos archivos:\nUn primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad de manera aleatoria."
+  },
+  {
+    "objectID": "programa.html#software",
+    "href": "programa.html#software",
+    "title": "Programa",
+    "section": "Software",
+    "text": "Software\nR será el paquete standard usado en las sesiones prácticas. Más aún, el uso de cualquier software es aceptado siempre que se cumplan con los requisitos de replicabilidad y reportes de las tareas y exámenes. Habrá una sesión especial para introducir el uso de Quarto para la generación de reportes científicos."
+  },
+  {
+    "objectID": "programa.html#exámenes",
+    "href": "programa.html#exámenes",
+    "title": "Programa",
+    "section": "Exámenes",
+    "text": "Exámenes\n\nExamen parcial: miércoles 4 de octubre en el horario de clase.\nExamen final: por definir."
+  },
+  {
+    "objectID": "programa.html#exposición",
+    "href": "programa.html#exposición",
+    "title": "Programa",
+    "section": "Exposición",
+    "text": "Exposición\nCada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio."
+  },
+  {
+    "objectID": "programa.html#lista-de-lecturas",
+    "href": "programa.html#lista-de-lecturas",
+    "title": "Programa",
+    "section": "Lista de lecturas",
+    "text": "Lista de lecturas\nTodas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión. La lista de lecturas está disponible aquí."
+  },
+  {
+    "objectID": "reglas.html",
+    "href": "reglas.html",
+    "title": "Reglas",
+    "section": "",
+    "text": "No se tolerarán actos de discriminación. Se procura un ambiente de respeto entre todos los miembros de la clase.\nToda la comunicación relativa al curso se dará por medio del correo institucional del CIDE.\nLas tareas y exámenes se entregarán a través de Teams.\nLos participantes en la sesión deberán procurar que haya un ambiente silencioso para el desarrollo de la clase.\nSe aplicarán estrictamente los lineamientos generales contenidos en el código de ética del CIDE en términos de plagio y fraude en tareas y exámenes."
+  },
+  {
+    "objectID": "presentaciones.html",
+    "href": "presentaciones.html",
+    "title": "Presentaciones",
+    "section": "",
+    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación.\n\n\n\n\n\n\n\n\n\nAutores\nTema\nPresentador o presentadora\nFecha de exposición\n\n\n\n\nAvila-Foucat et al. (2015)\nBinaria\nPaola Guarneros\n2 de octubre\n\n\nKveder & Flahaux (2013)\nMultinomiales\nRigoberto Mendoza\n2 de octubre\n\n\nZou & Luo (2019)\nTobit\nFrancisco Vinicio\n2 de octubre\n\n\nHackett & Marquez-Padilla (2019)\nVI\nClaudia Alemán\n9 de octubre\n\n\nLópez-Feldman & Chávez (2017)\nVI\n\n9 de octubre\n\n\nKagin et al. (2016)\nPanel\nYorlyn Fúnez\n8 de noviembre\n\n\nAntman (2011)\nPenel + VI\n\n8 de noviembre\n\n\nEngelhardt & Kumar (2011)\nCuantil\nLuis Armando López\n27 de noviembre\n\n\nHussinger (2008)\nSemiparamétrico\nSamuel Martínez\n27 de noviembre"
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Course Materials",
+    "section": "",
+    "text": "Datasets\nSlides"
+  },
+  {
+    "objectID": "tareas/index.html",
+    "href": "tareas/index.html",
     "title": "Tareas",
     "section": "",
-    "text": "Ya vienen las tareas."
+    "text": "Tarea 1\n\nFecha de entrega: 20 de septiembre a las 20:00 en Teams\nPreguntas"
+  },
+  {
+    "objectID": "tareas/tarea-1.html",
+    "href": "tareas/tarea-1.html",
+    "title": "Tarea 1",
+    "section": "",
+    "text": "Fecha de entrega: 20 de septiembre\nLa tarea deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
+  },
+  {
+    "objectID": "tareas/tarea-1.html#instrucciones",
+    "href": "tareas/tarea-1.html#instrucciones",
+    "title": "Tarea 1",
+    "section": "",
+    "text": "Fecha de entrega: 20 de septiembre\nLa tarea deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
+  },
+  {
+    "objectID": "tareas/tarea-1.html#datos",
+    "href": "tareas/tarea-1.html#datos",
+    "title": "Tarea 1",
+    "section": "Datos",
+    "text": "Datos\nmuestra-enoe-123.csv"
+  },
+  {
+    "objectID": "tareas/tarea-1.html#pregunta-1",
+    "href": "tareas/tarea-1.html#pregunta-1",
+    "title": "Tarea 1",
+    "section": "Pregunta 1",
+    "text": "Pregunta 1\nSuponga que está interesado en una variable aleatoria que tiene una distribución Bernoulli con parámetro \\(p\\). La función de densidad está definida como:\n\\[f(x_;p)=\\left\\{\\begin{array} .1 & \\text{con probabilidad } p \\\\ 0 & \\text{con probabilidad } 1-p \\end{array} \\right.\\] Suponga que tiene una muestra de \\(N\\) observaciones independientes e idénticamente distribuidas.\n\n[4 puntos] Plantee la función de log verosimilitud del problema.\n[4 puntos] Obtenga las condiciones de primer orden y resuelva para \\(\\hat{p}\\).\n[2 puntos] ¿Cuál es la media y la varianza del estimador de máxima verosimilitud que ha encontrado?"
+  },
+  {
+    "objectID": "tareas/tarea-1.html#pregunta-2",
+    "href": "tareas/tarea-1.html#pregunta-2",
+    "title": "Tarea 1",
+    "section": "Pregunta 2",
+    "text": "Pregunta 2\nSuponga que \\(y_i|\\mathbf{x}_i\\sim\\mathcal{N}(m(\\mathbf{x}_i,\\mathbf{\\beta}_0),\\sigma_0^2)\\), donde \\(m(\\mathbf{x},\\mathbf{\\beta})\\) es una función del vector de variables explicativas \\(\\mathbf{x}\\) y del vector de parámetros \\(\\mathbf{\\beta}\\) de dimensión \\((k\\times 1)\\). Entonces, \\(E(y_i|\\mathbf{x}_i)=m(\\mathbf{x}_i,\\mathbf{\\beta}_0)\\) y \\(V(y_i|\\mathbf{x}_i)=\\sigma^2_0\\).\n\n[2 puntos] Escriba la función de log verosimilitud condicional para la observación \\(i\\). Muestre que el estimador de máxima verosimilitud \\(\\hat{\\mathbf{\\beta}}\\) resuelve el problema de minimización \\(\\min_\\mathbf{\\beta}\\sum_i(y_i-m(\\mathbf{x}_i,\\mathbf{\\beta}))^2\\).\n[4 puntos] Sea \\(\\mathbf{\\theta}\\equiv(\\mathbf{\\beta}'\\;\\sigma^2)'\\) un vector de parámetros de dimensión \\((k+1)\\times 1\\). Encuentre el vector score para la observación \\(i\\). Muestre que \\(E(\\mathbf{s}_i(\\mathbf{\\theta}_0)|\\mathbf{x}_i)=\\mathbf{0}\\).\n[2 puntos] Usando las condiciones de primer orden, encuentre \\(\\hat{\\sigma}^2\\) en términos de \\(\\hat{\\mathbf{\\beta}}\\).\n[5 puntos] Encuentre la matriz hesiana de la función de log verosimilitud con respecto a \\(\\mathbf{\\theta}\\).\n[5 puntos] Muestre que \\(-E(\\mathbf{H}_i(\\mathbf{\\theta}_0)|\\mathbf{x}_i)=E(\\mathbf{s}_i(\\mathbf{\\theta}_0)\\mathbf{s}_i(\\mathbf{\\theta}_0)'|\\mathbf{x}_i)\\).\n[2 puntos] Encuentre la varianza asintótica estimada de \\(\\hat{\\mathbf{\\beta}}\\) y explique cómo obtendría los errores estándar."
+  },
+  {
+    "objectID": "tareas/tarea-1.html#pregunta-3",
+    "href": "tareas/tarea-1.html#pregunta-3",
+    "title": "Tarea 1",
+    "section": "Pregunta 3",
+    "text": "Pregunta 3\nSuponga una variable aleatoria \\(X_i\\) con distribución desconocida. Sin embargo, sí conocemos que \\(E(X)=\\mu=54\\) y que \\(\\sqrt{V(X)}=\\sigma=6\\). Suponga que se recolecta una muestra de 50 observaciones.\n\n[2 punto] ¿Cuál es la distribución asintótica de la media muestral \\(\\bar{X}\\)?\n[4 punto] ¿Cuál es la probabilidad de que \\(\\bar{X}&gt;58\\)?\n[2 punto] ¿Cuál es la probabilidad de que una observación elegida al azar sea tal que \\(X_i&gt;58\\)?\n[2 punto] Provea un intervalo de confianza de 99% para la media muestral."
+  },
+  {
+    "objectID": "tareas/tarea-1.html#pregunta-4",
+    "href": "tareas/tarea-1.html#pregunta-4",
+    "title": "Tarea 1",
+    "section": "Pregunta 4",
+    "text": "Pregunta 4\nEn esta pregunta mostraremos los alcances de los teoremas del límite central. Para esto, generaremos muchas muestras de tamaño \\(N\\) con una distribución \\(Bernoulli\\) con probabilidad de éxito \\(p=0.3\\). Recuerde que cuando realice simulaciones, siempre debe fijar una semilla al inicio para poder replicar su trabajo.\n\n[2 puntos] ¿Cuál es la media y la varianza de una variable aleatoria \\(y_i \\sim Bernoulli(0.3)\\)?\n[2 puntos] Si \\(y_i\\) son iid y podemos aplicar un teorema de límite central, ¿cuál es la distribución teórica de \\(\\bar{y}\\) cuando \\(N\\to\\infty\\)?\n[5 puntos] Realice el siguiente procedimiento \\(J=1,000\\) veces. Obtenga una muestra de tamaño \\(N=2\\) a partir de la distribución \\(Bernoulli(0.3)\\) y calcule la media muestral \\(\\bar{y}\\). Coleccione las \\(J\\) medias muestrales y luego grafique un histograma de las medias muestrales obtenidas junto con una curva teórica normal con la media y varianza obtenida en la parte b. Comente sobre lo que observa.\n[3 puntos] Repita lo realizado en la parte b., ahora con \\(N=10\\). Comente sobre lo que observa.\n[3 puntos] Repita lo realizado en la parte b., ahora con \\(N=10,000\\). Comente sobre lo que observa.\n[5 puntos] ¿Cómo usaría este ejercicio con palabras simples para explicar a una persona que no sabe mucho de estadística sobre la importancia de los teoremas de límite central?"
+  },
+  {
+    "objectID": "tareas/tarea-1.html#pregunta-5",
+    "href": "tareas/tarea-1.html#pregunta-5",
+    "title": "Tarea 1",
+    "section": "Pregunta 5",
+    "text": "Pregunta 5\nUse los datos en el archivo motral2012.csv, que incluye una muestra de individuos con sus características socioeconómicas. Nos interesa conocer los factores que afectan la probabilidad de que los individuos tengan ahorros. Considere lo siguiente sobre las opciones de ahorro de los entrevistados, contenida en la variable p14:\n\np14 igual a 1 significa cuentas de ahorro bancarias\np14 igual a 2 significa cuenta de inversión bancaria\np14 igual a 3 significa inversiones en bienes raíces\np14 igual a 4 significa caja de ahorro en su trabajo\np14 igual a 5 significa caja de ahorro con sus amigos\np14 igual a 6 significa tandas\np14 igual a 7 significa que ahorra en su casa o alcancías\np14 igual a 8 significa otro lugar\np14 NA significa que no ahorra\n\n\n[2 puntos] Comience generando una variable binaria ahorra que tome el valor de 1 para las personas que ahorran y 0 en otro caso. Construya también la variable mujer que tome el valor de 1 cuando sex toma el valor de 2 y 0 en otro caso.\n[3 puntos] Estime un modelo de probabilidad lineal que relacione ahorra como variable dependiente con eda (edad), anios_esc (años de escolaridad) y mujer. Reporte los errores que asumen homocedasticidad y los errores robustos a heteroscedasticidad.\n[3 puntos] ¿Cuál es el efecto en la probabilidad de ahorrar si los años de educación se incrementan en una unidad, pasando de 3 a 4 años de educación?\n[4 puntos] Realice una prueba de significancia conjunta de eda y anios_esc. ¿Qué concluye?\n[4 puntos] Estime un modelo probit relacionando las mismas variables. Use la función avg_slopes del paquete marginaleffects para obtener los efectos marginales promedio de un cambio en cada uno de los regresores. ¿Por qué difiere la magnitud de este efecto marginal con respecto a la parte c.?\n[4 puntos] Ahora estime el efecto marginal en la media para eda y anios_esc y para las mujeres, usando la función slopes. ¿Por qué difiere la magnitud de este efecto marginal respecto a la parte c. y la d.?"
+  },
+  {
+    "objectID": "tareas/tarea-1.html#pregunta-6",
+    "href": "tareas/tarea-1.html#pregunta-6",
+    "title": "Tarea 1",
+    "section": "Pregunta 6",
+    "text": "Pregunta 6\nAhora estimará un modelo multinomial empleando los mismos datos en motral2012.csv. El propósito será ahora estudiar los factores relevantes para predecir la forma de ahorro que tienen las personas que ahorran.\n\n[2 punto] Genere una variable categórica llamada ahorro que sea igual a 1 cuando p14 sea igual a 1 o 2, igual a 2 cuando p14 sea igual a 7, e igual a 3 cuando p14 sea igual a 3, 4, 5, 6 u 8. Haga que esa variable sea missing cuando p14 sea missing. Posteriormente, convierta esta nueva variable en una de factores de forma que el valor 1 tenga la etiqueta “Banco”, el valor 2 tenga la etiqueta “Casa” y el valor 3 tenga la etiqueta “Otro”.\n[4 puntos] Estime un modelo logit multinomial (regresores invariantes a la alternativa) con la opción de ahorro como variable dependiente y los mismos regresores de la pregunta 5. Hay varios paquetes para hacer esto, pero recomiendo usar la función multinom del paquete nnet. ¿Qué puede decir sobre el coeficiente de años de educación en la alternativa “Casa”?\n[6 puntos] Calcule los efectos marginales promedio sobre la probabilidad de ahorrar en el banco. Al considerar el cambio en la probabilidad para el caso de las mujeres (cuando la variable mujer pasa de 0 a 1), ¿de qué tamaño es el efecto predicho en la probabilidad de ahorrar en el banco?\n[4 puntos] Calcule los cocientes de riesgo relativo (relative risk ratios o RRR). ¿Qué significa el hecho de que el RRR asociado a ser mujer sea mayor que 1 en la alternativa “Casa”?\n[4 puntos] Estime nuevamente el modelo, pero ahora, especifique que la alternativa “Casa” sea la alternativa base. ¿Cómo es el RRR de la edad en la alternativa “Banco”? ¿Es esto congruente con lo que obtuvo en la parte d. de esta pregunta?"
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Econometría II 2023",
+    "section": "",
+    "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nLaboratoristas: Alejandro Parada (alejandro.parada@alumnos.cide.edu).\nHorario de clases: lunes y miércoles (11:20 a 12:50).\nHorario de laboratorio: por definir.\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: por definir.\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas."
   },
   {
     "objectID": "lecturas.html",
@@ -117,110 +285,5 @@
     "title": "Lecturas",
     "section": "Semana 14",
     "text": "Semana 14\n\nMétodos semiparamétricos\n\nCT, Capítulo 9\nSemiparamétrico: Hussinger, K. (2008). R&D and subsidies at the firm level: An application of parametric and semiparametric two‐step selection models. Journal of applied econometrics, 23(6), 729-747."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Econometría II 2023",
-    "section": "",
-    "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nLaboratoristas: Alejandro Parada (alejandro.parada@alumnos.cide.edu).\nHorario de clases: lunes y miércoles (11:20 a 12:50).\nHorario de laboratorio: por definir.\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: por definir.\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas."
-  },
-  {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
-    "section": "",
-    "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
-  },
-  {
-    "objectID": "materials.html",
-    "href": "materials.html",
-    "title": "Course Materials",
-    "section": "",
-    "text": "Datasets\nSlides"
-  },
-  {
-    "objectID": "presentaciones.html",
-    "href": "presentaciones.html",
-    "title": "Presentaciones",
-    "section": "",
-    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación.\n\n\n\n\n\n\n\n\n\nAutores\nTema\nPresentador o presentadora\nFecha de exposición\n\n\n\n\nAvila-Foucat et al. (2015)\nBinaria\nPaola Guarneros\n2 de octubre\n\n\nKveder & Flahaux (2013)\nMultinomiales\nRigoberto Mendoza\n2 de octubre\n\n\nZou & Luo (2019)\nTobit\nFrancisco Vinicio\n2 de octubre\n\n\nHackett & Marquez-Padilla (2019)\nVI\nClaudia Alemán\n9 de octubre\n\n\nLópez-Feldman & Chávez (2017)\nVI\n\n9 de octubre\n\n\nKagin et al. (2016)\nPanel\nYorlyn Fúnez\n8 de noviembre\n\n\nAntman (2011)\nPenel + VI\n\n8 de noviembre\n\n\nEngelhardt & Kumar (2011)\nCuantil\nLuis Armando López\n27 de noviembre\n\n\nHussinger (2008)\nSemiparamétrico\nSamuel Martínez\n27 de noviembre"
-  },
-  {
-    "objectID": "reglas.html",
-    "href": "reglas.html",
-    "title": "Reglas",
-    "section": "",
-    "text": "No se tolerarán actos de discriminación. Se procura un ambiente de respeto entre todos los miembros de la clase.\nToda la comunicación relativa al curso se dará por medio del correo institucional del CIDE.\nLas tareas y exámenes se entregarán a través de Teams.\nLos participantes en la sesión deberán procurar que haya un ambiente silencioso para el desarrollo de la clase.\nSe aplicarán estrictamente los lineamientos generales contenidos en el código de ética del CIDE en términos de plagio y fraude en tareas y exámenes."
-  },
-  {
-    "objectID": "programa.html",
-    "href": "programa.html",
-    "title": "Programa",
-    "section": "",
-    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual."
-  },
-  {
-    "objectID": "programa.html#objetivos",
-    "href": "programa.html#objetivos",
-    "title": "Programa",
-    "section": "",
-    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual."
-  },
-  {
-    "objectID": "programa.html#referencias",
-    "href": "programa.html#referencias",
-    "title": "Programa",
-    "section": "Referencias",
-    "text": "Referencias\nEl curso se basa en los siguientes textos:\n\n(MHE) Angrist, J.D. y Pischke, J.S. (2013). Mostly Harmless Econometrics: An Empiricists Companion. Princeton University Press.\n* (CT) Cameron, A.C. y Trivedi, P.K. (2005). Microeconometrics: Methods and applications. Oxford University Press.\nHansen, B. (2022). Econometrics. Princeton University Press.\nHayashi, F. (2000). Econometrics. Princeton University Press.\n* (W) Wooldridge, J.M. (2010). Econometric analysis of cross section and panel data. Segunda edición, MIT Press."
-  },
-  {
-    "objectID": "programa.html#contenido-temático",
-    "href": "programa.html#contenido-temático",
-    "title": "Programa",
-    "section": "Contenido temático",
-    "text": "Contenido temático\nUnidad 1. Introducción + Revisión de fundamentos de estadística y regresión lineal + Teoría asintótica + Estimadores extremos + Máxima verosimilitud + Mínimos cuadrados no lineales + Inferencia estadística\nUnidad 2. Modelos de variable dependiente no continua\n+ Modelos de variable dependiente binaria\n+ Modelos de conteo\nUnidad 3. Modelos de selección + Modelo de Tobit + Modelo de Heckman\nUnidad 4. Endogeneidad + Variables instrumentales + Método generalizado de momentos + Estimación con instrumentos débiles\nUnidad 5. Datos de panel + Modelos de efectos fijos y de efectos aleatorios + Estimadores between y within + Estimadores de primeras diferencias y de efectos aleatorios + Errores estándar agrupados\nUnidad 6. Extensiones + Bootstrap + Modelos de riesgo y de sobrevivencia + Regresión por cuantiles + Modelos de panel con endogeneidad + Modelos de panel no lineales + Métodos semi paramétricos y no paramétricos"
-  },
-  {
-    "objectID": "programa.html#evaluación-del-curso",
-    "href": "programa.html#evaluación-del-curso",
-    "title": "Programa",
-    "section": "Evaluación del curso",
-    "text": "Evaluación del curso\n\nExamen parcial: 30%.\nExamen final acumulativo: 45%\nTareas (4): 20% (5% cada una)\nExposición: 5%"
-  },
-  {
-    "objectID": "programa.html#tareas",
-    "href": "programa.html#tareas",
-    "title": "Programa",
-    "section": "Tareas",
-    "text": "Tareas\nCuatro tareas teórico-prácticas. Las tareas deben entregarse de manera individual, pero se recomienda ampliamente colaborar en grupos de estudio. Las tareas deberán entregarse en Teams antes de la fecha y hora señalada. No se aceptarán tareas fuera de tiempo. Por favor, no comprima los archivos en carpetas comprimidas. Las tareas deberán contener dos archivos:\nUn primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad de manera aleatoria."
-  },
-  {
-    "objectID": "programa.html#software",
-    "href": "programa.html#software",
-    "title": "Programa",
-    "section": "Software",
-    "text": "Software\nR será el paquete standard usado en las sesiones prácticas. Más aún, el uso de cualquier software es aceptado siempre que se cumplan con los requisitos de replicabilidad y reportes de las tareas y exámenes. Habrá una sesión especial para introducir el uso de Quarto para la generación de reportes científicos."
-  },
-  {
-    "objectID": "programa.html#exámenes",
-    "href": "programa.html#exámenes",
-    "title": "Programa",
-    "section": "Exámenes",
-    "text": "Exámenes\n\nExamen parcial: miércoles 4 de octubre en el horario de clase.\nExamen final: por definir."
-  },
-  {
-    "objectID": "programa.html#exposición",
-    "href": "programa.html#exposición",
-    "title": "Programa",
-    "section": "Exposición",
-    "text": "Exposición\nCada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio."
-  },
-  {
-    "objectID": "programa.html#lista-de-lecturas",
-    "href": "programa.html#lista-de-lecturas",
-    "title": "Programa",
-    "section": "Lista de lecturas",
-    "text": "Lista de lecturas\nTodas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión. La lista de lecturas está disponible aquí."
   }
 ]
