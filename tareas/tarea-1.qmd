@@ -5,7 +5,7 @@ lang: es
 
 ## Instrucciones
 
-Fecha de entrega: **20 de septiembre**
+Fecha de entrega: **20 de septiembre** a las 20:00 en Teams
 
 La tarea deberá entregarse en Teams. Deberá incluir dos documentos:
 
