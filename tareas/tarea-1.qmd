@@ -15,7 +15,7 @@ Un segundo archivo deberá contener el código replicable usado para generar los
 
 ## Datos
 
-[muestra-enoe-123.csv](../files/muestra-enoe-123.csv)
+[motral2012.csv](../files/motral2012.csv)
 
 
 ## Pregunta 1
