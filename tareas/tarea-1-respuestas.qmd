@@ -1,0 +1,390 @@
+---
+title: "Tarea 1"
+lang: es
+---
+
+## Respuestas
+
+Cargamos paquetes
+
+```{r setup}
+#| echo: true
+#| warning: false 
+#| message: false
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+library(tidyverse)
+library(knitr)
+library(stargazer)
+library(janitor)
+library(sandwich)
+library(nnet)
+library(marginaleffects)
+```
+
+## Pregunta 1
+
+Suponga que está interesado en una variable aleatoria que tiene una distribución Bernoulli con parámetro $p$. La función de densidad está definida como:
+
+$$f(x_;p)=\left\{\begin{array} .1 & \text{con probabilidad } p \\ 0 & \text{con probabilidad } 1-p \end{array} \right.$$
+Suponga que tiene una muestra de $N$ observaciones independientes e idénticamente distribuidas.
+
+a. [4 puntos] Plantee la función de log verosimilitud del problema.
+
+a. [4 puntos] Obtenga las condiciones de primer orden y resuelva para $\hat{p}$.
+
+a. [2 puntos] ¿Cuál es la media y la varianza del estimador de máxima verosimilitud que ha encontrado?
+
+
+
+
+
+
+## Pregunta 2
+
+Suponga que $y_i|\mathbf{x}_i\sim\mathcal{N}(m(\mathbf{x}_i,\mathbf{\beta}_0),\sigma_0^2)$, donde $m(\mathbf{x},\mathbf{\beta})$ es una función del vector de variables explicativas $\mathbf{x}$ y del vector de parámetros $\mathbf{\beta}$ de dimensión $(k\times 1)$. Entonces, $E(y_i|\mathbf{x}_i)=m(\mathbf{x}_i,\mathbf{\beta}_0)$ y $V(y_i|\mathbf{x}_i)=\sigma^2_0$.
+
+a. [2 puntos] Escriba la función de log verosimilitud condicional para la observación $i$. Muestre que el estimador de máxima verosimilitud $\hat{\mathbf{\beta}}$ resuelve el problema de minimización $\min_\mathbf{\beta}\sum_i(y_i-m(\mathbf{x}_i,\mathbf{\beta}))^2$.
+
+a. [4 puntos] Sea $\mathbf{\theta}\equiv(\mathbf{\beta}'\;\sigma^2)'$ un vector de parámetros de dimensión $(k+1)\times 1$. Encuentre el vector score para la observación $i$. Muestre que $E(\mathbf{s}_i(\mathbf{\theta}_0)|\mathbf{x}_i)=\mathbf{0}$.
+
+a. [2 puntos] Usando las condiciones de primer orden, encuentre $\hat{\sigma}^2$ en términos de $\hat{\mathbf{\beta}}$.
+
+a. [5 puntos] Encuentre la matriz hesiana de la función de log verosimilitud con respecto a $\mathbf{\theta}$.
+
+a. [5 puntos] Muestre que $-E(\mathbf{H}_i(\mathbf{\theta}_0)|\mathbf{x}_i)=E(\mathbf{s}_i(\mathbf{\theta}_0)\mathbf{s}_i(\mathbf{\theta}_0)'|\mathbf{x}_i)$.
+
+a. [2 puntos] Encuentre la varianza asintótica estimada de $\hat{\mathbf{\beta}}$ y explique cómo obtendría los errores estándar.
+
+
+## Pregunta 3
+
+Suponga una variable aleatoria $X_i$ con distribución desconocida. Sin embargo, sí conocemos que $E(X)=\mu=54$ y que $\sqrt{V(X)}=\sigma=6$. Suponga que se recolecta una muestra de 50 observaciones.
+
+a. [2 punto] ¿Cuál es la distribución asintótica de la media muestral $\bar{X}$?
+
+a. [4 punto] ¿Cuál es la probabilidad de que $\bar{X}>58$?
+
+a. [2 punto] ¿Cuál es la probabilidad de que una observación elegida al azar sea tal que $X_i>58$?
+
+a. [2 punto] Provea un intervalo de confianza de 99% para la media muestral.
+
+
+
+## Pregunta 4
+
+En esta pregunta mostraremos los alcances de los teoremas del límite central. Para esto, generaremos muchas muestras de tamaño $N$ con una distribución $Bernoulli$ con probabilidad de éxito $p=0.3$. Recuerde que cuando realice simulaciones, siempre debe fijar una semilla al inicio para poder replicar su trabajo.
+
+a. [2 puntos] ¿Cuál es la media y la varianza de una variable aleatoria $y_i \sim Bernoulli(0.3)$?
+
+*Para una variable que se distribuye $Bernoulli(p)$, la media es $p$ y la varianza es $p(1-p)$. Para este caso, $E(y_i)=0.3$ y $V(y_i)=0.3*0.7=0.21$.*
+
+a. [2 puntos] Si $y_i$ son iid y podemos aplicar un teorema de límite central, ¿cuál es la distribución teórica de $\bar{y}$ cuando $N\to\infty$?
+
+*Obtenemos el valor esperado y la varianza de $\bar{y}$:*
+
+*$$E(\bar{y})=\frac{1}{N}E(\sum_i y_i)  = E(y_i)=p$$*
+
+*$$V(\bar{y})=\frac{1}{N^2}V(\sum_i y_i) = \frac{1}{N}V(y_i)=\frac{p(1-p)}{N}$$*
+
+*Entonces, un TLC nos daría las condiciones para que:*
+
+*$\bar{y}\sim\mathcal{N}(0.3,0.21/N)$*
+    
+a. [5 puntos] Realice el siguiente procedimiento $J=1,000$ veces. Obtenga una muestra de tamaño $N=2$ a partir de la distribución $Bernoulli(0.3)$ y calcule la media muestral $\bar{y}$. Coleccione las $J$ medias muestrales y luego grafique un histograma de las medias muestrales obtenidas junto con una curva teórica normal con la media y varianza obtenida en la parte b. Comente sobre lo que observa.
+
+
+```{r}
+#| echo: true
+
+set.seed(820)
+reps <- 1000
+n <- 2
+p <- 0.3
+v <- p*(1-p)/n
+
+ymedias2 <- numeric(reps)
+for (i in 1:reps){
+ sample <- rbernoulli(n, p)
+ ymedias2[i]<-mean(sample)
+}
+```
+    
+*Graficamos junto con una densidad $N(0.3, 0.21/2)$:*
+    
+```{r}
+#| echo: true
+
+hist(ymedias2, breaks=20, prob=TRUE, 
+     xlab="Medias")
+curve(dnorm(x, mean=p, sd=sqrt(v)), 
+      col="darkblue", lwd=2, add=TRUE, yaxt="n")
+```
+
+*El histograma no se parece nada a la curva normal.*
+
+
+a. [3 puntos] Repita lo realizado en la parte b., ahora con $N=10$. Comente sobre lo que observa.
+
+```{r}
+#| echo: true
+
+reps <- 1000
+n <- 10
+p <- 0.3
+v <- p*(1-p)/n
+
+ymedias10 <- numeric(reps)
+for (i in 1:reps){
+ sample <- rbernoulli(n, p)
+ ymedias10[i]<-mean(sample)
+}
+```   
+
+*Graficamos junto con una densidad $N(0.3, 0.21/10)$:*
+   
+```{r}
+#| echo: true
+hist(ymedias10, breaks=20, prob=TRUE)
+curve(dnorm(x, mean=p, sd=sqrt(v)), 
+      col="darkblue", lwd=2, add=TRUE, yaxt="n")
+```
+
+*El histograma comienza a tener una forma normal. De hecho, se parece ya bastante.*
+
+a. [3 puntos] Repita lo realizado en la parte b., ahora con $N=10,000$. Comente sobre lo que observa.
+
+```{r}
+#|echo: true
+
+reps <- 1000
+n <- 10000
+p <- 0.3
+v <- p*(1-p)/n
+
+ymedias10000 <- numeric(reps)
+for (i in 1:reps){
+ sample <- rbernoulli(n, p)
+ ymedias10000[i]<-mean(sample)
+}
+```   
+   
+*Graficamos junto con una densidad $N(0.3, 0.21/10000)$:*
+   
+```{r}
+#| echo: true
+
+hist(ymedias10000, breaks=20, prob=TRUE, 
+     xlab="Medias")
+curve(dnorm(x, mean=p, sd=sqrt(v)), 
+      col="darkblue", lwd=2, add=TRUE, yaxt="n")
+```
+
+*El histograma se parece ya a la curva normal teórica, con una varianza muy pequeña, con la gran mayoría de las medias concentradas muy cerca del valor esperado.*
+
+a. [5 puntos] ¿Cómo usaría este ejercicio con palabras simples para explicar a una persona que no sabe mucho de estadística sobre la importancia de los teoremas de límite central?
+
+*Un TLC nos permite hacer afirmaciones sobre la distribución de un estadístico. Un estadístico es un resumen de los datos, por lo que nos interesa usar dichos estadísticos para describir características de los fenómenos que estudiamos usando datos. Queremos saber cosas como lo que esperamos en promedio que suceda con una variable, o qué tanta variabilidad dicha variable tendrá en la población. Con un TLC podemos hacer afirmaciones sobre cómo lucen promedios muestrales de la variable que estudiamos cuando tenemos suficientes observaciones. Nos dice en particular que va a tener una distribución normal.*
+
+## Pregunta 5
+
+Use los datos en el archivo *motral2012.csv*, que incluye una muestra de individuos con sus características socioeconómicas. Nos interesa conocer los factores que afectan la probabilidad de que los individuos tengan ahorros. Considere lo siguiente sobre las opciones de ahorro de los entrevistados, contenida en la variable **p14**:
+
+- **p14** igual a 1 significa cuentas de ahorro bancarias
+- **p14** igual a 2 significa cuenta de inversión bancaria
+- **p14** igual a 3 significa inversiones en bienes raíces
+- **p14** igual a 4 significa caja de ahorro en su trabajo
+- **p14** igual a 5 significa caja de ahorro con sus amigos
+- **p14** igual a 6 significa tandas
+- **p14** igual a 7 significa que ahorra en su casa o alcancías
+- **p14** igual a 8 significa otro lugar
+- **p14** NA significa que no ahorra
+
+a. [2 puntos] Comience generando una variable binaria **ahorra** que tome el valor de 1 para las personas que ahorran y 0 en otro caso. Construya también la variable **mujer** que tome el valor de 1 cuando **sex** toma el valor de 2 y 0 en otro caso.
+
+*Generamos variables:*
+
+```{r}
+#| echo: true
+
+data.financiero <- read_csv("../files/motral2012.csv",
+                          locale = locale(encoding = "latin1")) %>%
+  clean_names() %>% 
+  mutate(ahorra = ifelse(is.na(p14), 0, 1),
+         mujer=ifelse(sex==2,1,0))
+```
+
+a. [3 puntos] Estime un modelo de probabilidad lineal que relacione **ahorra** como variable dependiente con **eda** (edad), **anios_esc** (años de escolaridad) y **mujer**. Reporte los errores que asumen homocedasticidad y los errores robustos a heteroscedasticidad.
+
+*Estimamos el modelo lineal y obtenemos la matriz de varianzas robusta usando vcovHC:*
+
+```{r}
+#| echo: true
+
+summary(reg.lineal <- lm(ahorra ~ eda + anios_esc + mujer,
+                         data = data.financiero))
+
+#Matriz robusta
+v_rob <- vcovHC(reg.lineal, type = "HC0")
+se_rob    <- sqrt(diag(v_rob))
+```
+
+*Presentamos usando stargazer, aunque pueden usar el paquete de su preferencia. Por ejemplo, quizás quieran darle una revisada a modelsummary.*
+
+```{r}
+#| results: asis
+stargazer(reg.lineal, reg.lineal,
+          se = list(NULL, se_rob),
+          digits = 4,
+          type = 'html')
+
+```
+
+
+a. [3 puntos] ¿Cuál es el efecto en la probabilidad de ahorrar si los años de educación se incrementan en una unidad, pasando de 3 a 4 años de educación?
+
+*En un modelo lineal esto es simplemente un incremento en 1.75 puntos porcentuales.*
+
+a. [4 puntos] Realice una prueba de significancia conjunta de **eda** y **anios_esc**. ¿Qué concluye?
+
+*Podemos usar la función linearHypothesis:*
+
+```{r}
+#| echo: true
+car::linearHypothesis(reg.lineal, c("eda=0", "anios_esc=0"))
+```
+
+*Concluimos que no hay evidencia para afirmar que $\beta_{eda}=\beta_{anios\_esc}=0$.*
+
+a. [4 puntos] Estime un modelo probit relacionando las mismas variables. Use la función *avg_slopes* del paquete *marginaleffects* para obtener los efectos marginales promedio de un cambio en cada uno de los regresores. ¿Por qué difiere la magnitud de este efecto marginal con respecto a la parte c.?
+
+*Estimamos el modelo probit:*
+
+```{r}
+#| echo: true
+reg.probit <- glm(ahorra ~ eda + anios_esc + mujer,
+                  family = binomial(link = "probit"),
+                  data = data.financiero)
+
+summary(reg.probit)$coef
+```
+
+*Noten que el signo de los coeficientes coinciden con el promedio de los efectos marginales:*
+
+```{r}
+#| echo: true
+avg_slopes(reg.probit)
+```
+
+*El promedio del efecto marginal de un cambio en los años de educación es de 2 puntos porcentuales. Ligeramente superior al efecto obtenido en el modelo lineal.*
+
+a. [4 puntos] Ahora estime el efecto marginal en la media para **eda** y **anios_esc** y para las mujeres, usando la función *slopes*. ¿Por qué difiere la magnitud de este efecto marginal respecto a la parte c. y la d.?
+
+*Para obtener los efectos marginales evaluados en algun valor $X_i$ de los covariables, debemos especificar estos valores usando datagrid:*
+
+```{r}
+#| echo: true
+avg_slopes(reg.probit,
+           newdata = datagrid(eda = mean(data.financiero$eda),
+                              anios_esc = mean(data.financiero$anios_esc),
+                              mujer = 1))
+```
+
+*El efecto marginal de un cambio en los años de escolaridad evaluados en la media de los años de educación y edad, para las mujeres, es de 2.04 puntos. Esto difiere del modelo lineal porque en el modelo lineal los efectos marginales son constantes, mientras que los efectos marginal del modelo no lineal dependen del punto de evaluación. También difiere de los efectos marginales promedio pues aquí solo hemos calculado el efecto marginal una sola vez, para un valor $X_i$, mientras que el promedio de efectos marginales implica calcular el efecto marginal para cada individuo y luego obtener el promedio.*
+
+*En clase les pregunté cómo estimarían el error estándar de los cambios marginales y brevemente mencioné que una forma muy usada es el Método Delta, el cual se basa en que los efectos marginales son funciones no lineales de los parámetros. Esto es lo que efectivamente se usa en la función avg_slopes para obtener los errores estándar y los intervalos de confianza. [Aquí](https://marginaleffects.com/articles/uncertainty.html) pueden leer al respecto.*
+
+
+## Pregunta 6
+
+Ahora estimará un modelo multinomial empleando los mismos datos en *motral2012.csv*. El propósito será ahora estudiar los factores relevantes para predecir la forma de ahorro que tienen las personas que ahorran.
+  
+a.	[2 punto] Genere una variable categórica llamada **ahorro** que sea igual a 1 cuando **p14** sea igual a 1 o 2, igual a 2 cuando **p14** sea igual a 7, e igual a 3 cuando **p14** sea igual a 3, 4, 5, 6 u 8. Haga que esa variable sea missing cuando **p14** sea missing. Posteriormente, convierta esta nueva variable en una de factores de forma que el valor 1 tenga la etiqueta “Banco”, el valor 2 tenga la etiqueta “Casa” y el valor 3 tenga la etiqueta “Otro”.
+
+*Construimos la variable dependiente:*
+
+```{r}
+#| echo: true
+data.financiero <- read_csv("../files/motral2012.csv",
+                            locale = locale(encoding = "latin1")) %>%
+  clean_names() %>% 
+  mutate(ahorro=NA) %>% 
+  mutate(ahorro=ifelse(p14%in%c(1,2),1,ahorro)) %>%
+  mutate(ahorro=ifelse(p14==7,2,ahorro)) %>% 
+  mutate(ahorro=ifelse(p14%in%c(3,4,5,6,8),3,ahorro)) %>% 
+  mutate(ahorro=factor(ahorro,
+                   levels=c(1,2,3), labels=c("Banco","Casa","Otro"))) %>%
+  mutate(mujer=ifelse(sex==2,1,0))
+
+```
+
+a.	[4 puntos] Estime un modelo logit multinomial (regresores invariantes a la alternativa) con la opción de ahorro como variable dependiente y los mismos regresores de la pregunta 5. Hay varios paquetes para hacer esto, pero recomiendo usar la función *multinom* del paquete *nnet*. ¿Qué puede decir sobre el coeficiente de años de educación en la alternativa “Casa”?
+
+*Usamos multinom para estimar el modelo logit multinomial:*
+
+```{r}
+#| echo: true
+
+multilogit <- nnet::multinom(ahorro~ eda + anios_esc + mujer,
+                              data=data.financiero)
+summary(multilogit)
+
+```
+
+*En el logit multinominal (regresores invariantes) el coeficiente se interpreta con respecto a una categoría base. En este caso, la categoría base es Banco. El modelo implica que la probabilidad de ahorrar en casa disminuye con un año más de educación, en comparación con la probabilidad de ahorrar en el banco. En particular, sabemos que podemos escribir el log del cociente de la probabilidad de las categorías $j$ y $k$ sean escogidas, normalizando $k$ a ser la base, como:*
+
+$$\ln\left(\frac{P(y=Casa)}{P(y=Banco)}\right)=x'\beta=\beta_0+\beta_1 edad + \beta_2 educación + \beta_3 mujer $$
+
+*Ees decir, un año más de educación se asocia con una reducción en el log de la razón de momios de 0.15.*
+    
+a.	[6 puntos] Calcule los efectos marginales promedio sobre la probabilidad de ahorrar en el banco. Al considerar el cambio en la probabilidad para el caso de las mujeres (cuando la variable **mujer** pasa de 0 a 1), ¿de qué tamaño es el efecto predicho en la probabilidad de ahorrar en el banco?
+
+*Usamos avg_slopes*:
+
+```{r}
+#| echo: true
+avg_slopes(multilogit)
+
+```
+*El efecto de ser mujer es de un incremento de apenas 0.3 puntos en la probabilidad de ahorrar en el banco al estimar el promedio de los efectos marginales.*
+
+
+a.	[4 puntos] Calcule los cocientes de riesgo relativo (*relative risk ratios* o RRR). ¿Qué significa el hecho de que el RRR asociado a ser mujer sea mayor que 1 en la alternativa “Casa”?
+
+```{r}
+#| echo: true
+
+(multilogit_rrr = exp(coef(multilogit)))
+```
+
+*Los coeficientes en forma de RRR tienen la interpretación del cambio en el riesgo relativo que una categoría sea elegida con relación al riesgo de escoger la categoría base. En este caso, el ser mujer está asociado con una probabilidad de ahorrar en “Casa” 1.097 veces mayor de que la de ahorrar en “Banco”.*
+
+
+a.	[4 puntos] Estime nuevamente el modelo, pero ahora, especifique que la alternativa “Casa” sea la alternativa base. ¿Cómo es el RRR de la edad en la alternativa “Banco”? ¿Es esto congruente con lo que obtuvo en la parte d. de esta pregunta?
+
+*Primero tenemos que cambiar la base. Para esto hacemos uso de que ahorro es una variable de factores. Luego estimamos:*
+
+```{r}
+#| echo: true
+
+data.financiero <- data.financiero %>% 
+  mutate(ahorro = relevel(ahorro, ref = "Casa"))
+
+multilogit2 <- nnet::multinom(ahorro ~ eda + anios_esc + mujer,
+                              data=data.financiero)
+
+(multilogit2_rrr = exp(coef(multilogit2)))
+
+```
+
+*Obtenemos el RRR:*
+
+```{r}
+#| echo: true
+(mmultilogit_rrr = exp(coef(multilogit)))
+```
+
+*Al cambiar la categoría base a Casa solo se modifica la interpretación relativa. En la parte d. el RRR de la edad para la opción de Casa era 0.949, es decir, si la edad se incrementa en una unidad, la probabilidad de ahorrar en Casa es 0.949 veces la de ahorrar en Banco. Con la nueva categoría base, el RRR de la edad para ahorrar en Banco es 1.054, es decir, si la edad se incrementa en un año, la probabilidad de ahorrar en Banco es 1.054 veces más probable que la probabilidad de ahorrar en Casa. La parte d. implica que $P(Casa)=0.949(Banco)$. Mientras que estimando el modelo con la nueva categoría, $P(Banco)=1.054(Casa)$, o $P(Casa)=1/1.054(Banco)$. Empleando todos los decimales en R se puede notar que 1/1.054≅0.949 Ambos resultados son consistentes.*
+
+
