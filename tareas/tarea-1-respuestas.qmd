@@ -3,17 +3,16 @@ title: "Tarea 1"
 lang: es
 ---
 
-## Respuestas
-
-Cargamos paquetes
+# Respuestas
 
 ```{r setup}
 #| echo: true
 #| warning: false 
 #| message: false
-knitr::opts_chunk$set(echo = FALSE,
+knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
-                      message = FALSE)
+                      message = FALSE,
+                      indent = "   ")
 library(tidyverse)
 library(knitr)
 library(stargazer)
@@ -32,12 +31,31 @@ Suponga que tiene una muestra de $N$ observaciones independientes e idénticamen
 
 a. [4 puntos] Plantee la función de log verosimilitud del problema.
 
+   *Podemos escribir la función de densidad para la $i$-ésima observación como*
+   
+   $$f(x_i;p)=p^{x_i}(1-p)^{(1-x_i)}$$
+
+   *Por tanto, la función de verosimilitud es*
+    
+   $$L_N(p)=\prod_{i=1}^N f(x;p)=\prod_{i=1}^N p^{x_i}(1-p)^{(1-x_i)} = p^{\sum_{i=1}^N x_i}(1-p)^{N-\sum_{i=1}^N x_i}$$
+    
+   *Y la función de log verosimilitud será*
+    
+   $$\mathcal{L_N(p)}=\ln{L_N(p)}=\sum x_i \ln(p)-(N-\sum x_i)\ln(1-p)$$
+
 a. [4 puntos] Obtenga las condiciones de primer orden y resuelva para $\hat{p}$.
+
+   *Derivando $\mathcal{L}_N$ con respecto a $p$ obtenemos la condición de primer orden*:
+
+   $$\frac{d\mathcal{L}_N(p)}{d p}=\frac{\sum x_i}{p}-\frac{n-\sum x_i}{1-p}=0$$
+    
+   *Y resolviendo, obtenemos el estimador de máxima verosimilitud $$\hat{p}_{MV}=\bar{x}$$ es decir, la media muestral*
 
 a. [2 puntos] ¿Cuál es la media y la varianza del estimador de máxima verosimilitud que ha encontrado?
 
-
-
+   *Obtenemos directamente la media* $$E(\hat{p}_{MV})=E(\bar{x})=\frac{1}{N}E\left(\sum x_i\right)=\frac{1}{n}n p=p$$
+    
+   *Mientras que la varianza es* $$V(\hat{p}_{MV})=\frac{1}{N^2}V\left(\sum x_i\right)=\frac{p(1-p)}{n}$$
 
 
 
@@ -64,8 +82,22 @@ Suponga una variable aleatoria $X_i$ con distribución desconocida. Sin embargo,
 
 a. [2 punto] ¿Cuál es la distribución asintótica de la media muestral $\bar{X}$?
 
+   *Si se puede aplicar un teorema de límite central a la media muestral, sabemos que la nueva variable hereda la media de $X_i$ y la desviación estándar es la desviación estándar de $X_i$ dividida por la raíz del tamaño de la muestra. Es decir:*
+   
+   $$\bar{X}\sim \mathcal{N}(54, 6^2/50)$$
+
 a. [4 punto] ¿Cuál es la probabilidad de que $\bar{X}>58$?
 
+   *Sabemos que $\frac{\bar{X}-54}{6/\sqrt{50}}\sim\mathcal{N}(0,1)$, por tanto*:
+   
+   $$P(\bar{X}>58)=P\left(z>\frac{58-54}{6/\sqrt{50}}\right)=P(z>4.714045)=1-\Phi(4.714045)$$
+   
+   *La probabilidad es de 7.86%.*:
+    
+```{r}
+1-pnorm((58-54)/(6/sqrt(50)))
+``` 
+    
 a. [2 punto] ¿Cuál es la probabilidad de que una observación elegida al azar sea tal que $X_i>58$?
 
 a. [2 punto] Provea un intervalo de confianza de 99% para la media muestral.
