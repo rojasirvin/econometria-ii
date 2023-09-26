@@ -254,7 +254,7 @@ a. [2 punto] Provea un intervalo de confianza de 99% para la media muestral.
    
    $$P\left(\bar{X}\pm 2.5758\times(6/\sqrt{50})\right)=0.99$$
    
-   *donde obtenemos el 1.6648 como:*
+   *donde obtenemos el 2.5758 como:*
     
 ```{r echo=T, include=T, evaluate=T}
 qnorm(0.995)
