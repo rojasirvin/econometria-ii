@@ -260,9 +260,9 @@ a. [2 punto] Provea un intervalo de confianza de 99% para la media muestral.
 qnorm(0.995)
 ```
     
-   *Entonces, el intervalo de confianza es*: $$P(\bar{X}\pm 2.185664)=0.99$$
-    
    *qnorm es la función cuantil y está definida como la función inversa de la función de distribución. La función cuantil da el valor de $x$ tal que $F(x)=P(X \leq x)=p$.*
+   
+   *Entonces, el intervalo de confianza es*: $$P(\bar{X}\pm 2.185664)=0.99$$
 
 
 ## Pregunta 4
