@@ -1,0 +1,449 @@
+---
+title: "Respuestas a la tarea 2"
+lang: es
+---
+
+# Respuestas
+
+```{r setup}
+#| echo: true
+#| warning: false 
+#| message: false
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      indent = "   ")
+library(tidyverse)
+library(knitr)
+library(stargazer)
+library(sandwich)
+library(clubSandwich)
+library(lmtest)
+library(sampleSelection)
+library(AER)
+library(modelsummary)
+```
+
+## Pregunta 1
+
+Considere el modelo Poisson visto en clase y un vector de variables explicativas $x$, todas continuas, usadas para parametrizar la media.
+
+a. [1 puntos] ¿Cuál es el efecto de un cambio en el $j$ésimo regresor sobre $E(y│x)$?
+
+   *Con un modelo Poisson parametrizamos la media como $\mu=exp(x'\beta)$. En este caso, un cambio en un regresor $j$ tiene el efecto:*
+    
+   $$\frac{\partial E(y|x)}{\partial x_j}=\beta_j exp(x'\beta)$$
+    
+   *Es decir, un cambio en una unidad de $x_j$ produce un cambio en el conteo esperado de $y$ igual a $\beta_j exp(x'\beta)$ unidades.*
+
+
+a. [2 puntos] Usando esta expresión, muestre que si el $j$ésimo regresor es $x_j$, entonces $100 \beta_j$ es la semielasticidad de $E(y│x)$ con respecto a $x_j$. Nota: Este punto es muy útil para la interpretación de los coeficientes de un modelo Poisson.
+
+   *Resolviendo para $\beta_j$ en la expresión que acabamos de encontrar*:
+   
+   $$\beta_j=\frac{\partial E(y|x)}{\partial x_j}\frac{1}{\exp(x'\beta)}$$
+   
+   *Reconociendo que*
+   
+   $$\beta_j=\frac{\partial E(y|x)}{\partial x_j}\frac{1}{\exp(x'\beta)}=\frac{\partial E(y|x)}{\partial x_j}\frac{1}{E(y|x)}=\frac{\partial\ln E(y|x)}{\partial x_j}$$
+   
+   $\frac{\partial\ln E(y|x)}{\partial x_j}$ *es una semileasticidad, es decir un cambio marginal de $x_j$ se asocia con un cambio porcentual en la media condicional igual a* $100\beta_j\Delta x_j$.
+    
+
+a. [2 puntos] ¿Cómo se interpreta $\beta_j$ si reemplazamos $x_j$ por $\log(x_j)$)?
+
+   *Si ahora el regresor de interés entra en el índice como un logaritmo*:
+   $$\beta_j=\frac{\partial E(y|x)}{\partial x_j}\frac{x_j}{E(y|x)}$$
+   
+   *la defnición de una elasticidad.*
+    
+    
+## Pregunta 2. Modelo en dos partes o de valla
+
+En esta pregunta mostrará cómo para un modelo en dos partes Poisson la log verosimilitud del problema es la suma de log verosimilitud para un proceso binario y la log verosimilitud de un proceso Poisson truncado en cero. Considere una variable aleatoria $Y$ con observaciones iid que sigue una distribución Poisson con parámetro $\lambda$ tal que
+
+$$f(y,\lambda)=P(Y=y)=\frac{\lambda^y exp(-\lambda)}{y!}$$
+
+a. [4 puntos] Obtenga la distribución Poisson truncada en cero, definida como $P(Y=y|Y>0)$.
+
+   *Sabemos que la distribución truncada en cero es:*
+    
+   $$P(Y=y|Y>0)=\frac{f(y,\lambda)}{1-f(0,\lambda)}$$
+   
+   *Sustituyendo la forma de la densidad Poisson:* 
+    
+   $$P(Y=y|Y>0)=\frac{\frac{\lambda^y exp(-\lambda)}{y!}}{1-exp(-\lambda)}=\frac{\lambda^y}{y!(exp(\lambda)-1)}$$
+
+a. [4 puntos] Considere además un proceso binomial que modela la probabilidad de que la variable $Y$ tome un valor cero o un valor positivo, como sigue:
+
+   $$P(Y=y)=\begin{cases} \pi \quad\quad y=0 \\ 1-\pi\quad\quad y=1,2,3,\ldots \end{cases} $$
+
+   En clase vimos la forma general del modelo en dos partes:
+    
+   $$
+   g(y)=
+   \begin{cases}
+   f_1(0) \quad\text{si }y=0 \\
+   \frac{(1-f_1(0))f_2(y)}{1-f_2(0)}\quad\text{si }y\geq 1 
+   \end{cases}
+   $$
+
+   Especialice forma general del modelo de dos partes usando la distribución truncada derivada en a. y el proceso binomial definido arriba para obtener una función de masa de probabilidad no condicional para $Y$, $g(y)$.
+
+   *Sea $\pi$ la probabilidad de observar un conteo igual a cero, especializamos la función vista en clase, incorporando la distribución truncada encontrada en la parte a.:*
+    
+   $$
+   g(y)=
+   \begin{cases}
+   \pi \quad\text{si }y=0 \\
+   (1-\pi)\frac{\lambda^y}{y!(exp(\lambda)-1)} \quad\text{si }y\geq 1 
+   \end{cases}
+   $$
+    
+a. [4 puntos] Obtenga la log verosimilitud para la $i$ésima observación. Se sugiere que continúe sus cálculos con una ecuación en dos partes.
+    
+   *La log verosimilitud de la $i$ésima observación es:*
+    
+   $$
+   \mathcal{l}_i(\pi,\lambda,y_i)=
+   \begin{cases}
+   \ln(\pi) \quad\text{si }y=0 \\
+   \ln\left((1-\pi)\frac{\lambda^{y_i}}{y!(exp(\lambda)-1)}\right) \quad\text{si }y\geq 1 
+   \end{cases}
+   $$
+  
+a. [4 puntos] En este problema, parametrizaremos $\lambda_i$ como $\lambda_i=exp(x_i'\beta_2)$, como regularmente lo hemos hecho en una regresión Poisson. Por otro lado, podemos trabajar con una parametrización general de la probabilidad $\pi$, $\pi=F(x_i'\beta_1)$. Escriba la función de log verosimilitud del problema usando la parametrización para $\pi_i$ y para $\lambda_i$ que acabamos de describir. Presente esta función en una sola parte.
+
+   *Con la parametrización dada, podemos reescribir la log verosimilitud de una observación como:*
+    
+   $$
+   \mathcal{l}_i(\pi,\lambda,y_i)=
+   \begin{cases}
+   \ln(F(x_i'\beta_1)) \quad\text{si }y=0 \\
+   \ln\left((1-F(x_i'\beta_1))\frac{exp(x_i'\beta_2)^{y_i}}{y!(exp(exp(x_i'\beta_2))-1)} \right) \quad\text{si }y\geq 1 
+\end{cases}
+   $$
+    
+    
+    
+   *La log verosimilitud del problema es la probabilidad de observar los datos. Con la parametrización anterior:*
+    
+   $$
+   \mathcal{L}(\beta_1,\beta_2,y_i)=\ln\left(\prod_{i\in y_i=0}F(x_i'\beta_1)\prod_{i\in y_i>0}(1-F(x_i'\beta_1))\prod_{i\in y_i>0}\frac{exp(x_i'\beta_2)^{y_i}}{y!(exp(exp(x_i'\beta_2))-1)} \right)
+   $$
+    
+    *Distribuyendo el logarítmo:*
+    
+   $$
+   \begin{align}
+   \mathcal{L}(\beta_1,\beta_2,y_i)&=\sum_{i\in y_i=0}\ln(F(x_i'\beta_1))+\sum_{i\in y_i>0}\ln\left(1-F(x_i'\beta_1)\right)+ \\
+   &+\sum_{i\in y_i>0}x_i'\beta_2y_i-\sum_{i\in y_i>0}\ln\left(exp(exp(x_i'\beta_2))-1\right)-\sum_{i\in y_i>0}y!
+   \end{align}
+   $$
+    
+a. [4 puntos] Agrupe los términos para mostrar que $\mathcal{L}=\mathcal{L}_1(\beta_1)+\mathcal{L}_2(\beta_2)$. Así, mostrará que la log verosimilitud del problema se puede descomponer en una log verosimilitud para el modelo binario y otra para el conteo truncado en cero. Por tanto, no perdemos información si estimamos los parámetros de la probabilidad binomial por un lado, y los de la distribución Poisson truncada en cero, por el otro.
+
+   *Claramente:*
+    
+   $$
+   \mathcal{L}(\beta_1,\beta_2,y_i)=\mathcal{L_1}(\beta_1,y_i)+\mathcal{L_2}(\beta_2,y_i)
+   $$
+    
+   *es decir, la suma de dos log verosimilitudes, una de un proceso binario y otra para el modelo Poisson truncado en cero.*
+
+
+    
+
+## Pregunta 3
+
+Use los datos *phd_articulos.csv*, los cuales contienen información sobre el número de artículos publicados para una muestra de entonces estudiantes de doctorado. Nuestra variable de interés será el número de artículos **art**.
+
+a. [4 puntos] Estime un modelo Poisson que incluya variables dicotómicas para estudiantes mujeres (**female**) y para estudiantes casadas o casados (**married**), el número de hijos mejores de cinco años (**kid5**), el ranking de prestigio del doctorado (**phd**) y el número de artículos publicados por su mentor (**mentor**). Realice la estimación de la matriz de varianzas primero a partir de la varianza teórica que resulta de la igualdad de la matriz de información y luego usando una matriz de sándwich. Interprete los coeficientes estimados.
+
+
+```{r}
+
+data.phd<-read_csv("../files/phd_articulos.csv",
+                          locale = locale(encoding =                "latin1"))
+
+data.phd <- data.phd %>% 
+  mutate(female=factor(female,
+                       levels=c('Male','Female')))
+
+mpoisson <- glm(art ~ factor(female) + factor(married) + kid5 + phd + mentor,
+                family="poisson",
+                data=data.phd)
+
+summary(mpoisson)
+```
+
+   *Presentamos errores heterocedásticos y robustos a la heterocedasticidad. Aquí les muestro otro paquete que puede servirles para presentar resultados en trabajos y tesinas, alterntivo a stargazer, modelsummary:*
+
+```{r}
+modelsummary(list(mpoisson, mpoisson),
+             vcov = list('classical', 'robust'),
+             stars = c('***' = 0.01, '**' = 0.05, '*' = 0.1))
+```
+
+   *Para las variables continuas, como el número de artículos publicados por el mentor, la interpretación es el cambio en el log conteo esperado. En este caso, un artículo más publicado por el mentor incrementa el log conteo esperado en 0.026. También sabemos que los coeficientes tienen una interpretación de semielasticidad; en este caso, la semielasticidad del conteo con respecto al número de artículos publicados es 0.026. Para las variables dicotómicas, por ejemplo female, la interpretación es la diferencia entre el log conteo esperado entre mujeres y la categoría base (hombres).*
+
+a. [5 puntos] Obtenga la razón de tasas de incidencia (IRR) para los coeficientes e interprete los resultados.
+
+```{r}
+exp(summary(mpoisson)$coef)
+```
+
+   *Aunque esto también puede hacerse directamente en modelsummary:*
+   
+```{r}
+modelsummary(list(mpoisson, mpoisson),
+             exponentiate = TRUE,
+             vcov = list('classical', 'robust'),
+             stars = c('***' = 0.01, '**' = 0.05, '*' = 0.1))
+
+```
+
+   *La interpretación de los coeficientes se vuelve más sencilla usando irr. Para la variable continua mentor, un artículo más publicado por el mentor está asociado con 1.026 veces más artículos publicados por el estudiante, es decir, un 2.6% más artículos. En cambio, la variable dicotómica para mujeres indica que las mujeres publican 0.8 veces el número de artículos que los hombres.*
+    
+a. [3 puntos] Considere ahora que las mujeres han tenido carreras profesionales más cortas que los hombres, es decir, han estado menos expuestas a la ocurrencia de los eventos *publicar*. Incorpore esto al análisis y reinterprete los resultados. Pista: explore la opción *offeset* en *glm* de R. La columna **profage** mide la duración efectiva de las carreras profesionales de cada individuo.
+
+   *El razonamiento es que ahora queremos conocer cuál es la tasa de publicación, es decir, $art/profage$. Pero como nuestro podemos Poisson solo puede manejar conteos, podemos modificar el modelo para pasar la edad de la carrera del lado derecho:*
+    
+   $$\begin{aligned}ln(art/profage)&=x'\beta \\ ln(art)&=x'\beta+\ln(profage) \end{aligned}$$
+
+```{r}
+mpoisson_duracion <- glm(art ~
+                  factor(female) + factor(married) + kid5 + phd + mentor,
+                  offset = log(profage),
+                  family="poisson",
+                  data=data.phd)
+
+summary(mpoisson_duracion)$coef
+```
+
+   *Hasta ahora hemos asumido que cada individuo ha estado “en riesgo” de publicar por el mismo periodo de tiempo, lo cual puede ser no cierto si, por ejemplo, algunos estudiantes se graduaron antes, o si otros han tenido pausas en sus carreras. Al controlar por el hecho de que las mujeres han tenido carreras más cortas, la variable female deja de ser negativa y se convierte en positiva. Las mujeres publican más que los hombres al tomar en cuenta la duración de las carreras.*
+   
+   *Comparando los tres modelos:*
+   
+```{r}
+modelsummary(list(mpoisson, mpoisson, mpoisson_duracion),
+             vcov = list('classical', 'robust', 'robust'),
+             stars = c('***' = 0.01, '**' = 0.05, '*' = 0.1))
+```
+
+a. [3 puntos] Emplee ahora un modelo negativo binomial con sobredispersión cuadrática en la media para estimar la relación entre el número de artículos publicados y las variables explicativas antes enumeradas. Interprete el coeficiente asociado al número de hijos y a la variable dicotómica para estudiantes mujeres. ¿Qué puede decir sobre la significancia del $\alpha$ estimado?
+
+
+```{r}
+mnb2 <- MASS::glm.nb(art ~
+                 factor(female) + factor(married) + kid5 + phd + mentor,
+                 data = data.phd)
+summary(mnb2)
+```
+
+   *Ponemos todo junto:*
+   
+```{r}
+modelsummary(list(mpoisson, mpoisson, mpoisson_duracion, mnb2),
+             vcov = list('classical', 'robust', 'robust', 'robust'),
+             stars = c('***' = 0.01, '**' = 0.05, '*' = 0.1))
+```
+
+   *A diferencia de otros paquetes, glm.nb reporta $\theta=1/\alpha$:*
+
+```{r}
+(alpha <- 1/summary(mnb2)$theta)        
+```
+
+   *Este es el modelo NB2 visto en clase y la forma más usada para implementar un modelo negativo binomial. Se asume una sobredispersión cuadrática en la media, con la varianza parametrizada usando $\alpha$. La interpretación de los coeficientes se mantiene con respecto al modelo Poisson. Los coeficientes tienen magnitudes similares, pero se prefiere el modelo NB2 si el propósito es pronóstico pues toma en cuenta la sobredispersión y le da suficiente flexibilidad a la varianza para depender de manera cuadrática de la media.*
+   
+   *Un poco más cuidado hay que poner en $\alpha$. En este caso, $\hat{\alpha}=0.44$. Pero noten que lo que se reporta es el error estándar de $\theta$. Como platicamos en clase, con un estadístico podemos hacer un test y obtener un valor $p$, pero una función no lineal del mismo puede que no tenga el mismo valor $p$. Esto ocurre aquí, deberíamos recurrir al método delta para calcular el error estándar de $\alpha$.*
+
+  
+## Pregunta 4
+
+Retome los datos del archivo *motral2012.csv* usado en la Tarea 1. Estimará un modelo Tobit para explicar los factores que afectan la oferta laboral femenina. En este archivo de datos la variable **hrsocup** registra las horas trabajadas a la semana.
+
+a. [2 punto] ¿Qué proporción de la muestra femenina reporta horas trabajadas iguales a cero?
+
+   *Si hacemos una dummy de horas positivas, al sacarle la media obtenemos la proporción.*
+
+```{r}
+data.salarios<-read_csv("../files/motral2012.csv",
+                          locale = locale(encoding = "latin1")) 
+
+data.salarios <- data.salarios %>% 
+  filter(sex==2) %>% 
+  mutate(zerohrs=ifelse(hrsocup==0,1,0))
+
+summary(data.salarios$zerohrs)
+```
+
+   *El 35% de las observaciones tienen cero horas trabajadas.*
+
+a. [3 puntos] Se desea estimar el efecto de los años de educación (**anios_esc**) sobre la oferta laboral femenina controlando por el estado marital (**casada**), la edad (**eda**) y el número de hijos (**n_hij**) como una variable continua. En la base, **e_con** toma el valor de 5 para las personas casadas. Genere la variable dummy **casada** que tome el valor de 1 para las mujeres casadas y cero en otro caso. Estime un modelo de MCO para **hrsocup** mayor que cero, usando solo la población femenina. Reporte errores robustos. ¿Cuál es la interpretación sobre el coeficiente de los años de escolaridad?
+
+   *El estimar por MCO, un año más de escolaridad se asocia con 0.17 horas trabajadas más a la semana. Sin embargo, este efecto no es estadísticamente significativo.*
+
+```{r}
+data.salarios <- data.salarios %>% 
+  mutate(casada=ifelse(e_con==5,1,0))
+
+reg_mco <- lm(hrsocup ~ anios_esc+casada+eda+n_hij,
+          data=filter(data.salarios,hrsocup>0))
+
+coeftest(reg_mco,
+         vcov = vcovHC(reg_mco, "HC1"))[1:4,]
+```
+
+   *Con modelsummary podemos hacer pedir la tabla de coeficientes. Podemos especificar qué tipo de errores robustos queremos en la opción vcov:*
+
+```{r}
+modelsummary(list(reg_mco, reg_mco),
+             vcov = list('classical', 'HC1'),
+             stars = c('***' = 0.01, '**' = 0.05, '*' = 0.1))
+```
+
+a. [3 puntos] ¿Qué problema existe con el modelo planteado en el punto anterior en términos de la selección? ¿Considera que se trata de un caso de censura o de truncamiento?
+
+   *Podemos racionalizar las horas trabajadas en un modelo microeconómico de oferta laboral. Las horas trabajadas observadas son positivas cuando la solución óptima es una cantidad positiva de horas. Sin embargo, si la solución óptima implicara horas negativas, las horas observadas serían cero. En este caso tenemos datos censurados en cero. Si existe una relación positiva entre educación y horas trabajadas, al estimar un modelo por MCO usando solo los datos con horas positivas estamos sobreestimando la media condicional pues se habrán omitido del análisis aquellas mujeres cuya solución a su problema de optimización eran horas iguales a cero o negativas.*
+
+a. [8 puntos] Estime un modelo Tobit de datos censurados. ¿Qué resuelve el modelo Tobit en este caso? Interprete nuevamente el coeficiente sobre los años de escolaridad.
+
+   *La función tobit permite hacer esto muy fácilmente. Noten que left especifica dónde está la censura. La opción gaussian pone explícito uno de los supuestos críticos del modelo tobit visto en clase: errores normales. Además, se asume homocedasticidad.*
+
+```{r}
+    
+reg_tobit <- tobit(hrsocup ~ anios_esc+casada+eda+n_hij,
+               left = 0,
+               right = Inf,
+               dist = "gaussian",
+               data = data.salarios)
+
+summary(reg_tobit)
+```
+
+   *El modelo tobit para datos censurados toma en cuenta que hay una masa de ceros en las horas trabajadas para individuos para los que disponemos de sus características en la base de datos. El modelo tobit ajusta la probabilidad de observar esta masa de ceros. El coeficiente estimado será ahora consistente si el modelo está bien especificado, es decir, si el proceso subyacente es lineal en los parámetros y con un error normal homoscedástico (los supuestos de tobit básico). En este caso, un año más de educación se asocia con 0.85 más horas semanales trabajadas, un efecto estadísticamente significativo. Usar MCO subestimaba el efecto de la escolaridad.*
+   
+   *modelsummary acepta la salida de la función tobit:*
+   
+```{r}
+modelsummary(list(reg_mco, reg_mco, reg_tobit),
+             vcov = list('classical', 'HC1', 'classical'),
+             stars = c('***' = 0.01, '**' = 0.05, '*' = 0.1))
+```
+
+a. [4 puntos] ¿Cuál es el efecto marginal de un incremento de un año de educación en la oferta laboral? ¿Cómo cambia su respuesta si, en lugar de considerar la variable latente, considera la variable censurada? 
+
+   *El efecto marginal en la variable latente es directamente el coficiente estimado en la parte d., es decir 0.855.*
+    
+   *El efecto marginal en la media censurada está dado por:*
+    
+   $$\frac{\partial E(y|x)}{\partial x_j}=\beta_j\Phi(x_i'\beta)$$
+    
+   *Lo que hice aquí fue calcular este efecto marginal para cada individuo y luego obtener el promedio de los efectos marginales en aquellos individuos con horas positivas.*
+    
+
+```{r}
+
+data.salarios <- data.salarios %>%
+  mutate(index1=predict(reg_tobit,.)) %>% 
+  mutate(phi=pnorm(index1/reg_tobit$scale)) %>% 
+  mutate(mfx_anis_esc=reg_tobit$coefficients[2]*phi,
+         mfx_eda=reg_tobit$coefficients[4]*phi,
+         mfx_n_hij=reg_tobit$coefficients[5]*phi)
+  
+data.salarios %>%
+  filter(hrsocup>0) %>% 
+  summarise(mfx_anis_esc=mean(mfx_anis_esc)) 
+```
+
+## Pregunta 5
+
+Usando los mismos datos del archivo *motral2012.csv* implementará un ejercicio en el mismo espíritu del famoso estudio de Mroz (1987)[^1] sobre la oferta laboral femenina. El propósito es estimar la relación entre el salario y el número de horas trabajadas, concentrándonos en la muestra de mujeres.
+
+a. [5 puntos] El primer problema al que nos enfrentamos es que el salario no se observa para las mujeres que no trabajan. Estime un modelo lineal para el log del salario por hora, **ing_x_hrs**, usando las variables **anios_esc**, **eda**, **n_hij**, el cuadrado de **n_hij**, **busqueda**  y **casada**, usando la submuestra de mujeres con salario por hora positivo. Dichas variables representan los años de escolaridad, la edad, el número de hijos, el cuadrado del número de hijos, si la persona buscó trabajo recientemente y si la persona es casada, respectivamente. Use los coeficientes estimados para imputar el ingreso por hora, faltante para las mujeres que reportan 0 en las horas trabajadas.
+
+   *Imputamos el salario faltante:*
+    
+```{r}
+data.salarios<-read_csv("../files/motral2012.csv",
+                        locale = locale(encoding = "latin1")) %>%
+  filter(sex==2) %>% 
+  mutate(casada=ifelse(e_con==5,1,0))
+
+data.salarios <- data.salarios %>% 
+  mutate(ly=ifelse(ing_x_hrs>0,log(ing_x_hrs),NA)) 
+
+reg_imput <- lm(ly ~ anios_esc+casada+eda+n_hij+n_hij^2+busqueda,
+              data = data.salarios)
+
+data.salarios <- data.salarios %>% 
+  mutate(lyhat = predict(reg_imput, .)) %>% 
+  mutate(ly = ifelse(is.na(ly), lyhat, ly))
+```
+
+   *Aquí tomé en cuenta que hay personas con horas trabajadas positivas e ingreso cero. En ese caso puse un NA al log del salario. Luego, en la imputación, le asigné el valor ajustado a estas observaciones junto con todas las que tienen el log del salario faltante.*
+
+a. [5 puntos] Use _heckit_ de la librería _sampleSelection_ para estimar por máxima verosimilitud un *heckit* para las horas trabajadas **hrsocup**. En la ecuación de selección (si la persona trabaja o no) incluya como variable explicativa el salario por hora (imputado para las mujeres que no trabajan), además de **anios_esc**, **eda**, **n_hij**, el cuadrado de **n_hij**, **casada** y **busqueda** (esta última es un indicador de si se buscó trabajo en la última semana). En la ecuación de horas, incluya los mismos regresores, excepto **n_hij**, su cuadrado y **busqueda**.
+
+   *La función heckit permite estimar el modelo de Heckman por máxima verosimilitud de manera muy simple. Hay que especificar method="ml" para que la estimación sea por máxima verosimilitud:*
+    
+```{r}
+data.salarios <- data.salarios %>% 
+  mutate(trabaja = ifelse(hrsocup>0,1,0)) %>% 
+  mutate(trabaja = factor(trabaja,levels=c(0,1)))
+
+reg_heckit_mv <- heckit(trabaja ~ anios_esc+casada+eda+ly+n_hij+n_hij^2+busqueda,
+                hrsocup ~ anios_esc+casada+eda+ly,
+                method="ml",
+                data = data.salarios)
+
+summary(reg_heckit_mv)
+```
+
+   *Podemos reportar con modelsummary, aunque realmente lo hace muy mal:*
+
+```{r}
+modelsummary(list(reg_heckit_mv),
+             stars = c('***' = 0.01, '**' = 0.05, '*' = 0.1))
+```
+
+
+a. [10 puntos] Estime ahora el *heckit* en dos pasos, *a mano*. Es decir, siga los siguientes pasos: i) estime un probit para la ecuación de selección y obtenga el índice $x_i'\hat{\beta}$; ii) calcule el inverso de la razón de Mills $\lambda_i(x_i'\hat{\beta})$; y iii) estime por MCO la ecuación para las horas trabajadas con la submuestra que tiene horas trabajadas positivas, incluyendo como regresor el inverso de la razón de Mills estimado y el resto de los regresores. Compare los coeficientes y los errores estándar obtenidos en esta parte con los de la parte b. ¿Por qué son iguales o por qué difieren?
+    
+   *Estimamos ahora el heckit a mano. Estimamos el probit y obtenemos el valor ajustado del IMR:*
+    
+```{r}
+reg_heckit_pe <- glm(trabaja ~ anios_esc+casada+eda+ly+n_hij+n_hij^2+busqueda,
+                  family = binomial(link = "probit"),
+                  data = data.salarios)
+
+data.salarios <- data.salarios %>% 
+  mutate(index = predict(reg_heckit_pe, .)) %>% 
+  mutate(imr = dnorm(index)/pnorm(index))
+```
+
+```{r}
+reg_heckit_se <- lm(hrsocup ~ anios_esc+casada+eda+ly+imr,
+            data=filter(data.salarios,trabaja==1))
+
+summary(reg_heckit_se)
+```
+    
+   *Comparamos coeficientes (aquí stargazer lo hace mejor):*
+
+```{r}
+#| results: asis
+
+stargazer(reg_heckit_mv, reg_heckit_se,
+          type="html", 
+          df=FALSE,
+          digits=4)
+```
+
+   *La magnitud de los coeficientes es práctiamente la misma entre el modelo estimado por máxima verosimilitud y con un procedimiento en dos etapas a mano. En este ejemplo las diferencias son sutiles, aunque recordemos que en general la estimación por MV es más eficiente si la verosimilitud está bien planteada.*
+   
+
+[^1]: Mroz, T. A. (1987). [The sensitivity of an empirical model of married women's hours of work to economic and statistical assumptions](https://www.jstor.org/stable/1911029?casa_token=Uwxeul7XeBkAAAAA%3AyOzMP-SP9bdQNxw1FwyVjnEJt3w2ShyTtiinMVL6RZnpxKeehfas96e2ETxA6us20xyQG-NUF71svQugl78mx6vG2oJ2k7U39TtJn6P6dq-iTH2aDWsH&seq=1#metadata_info_tab_contents). *Econometrica*: Journal of the econometric society, 765-799. 
+
