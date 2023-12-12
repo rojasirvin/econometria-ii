@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -88,7 +88,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
     "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar"
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 
@@ -110,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Respuestas a la tarea 1</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -125,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <img src="../iconoEconometria.jpg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
-    <a href="https://github.com/rojasirvin/econometria-ii" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/rojasirvin/econometria-ii" rel="" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -801,10 +802,11 @@ mujer       -0.04077164 0.035053348 -1.163131 2.447763e-01</code></pre>
 <pre><code>
       Term Contrast Estimate Std. Error     z Pr(&gt;|z|)     S    2.5 %   97.5 %
  anios_esc    dY/dX  0.01977   0.001659 11.91   &lt;0.001 106.3  0.01651  0.02302
- eda          dY/dX -0.00485   0.000646 -7.51   &lt;0.001  43.9 -0.00611 -0.00358
+ eda          dY/dX -0.00485   0.000646 -7.50   &lt;0.001  43.9 -0.00611 -0.00358
  mujer        1 - 0 -0.01571   0.013504 -1.16    0.245   2.0 -0.04218  0.01076
 
-Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
+Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high 
+Type:  response </code></pre>
 </div>
 </div>
 <p><em>El promedio del efecto marginal de un cambio en los años de educación es de 2 puntos porcentuales. Ligeramente superior al efecto obtenido en el modelo lineal.</em></p></li>
@@ -822,7 +824,8 @@ Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.
  eda          dY/dX  -0.0050   0.000677 -7.38   &lt;0.001 42.5 -0.00632 -0.00367
  mujer        1 - 0  -0.0162   0.013944 -1.16    0.245  2.0 -0.04355  0.01111
 
-Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
+Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high 
+Type:  response </code></pre>
 </div>
 </div>
 <p><em>El efecto marginal de un cambio en los años de escolaridad evaluados en la media de los años de educación y edad, para las mujeres, es de 2.04 puntos. Esto difiere del modelo lineal porque en el modelo lineal los efectos marginales son constantes, mientras que los efectos marginal del modelo no lineal dependen del punto de evaluación. También difiere de los efectos marginales promedio pues aquí solo hemos calculado el efecto marginal una sola vez, para un valor <span class="math inline">\(X_i\)</span>, mientras que el promedio de efectos marginales implica calcular el efecto marginal para cada individuo y luego obtener el promedio.</em></p>
@@ -908,7 +911,8 @@ AIC: 5107.425 </code></pre>
   0.00490
   0.01512
 
-Columns: term, group, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
+Columns: term, group, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high 
+Type:  probs </code></pre>
 </div>
 </div>
 <p><em>El efecto de ser mujer es de una reducción de 0.3 puntos en la probabilidad de ahorrar en el banco al estimar el promedio de los efectos marginales.</em></p></li>
