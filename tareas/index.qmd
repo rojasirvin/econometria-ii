@@ -31,3 +31,5 @@ lang: es
 
 - Fecha de entrega: 6 de diciembre a las 20:00 en Teams
 - [Preguntas](./tarea-4.qmd)
+- [Respuestas](./tarea-4-respuestas.qmd)
+
