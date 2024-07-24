@@ -55,9 +55,9 @@ Unidad 6. Extensiones
 + Bootstrap
 + Modelos de riesgo y de sobrevivencia
 + Regresión por cuantiles
++ Métodos semi paramétricos y no paramétricos
 + Modelos de panel con endogeneidad
 + Modelos de panel no lineales
-+ Métodos semi paramétricos y no paramétricos
 
 ## Evaluación del curso
 
@@ -79,7 +79,7 @@ Un segundo archivo deberá contener el código replicable usado para generar los
 R será el paquete standard usado en las sesiones prácticas. Más aún, el uso de cualquier software es aceptado siempre que se cumplan con los requisitos de replicabilidad y reportes de las tareas y exámenes. Habrá una sesión especial para introducir el uso de Quarto para la generación de reportes científicos.
 
 ## Exámenes
-+ Examen parcial: miércoles 4 de octubre en el horario de clase.
++ Examen parcial: martes 8 de octubre en el horario de clase.
 + Examen final: por definir.
 
 ## Exposición
@@ -90,5 +90,6 @@ Cada alumno realizará una presentación de uno de los artículos aplicados marc
 ## Lista de lecturas
 
 Todas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión.
+
 La lista de lecturas está disponible [aquí](https://rojasirvin.github.io/econometria-ii/lecturas.html).
 

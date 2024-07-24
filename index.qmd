@@ -1,20 +1,20 @@
 ---
-title: "Econometría II 2023"
+title: "Econometría II 2024"
 ---
 
 ---
 
-Profesor: [Irvin Rojas](https://www.rojasirvin.com/) (irvin.rojas\@cide.edu).
+Profesor: [Irvin Rojas](https://rojasirvin.github.io/){target="_blank"} (irvin.rojas\@cide.edu).
 
-Laboratoristas: Alejandro Parada (alejandro.parada\@alumnos.cide.edu).
+Laboratorista: por definir.
 
-Horario de clases: lunes y miércoles (11:20 a 12:50).
+Horario de clases: martes y jueves (11:20 a 12:50).
 
 Horario de laboratorio: por definir.
 
 Plataforma del curso: Microsoft Teams.
 
-Horario de oficina: por definir.
+Horario de oficina: martes y jueves (17:00)
 
 ---
 

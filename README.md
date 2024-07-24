@@ -1,3 +1,3 @@
-# Econometría II 2023
+# Econometría II 2024
 
-Este es el repositorio del curso de Econometría 2023 para estudiantes de la Maestría en Economía del CIDE.
+Este es el repositorio del curso de Econometría 2024 para estudiantes de la Maestría en Economía del CIDE.

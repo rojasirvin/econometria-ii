@@ -186,7 +186,10 @@
     "href": "tareas/index.html",
     "title": "Tareas",
     "section": "",
-    "text": "Tarea 1\n\nFecha de entrega: 20 de septiembre a las 20:00 en Teams\nPreguntas\nRespuestas\n\n\n\n\nTarea 2\n\nFecha de entrega: 2 de octubre a las 20:00 en Teams\nPreguntas\nRespuestas\n\n\n\n\nTarea 3\n\nFecha de entrega: 16 de noviembre a las 20:00 en Teams\nPreguntas\nRespuestas\n\n\n\n\nTarea 4\n\nFecha de entrega: 6 de diciembre a las 20:00 en Teams\nPreguntas\nRespuestas"
+    "text": "Tarea 1\n\nFecha de entrega: jueves 12 de septiembre a las 20:00 en Teams\n\n\n\n\nTarea 2\n\nFecha de entrega: jueves 3 de octubre a las 20:00 en Teams\n\n\n\n\nTarea 3\n\nFecha de entrega: jueves 7 de noviembre a las 20:00 en Teams\n\n\n\n\nTarea 4\n\nFecha de entrega: jueves 28 de noviembre a las 20:00 en Teams",
+    "crumbs": [
+      "Tareas"
+    ]
   },
   {
     "objectID": "reglas.html",
@@ -200,7 +203,10 @@
     "href": "presentaciones.html",
     "title": "Presentaciones",
     "section": "",
-    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación.\n\n\n\n\n\n\n\n\n\nAutores\nTema\nPresentador o presentadora\nFecha de exposición\n\n\n\n\nAvila-Foucat et al. (2015)\nBinaria\nPaola Guarneros\n2 de octubre\n\n\nKveder & Flahaux (2013)\nMultinomiales\nRigoberto Mendoza\n2 de octubre\n\n\nZou & Luo (2019)\nTobit\nFrancisco Vinicio\n2 de octubre\n\n\nHackett & Marquez-Padilla (2019)\nVI\nClaudia Alemán\n16 de octubre\n\n\nLópez-Feldman & Chávez (2017)\nVI\nWolfgang Reséndiz\n16 de octubre\n\n\nKagin et al. (2016)\nPanel\nYorlyn Fúnez\n8 de noviembre\n\n\nAmare et al. (2021)\nPenel\nJuan Calos Muñoz\n8 de noviembre\n\n\nEngelhardt & Kumar (2011)\nCuantil\nLuis Armando López\n27 de noviembre\n\n\nHussinger (2008)\nSemiparamétrico\nSamuel Martínez\n27 de noviembre"
+    "text": "Por favor, seleccione una de las lecturas marcadas con una “+” de la lista de lecturas y envíe un correo al profesor para que se le asigne una fecha de presentación.\n\n\n\n\n\n\n\n\n\nAutores\nTema\nPresentador o presentadora\nFecha de exposición",
+    "crumbs": [
+      "Presentaciones"
+    ]
   },
   {
     "objectID": "lecturas.html",
@@ -317,9 +323,12 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Econometría II 2023",
+    "title": "Econometría II 2024",
     "section": "",
-    "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nLaboratoristas: Alejandro Parada (alejandro.parada@alumnos.cide.edu).\nHorario de clases: lunes y miércoles (11:20 a 12:50).\nHorario de laboratorio: por definir.\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: por definir.\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas."
+    "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nLaboratorista: por definir.\nHorario de clases: martes y jueves (11:20 a 12:50).\nHorario de laboratorio: por definir.\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: martes y jueves (17:00)\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "materials.html",
@@ -333,70 +342,100 @@
     "href": "programa.html",
     "title": "Programa",
     "section": "",
-    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual."
+    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual.",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "programa.html#objetivos",
     "href": "programa.html#objetivos",
     "title": "Programa",
     "section": "",
-    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual."
+    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual.",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "programa.html#referencias",
     "href": "programa.html#referencias",
     "title": "Programa",
     "section": "Referencias",
-    "text": "Referencias\nEl curso se basa en los siguientes textos:\n\n(MHE) Angrist, J.D. y Pischke, J.S. (2013). Mostly Harmless Econometrics: An Empiricists Companion. Princeton University Press.\n* (CT) Cameron, A.C. y Trivedi, P.K. (2005). Microeconometrics: Methods and applications. Oxford University Press.\nHansen, B. (2022). Econometrics. Princeton University Press.\nHayashi, F. (2000). Econometrics. Princeton University Press.\n* (W) Wooldridge, J.M. (2010). Econometric analysis of cross section and panel data. Segunda edición, MIT Press."
+    "text": "Referencias\nEl curso se basa en los siguientes textos:\n\n(MHE) Angrist, J.D. y Pischke, J.S. (2013). Mostly Harmless Econometrics: An Empiricists Companion. Princeton University Press.\n* (CT) Cameron, A.C. y Trivedi, P.K. (2005). Microeconometrics: Methods and applications. Oxford University Press.\nHansen, B. (2022). Econometrics. Princeton University Press.\nHayashi, F. (2000). Econometrics. Princeton University Press.\n* (W) Wooldridge, J.M. (2010). Econometric analysis of cross section and panel data. Segunda edición, MIT Press.",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "programa.html#contenido-temático",
     "href": "programa.html#contenido-temático",
     "title": "Programa",
     "section": "Contenido temático",
-    "text": "Contenido temático\nUnidad 1. Introducción + Revisión de fundamentos de estadística y regresión lineal + Teoría asintótica + Estimadores extremos + Máxima verosimilitud + Mínimos cuadrados no lineales + Inferencia estadística\nUnidad 2. Modelos de variable dependiente no continua\n+ Modelos de variable dependiente binaria\n+ Modelos de conteo\nUnidad 3. Modelos de selección + Modelo de Tobit + Modelo de Heckman\nUnidad 4. Endogeneidad + Variables instrumentales + Método generalizado de momentos + Estimación con instrumentos débiles\nUnidad 5. Datos de panel + Modelos de efectos fijos y de efectos aleatorios + Estimadores between y within + Estimadores de primeras diferencias y de efectos aleatorios + Errores estándar agrupados\nUnidad 6. Extensiones + Bootstrap + Modelos de riesgo y de sobrevivencia + Regresión por cuantiles + Modelos de panel con endogeneidad + Modelos de panel no lineales + Métodos semi paramétricos y no paramétricos"
+    "text": "Contenido temático\nUnidad 1. Introducción + Revisión de fundamentos de estadística y regresión lineal + Teoría asintótica + Estimadores extremos + Máxima verosimilitud + Mínimos cuadrados no lineales + Inferencia estadística\nUnidad 2. Modelos de variable dependiente no continua\n+ Modelos de variable dependiente binaria\n+ Modelos de conteo\nUnidad 3. Modelos de selección + Modelo de Tobit + Modelo de Heckman\nUnidad 4. Endogeneidad + Variables instrumentales + Método generalizado de momentos + Estimación con instrumentos débiles\nUnidad 5. Datos de panel + Modelos de efectos fijos y de efectos aleatorios + Estimadores between y within + Estimadores de primeras diferencias y de efectos aleatorios + Errores estándar agrupados\nUnidad 6. Extensiones + Bootstrap + Modelos de riesgo y de sobrevivencia + Regresión por cuantiles + Métodos semi paramétricos y no paramétricos + Modelos de panel con endogeneidad + Modelos de panel no lineales",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "programa.html#evaluación-del-curso",
     "href": "programa.html#evaluación-del-curso",
     "title": "Programa",
     "section": "Evaluación del curso",
-    "text": "Evaluación del curso\n\nExamen parcial: 30%.\nExamen final acumulativo: 45%\nTareas (4): 20% (5% cada una)\nExposición: 5%"
+    "text": "Evaluación del curso\n\nExamen parcial: 30%.\nExamen final acumulativo: 45%\nTareas (4): 20% (5% cada una)\nExposición: 5%",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "programa.html#tareas",
     "href": "programa.html#tareas",
     "title": "Programa",
     "section": "Tareas",
-    "text": "Tareas\nCuatro tareas teórico-prácticas. Las tareas deben entregarse de manera individual, pero se recomienda ampliamente colaborar en grupos de estudio. Las tareas deberán entregarse en Teams antes de la fecha y hora señalada. No se aceptarán tareas fuera de tiempo. Por favor, no comprima los archivos en carpetas comprimidas. Las tareas deberán contener dos archivos:\nUn primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad de manera aleatoria."
+    "text": "Tareas\nCuatro tareas teórico-prácticas. Las tareas deben entregarse de manera individual, pero se recomienda ampliamente colaborar en grupos de estudio. Las tareas deberán entregarse en Teams antes de la fecha y hora señalada. No se aceptarán tareas fuera de tiempo. Por favor, no comprima los archivos en carpetas comprimidas. Las tareas deberán contener dos archivos:\nUn primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad de manera aleatoria.",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "programa.html#software",
     "href": "programa.html#software",
     "title": "Programa",
     "section": "Software",
-    "text": "Software\nR será el paquete standard usado en las sesiones prácticas. Más aún, el uso de cualquier software es aceptado siempre que se cumplan con los requisitos de replicabilidad y reportes de las tareas y exámenes. Habrá una sesión especial para introducir el uso de Quarto para la generación de reportes científicos."
+    "text": "Software\nR será el paquete standard usado en las sesiones prácticas. Más aún, el uso de cualquier software es aceptado siempre que se cumplan con los requisitos de replicabilidad y reportes de las tareas y exámenes. Habrá una sesión especial para introducir el uso de Quarto para la generación de reportes científicos.",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "programa.html#exámenes",
     "href": "programa.html#exámenes",
     "title": "Programa",
     "section": "Exámenes",
-    "text": "Exámenes\n\nExamen parcial: miércoles 4 de octubre en el horario de clase.\nExamen final: por definir."
+    "text": "Exámenes\n\nExamen parcial: martes 8 de octubre en el horario de clase.\nExamen final: por definir.",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "programa.html#exposición",
     "href": "programa.html#exposición",
     "title": "Programa",
     "section": "Exposición",
-    "text": "Exposición\nCada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio."
+    "text": "Exposición\nCada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio.",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "programa.html#lista-de-lecturas",
     "href": "programa.html#lista-de-lecturas",
     "title": "Programa",
     "section": "Lista de lecturas",
-    "text": "Lista de lecturas\nTodas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión. La lista de lecturas está disponible aquí."
+    "text": "Lista de lecturas\nTodas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión.\nLa lista de lecturas está disponible aquí.",
+    "crumbs": [
+      "Programa"
+    ]
   },
   {
     "objectID": "schedule.html",
@@ -558,5 +597,15 @@
     "title": "Respuestas a la tarea 4",
     "section": "",
     "text": "Considere los datos en MunichRent.rda. Estos archivos contienen información sobre rentas en la ciudad de Munich, rent. Se desea explicar la renta en función de la antiguedad de los edificios en renta, controlando por el área, area. La variable yearc indica cuándo fue construido el edificio. Construya la antiguedad como antiguedad=2023-yearc. Para leer los datos basta con ejecutar load(“MunichRent.rda”).\n\n[10 puntos] Estime por MCO la relación entre la renta, rent y la antiguedad del edificio, controlando por area y efectos fijos de bath y kitchen. Interprete el coeficiente sobre la antiguedad.\nPrimero por MCO obtenemos una relación positiva entre la renta y el área y una relación negativa entre la renta y la antiguedad, como era de esperarse. Ambos coeficientes estimados son estadísticamente significativos.\n\nload(\"../files/MunichRent.rda\")\n\nMunichRent &lt;- MunichRent %&gt;% \n  mutate(antiguedad=2023-yearc)\n\n#Por MCO\nsummary(r.mco &lt;- lm(rent  ~ area + antiguedad,\n                    data=MunichRent))\n\n\nCall:\nlm(formula = rent ~ area + antiguedad, data = MunichRent)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-734.76  -94.75  -10.87   82.55 1063.17 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 264.3407    10.3561   25.52   &lt;2e-16 ***\narea          5.3618     0.1165   46.01   &lt;2e-16 ***\nantiguedad   -2.4913     0.1239  -20.11   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 149.3 on 3079 degrees of freedom\nMultiple R-squared:  0.4181, Adjusted R-squared:  0.4177 \nF-statistic:  1106 on 2 and 3079 DF,  p-value: &lt; 2.2e-16\n\n\n[10 puntos] Estime la misma relación que en la parte a., pero con una regresión mediana. Interprete el coeficiente sobre la antiguedad.\nAhora realizamos un modelo LAD:\n\nsummary(r.q50 &lt;- rq(rent  ~ area + antiguedad,\n                    data=MunichRent,\n                    tau=0.5))\n\n\nCall: rq(formula = rent ~ area + antiguedad, tau = 0.5, data = MunichRent)\n\ntau: [1] 0.5\n\nCoefficients:\n            Value     Std. Error t value   Pr(&gt;|t|) \n(Intercept) 310.17202  11.60978   26.71643   0.00000\narea          4.97688   0.14688   33.88284   0.00000\nantiguedad   -3.02031   0.14599  -20.68795   0.00000\n\n\nLos coeficientes estimados son de una magnitud similar a los de MCO.\n[10 puntos] Estime ahora una regresión cuantil para cada uno de los deciles de la distribución condicional de la renta y represente en una gráfica los coeficientes por regresión cuantil junto con el coeficiente de MCO para las variables del área y la antiguedad. ¿Concluye que vale la pena modelar la relación de las rentas en función del área y la antiguedad usando regresión cuantil?\nRegresión cuantil para cada decil:\n\nr.q1_9 &lt;- rq(rent  ~ area + antiguedad,\n                    data=MunichRent,\n                    tau= 1:9/10)\n\nplot(summary(r.q1_9), parm=c(\"area\",\"antiguedad\"))\n\n\n\n\nLos efectos de la antiguedad en la distribución de precios son no lineales. Los efectos en los cuantiles superiores crecen más rápido con la antiguedad. Quizás esto sugiera una preferencia por edificios viejos. La regresión cuantil sí fue útil para revelar esta característica.\n[10 puntos] Suponga que no está dispuesto a imponer una relación lineal entre la antiguedad y la renta. Considere entonces el siguiente modelo:\n\\[rent_i=\\beta_0+\\beta_1 area + \\lambda(antiguedad_i)+\\varepsilon_i\\]\nUse el estimador de Robinson (1988) para estimar este modelo parcialmente lineal. Grafique sus resultados e interprételos.\nSeleccionamos el ancho de banda:\n\nbw &lt;- npplregbw(formula=rent ~ area | antiguedad,\n                data=MunichRent,\n                regtype=\"ll\")\n\nImplementamos el estimador de Robinson:\n\nmodel.pl &lt;- npplreg(bw)\nsummary(model.pl)\n\n\nPartially Linear Model\nRegression data: 3082 training points, in 2 variable(s)\nWith 1 linear parametric regressor(s), 1 nonparametric regressor(s)\n\n                  y(z)\nBandwidth(s): 2.368969\n\n                   x(z)\nBandwidth(s): 0.8672961\n\n                    area\nCoefficient(s): 5.143053\n\nKernel Regression Estimator: Local-Linear\nBandwidth Type: Fixed\n\nResidual standard error: 145.801\nR-squared: 0.4445272\n\nContinuous Kernel Type: Second-Order Gaussian\nNo. Continuous Explanatory Vars.: 1\n\n\nPara obtener el gráfico usamos npplot:\n\ng.robinson &lt;- npplot(bw,\n       perspective=F,\n       plot.errors.method=\"bootstrap\",\n       plot.errors.boot.num=5,\n       plot.behavior=\"plot-data\")\n\n\n\ng &lt;- fitted(g.robinson$plr2)\nse &lt;- g.robinson[[\"plr2\"]][[\"merr\"]]\nlci &lt;- g - se[,1]\nuci &lt;- g + se[,2]\n\n#Este objeto nos dicen dónde fueron evaluados\nantiguedad.eval &lt;- g.robinson[[\"plr2\"]][[\"evalz\"]][[\"V1\"]]\n\nfitted &lt;- data.frame(antiguedad.eval, g,lci,uci)\n\nggplot() + \n  geom_point(data=MunichRent, aes(antiguedad,rent), color='black', alpha=0.5) + \n  geom_line(data=fitted, aes(antiguedad.eval, g), linetype='solid')+\n  geom_line(data=fitted, aes(antiguedad.eval, uci), linetype='dashed')+\n  geom_line(data=fitted, aes(antiguedad.eval, lci), linetype='dashed')"
+  },
+  {
+    "objectID": "cronograma.html",
+    "href": "cronograma.html",
+    "title": "Cronograma",
+    "section": "",
+    "text": "El siguiente cronograma es informativo sobre la organización del curso:",
+    "crumbs": [
+      "Cronograma"
+    ]
   }
 ]
