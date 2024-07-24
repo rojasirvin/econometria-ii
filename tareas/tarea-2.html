@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Econometría II 2023 - Tarea 1</title>
+<title>Econometría II 2023 - Tarea 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Tarea 1</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Tarea 2</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -151,11 +151,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#instrucciones" id="toc-instrucciones" class="nav-link active" data-scroll-target="#instrucciones">Instrucciones</a></li>
   <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos">Datos</a></li>
   <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
-  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
+  <li><a href="#pregunta-2.-modelo-en-dos-partes-o-de-valla" id="toc-pregunta-2.-modelo-en-dos-partes-o-de-valla" class="nav-link" data-scroll-target="#pregunta-2.-modelo-en-dos-partes-o-de-valla">Pregunta 2. Modelo en dos partes o de valla</a></li>
   <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
   <li><a href="#pregunta-4" id="toc-pregunta-4" class="nav-link" data-scroll-target="#pregunta-4">Pregunta 4</a></li>
   <li><a href="#pregunta-5" id="toc-pregunta-5" class="nav-link" data-scroll-target="#pregunta-5">Pregunta 5</a></li>
-  <li><a href="#pregunta-6" id="toc-pregunta-6" class="nav-link" data-scroll-target="#pregunta-6">Pregunta 6</a></li>
   </ul>
 </nav>
     </div>
@@ -164,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tarea 1</h1>
+<h1 class="title">Tarea 2</h1>
 </div>
 
 
@@ -181,97 +180,87 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="instrucciones" class="level2">
 <h2 class="anchored" data-anchor-id="instrucciones">Instrucciones</h2>
-<p>Fecha de entrega: <strong>20 de septiembre</strong> a las 20:00 en Teams</p>
+<p>Fecha de entrega: <strong>2 de octubre</strong> a las 20:00 en Teams</p>
 <p>La tarea deberá entregarse en Teams. Deberá incluir dos documentos:</p>
 <p>Un primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.</p>
 <p>Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.</p>
 </section>
 <section id="datos" class="level2">
 <h2 class="anchored" data-anchor-id="datos">Datos</h2>
+<p><a href="../files/phd_articulos.csv">phd_articulos.csv</a></p>
 <p><a href="../files/motral2012.csv">motral2012.csv</a></p>
 </section>
 <section id="pregunta-1" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
-<p>Suponga que está interesado en una variable aleatoria que tiene una distribución Bernoulli con parámetro <span class="math inline">\(p\)</span>. La función de densidad está definida como:</p>
-<p><span class="math display">\[f(x_;p)=\left\{\begin{array} .1 &amp; \text{con probabilidad } p \\ 0 &amp; \text{con probabilidad } 1-p \end{array} \right.\]</span> Suponga que tiene una muestra de <span class="math inline">\(N\)</span> observaciones independientes e idénticamente distribuidas.</p>
+<p>Considere el modelo Poisson visto en clase y un vector de variables explicativas <span class="math inline">\(x\)</span>, todas continuas, usadas para parametrizar la media.</p>
 <ol type="a">
-<li><p>[4 puntos] Plantee la función de log verosimilitud del problema.</p></li>
-<li><p>[4 puntos] Obtenga las condiciones de primer orden y resuelva para <span class="math inline">\(\hat{p}\)</span>.</p></li>
-<li><p>[2 puntos] ¿Cuál es la media y la varianza del estimador de máxima verosimilitud que ha encontrado?</p></li>
+<li><p>[3 puntos] ¿Cuál es el efecto de un cambio en el <span class="math inline">\(j\)</span>ésimo regresor sobre <span class="math inline">\(E(y│x)\)</span>?</p></li>
+<li><p>[8 puntos] Usando esta expresión, muestre que si el <span class="math inline">\(j\)</span>ésimo regresor es <span class="math inline">\(x_j\)</span>, entonces <span class="math inline">\(100 \beta_j\)</span> es la semielasticidad de <span class="math inline">\(E(y│x)\)</span> con respecto a <span class="math inline">\(x_j\)</span>. Nota: Este punto es muy útil para la interpretación de los coeficientes de un modelo Poisson.</p></li>
+<li><p>[4 puntos] ¿Cómo se interpreta <span class="math inline">\(\beta_j\)</span> si reemplazamos <span class="math inline">\(x_j\)</span> por <span class="math inline">\(\log(x_j)\)</span>)?</p></li>
 </ol>
 </section>
-<section id="pregunta-2" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
-<p>Suponga que <span class="math inline">\(y_i|\mathbf{x}_i\sim\mathcal{N}(m(\mathbf{x}_i,\mathbf{\beta}_0),\sigma_0^2)\)</span>, donde <span class="math inline">\(m(\mathbf{x},\mathbf{\beta})\)</span> es una función del vector de variables explicativas <span class="math inline">\(\mathbf{x}\)</span> y del vector de parámetros <span class="math inline">\(\mathbf{\beta}\)</span> de dimensión <span class="math inline">\((k\times 1)\)</span>. Entonces, <span class="math inline">\(E(y_i|\mathbf{x}_i)=m(\mathbf{x}_i,\mathbf{\beta}_0)\)</span> y <span class="math inline">\(V(y_i|\mathbf{x}_i)=\sigma^2_0\)</span>.</p>
+<section id="pregunta-2.-modelo-en-dos-partes-o-de-valla" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2.-modelo-en-dos-partes-o-de-valla">Pregunta 2. Modelo en dos partes o de valla</h2>
+<p>En esta pregunta mostrará cómo para un modelo en dos partes Poisson la log verosimilitud del problema es la suma de log verosimilitud para un proceso binario y la log verosimilitud de un proceso Poisson truncado en cero. Considere una variable aleatoria <span class="math inline">\(Y\)</span> con observaciones iid que sigue una distribución Poisson con parámetro <span class="math inline">\(\lambda\)</span> tal que</p>
+<p><span class="math display">\[f(y,\lambda)=P(Y=y)=\frac{\lambda^y exp(-\lambda)}{y!}\]</span></p>
 <ol type="a">
-<li><p>[2 puntos] Escriba la función de log verosimilitud condicional para la observación <span class="math inline">\(i\)</span>. Muestre que el estimador de máxima verosimilitud <span class="math inline">\(\hat{\mathbf{\beta}}\)</span> resuelve el problema de minimización <span class="math inline">\(\min_\mathbf{\beta}\sum_i(y_i-m(\mathbf{x}_i,\mathbf{\beta}))^2\)</span>.</p></li>
-<li><p>[4 puntos] Sea <span class="math inline">\(\mathbf{\theta}\equiv(\mathbf{\beta}'\;\sigma^2)'\)</span> un vector de parámetros de dimensión <span class="math inline">\((k+1)\times 1\)</span>. Encuentre el vector score para la observación <span class="math inline">\(i\)</span>. Muestre que <span class="math inline">\(E(\mathbf{s}_i(\mathbf{\theta}_0)|\mathbf{x}_i)=\mathbf{0}\)</span>.</p></li>
-<li><p>[2 puntos] Usando las condiciones de primer orden, encuentre <span class="math inline">\(\hat{\sigma}^2\)</span> en términos de <span class="math inline">\(\hat{\mathbf{\beta}}\)</span>.</p></li>
-<li><p>[5 puntos] Encuentre la matriz hesiana de la función de log verosimilitud con respecto a <span class="math inline">\(\mathbf{\theta}\)</span>.</p></li>
-<li><p>[5 puntos] Muestre que <span class="math inline">\(-E(\mathbf{H}_i(\mathbf{\theta}_0)|\mathbf{x}_i)=E(\mathbf{s}_i(\mathbf{\theta}_0)\mathbf{s}_i(\mathbf{\theta}_0)'|\mathbf{x}_i)\)</span>.</p></li>
-<li><p>[2 puntos] Encuentre la varianza asintótica estimada de <span class="math inline">\(\hat{\mathbf{\beta}}\)</span> y explique cómo obtendría los errores estándar.</p></li>
+<li><p>[4 puntos] Obtenga la distribución Poisson truncada en cero, definida como <span class="math inline">\(P(Y=y|Y&gt;0)\)</span>.</p></li>
+<li><p>[5 puntos] Considere además un proceso binomial que modela la probabilidad de que la variable <span class="math inline">\(Y\)</span> tome un valor cero o un valor positivo, como sigue:</p>
+<p><span class="math display">\[P(Y=y)=\begin{cases} \pi \quad\quad y=0 \\ 1-\pi\quad\quad y=1,2,3,\ldots \end{cases} \]</span></p>
+<p>En clase vimos la forma general del modelo en dos partes:</p>
+<p><span class="math display">\[
+g(y)=
+\begin{cases}
+f_1(0) \quad\text{si }y=0 \\
+\frac{(1-f_1(0))f_2(y)}{1-f_2(0)}\quad\text{si }y\geq 1
+\end{cases}
+\]</span></p>
+<p>Especialice forma general del modelo de dos partes usando la distribución truncada derivada en a. y el proceso binomial definido arriba para obtener una función de masa de probabilidad no condicional para <span class="math inline">\(Y\)</span>, <span class="math inline">\(g(y)\)</span>.</p></li>
+<li><p>[6 puntos] Obtenga la log verosimilitud para la <span class="math inline">\(i\)</span>ésima observación. Se sugiere que continúe sus cálculos con una ecuación en dos partes.</p></li>
+<li><p>[6 puntos] En este problema, parametrizaremos <span class="math inline">\(\lambda_i\)</span> como <span class="math inline">\(\lambda_i=exp(x_i'\beta_2)\)</span>, como regularmente lo hemos hecho en una regresión Poisson. Por otro lado, podemos trabajar con una parametrización general de la probabilidad <span class="math inline">\(\pi\)</span>, <span class="math inline">\(\pi=F(x_i'\beta_1)\)</span>. Escriba la función de log verosimilitud del problema usando la parametrización para <span class="math inline">\(\pi_i\)</span> y para <span class="math inline">\(\lambda_i\)</span> que acabamos de describir. Presente esta función en una sola parte.</p></li>
+<li><p>[4 puntos] Agrupe los términos para mostrar que <span class="math inline">\(\mathcal{L}=\mathcal{L}_1(\beta_1)+\mathcal{L}_2(\beta_2)\)</span>. Así, mostrará que la log verosimilitud del problema se puede descomponer en una log verosimilitud para el modelo binario y otra para el conteo truncado en cero. Por tanto, no perdemos información si estimamos los parámetros de la probabilidad binomial por un lado, y los de la distribución Poisson truncada en cero, por el otro.</p></li>
 </ol>
 </section>
 <section id="pregunta-3" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
-<p>Suponga una variable aleatoria <span class="math inline">\(X_i\)</span> con distribución desconocida. Sin embargo, sí conocemos que <span class="math inline">\(E(X)=\mu=54\)</span> y que <span class="math inline">\(\sqrt{V(X)}=\sigma=6\)</span>. Suponga que se recolecta una muestra de 50 observaciones.</p>
+<p>Use los datos <em>phd_articulos.csv</em>, los cuales contienen información sobre el número de artículos publicados para una muestra de entonces estudiantes de doctorado. Nuestra variable de interés será el número de artículos <strong>art</strong>.</p>
 <ol type="a">
-<li><p>[2 punto] ¿Cuál es la distribución asintótica de la media muestral <span class="math inline">\(\bar{X}\)</span>?</p></li>
-<li><p>[4 punto] ¿Cuál es la probabilidad de que <span class="math inline">\(\bar{X}&gt;58\)</span>?</p></li>
-<li><p>[2 punto] ¿Cuál es la probabilidad de que una observación elegida al azar sea tal que <span class="math inline">\(X_i&gt;58\)</span>?</p></li>
-<li><p>[2 punto] Provea un intervalo de confianza de 99% para la media muestral.</p></li>
+<li><p>[5 puntos] Estime un modelo Poisson que incluya variables dicotómicas para estudiantes mujeres (<strong>female</strong>) y para estudiantes casadas o casados (<strong>married</strong>), el número de hijos mejores de cinco años (<strong>kid5</strong>), el ranking de prestigio del doctorado (<strong>phd</strong>) y el número de artículos publicados por su mentor (**mentor*). Realice la estimación de la matriz de varianzas primero a partir de la varianza teórica que resulta de la igualdad de la matriz de información y luego usando una matriz de sándwich. Interprete los coeficientes estimados.</p></li>
+<li><p>[5 puntos] Obtenga la razón de tasas de incidencia (IRR) para los coeficientes e interprete los resultados.</p></li>
+<li><p>[5 puntos] Considere ahora que las mujeres han tenido carreras profesionales más cortas que los hombres, es decir, han estado menos expuestas a la ocurrencia de los eventos <em>publicar</em>. Incorpore esto al análisis y reinterprete los resultados. Pista: explore la opción <em>offeset</em> en <em>glm</em> de R. La columna <strong>profage</strong> mide la duración efectiva de las carreras profesionales de cada individuo.</p></li>
+<li><p>[5 puntos] Emplee ahora un modelo negativo binomial con sobredispersión cuadrática en la media para estimar la relación entre el número de artículos publicados y las variables explicativas antes enumeradas. Interprete el coeficiente asociado al número de hijos y a la variable dicotómica para estudiantes mujeres. ¿Qué puede decir sobre la significancia del <span class="math inline">\(\alpha\)</span> estimado?</p></li>
 </ol>
 </section>
 <section id="pregunta-4" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-4">Pregunta 4</h2>
-<p>En esta pregunta mostraremos los alcances de los teoremas del límite central. Para esto, generaremos muchas muestras de tamaño <span class="math inline">\(N\)</span> con una distribución <span class="math inline">\(Bernoulli\)</span> con probabilidad de éxito <span class="math inline">\(p=0.3\)</span>. Recuerde que cuando realice simulaciones, siempre debe fijar una semilla al inicio para poder replicar su trabajo.</p>
+<p>Retome los datos del archivo <em>motral2012.csv</em> usado en la Tarea 1. Estimará un modelo Tobit para explicar los factores que afectan la oferta laboral femenina. En este archivo de datos la variable <strong>hrsocup</strong> registra las horas trabajadas a la semana.</p>
 <ol type="a">
-<li><p>[2 puntos] ¿Cuál es la media y la varianza de una variable aleatoria <span class="math inline">\(y_i \sim Bernoulli(0.3)\)</span>?</p></li>
-<li><p>[2 puntos] Si <span class="math inline">\(y_i\)</span> son iid y podemos aplicar un teorema de límite central, ¿cuál es la distribución teórica de <span class="math inline">\(\bar{y}\)</span> cuando <span class="math inline">\(N\to\infty\)</span>?</p></li>
-<li><p>[5 puntos] Realice el siguiente procedimiento <span class="math inline">\(J=1,000\)</span> veces. Obtenga una muestra de tamaño <span class="math inline">\(N=2\)</span> a partir de la distribución <span class="math inline">\(Bernoulli(0.3)\)</span> y calcule la media muestral <span class="math inline">\(\bar{y}\)</span>. Coleccione las <span class="math inline">\(J\)</span> medias muestrales y luego grafique un histograma de las medias muestrales obtenidas junto con una curva teórica normal con la media y varianza obtenida en la parte b. Comente sobre lo que observa.</p></li>
-<li><p>[3 puntos] Repita lo realizado en la parte b., ahora con <span class="math inline">\(N=10\)</span>. Comente sobre lo que observa.</p></li>
-<li><p>[3 puntos] Repita lo realizado en la parte b., ahora con <span class="math inline">\(N=10,000\)</span>. Comente sobre lo que observa.</p></li>
-<li><p>[5 puntos] ¿Cómo usaría este ejercicio con palabras simples para explicar a una persona que no sabe mucho de estadística sobre la importancia de los teoremas de límite central?</p></li>
+<li><p>[2 punto] ¿Qué proporción de la muestra femenina reporta horas trabajadas iguales a cero?</p></li>
+<li><p>[3 puntos] Se desea estimar el efecto de los años de educación (<strong>anios_esc</strong>) sobre la oferta laboral femenina controlando por el estado marital (<strong>casada</strong>), la edad (<strong>eda</strong>) y el número de hijos (<strong>n_hij</strong>) como una variable continua. En la base, <strong>e_con</strong> toma el valor de 5 para las personas casadas. Genere la variable dummy <strong>casada</strong> que tome el valor de 1 para las mujeres casadas y cero en otro caso. Estime un modelo de MCO para <strong>hrsocup</strong> mayor que cero, usando solo la población femenina. Reporte errores robustos. ¿Cuál es la interpretación sobre el coeficiente de los años de escolaridad?</p></li>
+<li><p>[3 puntos] ¿Qué problema existe con el modelo planteado en el punto anterior en términos de la selección? ¿Considera que se trata de un caso de censura o de truncamiento?</p></li>
+<li><p>[8 puntos] Estime un modelo Tobit de datos censurados. ¿Qué resuelve el modelo Tobit en este caso? Interprete nuevamente el coeficiente sobre los años de escolaridad.</p></li>
+<li><p>[4 puntos] ¿Cuál es el efecto marginal de un incremento de un año de educación en la oferta laboral? ¿Cómo cambia su respuesta si, en lugar de considerar la variable latente, considera la variable censurada?</p></li>
 </ol>
 </section>
 <section id="pregunta-5" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-5">Pregunta 5</h2>
-<p>Use los datos en el archivo <em>motral2012.csv</em>, que incluye una muestra de individuos con sus características socioeconómicas. Nos interesa conocer los factores que afectan la probabilidad de que los individuos tengan ahorros. Considere lo siguiente sobre las opciones de ahorro de los entrevistados, contenida en la variable <strong>p14</strong>:</p>
-<ul>
-<li><strong>p14</strong> igual a 1 significa cuentas de ahorro bancarias</li>
-<li><strong>p14</strong> igual a 2 significa cuenta de inversión bancaria</li>
-<li><strong>p14</strong> igual a 3 significa inversiones en bienes raíces</li>
-<li><strong>p14</strong> igual a 4 significa caja de ahorro en su trabajo</li>
-<li><strong>p14</strong> igual a 5 significa caja de ahorro con sus amigos</li>
-<li><strong>p14</strong> igual a 6 significa tandas</li>
-<li><strong>p14</strong> igual a 7 significa que ahorra en su casa o alcancías</li>
-<li><strong>p14</strong> igual a 8 significa otro lugar</li>
-<li><strong>p14</strong> NA significa que no ahorra</li>
-</ul>
+<p>Usando los mismos datos del archivo <em>motral2012.csv</em> implementará un ejercicio en el mismo espíritu del famoso estudio de Mroz (1987)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> sobre la oferta laboral femenina. El propósito es estimar la relación entre el salario y el número de horas trabajadas, concentrándonos en la muestra de mujeres.</p>
 <ol type="a">
-<li><p>[2 puntos] Comience generando una variable binaria <strong>ahorra</strong> que tome el valor de 1 para las personas que ahorran y 0 en otro caso. Construya también la variable <strong>mujer</strong> que tome el valor de 1 cuando <strong>sex</strong> toma el valor de 2 y 0 en otro caso.</p></li>
-<li><p>[3 puntos] Estime un modelo de probabilidad lineal que relacione <strong>ahorra</strong> como variable dependiente con <strong>eda</strong> (edad), <strong>anios_esc</strong> (años de escolaridad) y <strong>mujer</strong>. Reporte los errores que asumen homocedasticidad y los errores robustos a heteroscedasticidad.</p></li>
-<li><p>[3 puntos] ¿Cuál es el efecto en la probabilidad de ahorrar si los años de educación se incrementan en una unidad, pasando de 3 a 4 años de educación?</p></li>
-<li><p>[4 puntos] Realice una prueba de significancia conjunta de <strong>eda</strong> y <strong>anios_esc</strong>. ¿Qué concluye?</p></li>
-<li><p>[4 puntos] Estime un modelo probit relacionando las mismas variables. Use la función <em>avg_slopes</em> del paquete <em>marginaleffects</em> para obtener los efectos marginales promedio de un cambio en cada uno de los regresores. ¿Por qué difiere la magnitud de este efecto marginal con respecto a la parte c.?</p></li>
-<li><p>[4 puntos] Ahora estime el efecto marginal en la media para <strong>eda</strong> y <strong>anios_esc</strong> y para las mujeres, usando la función <em>slopes</em>. ¿Por qué difiere la magnitud de este efecto marginal respecto a la parte c.&nbsp;y la d.?</p></li>
-</ol>
-</section>
-<section id="pregunta-6" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-6">Pregunta 6</h2>
-<p>Ahora estimará un modelo multinomial empleando los mismos datos en <em>motral2012.csv</em>. El propósito será ahora estudiar los factores relevantes para predecir la forma de ahorro que tienen las personas que ahorran.</p>
-<ol type="a">
-<li><p>[2 punto] Genere una variable categórica llamada <strong>ahorro</strong> que sea igual a 1 cuando <strong>p14</strong> sea igual a 1 o 2, igual a 2 cuando <strong>p14</strong> sea igual a 7, e igual a 3 cuando <strong>p14</strong> sea igual a 3, 4, 5, 6 u 8. Haga que esa variable sea missing cuando <strong>p14</strong> sea missing. Posteriormente, convierta esta nueva variable en una de factores de forma que el valor 1 tenga la etiqueta “Banco”, el valor 2 tenga la etiqueta “Casa” y el valor 3 tenga la etiqueta “Otro”.</p></li>
-<li><p>[4 puntos] Estime un modelo logit multinomial (regresores invariantes a la alternativa) con la opción de ahorro como variable dependiente y los mismos regresores de la pregunta 5. Hay varios paquetes para hacer esto, pero recomiendo usar la función <em>multinom</em> del paquete <em>nnet</em>. ¿Qué puede decir sobre el coeficiente de años de educación en la alternativa “Casa”?</p></li>
-<li><p>[6 puntos] Calcule los efectos marginales promedio sobre la probabilidad de ahorrar en el banco. Al considerar el cambio en la probabilidad para el caso de las mujeres (cuando la variable <strong>mujer</strong> pasa de 0 a 1), ¿de qué tamaño es el efecto predicho en la probabilidad de ahorrar en el banco?</p></li>
-<li><p>[4 puntos] Calcule los cocientes de riesgo relativo (<em>relative risk ratios</em> o RRR). ¿Qué significa el hecho de que el RRR asociado a ser mujer sea mayor que 1 en la alternativa “Casa”?</p></li>
-<li><p>[4 puntos] Estime nuevamente el modelo, pero ahora, especifique que la alternativa “Casa” sea la alternativa base. ¿Cómo es el RRR de la edad en la alternativa “Banco”? ¿Es esto congruente con lo que obtuvo en la parte d.&nbsp;de esta pregunta?</p></li>
+<li><p>[5 puntos] El primer problema al que nos enfrentamos es que el salario no se observa para las mujeres que no trabajan. Estime un modelo lineal para el log del salario por hora, <strong>ing_x_hrs</strong>, usando las variables <strong>anios_esc</strong>, <strong>eda</strong>, <strong>n_hij</strong>, el cuadrado de <strong>n_hij</strong>, <strong>busqueda</strong> y <strong>casada</strong>, usando la submuestra de mujeres con salario por hora positivo. Dichas variables representan los años de escolaridad, la edad, el número de hijos, el cuadrado del número de hijos, si la persona buscó trabajo recientemente y si la persona es casada, respectivamente. Use los coeficientes estimados para imputar el ingreso por hora, faltante para las mujeres que reportan 0 en las horas trabajadas.</p></li>
+<li><p>[5 puntos] Use <em>heckit</em> de la librería <em>sampleSelection</em> para estimar por máxima verosimilitud un <em>heckit</em> para las horas trabajadas <strong>hrsocup</strong>. En la ecuación de selección (si la persona trabaja o no) incluya como variable explicativa el salario por hora (imputado para las mujeres que no trabajan), además de <strong>anios_esc</strong>, <strong>eda</strong>, <strong>n_hij</strong>, el cuadrado de <strong>n_hij</strong>, <strong>casada</strong> y <strong>busqueda</strong> (esta última es un indicador de si se buscó trabajo en la última semana). En la ecuación de horas, incluya los mismos regresores, excepto <strong>n_hij</strong>, su cuadrado y <strong>busqueda</strong>.</p></li>
+<li><p>[10 puntos] Estime ahora el <em>heckit</em> en dos pasos, <em>a mano</em>. Es decir, siga los siguientes pasos: i) estime un probit para la ecuación de selección y obtenga el índice <span class="math inline">\(x_i'\hat{\beta}\)</span>; ii) calcule el inverso de la razón de Mills <span class="math inline">\(\lambda_i(x_i'\hat{\beta})\)</span>; y iii) estime por MCO la ecuación para las horas trabajadas con la submuestra que tiene horas trabajadas positivas, incluyendo como regresor el inverso de la razón de Mills estimado y el resto de los regresores. Compare los coeficientes y los errores estándar obtenidos en esta parte con los de la parte b. ¿Por qué son iguales o por qué difieren?</p></li>
 </ol>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>Mroz, T. A. (1987). <a href="https://www.jstor.org/stable/1911029?casa_token=Uwxeul7XeBkAAAAA%3AyOzMP-SP9bdQNxw1FwyVjnEJt3w2ShyTtiinMVL6RZnpxKeehfas96e2ETxA6us20xyQG-NUF71svQugl78mx6vG2oJ2k7U39TtJn6P6dq-iTH2aDWsH&amp;seq=1#metadata_info_tab_contents">The sensitivity of an empirical model of married women’s hours of work to economic and statistical assumptions</a>. <em>Econometrica</em>: Journal of the econometric society, 765-799.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

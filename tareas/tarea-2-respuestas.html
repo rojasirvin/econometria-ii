@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Econometría II 2023 - Respuestas a la tarea 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Respuestas a la tarea 2</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../iconoEconometria.jpg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/rojasirvin/econometria-ii" rel="" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../programa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Programa</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reglas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reglas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecturas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../presentaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentaciones</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tareas/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tareas</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#respuestas" id="toc-respuestas" class="nav-link active" data-scroll-target="#respuestas">Respuestas</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
+  <li><a href="#pregunta-2.-modelo-en-dos-partes-o-de-valla" id="toc-pregunta-2.-modelo-en-dos-partes-o-de-valla" class="nav-link" data-scroll-target="#pregunta-2.-modelo-en-dos-partes-o-de-valla">Pregunta 2. Modelo en dos partes o de valla</a></li>
+  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
+  <li><a href="#pregunta-4" id="toc-pregunta-4" class="nav-link" data-scroll-target="#pregunta-4">Pregunta 4</a></li>
+  <li><a href="#pregunta-5" id="toc-pregunta-5" class="nav-link" data-scroll-target="#pregunta-5">Pregunta 5</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Respuestas a la tarea 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="respuestas" class="level1">
+<h1>Respuestas</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">indent =</span> <span class="st">"   "</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampleSelection)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="pregunta-1" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
+<p>Considere el modelo Poisson visto en clase y un vector de variables explicativas <span class="math inline">\(x\)</span>, todas continuas, usadas para parametrizar la media.</p>
+<ol type="a">
+<li><p>[1 puntos] ¿Cuál es el efecto de un cambio en el <span class="math inline">\(j\)</span>ésimo regresor sobre <span class="math inline">\(E(y│x)\)</span>?</p>
+<p><em>Con un modelo Poisson parametrizamos la media como <span class="math inline">\(\mu=exp(x'\beta)\)</span>. En este caso, un cambio en un regresor <span class="math inline">\(j\)</span> tiene el efecto:</em></p>
+<p><span class="math display">\[\frac{\partial E(y|x)}{\partial x_j}=\beta_j exp(x'\beta)\]</span></p>
+<p><em>Es decir, un cambio en una unidad de <span class="math inline">\(x_j\)</span> produce un cambio en el conteo esperado de <span class="math inline">\(y\)</span> igual a <span class="math inline">\(\beta_j exp(x'\beta)\)</span> unidades.</em></p></li>
+<li><p>[2 puntos] Usando esta expresión, muestre que si el <span class="math inline">\(j\)</span>ésimo regresor es <span class="math inline">\(x_j\)</span>, entonces <span class="math inline">\(100 \beta_j\)</span> es la semielasticidad de <span class="math inline">\(E(y│x)\)</span> con respecto a <span class="math inline">\(x_j\)</span>. Nota: Este punto es muy útil para la interpretación de los coeficientes de un modelo Poisson.</p>
+<p><em>Resolviendo para <span class="math inline">\(\beta_j\)</span> en la expresión que acabamos de encontrar</em>:</p>
+<p><span class="math display">\[\beta_j=\frac{\partial E(y|x)}{\partial x_j}\frac{1}{\exp(x'\beta)}\]</span></p>
+<p><em>Reconociendo que</em></p>
+<p><span class="math display">\[\beta_j=\frac{\partial E(y|x)}{\partial x_j}\frac{1}{\exp(x'\beta)}=\frac{\partial E(y|x)}{\partial x_j}\frac{1}{E(y|x)}=\frac{\partial\ln E(y|x)}{\partial x_j}\]</span></p>
+<p><span class="math inline">\(\frac{\partial\ln E(y|x)}{\partial x_j}\)</span> <em>es una semileasticidad, es decir un cambio marginal de <span class="math inline">\(x_j\)</span> se asocia con un cambio porcentual en la media condicional igual a</em> <span class="math inline">\(100\beta_j\Delta x_j\)</span>.</p></li>
+<li><p>[2 puntos] ¿Cómo se interpreta <span class="math inline">\(\beta_j\)</span> si reemplazamos <span class="math inline">\(x_j\)</span> por <span class="math inline">\(\log(x_j)\)</span>)?</p>
+<p><em>Si ahora el regresor de interés entra en el índice como un logaritmo</em>: <span class="math display">\[\beta_j=\frac{\partial E(y|x)}{\partial x_j}\frac{x_j}{E(y|x)}\]</span></p>
+<p><em>la defnición de una elasticidad.</em></p></li>
+</ol>
+</section>
+<section id="pregunta-2.-modelo-en-dos-partes-o-de-valla" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2.-modelo-en-dos-partes-o-de-valla">Pregunta 2. Modelo en dos partes o de valla</h2>
+<p>En esta pregunta mostrará cómo para un modelo en dos partes Poisson la log verosimilitud del problema es la suma de log verosimilitud para un proceso binario y la log verosimilitud de un proceso Poisson truncado en cero. Considere una variable aleatoria <span class="math inline">\(Y\)</span> con observaciones iid que sigue una distribución Poisson con parámetro <span class="math inline">\(\lambda\)</span> tal que</p>
+<p><span class="math display">\[f(y,\lambda)=P(Y=y)=\frac{\lambda^y exp(-\lambda)}{y!}\]</span></p>
+<ol type="a">
+<li><p>[4 puntos] Obtenga la distribución Poisson truncada en cero, definida como <span class="math inline">\(P(Y=y|Y&gt;0)\)</span>.</p>
+<p><em>Sabemos que la distribución truncada en cero es:</em></p>
+<p><span class="math display">\[P(Y=y|Y&gt;0)=\frac{f(y,\lambda)}{1-f(0,\lambda)}\]</span></p>
+<p><em>Sustituyendo la forma de la densidad Poisson:</em></p>
+<p><span class="math display">\[P(Y=y|Y&gt;0)=\frac{\frac{\lambda^y exp(-\lambda)}{y!}}{1-exp(-\lambda)}=\frac{\lambda^y}{y!(exp(\lambda)-1)}\]</span></p></li>
+<li><p>[4 puntos] Considere además un proceso binomial que modela la probabilidad de que la variable <span class="math inline">\(Y\)</span> tome un valor cero o un valor positivo, como sigue:</p>
+<p><span class="math display">\[P(Y=y)=\begin{cases} \pi \quad\quad y=0 \\ 1-\pi\quad\quad y=1,2,3,\ldots \end{cases} \]</span></p>
+<p>En clase vimos la forma general del modelo en dos partes:</p>
+<p><span class="math display">\[
+g(y)=
+\begin{cases}
+f_1(0) \quad\text{si }y=0 \\
+\frac{(1-f_1(0))f_2(y)}{1-f_2(0)}\quad\text{si }y\geq 1
+\end{cases}
+\]</span></p>
+<p>Especialice forma general del modelo de dos partes usando la distribución truncada derivada en a. y el proceso binomial definido arriba para obtener una función de masa de probabilidad no condicional para <span class="math inline">\(Y\)</span>, <span class="math inline">\(g(y)\)</span>.</p>
+<p><em>Sea <span class="math inline">\(\pi\)</span> la probabilidad de observar un conteo igual a cero, especializamos la función vista en clase, incorporando la distribución truncada encontrada en la parte a.:</em></p>
+<p><span class="math display">\[
+g(y)=
+\begin{cases}
+\pi \quad\text{si }y=0 \\
+(1-\pi)\frac{\lambda^y}{y!(exp(\lambda)-1)} \quad\text{si }y\geq 1
+\end{cases}
+\]</span></p></li>
+<li><p>[4 puntos] Obtenga la log verosimilitud para la <span class="math inline">\(i\)</span>ésima observación. Se sugiere que continúe sus cálculos con una ecuación en dos partes.</p>
+<p><em>La log verosimilitud de la <span class="math inline">\(i\)</span>ésima observación es:</em></p>
+<p><span class="math display">\[
+\mathcal{l}_i(\pi,\lambda,y_i)=
+\begin{cases}
+\ln(\pi) \quad\text{si }y=0 \\
+\ln\left((1-\pi)\frac{\lambda^{y_i}}{y!(exp(\lambda)-1)}\right) \quad\text{si }y\geq 1
+\end{cases}
+\]</span></p></li>
+<li><p>[4 puntos] En este problema, parametrizaremos <span class="math inline">\(\lambda_i\)</span> como <span class="math inline">\(\lambda_i=exp(x_i'\beta_2)\)</span>, como regularmente lo hemos hecho en una regresión Poisson. Por otro lado, podemos trabajar con una parametrización general de la probabilidad <span class="math inline">\(\pi\)</span>, <span class="math inline">\(\pi=F(x_i'\beta_1)\)</span>. Escriba la función de log verosimilitud del problema usando la parametrización para <span class="math inline">\(\pi_i\)</span> y para <span class="math inline">\(\lambda_i\)</span> que acabamos de describir. Presente esta función en una sola parte.</p>
+<p><em>Con la parametrización dada, podemos reescribir la log verosimilitud de una observación como:</em></p>
+<p><span class="math display">\[
+\mathcal{l}_i(\pi,\lambda,y_i)=
+\begin{cases}
+\ln(F(x_i'\beta_1)) \quad\text{si }y=0 \\
+\ln\left((1-F(x_i'\beta_1))\frac{exp(x_i'\beta_2)^{y_i}}{y!(exp(exp(x_i'\beta_2))-1)} \right) \quad\text{si }y\geq 1
+\end{cases}
+\]</span></p>
+<p><em>La log verosimilitud del problema es la probabilidad de observar los datos. Con la parametrización anterior:</em></p>
+<p><span class="math display">\[
+\mathcal{L}(\beta_1,\beta_2,y_i)=\ln\left(\prod_{i\in y_i=0}F(x_i'\beta_1)\prod_{i\in y_i&gt;0}(1-F(x_i'\beta_1))\prod_{i\in y_i&gt;0}\frac{exp(x_i'\beta_2)^{y_i}}{y!(exp(exp(x_i'\beta_2))-1)} \right)
+\]</span></p>
+<p><em>Distribuyendo el logarítmo:</em></p>
+<p><span class="math display">\[
+\begin{align}
+\mathcal{L}(\beta_1,\beta_2,y_i)&amp;=\sum_{i\in y_i=0}\ln(F(x_i'\beta_1))+\sum_{i\in y_i&gt;0}\ln\left(1-F(x_i'\beta_1)\right)+ \\
+&amp;+\sum_{i\in y_i&gt;0}x_i'\beta_2y_i-\sum_{i\in y_i&gt;0}\ln\left(exp(exp(x_i'\beta_2))-1\right)-\sum_{i\in y_i&gt;0}y!
+\end{align}
+\]</span></p></li>
+<li><p>[4 puntos] Agrupe los términos para mostrar que <span class="math inline">\(\mathcal{L}=\mathcal{L}_1(\beta_1)+\mathcal{L}_2(\beta_2)\)</span>. Así, mostrará que la log verosimilitud del problema se puede descomponer en una log verosimilitud para el modelo binario y otra para el conteo truncado en cero. Por tanto, no perdemos información si estimamos los parámetros de la probabilidad binomial por un lado, y los de la distribución Poisson truncada en cero, por el otro.</p>
+<p><em>Claramente:</em></p>
+<p><span class="math display">\[
+\mathcal{L}(\beta_1,\beta_2,y_i)=\mathcal{L_1}(\beta_1,y_i)+\mathcal{L_2}(\beta_2,y_i)
+\]</span></p>
+<p><em>es decir, la suma de dos log verosimilitudes, una de un proceso binario y otra para el modelo Poisson truncado en cero.</em></p></li>
+</ol>
+</section>
+<section id="pregunta-3" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
+<p>Use los datos <em>phd_articulos.csv</em>, los cuales contienen información sobre el número de artículos publicados para una muestra de entonces estudiantes de doctorado. Nuestra variable de interés será el número de artículos <strong>art</strong>.</p>
+<ol type="a">
+<li><p>[4 puntos] Estime un modelo Poisson que incluya variables dicotómicas para estudiantes mujeres (<strong>female</strong>) y para estudiantes casadas o casados (<strong>married</strong>), el número de hijos mejores de cinco años (<strong>kid5</strong>), el ranking de prestigio del doctorado (<strong>phd</strong>) y el número de artículos publicados por su mentor (<strong>mentor</strong>). Realice la estimación de la matriz de varianzas primero a partir de la varianza teórica que resulta de la igualdad de la matriz de información y luego usando una matriz de sándwich. Interprete los coeficientes estimados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data.phd<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"../files/phd_articulos.csv"</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span>                <span class="st">"latin1"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data.phd <span class="ot">&lt;-</span> data.phd <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">female=</span><span class="fu">factor</span>(female,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels=</span><span class="fu">c</span>(<span class="st">'Male'</span>,<span class="st">'Female'</span>)))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>mpoisson <span class="ot">&lt;-</span> <span class="fu">glm</span>(art <span class="sc">~</span> <span class="fu">factor</span>(female) <span class="sc">+</span> <span class="fu">factor</span>(married) <span class="sc">+</span> kid5 <span class="sc">+</span> phd <span class="sc">+</span> mentor,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">family=</span><span class="st">"poisson"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">data=</span>data.phd)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mpoisson)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = art ~ factor(female) + factor(married) + kid5 + 
+    phd + mentor, family = "poisson", data = data.phd)
+
+Coefficients:
+                       Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)            0.459860   0.093335   4.927 8.35e-07 ***
+factor(female)Female  -0.224594   0.054613  -4.112 3.92e-05 ***
+factor(married)Single -0.155243   0.061374  -2.529   0.0114 *  
+kid5                  -0.184883   0.040127  -4.607 4.08e-06 ***
+phd                    0.012823   0.026397   0.486   0.6271    
+mentor                 0.025543   0.002006  12.733  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 1817.4  on 914  degrees of freedom
+Residual deviance: 1634.4  on 909  degrees of freedom
+AIC: 3314.1
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+</div>
+<p><em>Presentamos errores heterocedásticos y robustos a la heterocedasticidad. Aquí les muestro otro paquete que puede servirles para presentar resultados en trabajos y tesinas, alterntivo a stargazer, modelsummary:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(mpoisson, mpoisson),</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vcov =</span> <span class="fu">list</span>(<span class="st">'classical'</span>, <span class="st">'robust'</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> <span class="fl">0.01</span>, <span class="st">'**'</span> <span class="ot">=</span> <span class="fl">0.05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">0.460***</td>
+<td style="text-align: center;">0.460***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.093)</td>
+<td style="text-align: center;">(0.151)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor(female)Female</td>
+<td style="text-align: center;">-0.225***</td>
+<td style="text-align: center;">-0.225***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.055)</td>
+<td style="text-align: center;">(0.072)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor(married)Single</td>
+<td style="text-align: center;">-0.155**</td>
+<td style="text-align: center;">-0.155*</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.061)</td>
+<td style="text-align: center;">(0.083)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">kid5</td>
+<td style="text-align: center;">-0.185***</td>
+<td style="text-align: center;">-0.185***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.040)</td>
+<td style="text-align: center;">(0.057)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">phd</td>
+<td style="text-align: center;">0.013</td>
+<td style="text-align: center;">0.013</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.026)</td>
+<td style="text-align: center;">(0.044)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mentor</td>
+<td style="text-align: center;">0.026***</td>
+<td style="text-align: center;">0.026***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.002)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.004)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">915</td>
+<td style="text-align: center;">915</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: center;">3314.1</td>
+<td style="text-align: center;">3314.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BIC</td>
+<td style="text-align: center;">3343.0</td>
+<td style="text-align: center;">3343.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log.Lik.</td>
+<td style="text-align: center;">-1651.056</td>
+<td style="text-align: center;">-1651.056</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: center;">43.333</td>
+<td style="text-align: center;">14.855</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">1.84</td>
+<td style="text-align: center;">1.84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Std.Errors</td>
+<td style="text-align: center;">IID</td>
+<td style="text-align: center;">HC3</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+<p><em>Para las variables continuas, como el número de artículos publicados por el mentor, la interpretación es el cambio en el log conteo esperado. En este caso, un artículo más publicado por el mentor incrementa el log conteo esperado en 0.026. También sabemos que los coeficientes tienen una interpretación de semielasticidad; en este caso, la semielasticidad del conteo con respecto al número de artículos publicados es 0.026. Para las variables dicotómicas, por ejemplo female, la interpretación es la diferencia entre el log conteo esperado entre mujeres y la categoría base (hombres).</em></p></li>
+<li><p>[5 puntos] Obtenga la razón de tasas de incidencia (IRR) para los coeficientes e interprete los resultados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">summary</span>(mpoisson)<span class="sc">$</span>coef)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                       Estimate Std. Error      z value Pr(&gt;|z|)
+(Intercept)           1.5838526   1.097829 1.379638e+02 1.000001
+factor(female)Female  0.7988403   1.056132 1.636793e-02 1.000039
+factor(married)Single 0.8562068   1.063297 7.970295e-02 1.011490
+kid5                  0.8312018   1.040943 9.977222e-03 1.000004
+phd                   1.0129051   1.026749 1.625407e+00 1.872246
+mentor                1.0258718   1.002008 3.386456e+05 1.000000</code></pre>
+</div>
+</div>
+<p><em>Aunque esto también puede hacerse directamente en modelsummary:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(mpoisson, mpoisson),</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">exponentiate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">vcov =</span> <span class="fu">list</span>(<span class="st">'classical'</span>, <span class="st">'robust'</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> <span class="fl">0.01</span>, <span class="st">'**'</span> <span class="ot">=</span> <span class="fl">0.05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">1.584***</td>
+<td style="text-align: center;">1.584***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.148)</td>
+<td style="text-align: center;">(0.240)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor(female)Female</td>
+<td style="text-align: center;">0.799***</td>
+<td style="text-align: center;">0.799***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.044)</td>
+<td style="text-align: center;">(0.058)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor(married)Single</td>
+<td style="text-align: center;">0.856**</td>
+<td style="text-align: center;">0.856*</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.053)</td>
+<td style="text-align: center;">(0.071)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">kid5</td>
+<td style="text-align: center;">0.831***</td>
+<td style="text-align: center;">0.831***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.033)</td>
+<td style="text-align: center;">(0.047)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">phd</td>
+<td style="text-align: center;">1.013</td>
+<td style="text-align: center;">1.013</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.027)</td>
+<td style="text-align: center;">(0.045)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mentor</td>
+<td style="text-align: center;">1.026***</td>
+<td style="text-align: center;">1.026***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.002)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.004)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">915</td>
+<td style="text-align: center;">915</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: center;">3314.1</td>
+<td style="text-align: center;">3314.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BIC</td>
+<td style="text-align: center;">3343.0</td>
+<td style="text-align: center;">3343.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log.Lik.</td>
+<td style="text-align: center;">-1651.056</td>
+<td style="text-align: center;">-1651.056</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: center;">43.333</td>
+<td style="text-align: center;">14.855</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">1.84</td>
+<td style="text-align: center;">1.84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Std.Errors</td>
+<td style="text-align: center;">IID</td>
+<td style="text-align: center;">HC3</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+<p><em>La interpretación de los coeficientes se vuelve más sencilla usando irr. Para la variable continua mentor, un artículo más publicado por el mentor está asociado con 1.026 veces más artículos publicados por el estudiante, es decir, un 2.6% más artículos. En cambio, la variable dicotómica para mujeres indica que las mujeres publican 0.8 veces el número de artículos que los hombres.</em></p></li>
+<li><p>[3 puntos] Considere ahora que las mujeres han tenido carreras profesionales más cortas que los hombres, es decir, han estado menos expuestas a la ocurrencia de los eventos <em>publicar</em>. Incorpore esto al análisis y reinterprete los resultados. Pista: explore la opción <em>offeset</em> en <em>glm</em> de R. La columna <strong>profage</strong> mide la duración efectiva de las carreras profesionales de cada individuo.</p>
+<p><em>El razonamiento es que ahora queremos conocer cuál es la tasa de publicación, es decir, <span class="math inline">\(art/profage\)</span>. Pero como nuestro podemos Poisson solo puede manejar conteos, podemos modificar el modelo para pasar la edad de la carrera del lado derecho:</em></p>
+<p><span class="math display">\[\begin{aligned}ln(art/profage)&amp;=x'\beta \\ ln(art)&amp;=x'\beta+\ln(profage) \end{aligned}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mpoisson_duracion <span class="ot">&lt;-</span> <span class="fu">glm</span>(art <span class="sc">~</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">factor</span>(female) <span class="sc">+</span> <span class="fu">factor</span>(married) <span class="sc">+</span> kid5 <span class="sc">+</span> phd <span class="sc">+</span> mentor,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">offset =</span> <span class="fu">log</span>(profage),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family=</span><span class="st">"poisson"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span>data.phd)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mpoisson_duracion)<span class="sc">$</span>coef</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         Estimate  Std. Error     z value      Pr(&gt;|z|)
+(Intercept)           -2.95404558 0.093812104 -31.4889600 1.230266e-217
+factor(female)Female   0.45874678 0.054721432   8.3833109  5.145931e-17
+factor(married)Single -0.15598278 0.061347334  -2.5426171  1.100257e-02
+kid5                  -0.18643454 0.040135522  -4.6451256  3.398696e-06
+phd                    0.01801602 0.026428953   0.6816773  4.954430e-01
+mentor                 0.02573493 0.002001731  12.8563329  7.924799e-38</code></pre>
+</div>
+</div>
+<p><em>Hasta ahora hemos asumido que cada individuo ha estado “en riesgo” de publicar por el mismo periodo de tiempo, lo cual puede ser no cierto si, por ejemplo, algunos estudiantes se graduaron antes, o si otros han tenido pausas en sus carreras. Al controlar por el hecho de que las mujeres han tenido carreras más cortas, la variable female deja de ser negativa y se convierte en positiva. Las mujeres publican más que los hombres al tomar en cuenta la duración de las carreras.</em></p>
+<p><em>Comparando los tres modelos:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(mpoisson, mpoisson, mpoisson_duracion),</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vcov =</span> <span class="fu">list</span>(<span class="st">'classical'</span>, <span class="st">'robust'</span>, <span class="st">'robust'</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> <span class="fl">0.01</span>, <span class="st">'**'</span> <span class="ot">=</span> <span class="fl">0.05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(3)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">0.460***</td>
+<td style="text-align: center;">0.460***</td>
+<td style="text-align: center;">-2.954***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.093)</td>
+<td style="text-align: center;">(0.151)</td>
+<td style="text-align: center;">(0.155)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor(female)Female</td>
+<td style="text-align: center;">-0.225***</td>
+<td style="text-align: center;">-0.225***</td>
+<td style="text-align: center;">0.459***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.055)</td>
+<td style="text-align: center;">(0.072)</td>
+<td style="text-align: center;">(0.073)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor(married)Single</td>
+<td style="text-align: center;">-0.155**</td>
+<td style="text-align: center;">-0.155*</td>
+<td style="text-align: center;">-0.156*</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.061)</td>
+<td style="text-align: center;">(0.083)</td>
+<td style="text-align: center;">(0.083)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">kid5</td>
+<td style="text-align: center;">-0.185***</td>
+<td style="text-align: center;">-0.185***</td>
+<td style="text-align: center;">-0.186***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.040)</td>
+<td style="text-align: center;">(0.057)</td>
+<td style="text-align: center;">(0.057)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">phd</td>
+<td style="text-align: center;">0.013</td>
+<td style="text-align: center;">0.013</td>
+<td style="text-align: center;">0.018</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.026)</td>
+<td style="text-align: center;">(0.044)</td>
+<td style="text-align: center;">(0.045)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mentor</td>
+<td style="text-align: center;">0.026***</td>
+<td style="text-align: center;">0.026***</td>
+<td style="text-align: center;">0.026***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.002)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.004)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.005)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">915</td>
+<td style="text-align: center;">915</td>
+<td style="text-align: center;">915</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: center;">3314.1</td>
+<td style="text-align: center;">3314.1</td>
+<td style="text-align: center;">3322.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BIC</td>
+<td style="text-align: center;">3343.0</td>
+<td style="text-align: center;">3343.0</td>
+<td style="text-align: center;">3351.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log.Lik.</td>
+<td style="text-align: center;">-1651.056</td>
+<td style="text-align: center;">-1651.056</td>
+<td style="text-align: center;">-1655.393</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: center;">43.333</td>
+<td style="text-align: center;">14.855</td>
+<td style="text-align: center;">20.311</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">1.84</td>
+<td style="text-align: center;">1.84</td>
+<td style="text-align: center;">1.85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Std.Errors</td>
+<td style="text-align: center;">IID</td>
+<td style="text-align: center;">HC3</td>
+<td style="text-align: center;">HC3</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div></li>
+<li><p>[3 puntos] Emplee ahora un modelo negativo binomial con sobredispersión cuadrática en la media para estimar la relación entre el número de artículos publicados y las variables explicativas antes enumeradas. Interprete el coeficiente asociado al número de hijos y a la variable dicotómica para estudiantes mujeres. ¿Qué puede decir sobre la significancia del <span class="math inline">\(\alpha\)</span> estimado?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mnb2 <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">glm.nb</span>(art <span class="sc">~</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">factor</span>(female) <span class="sc">+</span> <span class="fu">factor</span>(married) <span class="sc">+</span> kid5 <span class="sc">+</span> phd <span class="sc">+</span> mentor,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> data.phd)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mnb2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+MASS::glm.nb(formula = art ~ factor(female) + factor(married) + 
+    kid5 + phd + mentor, data = data.phd, init.theta = 2.264387695, 
+    link = log)
+
+Coefficients:
+                       Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)            0.406633   0.125778   3.233 0.001225 ** 
+factor(female)Female  -0.216418   0.072636  -2.979 0.002887 ** 
+factor(married)Single -0.150489   0.082097  -1.833 0.066791 .  
+kid5                  -0.176415   0.052813  -3.340 0.000837 ***
+phd                    0.015271   0.035873   0.426 0.670326    
+mentor                 0.029082   0.003214   9.048  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for Negative Binomial(2.2644) family taken to be 1)
+
+    Null deviance: 1109.0  on 914  degrees of freedom
+Residual deviance: 1004.3  on 909  degrees of freedom
+AIC: 3135.9
+
+Number of Fisher Scoring iterations: 1
+
+              Theta:  2.264 
+          Std. Err.:  0.271 
+
+ 2 x log-likelihood:  -3121.917 </code></pre>
+</div>
+</div>
+<p><em>Ponemos todo junto:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(mpoisson, mpoisson, mpoisson_duracion, mnb2),</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vcov =</span> <span class="fu">list</span>(<span class="st">'classical'</span>, <span class="st">'robust'</span>, <span class="st">'robust'</span>, <span class="st">'robust'</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> <span class="fl">0.01</span>, <span class="st">'**'</span> <span class="ot">=</span> <span class="fl">0.05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(3)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(4)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">0.460***</td>
+<td style="text-align: center;">0.460***</td>
+<td style="text-align: center;">-2.954***</td>
+<td style="text-align: center;">0.407***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.093)</td>
+<td style="text-align: center;">(0.151)</td>
+<td style="text-align: center;">(0.155)</td>
+<td style="text-align: center;">(0.135)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor(female)Female</td>
+<td style="text-align: center;">-0.225***</td>
+<td style="text-align: center;">-0.225***</td>
+<td style="text-align: center;">0.459***</td>
+<td style="text-align: center;">-0.216***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.055)</td>
+<td style="text-align: center;">(0.072)</td>
+<td style="text-align: center;">(0.073)</td>
+<td style="text-align: center;">(0.071)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">factor(married)Single</td>
+<td style="text-align: center;">-0.155**</td>
+<td style="text-align: center;">-0.155*</td>
+<td style="text-align: center;">-0.156*</td>
+<td style="text-align: center;">-0.150*</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.061)</td>
+<td style="text-align: center;">(0.083)</td>
+<td style="text-align: center;">(0.083)</td>
+<td style="text-align: center;">(0.081)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">kid5</td>
+<td style="text-align: center;">-0.185***</td>
+<td style="text-align: center;">-0.185***</td>
+<td style="text-align: center;">-0.186***</td>
+<td style="text-align: center;">-0.176***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.040)</td>
+<td style="text-align: center;">(0.057)</td>
+<td style="text-align: center;">(0.057)</td>
+<td style="text-align: center;">(0.053)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">phd</td>
+<td style="text-align: center;">0.013</td>
+<td style="text-align: center;">0.013</td>
+<td style="text-align: center;">0.018</td>
+<td style="text-align: center;">0.015</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.026)</td>
+<td style="text-align: center;">(0.044)</td>
+<td style="text-align: center;">(0.045)</td>
+<td style="text-align: center;">(0.038)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mentor</td>
+<td style="text-align: center;">0.026***</td>
+<td style="text-align: center;">0.026***</td>
+<td style="text-align: center;">0.026***</td>
+<td style="text-align: center;">0.029***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.002)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.004)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.005)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.003)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">915</td>
+<td style="text-align: center;">915</td>
+<td style="text-align: center;">915</td>
+<td style="text-align: center;">915</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: center;">3314.1</td>
+<td style="text-align: center;">3314.1</td>
+<td style="text-align: center;">3322.8</td>
+<td style="text-align: center;">3135.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BIC</td>
+<td style="text-align: center;">3343.0</td>
+<td style="text-align: center;">3343.0</td>
+<td style="text-align: center;">3351.7</td>
+<td style="text-align: center;">3169.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log.Lik.</td>
+<td style="text-align: center;">-1651.056</td>
+<td style="text-align: center;">-1651.056</td>
+<td style="text-align: center;">-1655.393</td>
+<td style="text-align: center;">-1560.958</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: center;">43.333</td>
+<td style="text-align: center;">14.855</td>
+<td style="text-align: center;">20.311</td>
+<td style="text-align: center;">20.935</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">1.84</td>
+<td style="text-align: center;">1.84</td>
+<td style="text-align: center;">1.85</td>
+<td style="text-align: center;">1.86</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Std.Errors</td>
+<td style="text-align: center;">IID</td>
+<td style="text-align: center;">HC3</td>
+<td style="text-align: center;">HC3</td>
+<td style="text-align: center;">HC3</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+<p><em>A diferencia de otros paquetes, glm.nb reporta <span class="math inline">\(\theta=1/\alpha\)</span>:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(alpha <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">summary</span>(mnb2)<span class="sc">$</span>theta)        </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4416205</code></pre>
+</div>
+</div>
+<p><em>Este es el modelo NB2 visto en clase y la forma más usada para implementar un modelo negativo binomial. Se asume una sobredispersión cuadrática en la media, con la varianza parametrizada usando <span class="math inline">\(\alpha\)</span>. La interpretación de los coeficientes se mantiene con respecto al modelo Poisson. Los coeficientes tienen magnitudes similares, pero se prefiere el modelo NB2 si el propósito es pronóstico pues toma en cuenta la sobredispersión y le da suficiente flexibilidad a la varianza para depender de manera cuadrática de la media.</em></p>
+<p><em>Un poco más cuidado hay que poner en <span class="math inline">\(\alpha\)</span>. En este caso, <span class="math inline">\(\hat{\alpha}=0.44\)</span>. Pero noten que lo que se reporta es el error estándar de <span class="math inline">\(\theta\)</span>. Como platicamos en clase, con un estadístico podemos hacer un test y obtener un valor <span class="math inline">\(p\)</span>, pero una función no lineal del mismo puede que no tenga el mismo valor <span class="math inline">\(p\)</span>. Esto ocurre aquí, deberíamos recurrir al método delta para calcular el error estándar de <span class="math inline">\(\alpha\)</span>.</em></p></li>
+</ol>
+</section>
+<section id="pregunta-4" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-4">Pregunta 4</h2>
+<p>Retome los datos del archivo <em>motral2012.csv</em> usado en la Tarea 1. Estimará un modelo Tobit para explicar los factores que afectan la oferta laboral femenina. En este archivo de datos la variable <strong>hrsocup</strong> registra las horas trabajadas a la semana.</p>
+<ol type="a">
+<li><p>[2 punto] ¿Qué proporción de la muestra femenina reporta horas trabajadas iguales a cero?</p>
+<p><em>Si hacemos una dummy de horas positivas, al sacarle la media obtenemos la proporción.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data.salarios<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"../files/motral2012.csv"</span>,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"latin1"</span>)) </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>data.salarios <span class="ot">&lt;-</span> data.salarios <span class="sc">%&gt;%</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex<span class="sc">==</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zerohrs=</span><span class="fu">ifelse</span>(hrsocup<span class="sc">==</span><span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data.salarios<span class="sc">$</span>zerohrs)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.0000  0.0000  0.3528  1.0000  1.0000 </code></pre>
+</div>
+</div>
+<p><em>El 35% de las observaciones tienen cero horas trabajadas.</em></p></li>
+<li><p>[3 puntos] Se desea estimar el efecto de los años de educación (<strong>anios_esc</strong>) sobre la oferta laboral femenina controlando por el estado marital (<strong>casada</strong>), la edad (<strong>eda</strong>) y el número de hijos (<strong>n_hij</strong>) como una variable continua. En la base, <strong>e_con</strong> toma el valor de 5 para las personas casadas. Genere la variable dummy <strong>casada</strong> que tome el valor de 1 para las mujeres casadas y cero en otro caso. Estime un modelo de MCO para <strong>hrsocup</strong> mayor que cero, usando solo la población femenina. Reporte errores robustos. ¿Cuál es la interpretación sobre el coeficiente de los años de escolaridad?</p>
+<p><em>El estimar por MCO, un año más de escolaridad se asocia con 0.17 horas trabajadas más a la semana. Sin embargo, este efecto no es estadísticamente significativo.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data.salarios <span class="ot">&lt;-</span> data.salarios <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">casada=</span><span class="fu">ifelse</span>(e_con<span class="sc">==</span><span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>reg_mco <span class="ot">&lt;-</span> <span class="fu">lm</span>(hrsocup <span class="sc">~</span> anios_esc<span class="sc">+</span>casada<span class="sc">+</span>eda<span class="sc">+</span>n_hij,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">data=</span><span class="fu">filter</span>(data.salarios,hrsocup<span class="sc">&gt;</span><span class="dv">0</span>))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(reg_mco,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="fu">vcovHC</span>(reg_mco, <span class="st">"HC1"</span>))[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) 36.70129720 1.99116828 18.432042 2.742336e-69
+anios_esc    0.17465627 0.10353350  1.686954 9.179628e-02
+casada      -3.52571327 0.89724706 -3.929479 8.855253e-05
+eda          0.06949593 0.04914655  1.414055 1.575295e-01</code></pre>
+</div>
+</div>
+<p><em>Con modelsummary podemos hacer pedir la tabla de coeficientes. Podemos especificar qué tipo de errores robustos queremos en la opción vcov:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(reg_mco, reg_mco),</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vcov =</span> <span class="fu">list</span>(<span class="st">'classical'</span>, <span class="st">'HC1'</span>),</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> <span class="fl">0.01</span>, <span class="st">'**'</span> <span class="ot">=</span> <span class="fl">0.05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">36.701***</td>
+<td style="text-align: center;">36.701***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(1.959)</td>
+<td style="text-align: center;">(1.991)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">anios_esc</td>
+<td style="text-align: center;">0.175*</td>
+<td style="text-align: center;">0.175*</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.104)</td>
+<td style="text-align: center;">(0.104)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">casada</td>
+<td style="text-align: center;">-3.526***</td>
+<td style="text-align: center;">-3.526***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.862)</td>
+<td style="text-align: center;">(0.897)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">eda</td>
+<td style="text-align: center;">0.069</td>
+<td style="text-align: center;">0.069</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.047)</td>
+<td style="text-align: center;">(0.049)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">n_hij</td>
+<td style="text-align: center;">-1.149***</td>
+<td style="text-align: center;">-1.149***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.336)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.372)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">1699</td>
+<td style="text-align: center;">1699</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2</td>
+<td style="text-align: center;">0.030</td>
+<td style="text-align: center;">0.030</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2 Adj.</td>
+<td style="text-align: center;">0.028</td>
+<td style="text-align: center;">0.028</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: center;">14234.8</td>
+<td style="text-align: center;">14234.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BIC</td>
+<td style="text-align: center;">14267.4</td>
+<td style="text-align: center;">14267.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log.Lik.</td>
+<td style="text-align: center;">-7111.383</td>
+<td style="text-align: center;">-7111.383</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: center;">13.171</td>
+<td style="text-align: center;">12.526</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">15.91</td>
+<td style="text-align: center;">15.91</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Std.Errors</td>
+<td style="text-align: center;">IID</td>
+<td style="text-align: center;">HC1</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div></li>
+<li><p>[3 puntos] ¿Qué problema existe con el modelo planteado en el punto anterior en términos de la selección? ¿Considera que se trata de un caso de censura o de truncamiento?</p>
+<p><em>Podemos racionalizar las horas trabajadas en un modelo microeconómico de oferta laboral. Las horas trabajadas observadas son positivas cuando la solución óptima es una cantidad positiva de horas. Sin embargo, si la solución óptima implicara horas negativas, las horas observadas serían cero. En este caso tenemos datos censurados en cero. Si existe una relación positiva entre educación y horas trabajadas, al estimar un modelo por MCO usando solo los datos con horas positivas estamos sobreestimando la media condicional pues se habrán omitido del análisis aquellas mujeres cuya solución a su problema de optimización eran horas iguales a cero o negativas.</em></p></li>
+<li><p>[8 puntos] Estime un modelo Tobit de datos censurados. ¿Qué resuelve el modelo Tobit en este caso? Interprete nuevamente el coeficiente sobre los años de escolaridad.</p>
+<p><em>La función tobit permite hacer esto muy fácilmente. Noten que left especifica dónde está la censura. La opción gaussian pone explícito uno de los supuestos críticos del modelo tobit visto en clase: errores normales. Además, se asume homocedasticidad.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>reg_tobit <span class="ot">&lt;-</span> <span class="fu">tobit</span>(hrsocup <span class="sc">~</span> anios_esc<span class="sc">+</span>casada<span class="sc">+</span>eda<span class="sc">+</span>n_hij,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">left =</span> <span class="dv">0</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">right =</span> <span class="cn">Inf</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">dist =</span> <span class="st">"gaussian"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> data.salarios)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_tobit)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+tobit(formula = hrsocup ~ anios_esc + casada + eda + n_hij, left = 0, 
+    right = Inf, dist = "gaussian", data = data.salarios)
+
+Observations:
+         Total  Left-censored     Uncensored Right-censored 
+          2625            926           1699              0 
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)   0.88236    3.19905   0.276  0.78269    
+anios_esc     0.85530    0.17509   4.885 1.04e-06 ***
+casada      -10.99515    1.43025  -7.688 1.50e-14 ***
+eda           0.41621    0.07665   5.430 5.64e-08 ***
+n_hij        -1.73840    0.55887  -3.111  0.00187 ** 
+Log(scale)    3.44512    0.01887 182.608  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Scale: 31.35 
+
+Gaussian distribution
+Number of Newton-Raphson Iterations: 3 
+Log-likelihood: -9086 on 6 Df
+Wald-statistic: 127.9 on 4 Df, p-value: &lt; 2.22e-16 </code></pre>
+</div>
+</div>
+<p><em>El modelo tobit para datos censurados toma en cuenta que hay una masa de ceros en las horas trabajadas para individuos para los que disponemos de sus características en la base de datos. El modelo tobit ajusta la probabilidad de observar esta masa de ceros. El coeficiente estimado será ahora consistente si el modelo está bien especificado, es decir, si el proceso subyacente es lineal en los parámetros y con un error normal homoscedástico (los supuestos de tobit básico). En este caso, un año más de educación se asocia con 0.85 más horas semanales trabajadas, un efecto estadísticamente significativo. Usar MCO subestimaba el efecto de la escolaridad.</em></p>
+<p><em>modelsummary acepta la salida de la función tobit:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(reg_mco, reg_mco, reg_tobit),</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vcov =</span> <span class="fu">list</span>(<span class="st">'classical'</span>, <span class="st">'HC1'</span>, <span class="st">'classical'</span>),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> <span class="fl">0.01</span>, <span class="st">'**'</span> <span class="ot">=</span> <span class="fl">0.05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(3)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">36.701***</td>
+<td style="text-align: center;">36.701***</td>
+<td style="text-align: center;">0.882</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(1.959)</td>
+<td style="text-align: center;">(1.991)</td>
+<td style="text-align: center;">(3.199)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">anios_esc</td>
+<td style="text-align: center;">0.175*</td>
+<td style="text-align: center;">0.175*</td>
+<td style="text-align: center;">0.855***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.104)</td>
+<td style="text-align: center;">(0.104)</td>
+<td style="text-align: center;">(0.175)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">casada</td>
+<td style="text-align: center;">-3.526***</td>
+<td style="text-align: center;">-3.526***</td>
+<td style="text-align: center;">-10.995***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.862)</td>
+<td style="text-align: center;">(0.897)</td>
+<td style="text-align: center;">(1.430)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">eda</td>
+<td style="text-align: center;">0.069</td>
+<td style="text-align: center;">0.069</td>
+<td style="text-align: center;">0.416***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.047)</td>
+<td style="text-align: center;">(0.049)</td>
+<td style="text-align: center;">(0.077)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">n_hij</td>
+<td style="text-align: center;">-1.149***</td>
+<td style="text-align: center;">-1.149***</td>
+<td style="text-align: center;">-1.738***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.336)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.372)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.559)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">1699</td>
+<td style="text-align: center;">1699</td>
+<td style="text-align: center;">2625</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2</td>
+<td style="text-align: center;">0.030</td>
+<td style="text-align: center;">0.030</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2 Adj.</td>
+<td style="text-align: center;">0.028</td>
+<td style="text-align: center;">0.028</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: center;">14234.8</td>
+<td style="text-align: center;">14234.8</td>
+<td style="text-align: center;">18184.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BIC</td>
+<td style="text-align: center;">14267.4</td>
+<td style="text-align: center;">14267.4</td>
+<td style="text-align: center;">18220.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log.Lik.</td>
+<td style="text-align: center;">-7111.383</td>
+<td style="text-align: center;">-7111.383</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: center;">13.171</td>
+<td style="text-align: center;">12.526</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">15.91</td>
+<td style="text-align: center;">15.91</td>
+<td style="text-align: center;">23.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Std.Errors</td>
+<td style="text-align: center;">IID</td>
+<td style="text-align: center;">HC1</td>
+<td style="text-align: center;">IID</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div></li>
+<li><p>[4 puntos] ¿Cuál es el efecto marginal de un incremento de un año de educación en la oferta laboral? ¿Cómo cambia su respuesta si, en lugar de considerar la variable latente, considera la variable censurada?</p>
+<p><em>El efecto marginal en la variable latente es directamente el coficiente estimado en la parte d., es decir 0.855.</em></p>
+<p><em>El efecto marginal en la media censurada está dado por:</em></p>
+<p><span class="math display">\[\frac{\partial E(y|x)}{\partial x_j}=\beta_j\Phi(x_i'\beta)\]</span></p>
+<p><em>Lo que hice aquí fue calcular este efecto marginal para cada individuo y luego obtener el promedio de los efectos marginales en aquellos individuos con horas positivas.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data.salarios <span class="ot">&lt;-</span> data.salarios <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">index1=</span><span class="fu">predict</span>(reg_tobit,.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">phi=</span><span class="fu">pnorm</span>(index1<span class="sc">/</span>reg_tobit<span class="sc">$</span>scale)) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mfx_anis_esc=</span>reg_tobit<span class="sc">$</span>coefficients[<span class="dv">2</span>]<span class="sc">*</span>phi,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">mfx_eda=</span>reg_tobit<span class="sc">$</span>coefficients[<span class="dv">4</span>]<span class="sc">*</span>phi,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">mfx_n_hij=</span>reg_tobit<span class="sc">$</span>coefficients[<span class="dv">5</span>]<span class="sc">*</span>phi)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>data.salarios <span class="sc">%&gt;%</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hrsocup<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mfx_anis_esc=</span><span class="fu">mean</span>(mfx_anis_esc)) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  mfx_anis_esc
+         &lt;dbl&gt;
+1        0.612</code></pre>
+</div>
+</div></li>
+</ol>
+</section>
+<section id="pregunta-5" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-5">Pregunta 5</h2>
+<p>Usando los mismos datos del archivo <em>motral2012.csv</em> implementará un ejercicio en el mismo espíritu del famoso estudio de Mroz (1987)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> sobre la oferta laboral femenina. El propósito es estimar la relación entre el salario y el número de horas trabajadas, concentrándonos en la muestra de mujeres.</p>
+<ol type="a">
+<li><p>[5 puntos] El primer problema al que nos enfrentamos es que el salario no se observa para las mujeres que no trabajan. Estime un modelo lineal para el log del salario por hora, <strong>ing_x_hrs</strong>, usando las variables <strong>anios_esc</strong>, <strong>eda</strong>, <strong>n_hij</strong>, el cuadrado de <strong>n_hij</strong>, <strong>busqueda</strong> y <strong>casada</strong>, usando la submuestra de mujeres con salario por hora positivo. Dichas variables representan los años de escolaridad, la edad, el número de hijos, el cuadrado del número de hijos, si la persona buscó trabajo recientemente y si la persona es casada, respectivamente. Use los coeficientes estimados para imputar el ingreso por hora, faltante para las mujeres que reportan 0 en las horas trabajadas.</p>
+<p><em>Imputamos el salario faltante:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>data.salarios<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"../files/motral2012.csv"</span>,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"latin1"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex<span class="sc">==</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">casada=</span><span class="fu">ifelse</span>(e_con<span class="sc">==</span><span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>data.salarios <span class="ot">&lt;-</span> data.salarios <span class="sc">%&gt;%</span> </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ly=</span><span class="fu">ifelse</span>(ing_x_hrs<span class="sc">&gt;</span><span class="dv">0</span>,<span class="fu">log</span>(ing_x_hrs),<span class="cn">NA</span>)) </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>reg_imput <span class="ot">&lt;-</span> <span class="fu">lm</span>(ly <span class="sc">~</span> anios_esc<span class="sc">+</span>casada<span class="sc">+</span>eda<span class="sc">+</span>n_hij<span class="sc">+</span>n_hij<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>busqueda,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> data.salarios)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>data.salarios <span class="ot">&lt;-</span> data.salarios <span class="sc">%&gt;%</span> </span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lyhat =</span> <span class="fu">predict</span>(reg_imput, .)) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ly =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(ly), lyhat, ly))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Aquí tomé en cuenta que hay personas con horas trabajadas positivas e ingreso cero. En ese caso puse un NA al log del salario. Luego, en la imputación, le asigné el valor ajustado a estas observaciones junto con todas las que tienen el log del salario faltante.</em></p></li>
+<li><p>[5 puntos] Use <em>heckit</em> de la librería <em>sampleSelection</em> para estimar por máxima verosimilitud un <em>heckit</em> para las horas trabajadas <strong>hrsocup</strong>. En la ecuación de selección (si la persona trabaja o no) incluya como variable explicativa el salario por hora (imputado para las mujeres que no trabajan), además de <strong>anios_esc</strong>, <strong>eda</strong>, <strong>n_hij</strong>, el cuadrado de <strong>n_hij</strong>, <strong>casada</strong> y <strong>busqueda</strong> (esta última es un indicador de si se buscó trabajo en la última semana). En la ecuación de horas, incluya los mismos regresores, excepto <strong>n_hij</strong>, su cuadrado y <strong>busqueda</strong>.</p>
+<p><em>La función heckit permite estimar el modelo de Heckman por máxima verosimilitud de manera muy simple. Hay que especificar method=“ml” para que la estimación sea por máxima verosimilitud:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data.salarios <span class="ot">&lt;-</span> data.salarios <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trabaja =</span> <span class="fu">ifelse</span>(hrsocup<span class="sc">&gt;</span><span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trabaja =</span> <span class="fu">factor</span>(trabaja,<span class="at">levels=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)))</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>reg_heckit_mv <span class="ot">&lt;-</span> <span class="fu">heckit</span>(trabaja <span class="sc">~</span> anios_esc<span class="sc">+</span>casada<span class="sc">+</span>eda<span class="sc">+</span>ly<span class="sc">+</span>n_hij<span class="sc">+</span>n_hij<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>busqueda,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                hrsocup <span class="sc">~</span> anios_esc<span class="sc">+</span>casada<span class="sc">+</span>eda<span class="sc">+</span>ly,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">"ml"</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> data.salarios)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_heckit_mv)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>--------------------------------------------
+Tobit 2 model (sample selection model)
+Maximum Likelihood estimation
+Newton-Raphson maximisation, 3 iterations
+Return code 8: successive function values within relative tolerance limit (reltol)
+Log-Likelihood: -7181.675 
+2625 observations (926 censored and 1699 observed)
+14 free parameters (df = 2611)
+Probit selection equation:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -2.583614   0.448320  -5.763 9.24e-09 ***
+anios_esc    0.005346   0.020341   0.263    0.793    
+casada      -0.213125   0.145135  -1.468    0.142    
+eda         -0.003391   0.008137  -0.417    0.677    
+ly          -0.004236   0.133344  -0.032    0.975    
+n_hij        0.023985   0.058900   0.407    0.684    
+busqueda     2.406669   0.104595  23.009  &lt; 2e-16 ***
+Outcome equation:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 55.62469    2.17656  25.556  &lt; 2e-16 ***
+anios_esc    1.04819    0.09995  10.487  &lt; 2e-16 ***
+casada      -3.58856    0.77967  -4.603 4.37e-06 ***
+eda          0.11614    0.03902   2.977  0.00294 ** 
+ly          -9.83418    0.60389 -16.285  &lt; 2e-16 ***
+   Error terms:
+      Estimate Std. Error t value Pr(&gt;|t|)    
+sigma  14.8579     0.2591  57.350   &lt;2e-16 ***
+rho    -0.1606     0.1964  -0.818    0.414    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+--------------------------------------------</code></pre>
+</div>
+</div>
+<p><em>Podemos reportar con modelsummary, aunque realmente lo hace muy mal:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(reg_heckit_mv),</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> <span class="fl">0.01</span>, <span class="st">'**'</span> <span class="ot">=</span> <span class="fl">0.05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">-2.584***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">55.625***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.448)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(2.177)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">anios_esc</td>
+<td style="text-align: center;">0.005</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">1.048***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.020)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.100)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">casada</td>
+<td style="text-align: center;">-0.213</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">-3.589***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.145)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.780)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">eda</td>
+<td style="text-align: center;">-0.003</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">0.116***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.008)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.039)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ly</td>
+<td style="text-align: center;">-0.004</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">-9.834***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.133)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.604)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">n_hij</td>
+<td style="text-align: center;">0.024</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.059)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">busqueda</td>
+<td style="text-align: center;">2.407***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.105)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sigma</td>
+<td style="text-align: center;">14.858***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.259)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rho</td>
+<td style="text-align: center;">-0.161</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.196)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">2625</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: center;">14391.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BIC</td>
+<td style="text-align: center;">14473.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">14.84</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div></li>
+<li><p>[10 puntos] Estime ahora el <em>heckit</em> en dos pasos, <em>a mano</em>. Es decir, siga los siguientes pasos: i) estime un probit para la ecuación de selección y obtenga el índice <span class="math inline">\(x_i'\hat{\beta}\)</span>; ii) calcule el inverso de la razón de Mills <span class="math inline">\(\lambda_i(x_i'\hat{\beta})\)</span>; y iii) estime por MCO la ecuación para las horas trabajadas con la submuestra que tiene horas trabajadas positivas, incluyendo como regresor el inverso de la razón de Mills estimado y el resto de los regresores. Compare los coeficientes y los errores estándar obtenidos en esta parte con los de la parte b. ¿Por qué son iguales o por qué difieren?</p>
+<p><em>Estimamos ahora el heckit a mano. Estimamos el probit y obtenemos el valor ajustado del IMR:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>reg_heckit_pe <span class="ot">&lt;-</span> <span class="fu">glm</span>(trabaja <span class="sc">~</span> anios_esc<span class="sc">+</span>casada<span class="sc">+</span>eda<span class="sc">+</span>ly<span class="sc">+</span>n_hij<span class="sc">+</span>n_hij<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>busqueda,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"probit"</span>),</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> data.salarios)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>data.salarios <span class="ot">&lt;-</span> data.salarios <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">index =</span> <span class="fu">predict</span>(reg_heckit_pe, .)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">imr =</span> <span class="fu">dnorm</span>(index)<span class="sc">/</span><span class="fu">pnorm</span>(index))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>reg_heckit_se <span class="ot">&lt;-</span> <span class="fu">lm</span>(hrsocup <span class="sc">~</span> anios_esc<span class="sc">+</span>casada<span class="sc">+</span>eda<span class="sc">+</span>ly<span class="sc">+</span>imr,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span><span class="fu">filter</span>(data.salarios,trabaja<span class="sc">==</span><span class="dv">1</span>))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_heckit_se)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = hrsocup ~ anios_esc + casada + eda + ly + imr, data = filter(data.salarios, 
+    trabaja == 1))
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-46.172 -10.085   1.915   9.253  57.689 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 55.68676    2.17948  25.550  &lt; 2e-16 ***
+anios_esc    1.04814    0.10000  10.481  &lt; 2e-16 ***
+casada      -3.56927    0.78057  -4.573 5.17e-06 ***
+eda          0.11621    0.03904   2.977  0.00296 ** 
+ly          -9.82971    0.60406 -16.273  &lt; 2e-16 ***
+imr         -3.94669    3.62684  -1.088  0.27667    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 14.86 on 1693 degrees of freedom
+Multiple R-squared:  0.1563, Adjusted R-squared:  0.1539 
+F-statistic: 62.75 on 5 and 1693 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><em>Comparamos coeficientes (aquí stargazer lo hace mejor):</em></p>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(reg_heckit_mv, reg_heckit_se,</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">type=</span><span class="st">"html"</span>, </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">df=</span><span class="cn">FALSE</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits=</span><span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<p><em>Dependent variable:</em></p>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<p>hrsocup</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<p><em>Heckman</em></p>
+</td>
+<td>
+<p><em>OLS</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<p><em>selection</em></p>
+</td>
+<td>
+<p><em></em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<p>(1)</p>
+</td>
+<td>
+<p>(2)</p>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>anios_esc</p>
+</td>
+<td>
+<p>1.0482<sup>***</sup></p>
+</td>
+<td>
+<p>1.0481<sup>***</sup></p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<p>(0.0999)</p>
+</td>
+<td>
+<p>(0.1000)</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>casada</p>
+</td>
+<td>
+<p>-3.5886<sup>***</sup></p>
+</td>
+<td>
+<p>-3.5693<sup>***</sup></p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<p>(0.7797)</p>
+</td>
+<td>
+<p>(0.7806)</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>eda</p>
+</td>
+<td>
+<p>0.1161<sup>***</sup></p>
+</td>
+<td>
+<p>0.1162<sup>***</sup></p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<p>(0.0390)</p>
+</td>
+<td>
+<p>(0.0390)</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>ly</p>
+</td>
+<td>
+<p>-9.8342<sup>***</sup></p>
+</td>
+<td>
+<p>-9.8297<sup>***</sup></p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<p>(0.6039)</p>
+</td>
+<td>
+<p>(0.6041)</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>imr</p>
+</td>
+<td>
+</td>
+<td>
+<p>-3.9467</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+<p>(3.6268)</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>Constant</p>
+</td>
+<td>
+<p>55.6247<sup>***</sup></p>
+</td>
+<td>
+<p>55.6868<sup>***</sup></p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<p>(2.1766)</p>
+</td>
+<td>
+<p>(2.1795)</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>Observations</p>
+</td>
+<td>
+<p>2,625</p>
+</td>
+<td>
+<p>1,699</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>R<sup>2</sup></p>
+</td>
+<td>
+<p>0.1563</p>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>Adjusted R<sup>2</sup></p>
+</td>
+<td>
+<p>0.1539</p>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>Residual Std. Error</p>
+</td>
+<td>
+</td>
+<td>
+<p>14.8614</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p>F Statistic</p>
+</td>
+<td>
+</td>
+<td>
+<p>62.7490<sup>***</sup></p>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<p><em>Note:</em></p>
+</td>
+<td colspan="2" style="text-align:right">
+<p><sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01</p>
+</td>
+</tr>
+
+</tbody></table>
+<p><em>La magnitud de los coeficientes es práctiamente la misma entre el modelo estimado por máxima verosimilitud y con un procedimiento en dos etapas a mano. En este ejemplo las diferencias son sutiles, aunque recordemos que en general la estimación por MV es más eficiente si la verosimilitud está bien planteada.</em></p></li>
+</ol>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>Mroz, T. A. (1987). <a href="https://www.jstor.org/stable/1911029?casa_token=Uwxeul7XeBkAAAAA%3AyOzMP-SP9bdQNxw1FwyVjnEJt3w2ShyTtiinMVL6RZnpxKeehfas96e2ETxA6us20xyQG-NUF71svQugl78mx6vG2oJ2k7U39TtJn6P6dq-iTH2aDWsH&amp;seq=1#metadata_info_tab_contents">The sensitivity of an empirical model of married women’s hours of work to economic and statistical assumptions</a>. <em>Econometrica</em>: Journal of the econometric society, 765-799.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

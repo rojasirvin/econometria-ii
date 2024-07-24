@@ -1,1 +1,1 @@
-Sitemap: https://github.com/rojasirvin/econometria-ii/sitemap.xml
+Sitemap: https://rojasirvin.github.io/econometria-ii/sitemap.xml

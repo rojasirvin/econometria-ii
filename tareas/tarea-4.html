@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Econometría II 2023 - Tarea 1</title>
+<title>Econometría II 2023 - Tarea 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Tarea 1</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Tarea 4</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -150,12 +150,11 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#instrucciones" id="toc-instrucciones" class="nav-link active" data-scroll-target="#instrucciones">Instrucciones</a></li>
   <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos">Datos</a></li>
+  <li><a href="#preguntas" id="toc-preguntas" class="nav-link" data-scroll-target="#preguntas">Preguntas</a>
+  <ul class="collapse">
   <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
   <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
-  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
-  <li><a href="#pregunta-4" id="toc-pregunta-4" class="nav-link" data-scroll-target="#pregunta-4">Pregunta 4</a></li>
-  <li><a href="#pregunta-5" id="toc-pregunta-5" class="nav-link" data-scroll-target="#pregunta-5">Pregunta 5</a></li>
-  <li><a href="#pregunta-6" id="toc-pregunta-6" class="nav-link" data-scroll-target="#pregunta-6">Pregunta 6</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -164,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tarea 1</h1>
+<h1 class="title">Tarea 4</h1>
 </div>
 
 
@@ -179,96 +178,50 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="instrucciones" class="level2">
-<h2 class="anchored" data-anchor-id="instrucciones">Instrucciones</h2>
-<p>Fecha de entrega: <strong>20 de septiembre</strong> a las 20:00 en Teams</p>
+<section id="instrucciones" class="level1">
+<h1>Instrucciones</h1>
+<p>Fecha de entrega: <strong>6 de diciembre</strong> a las 20:00 en Teams</p>
 <p>La tarea deberá entregarse en Teams. Deberá incluir dos documentos:</p>
 <p>Un primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.</p>
 <p>Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.</p>
 </section>
-<section id="datos" class="level2">
-<h2 class="anchored" data-anchor-id="datos">Datos</h2>
-<p><a href="../files/motral2012.csv">motral2012.csv</a></p>
+<section id="datos" class="level1">
+<h1>Datos</h1>
+<p><a href="../files/capital_trabajo.csv">capital_trabajo.csv</a></p>
+<p><a href="../files/MunichRent.rda">MunichRent.rda</a></p>
 </section>
+<section id="preguntas" class="level1">
+<h1>Preguntas</h1>
 <section id="pregunta-1" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
-<p>Suponga que está interesado en una variable aleatoria que tiene una distribución Bernoulli con parámetro <span class="math inline">\(p\)</span>. La función de densidad está definida como:</p>
-<p><span class="math display">\[f(x_;p)=\left\{\begin{array} .1 &amp; \text{con probabilidad } p \\ 0 &amp; \text{con probabilidad } 1-p \end{array} \right.\]</span> Suponga que tiene una muestra de <span class="math inline">\(N\)</span> observaciones independientes e idénticamente distribuidas.</p>
+<p>Considere los datos en el archivo <em>capital_trabajo.csv</em>. Con una función de producción Cobb-Douglas las participaciones del capital y el trabajo en el valor de la producción se pueden estimar usando una regresión lineal. En algunas aplicaciones es de interés conocer el cociente de las participaciones estimadas.</p>
 <ol type="a">
-<li><p>[4 puntos] Plantee la función de log verosimilitud del problema.</p></li>
-<li><p>[4 puntos] Obtenga las condiciones de primer orden y resuelva para <span class="math inline">\(\hat{p}\)</span>.</p></li>
-<li><p>[2 puntos] ¿Cuál es la media y la varianza del estimador de máxima verosimilitud que ha encontrado?</p></li>
+<li><p>[20 puntos] Usando 500 repeticiones bootstrap estime el error estándar del cociente capital-trabajo. Para ello realice el siguiente procedimiento:</p>
+<ol type="i">
+<li>Genere una matriz vacía de 500 filas para coleccionar sus relaciones estimadas.</li>
+<li>En cada una de las repeticiones obtenga una muestra con remplazo a partir de la muestra original.</li>
+<li>Estime por MCO los coeficientes sobre el log del capital y el log del trabajo. La variable dependiente es el log del valor de la producción. Calcule el cociente de los coeficientes estimados. Guarde el cociente en la matriz.</li>
+<li>Repita ii. y iii. 500 veces.</li>
+<li>Calcule la desviación estándar de los cocientes estimados.</li>
+</ol></li>
+<li><p>[20 puntos] Calcule ahora el error estándar jacknife, para lo que realizará <span class="math inline">\(N\)</span> estimaciones de la ecuación del valor de la producción y en cada una de ellas calculará el cociente de interés. En cada una de las <span class="math inline">\(i=1,\ldots,N\)</span> repeticiones, eliminará de la muestra la observación <span class="math inline">\(i\)</span>, por lo que cada regresión será estimada con <span class="math inline">\(N-1\)</span> observaciones. Obtenga la desviación estándar de los <span class="math inline">\(N\)</span> cocientes estimados.</p></li>
+<li><p>[10 puntos] Compruebe que sus cálculos aproximan el error estándar obtenido con el Método Delta. Para ello, después de estimar la ecuación del valor de la producción con la muestra original, use la función <em>deltaMethod</em> del paquete <em>car</em>.</p></li>
 </ol>
 </section>
 <section id="pregunta-2" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
-<p>Suponga que <span class="math inline">\(y_i|\mathbf{x}_i\sim\mathcal{N}(m(\mathbf{x}_i,\mathbf{\beta}_0),\sigma_0^2)\)</span>, donde <span class="math inline">\(m(\mathbf{x},\mathbf{\beta})\)</span> es una función del vector de variables explicativas <span class="math inline">\(\mathbf{x}\)</span> y del vector de parámetros <span class="math inline">\(\mathbf{\beta}\)</span> de dimensión <span class="math inline">\((k\times 1)\)</span>. Entonces, <span class="math inline">\(E(y_i|\mathbf{x}_i)=m(\mathbf{x}_i,\mathbf{\beta}_0)\)</span> y <span class="math inline">\(V(y_i|\mathbf{x}_i)=\sigma^2_0\)</span>.</p>
+<p>Considere los datos en <em>MunichRent.rda</em>. Estos archivos contienen información sobre rentas en la ciudad de Munich, <strong>rent</strong>. Se desea explicar la renta en función de la antiguedad de los edificios en renta, controlando por el área, <strong>area</strong>. La variable <strong>yearc</strong> indica cuándo fue construido el edificio. Construya la antiguedad como <em>antiguedad=2023-yearc</em>. Para leer los datos basta con ejecutar <em>load(“MunichRent.rda”)</em>.</p>
 <ol type="a">
-<li><p>[2 puntos] Escriba la función de log verosimilitud condicional para la observación <span class="math inline">\(i\)</span>. Muestre que el estimador de máxima verosimilitud <span class="math inline">\(\hat{\mathbf{\beta}}\)</span> resuelve el problema de minimización <span class="math inline">\(\min_\mathbf{\beta}\sum_i(y_i-m(\mathbf{x}_i,\mathbf{\beta}))^2\)</span>.</p></li>
-<li><p>[4 puntos] Sea <span class="math inline">\(\mathbf{\theta}\equiv(\mathbf{\beta}'\;\sigma^2)'\)</span> un vector de parámetros de dimensión <span class="math inline">\((k+1)\times 1\)</span>. Encuentre el vector score para la observación <span class="math inline">\(i\)</span>. Muestre que <span class="math inline">\(E(\mathbf{s}_i(\mathbf{\theta}_0)|\mathbf{x}_i)=\mathbf{0}\)</span>.</p></li>
-<li><p>[2 puntos] Usando las condiciones de primer orden, encuentre <span class="math inline">\(\hat{\sigma}^2\)</span> en términos de <span class="math inline">\(\hat{\mathbf{\beta}}\)</span>.</p></li>
-<li><p>[5 puntos] Encuentre la matriz hesiana de la función de log verosimilitud con respecto a <span class="math inline">\(\mathbf{\theta}\)</span>.</p></li>
-<li><p>[5 puntos] Muestre que <span class="math inline">\(-E(\mathbf{H}_i(\mathbf{\theta}_0)|\mathbf{x}_i)=E(\mathbf{s}_i(\mathbf{\theta}_0)\mathbf{s}_i(\mathbf{\theta}_0)'|\mathbf{x}_i)\)</span>.</p></li>
-<li><p>[2 puntos] Encuentre la varianza asintótica estimada de <span class="math inline">\(\hat{\mathbf{\beta}}\)</span> y explique cómo obtendría los errores estándar.</p></li>
-</ol>
-</section>
-<section id="pregunta-3" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
-<p>Suponga una variable aleatoria <span class="math inline">\(X_i\)</span> con distribución desconocida. Sin embargo, sí conocemos que <span class="math inline">\(E(X)=\mu=54\)</span> y que <span class="math inline">\(\sqrt{V(X)}=\sigma=6\)</span>. Suponga que se recolecta una muestra de 50 observaciones.</p>
-<ol type="a">
-<li><p>[2 punto] ¿Cuál es la distribución asintótica de la media muestral <span class="math inline">\(\bar{X}\)</span>?</p></li>
-<li><p>[4 punto] ¿Cuál es la probabilidad de que <span class="math inline">\(\bar{X}&gt;58\)</span>?</p></li>
-<li><p>[2 punto] ¿Cuál es la probabilidad de que una observación elegida al azar sea tal que <span class="math inline">\(X_i&gt;58\)</span>?</p></li>
-<li><p>[2 punto] Provea un intervalo de confianza de 99% para la media muestral.</p></li>
-</ol>
-</section>
-<section id="pregunta-4" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-4">Pregunta 4</h2>
-<p>En esta pregunta mostraremos los alcances de los teoremas del límite central. Para esto, generaremos muchas muestras de tamaño <span class="math inline">\(N\)</span> con una distribución <span class="math inline">\(Bernoulli\)</span> con probabilidad de éxito <span class="math inline">\(p=0.3\)</span>. Recuerde que cuando realice simulaciones, siempre debe fijar una semilla al inicio para poder replicar su trabajo.</p>
-<ol type="a">
-<li><p>[2 puntos] ¿Cuál es la media y la varianza de una variable aleatoria <span class="math inline">\(y_i \sim Bernoulli(0.3)\)</span>?</p></li>
-<li><p>[2 puntos] Si <span class="math inline">\(y_i\)</span> son iid y podemos aplicar un teorema de límite central, ¿cuál es la distribución teórica de <span class="math inline">\(\bar{y}\)</span> cuando <span class="math inline">\(N\to\infty\)</span>?</p></li>
-<li><p>[5 puntos] Realice el siguiente procedimiento <span class="math inline">\(J=1,000\)</span> veces. Obtenga una muestra de tamaño <span class="math inline">\(N=2\)</span> a partir de la distribución <span class="math inline">\(Bernoulli(0.3)\)</span> y calcule la media muestral <span class="math inline">\(\bar{y}\)</span>. Coleccione las <span class="math inline">\(J\)</span> medias muestrales y luego grafique un histograma de las medias muestrales obtenidas junto con una curva teórica normal con la media y varianza obtenida en la parte b. Comente sobre lo que observa.</p></li>
-<li><p>[3 puntos] Repita lo realizado en la parte b., ahora con <span class="math inline">\(N=10\)</span>. Comente sobre lo que observa.</p></li>
-<li><p>[3 puntos] Repita lo realizado en la parte b., ahora con <span class="math inline">\(N=10,000\)</span>. Comente sobre lo que observa.</p></li>
-<li><p>[5 puntos] ¿Cómo usaría este ejercicio con palabras simples para explicar a una persona que no sabe mucho de estadística sobre la importancia de los teoremas de límite central?</p></li>
-</ol>
-</section>
-<section id="pregunta-5" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-5">Pregunta 5</h2>
-<p>Use los datos en el archivo <em>motral2012.csv</em>, que incluye una muestra de individuos con sus características socioeconómicas. Nos interesa conocer los factores que afectan la probabilidad de que los individuos tengan ahorros. Considere lo siguiente sobre las opciones de ahorro de los entrevistados, contenida en la variable <strong>p14</strong>:</p>
-<ul>
-<li><strong>p14</strong> igual a 1 significa cuentas de ahorro bancarias</li>
-<li><strong>p14</strong> igual a 2 significa cuenta de inversión bancaria</li>
-<li><strong>p14</strong> igual a 3 significa inversiones en bienes raíces</li>
-<li><strong>p14</strong> igual a 4 significa caja de ahorro en su trabajo</li>
-<li><strong>p14</strong> igual a 5 significa caja de ahorro con sus amigos</li>
-<li><strong>p14</strong> igual a 6 significa tandas</li>
-<li><strong>p14</strong> igual a 7 significa que ahorra en su casa o alcancías</li>
-<li><strong>p14</strong> igual a 8 significa otro lugar</li>
-<li><strong>p14</strong> NA significa que no ahorra</li>
-</ul>
-<ol type="a">
-<li><p>[2 puntos] Comience generando una variable binaria <strong>ahorra</strong> que tome el valor de 1 para las personas que ahorran y 0 en otro caso. Construya también la variable <strong>mujer</strong> que tome el valor de 1 cuando <strong>sex</strong> toma el valor de 2 y 0 en otro caso.</p></li>
-<li><p>[3 puntos] Estime un modelo de probabilidad lineal que relacione <strong>ahorra</strong> como variable dependiente con <strong>eda</strong> (edad), <strong>anios_esc</strong> (años de escolaridad) y <strong>mujer</strong>. Reporte los errores que asumen homocedasticidad y los errores robustos a heteroscedasticidad.</p></li>
-<li><p>[3 puntos] ¿Cuál es el efecto en la probabilidad de ahorrar si los años de educación se incrementan en una unidad, pasando de 3 a 4 años de educación?</p></li>
-<li><p>[4 puntos] Realice una prueba de significancia conjunta de <strong>eda</strong> y <strong>anios_esc</strong>. ¿Qué concluye?</p></li>
-<li><p>[4 puntos] Estime un modelo probit relacionando las mismas variables. Use la función <em>avg_slopes</em> del paquete <em>marginaleffects</em> para obtener los efectos marginales promedio de un cambio en cada uno de los regresores. ¿Por qué difiere la magnitud de este efecto marginal con respecto a la parte c.?</p></li>
-<li><p>[4 puntos] Ahora estime el efecto marginal en la media para <strong>eda</strong> y <strong>anios_esc</strong> y para las mujeres, usando la función <em>slopes</em>. ¿Por qué difiere la magnitud de este efecto marginal respecto a la parte c.&nbsp;y la d.?</p></li>
-</ol>
-</section>
-<section id="pregunta-6" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-6">Pregunta 6</h2>
-<p>Ahora estimará un modelo multinomial empleando los mismos datos en <em>motral2012.csv</em>. El propósito será ahora estudiar los factores relevantes para predecir la forma de ahorro que tienen las personas que ahorran.</p>
-<ol type="a">
-<li><p>[2 punto] Genere una variable categórica llamada <strong>ahorro</strong> que sea igual a 1 cuando <strong>p14</strong> sea igual a 1 o 2, igual a 2 cuando <strong>p14</strong> sea igual a 7, e igual a 3 cuando <strong>p14</strong> sea igual a 3, 4, 5, 6 u 8. Haga que esa variable sea missing cuando <strong>p14</strong> sea missing. Posteriormente, convierta esta nueva variable en una de factores de forma que el valor 1 tenga la etiqueta “Banco”, el valor 2 tenga la etiqueta “Casa” y el valor 3 tenga la etiqueta “Otro”.</p></li>
-<li><p>[4 puntos] Estime un modelo logit multinomial (regresores invariantes a la alternativa) con la opción de ahorro como variable dependiente y los mismos regresores de la pregunta 5. Hay varios paquetes para hacer esto, pero recomiendo usar la función <em>multinom</em> del paquete <em>nnet</em>. ¿Qué puede decir sobre el coeficiente de años de educación en la alternativa “Casa”?</p></li>
-<li><p>[6 puntos] Calcule los efectos marginales promedio sobre la probabilidad de ahorrar en el banco. Al considerar el cambio en la probabilidad para el caso de las mujeres (cuando la variable <strong>mujer</strong> pasa de 0 a 1), ¿de qué tamaño es el efecto predicho en la probabilidad de ahorrar en el banco?</p></li>
-<li><p>[4 puntos] Calcule los cocientes de riesgo relativo (<em>relative risk ratios</em> o RRR). ¿Qué significa el hecho de que el RRR asociado a ser mujer sea mayor que 1 en la alternativa “Casa”?</p></li>
-<li><p>[4 puntos] Estime nuevamente el modelo, pero ahora, especifique que la alternativa “Casa” sea la alternativa base. ¿Cómo es el RRR de la edad en la alternativa “Banco”? ¿Es esto congruente con lo que obtuvo en la parte d.&nbsp;de esta pregunta?</p></li>
+<li><p>[10 puntos] Estime por MCO la relación entre la renta, <strong>rent</strong> y la antiguedad del edificio, controlando por <strong>area</strong>. Interprete el coeficiente sobre la antiguedad.</p></li>
+<li><p>[10 puntos] Estime la misma relación que en la parte a., pero con una regresión mediana. Interprete el coeficiente sobre la antiguedad.</p></li>
+<li><p>[10 puntos] Estime ahora una regresión cuantil para cada uno de los deciles de la distribución condicional de la renta y represente en una gráfica los coeficientes por regresión cuantil junto con el coeficiente de MCO para las variables del área y la antiguedad. ¿Concluye que vale la pena modelar la relación de las rentas en función del área y la antiguedad usando regresión cuantil?</p></li>
+<li><p>[20 puntos] Suponga que no está dispuesto a imponer una relación lineal entre la antiguedad y la renta. Considere entonces el siguiente modelo:</p>
+<p><span class="math display">\[rent_i=\beta_0+\beta_1 area + \lambda(antiguedad_i)\]</span></p>
+<p>Use el estimador de Robinson (1988) para estimar este modelo parcialmente lineal. Grafique sus resultados e interprételos.</p></li>
 </ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
