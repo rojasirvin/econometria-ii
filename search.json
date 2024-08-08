@@ -1,150 +1,20 @@
 [
   {
-    "objectID": "reglas.html",
-    "href": "reglas.html",
-    "title": "Reglas",
-    "section": "",
-    "text": "No se tolerarán actos de discriminación. Se procura un ambiente de respeto entre todos los miembros de la clase.\nToda la comunicación relativa al curso se dará por medio del correo institucional del CIDE.\nLas tareas y exámenes se entregarán a través de Teams.\nLos participantes en la sesión deberán procurar que haya un ambiente silencioso para el desarrollo de la clase.\nSe aplicarán estrictamente los lineamientos generales contenidos en el código de ética del CIDE en términos de plagio y fraude en tareas y exámenes.",
-    "crumbs": [
-      "Reglas"
-    ]
-  },
-  {
-    "objectID": "materials.html",
-    "href": "materials.html",
-    "title": "Course Materials",
-    "section": "",
-    "text": "Datasets\nSlides"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Econometría II 2024",
     "section": "",
-    "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nLaboratorista: por definir.\nHorario de clases: martes y jueves (11:20 a 12:50).\nHorario de laboratorio: por definir.\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: martes y jueves (17:00)\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas.",
+    "text": "Profesor: Irvin Rojas (irvin.rojas@cide.edu).\nLaboratorista: por definir.\nHorario de clases: miércoles y jueves (8:00 a 9:30).\nHorario de laboratorio: por definir.\nPlataforma del curso: Microsoft Teams.\nHorario de oficina: martes y jueves (17:00)\n\n¡Bienvenidas, bienvenidos!\nEste es un sitio para las y los estudiantes del curso de Econometría II de la Maestría en Economía del CIDE. Sin embargo, otras personas pueden encontrar útiles los recursos de este sitio, como el programa del curso, las tareas y la lista de lecturas.",
     "crumbs": [
       "Home"
     ]
   },
   {
-    "objectID": "tareas/index.html",
-    "href": "tareas/index.html",
-    "title": "Tareas",
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
     "section": "",
-    "text": "Tarea 1\n\nFecha de entrega: jueves 12 de septiembre a las 20:00 en Teams\n\n\n\n\nTarea 2\n\nFecha de entrega: jueves 3 de octubre a las 20:00 en Teams\n\n\n\n\nTarea 3\n\nFecha de entrega: jueves 7 de noviembre a las 20:00 en Teams\n\n\n\n\nTarea 4\n\nFecha de entrega: jueves 28 de noviembre a las 20:00 en Teams",
-    "crumbs": [
-      "Tareas"
-    ]
-  },
-  {
-    "objectID": "cronograma.html",
-    "href": "cronograma.html",
-    "title": "Cronograma",
-    "section": "",
-    "text": "El siguiente cronograma es informativo sobre la organización del curso:",
-    "crumbs": [
-      "Cronograma"
-    ]
-  },
-  {
-    "objectID": "programa.html",
-    "href": "programa.html",
-    "title": "Programa",
-    "section": "",
-    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual.",
-    "crumbs": [
-      "Programa"
-    ]
-  },
-  {
-    "objectID": "programa.html#objetivos",
-    "href": "programa.html#objetivos",
-    "title": "Programa",
-    "section": "",
-    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual.",
-    "crumbs": [
-      "Programa"
-    ]
-  },
-  {
-    "objectID": "programa.html#referencias",
-    "href": "programa.html#referencias",
-    "title": "Programa",
-    "section": "Referencias",
-    "text": "Referencias\nEl curso se basa en los siguientes textos:\n\n(MHE) Angrist, J.D. y Pischke, J.S. (2013). Mostly Harmless Econometrics: An Empiricists Companion. Princeton University Press.\n* (CT) Cameron, A.C. y Trivedi, P.K. (2005). Microeconometrics: Methods and applications. Oxford University Press.\nHansen, B. (2022). Econometrics. Princeton University Press.\nHayashi, F. (2000). Econometrics. Princeton University Press.\n* (W) Wooldridge, J.M. (2010). Econometric analysis of cross section and panel data. Segunda edición, MIT Press.",
-    "crumbs": [
-      "Programa"
-    ]
-  },
-  {
-    "objectID": "programa.html#contenido-temático",
-    "href": "programa.html#contenido-temático",
-    "title": "Programa",
-    "section": "Contenido temático",
-    "text": "Contenido temático\nUnidad 1. Introducción + Revisión de fundamentos de estadística y regresión lineal + Teoría asintótica + Estimadores extremos + Máxima verosimilitud + Mínimos cuadrados no lineales + Inferencia estadística\nUnidad 2. Modelos de variable dependiente no continua\n+ Modelos de variable dependiente binaria\n+ Modelos de conteo\nUnidad 3. Modelos de selección + Modelo de Tobit + Modelo de Heckman\nUnidad 4. Endogeneidad + Variables instrumentales + Método generalizado de momentos + Estimación con instrumentos débiles\nUnidad 5. Datos de panel + Modelos de efectos fijos y de efectos aleatorios + Estimadores between y within + Estimadores de primeras diferencias y de efectos aleatorios + Errores estándar agrupados\nUnidad 6. Extensiones + Bootstrap + Modelos de riesgo y de sobrevivencia + Regresión por cuantiles + Métodos semi paramétricos y no paramétricos + Modelos de panel con endogeneidad + Modelos de panel no lineales",
-    "crumbs": [
-      "Programa"
-    ]
-  },
-  {
-    "objectID": "programa.html#evaluación-del-curso",
-    "href": "programa.html#evaluación-del-curso",
-    "title": "Programa",
-    "section": "Evaluación del curso",
-    "text": "Evaluación del curso\n\nExamen parcial: 30%.\nExamen final acumulativo: 45%\nTareas (4): 20% (5% cada una)\nExposición: 5%",
-    "crumbs": [
-      "Programa"
-    ]
-  },
-  {
-    "objectID": "programa.html#tareas",
-    "href": "programa.html#tareas",
-    "title": "Programa",
-    "section": "Tareas",
-    "text": "Tareas\nCuatro tareas teórico-prácticas. Las tareas deben entregarse de manera individual, pero se recomienda ampliamente colaborar en grupos de estudio. Las tareas deberán entregarse en Teams antes de la fecha y hora señalada. No se aceptarán tareas fuera de tiempo. Por favor, no comprima los archivos en carpetas comprimidas. Las tareas deberán contener dos archivos:\nUn primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad de manera aleatoria.",
-    "crumbs": [
-      "Programa"
-    ]
-  },
-  {
-    "objectID": "programa.html#software",
-    "href": "programa.html#software",
-    "title": "Programa",
-    "section": "Software",
-    "text": "Software\nR será el paquete standard usado en las sesiones prácticas. Más aún, el uso de cualquier software es aceptado siempre que se cumplan con los requisitos de replicabilidad y reportes de las tareas y exámenes. Habrá una sesión especial para introducir el uso de Quarto para la generación de reportes científicos.",
-    "crumbs": [
-      "Programa"
-    ]
-  },
-  {
-    "objectID": "programa.html#exámenes",
-    "href": "programa.html#exámenes",
-    "title": "Programa",
-    "section": "Exámenes",
-    "text": "Exámenes\n\nExamen parcial: martes 8 de octubre en el horario de clase.\nExamen final: por definir.",
-    "crumbs": [
-      "Programa"
-    ]
-  },
-  {
-    "objectID": "programa.html#exposición",
-    "href": "programa.html#exposición",
-    "title": "Programa",
-    "section": "Exposición",
-    "text": "Exposición\nCada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio.",
-    "crumbs": [
-      "Programa"
-    ]
-  },
-  {
-    "objectID": "programa.html#lista-de-lecturas",
-    "href": "programa.html#lista-de-lecturas",
-    "title": "Programa",
-    "section": "Lista de lecturas",
-    "text": "Lista de lecturas\nTodas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión.\nLa lista de lecturas está disponible aquí.",
-    "crumbs": [
-      "Programa"
-    ]
+    "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
   },
   {
     "objectID": "lecturas.html",
@@ -307,6 +177,136 @@
     ]
   },
   {
+    "objectID": "reglas.html",
+    "href": "reglas.html",
+    "title": "Reglas",
+    "section": "",
+    "text": "No se tolerarán actos de discriminación. Se procura un ambiente de respeto entre todos los miembros de la clase.\nToda la comunicación relativa al curso se dará por medio del correo institucional del CIDE.\nLas tareas y exámenes se entregarán a través de Teams.\nLos participantes en la sesión deberán procurar que haya un ambiente silencioso para el desarrollo de la clase.\nSe aplicarán estrictamente los lineamientos generales contenidos en el código de ética del CIDE en términos de plagio y fraude en tareas y exámenes.",
+    "crumbs": [
+      "Reglas"
+    ]
+  },
+  {
+    "objectID": "tareas/index.html",
+    "href": "tareas/index.html",
+    "title": "Tareas",
+    "section": "",
+    "text": "Tarea 1\n\nFecha de entrega: jueves 12 de septiembre a las 20:00 en Teams\n\n\n\n\nTarea 2\n\nFecha de entrega: jueves 3 de octubre a las 20:00 en Teams\n\n\n\n\nTarea 3\n\nFecha de entrega: jueves 7 de noviembre a las 20:00 en Teams\n\n\n\n\nTarea 4\n\nFecha de entrega: jueves 28 de noviembre a las 20:00 en Teams",
+    "crumbs": [
+      "Tareas"
+    ]
+  },
+  {
+    "objectID": "cronograma.html",
+    "href": "cronograma.html",
+    "title": "Cronograma",
+    "section": "",
+    "text": "El siguiente cronograma es informativo sobre la organización del curso:",
+    "crumbs": [
+      "Cronograma"
+    ]
+  },
+  {
+    "objectID": "programa.html",
+    "href": "programa.html",
+    "title": "Programa",
+    "section": "",
+    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual.",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
+    "objectID": "programa.html#objetivos",
+    "href": "programa.html#objetivos",
+    "title": "Programa",
+    "section": "",
+    "text": "Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.\nDiseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.\nEmplear software para estimar los modelos econométricos apropiados de acuerdo con la naturaleza de los datos disponibles.\nConocer e implementar buenas prácticas en el uso de software, orientadas a la transparencia y la replicabilidad en la investigación.\nConocer los métodos que se emplean en la investigación económica actual.",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
+    "objectID": "programa.html#referencias",
+    "href": "programa.html#referencias",
+    "title": "Programa",
+    "section": "Referencias",
+    "text": "Referencias\nEl curso se basa en los siguientes textos:\n\n(MHE) Angrist, J.D. y Pischke, J.S. (2013). Mostly Harmless Econometrics: An Empiricists Companion. Princeton University Press.\n* (CT) Cameron, A.C. y Trivedi, P.K. (2005). Microeconometrics: Methods and applications. Oxford University Press.\nHansen, B. (2022). Econometrics. Princeton University Press.\nHayashi, F. (2000). Econometrics. Princeton University Press.\n* (W) Wooldridge, J.M. (2010). Econometric analysis of cross section and panel data. Segunda edición, MIT Press.",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
+    "objectID": "programa.html#contenido-temático",
+    "href": "programa.html#contenido-temático",
+    "title": "Programa",
+    "section": "Contenido temático",
+    "text": "Contenido temático\nUnidad 1. Introducción + Revisión de fundamentos de estadística y regresión lineal + Teoría asintótica + Estimadores extremos + Máxima verosimilitud + Mínimos cuadrados no lineales + Inferencia estadística\nUnidad 2. Modelos de variable dependiente no continua\n+ Modelos de variable dependiente binaria\n+ Modelos de conteo\nUnidad 3. Modelos de selección + Modelo de Tobit + Modelo de Heckman\nUnidad 4. Endogeneidad + Variables instrumentales + Método generalizado de momentos + Estimación con instrumentos débiles\nUnidad 5. Datos de panel + Modelos de efectos fijos y de efectos aleatorios + Estimadores between y within + Estimadores de primeras diferencias y de efectos aleatorios + Errores estándar agrupados\nUnidad 6. Extensiones + Bootstrap + Modelos de riesgo y de sobrevivencia + Regresión por cuantiles + Métodos semi paramétricos y no paramétricos + Modelos de panel con endogeneidad + Modelos de panel no lineales",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
+    "objectID": "programa.html#evaluación-del-curso",
+    "href": "programa.html#evaluación-del-curso",
+    "title": "Programa",
+    "section": "Evaluación del curso",
+    "text": "Evaluación del curso\n\nExamen parcial: 30%.\nExamen final acumulativo: 45%\nTareas (4): 20% (5% cada una)\nExposición: 5%",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
+    "objectID": "programa.html#tareas",
+    "href": "programa.html#tareas",
+    "title": "Programa",
+    "section": "Tareas",
+    "text": "Tareas\nCuatro tareas teórico-prácticas. Las tareas deben entregarse de manera individual, pero se recomienda ampliamente colaborar en grupos de estudio. Las tareas deberán entregarse en Teams antes de la fecha y hora señalada. No se aceptarán tareas fuera de tiempo. Por favor, no comprima los archivos en carpetas comprimidas. Las tareas deberán contener dos archivos:\nUn primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad de manera aleatoria.",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
+    "objectID": "programa.html#software",
+    "href": "programa.html#software",
+    "title": "Programa",
+    "section": "Software",
+    "text": "Software\nR será el paquete standard usado en las sesiones prácticas. Más aún, el uso de cualquier software es aceptado siempre que se cumplan con los requisitos de replicabilidad y reportes de las tareas y exámenes. Habrá una sesión especial para introducir el uso de Quarto para la generación de reportes científicos.",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
+    "objectID": "programa.html#exámenes",
+    "href": "programa.html#exámenes",
+    "title": "Programa",
+    "section": "Exámenes",
+    "text": "Exámenes\n\nExamen parcial: miércoles 9 de octubre en el horario de clase.\nExamen final: por definir.",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
+    "objectID": "programa.html#exposición",
+    "href": "programa.html#exposición",
+    "title": "Programa",
+    "section": "Exposición",
+    "text": "Exposición\nCada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio.",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
+    "objectID": "programa.html#lista-de-lecturas",
+    "href": "programa.html#lista-de-lecturas",
+    "title": "Programa",
+    "section": "Lista de lecturas",
+    "text": "Lista de lecturas\nTodas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión.\nLa lista de lecturas está disponible aquí.",
+    "crumbs": [
+      "Programa"
+    ]
+  },
+  {
     "objectID": "presentaciones.html",
     "href": "presentaciones.html",
     "title": "Presentaciones",
@@ -317,10 +317,10 @@
     ]
   },
   {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Course Materials",
     "section": "",
-    "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations"
+    "text": "Datasets\nSlides"
   }
 ]
