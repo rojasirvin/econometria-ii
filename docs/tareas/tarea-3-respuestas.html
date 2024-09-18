@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Econometría II 2023 - Respuestas a la tarea 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Respuestas a la tarea 3</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../iconoEconometria.jpg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/rojasirvin/econometria-ii" rel="" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../programa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Programa</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reglas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reglas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecturas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecturas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../presentaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentaciones</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tareas/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tareas</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#respuestas" id="toc-respuestas" class="nav-link active" data-scroll-target="#respuestas">Respuestas</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
+  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
+  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
+  <li><a href="#pregunta-4" id="toc-pregunta-4" class="nav-link" data-scroll-target="#pregunta-4">Pregunta 4</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Respuestas a la tarea 3</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="respuestas" class="level1">
+<h1>Respuestas</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">indent =</span> <span class="st">"   "</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rxtsum)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="pregunta-1" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
+<p>En este ejercicio continuaremos usando los datos del estudio de Card (1993) para estudiar los rendimientos a la educación. Los datos <em>ingresos_iv.dta</em> contiene una muestra de hombres de entre 24 y 36 años de edad. <strong>lwage</strong> es el logaritmo del ingreso y <strong>educ</strong> es la educación acumulada.</p>
+<ol type="a">
+<li><p>[3 puntos] Estime una regresión por MCO para explicar el logaritmo del salario (<strong>lwage</strong>) en función de la educación <strong>educ</strong> y los siguientes controles: <strong>exper</strong>, <strong>expersq</strong>, <strong>black</strong>, <strong>south</strong>, <strong>smsa</strong>, <strong>reg661</strong>, <strong>reg662</strong>, <strong>reg663</strong>, <strong>reg664</strong>, <strong>reg665</strong>, <strong>reg666</strong>, <strong>reg667</strong>, <strong>reg668</strong> y <strong>smsa66</strong>. Reporte errores clásicos y errores robustos. ¿Qué problema encuentra en la estimación de esta relación? ¿El coeficiente sobre <strong>educ</strong> tiene una interpretación causal del efecto de la educación en el salario?</p>
+<p><em>Estimamos por MCO la relación entre salarios y educación, controlando por un conjunto de regresores:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data.ingresos<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"../files/ingresos_iv.csv"</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"latin1"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>regmco <span class="ot">&lt;-</span> <span class="fu">lm</span>(lwage <span class="sc">~</span> educ <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> smsa <span class="sc">+</span> reg661 <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>              reg662 <span class="sc">+</span> reg663 <span class="sc">+</span> reg664 <span class="sc">+</span> reg665 <span class="sc">+</span> reg666 <span class="sc">+</span> reg667 <span class="sc">+</span> reg668 <span class="sc">+</span> smsa66,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> data.ingresos)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(regmco, regmco,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">'text'</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">se =</span> <span class="fu">list</span>(<span class="cn">NULL</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regmco, <span class="at">type =</span> <span class="st">"HC0"</span>)))),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="st">'educ'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+============================================================
+                                    Dependent variable:     
+                                ----------------------------
+                                           lwage            
+                                     (1)            (2)     
+------------------------------------------------------------
+educ                               0.075***      0.075***   
+                                   (0.003)        (0.004)   
+
+------------------------------------------------------------
+Observations                        3,010          3,010    
+R2                                  0.300          0.300    
+Adjusted R2                         0.296          0.296    
+Residual Std. Error (df = 2994)     0.372          0.372    
+F Statistic (df = 15; 2994)       85.476***      85.476***  
+============================================================
+Note:                            *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+<p><em>Hay una relación de 7.4% mayor ingreso por cada año de educación adicional. Sin embargo, esta no es una relación causal pues es muy probable que la educación no sea exógena en la ecuación de salarios. Esto puede deberse, por ejemplo, a una variable omitida de habilidad que afecta tanto al número de años de educación alcanzados como al desempeño en el mercado de trabajo.</em></p></li>
+<li><p>[3 puntos] Se propone usar una variable dicotómica que indica si el individuo vivía cerca de una universidad cuando era niño, como instrumento de los años de educación. ¿Qué condiciones debe cumplir la variable propuesta para funcionar como instrumento válido?</p>
+<p><em>El instrumento debe cumplir dos condiciones:</em></p>
+<p><em>Exogeneidad: el instrumento no debe pertenecer a la ecuación de salarios. Es decir, el haber crecido cerca de una universidad no debe afectar el salario contemporáneo de forma directa.</em></p>
+<p><em>Relevancia: el instrumento debe estar correlacionado con la variable endógena. En este caso, haber crecido cerca de una universidad debe estar correlacionado con el número de años de educación completados.</em></p></li>
+<li><p>[4 puntos] ¿Cómo juzga la propuesta de usar la variable antes descrita como instrumento?</p>
+<p><em>Este argumento fue usado por <a href="https://www.nber.org/papers/w4483">Card (1995)</a> para mostrar que los rendimientos a la educación están subestimados por un estimador de MCO. Card muestra que al usar variables instrumentales, el efecto estimado es de 25 a 60% más grande.</em></p>
+<p><em>No hay una respuesta correcta o incorrecta. Quiero leer sus argumentos.</em></p></li>
+<li><p>[3 puntos] Estime la relación entre el logaritmo del salario y la educación usando la variable dicotómica de acceso a una universidad, <strong>nearc4</strong>, como instrumento. Emplee las mismas variables de control que en el modelo de MCO. Reporte errores clásicos y errores robustos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>regvi <span class="ot">&lt;-</span> <span class="fu">ivreg</span>(lwage <span class="sc">~</span> educ <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> smsa <span class="sc">+</span> reg661 <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                 reg662 <span class="sc">+</span> reg663 <span class="sc">+</span> reg664 <span class="sc">+</span> reg665 <span class="sc">+</span> reg666 <span class="sc">+</span> reg667 <span class="sc">+</span> reg668 <span class="sc">+</span> smsa66  <span class="sc">|</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                 nearc4 <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> smsa <span class="sc">+</span> reg661 <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                 reg662 <span class="sc">+</span> reg663 <span class="sc">+</span> reg664 <span class="sc">+</span> reg665 <span class="sc">+</span> reg666 <span class="sc">+</span> reg667 <span class="sc">+</span> reg668 <span class="sc">+</span> smsa66,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">data=</span>data.ingresos)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(regmco, regmco, regvi, regvi,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">'text'</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">se =</span> <span class="fu">list</span>(<span class="cn">NULL</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regmco, <span class="at">type =</span> <span class="st">"HC0"</span>))),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                    <span class="cn">NULL</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regvi, <span class="at">type =</span> <span class="st">"HC0"</span>)))),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="st">'educ'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+===================================================================
+                                        Dependent variable:        
+                                -----------------------------------
+                                               lwage               
+                                        OLS          instrumental  
+                                                       variable    
+                                   (1)       (2)      (3)     (4)  
+-------------------------------------------------------------------
+educ                            0.075***  0.075***  0.132** 0.132**
+                                 (0.003)   (0.004)  (0.055) (0.054)
+
+-------------------------------------------------------------------
+Observations                      3,010     3,010    3,010   3,010 
+R2                                0.300     0.300    0.238   0.238 
+Adjusted R2                       0.296     0.296    0.234   0.234 
+Residual Std. Error (df = 2994)   0.372     0.372    0.388   0.388 
+F Statistic (df = 15; 2994)     85.476*** 85.476***                
+===================================================================
+Note:                                   *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div></li>
+<li><p>[4 puntos] Interprete la primera etapa en términos del coeficiente sobre el instrumento. Obtenga el estadístico <span class="math inline">\(F\)</span> del instrumento excluido e interprete su magnitud.</p>
+<p><em>En la primera etapa, haber vivido cerca de una universidad incrementa en 0.32 los años de escolaridad acumulados. Este efecto estadísticamente significativo al 1%. El estadístico F es de una magnitud de 13.256, por encima de 10, la regla de dedo comúnmente empleada para juzgar la presencia de instrumentos débiles.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>regpe <span class="ot">&lt;-</span> <span class="fu">lm</span>(educ <span class="sc">~</span> nearc4 <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> smsa <span class="sc">+</span> reg661 <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>              reg662 <span class="sc">+</span> reg663 <span class="sc">+</span> reg664 <span class="sc">+</span> reg665 <span class="sc">+</span> reg666 <span class="sc">+</span> reg667 <span class="sc">+</span> reg668 <span class="sc">+</span> smsa66,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data.ingresos)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(regpe,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">'text'</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">se =</span> <span class="fu">list</span>(<span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regpe, <span class="at">type =</span> <span class="st">"HC0"</span>)))),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="st">'nearc4'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+===============================================
+                        Dependent variable:    
+                    ---------------------------
+                               educ            
+-----------------------------------------------
+nearc4                       0.320***          
+                              (0.085)          
+
+-----------------------------------------------
+Observations                   3,010           
+R2                             0.477           
+Adjusted R2                    0.474           
+Residual Std. Error      1.941 (df = 2994)     
+F Statistic         182.129*** (df = 15; 2994) 
+===============================================
+Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">linearHypothesis</span>(regpe, <span class="st">"nearc4=0"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear hypothesis test
+
+Hypothesis:
+nearc4 = 0
+
+Model 1: restricted model
+Model 2: educ ~ nearc4 + exper + expersq + black + south + smsa + reg661 + 
+    reg662 + reg663 + reg664 + reg665 + reg666 + reg667 + reg668 + 
+    smsa66
+
+  Res.Df   RSS Df Sum of Sq      F    Pr(&gt;F)    
+1   2995 11324                                  
+2   2994 11274  1    49.917 13.256 0.0002763 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div></li>
+<li><p>[3 puntos] Interprete el coeficiente sobre la variable de educación en el modelo estructural. Compare la magnitud del efecto estimado con el resultado de MCO.</p>
+<p><em>El coeficiente estimado sobre los años de educación indica que un año adicional de escolaridad incrementa en 13.15% el salario. Este efecto es casi el doble del estimado por MCO y estadísticamente significativo al 5%.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(regmco, regvi,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">'text'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">"Comparación de estimadores de MCO y VI"</span>, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">se =</span> <span class="fu">list</span>(<span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regmco, <span class="at">type =</span> <span class="st">"HC0"</span>))),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regvi, <span class="at">type =</span> <span class="st">"HC0"</span>)))),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="st">'educ'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Comparación de estimadores de MCO y VI
+======================================================================
+                                         Dependent variable:          
+                                --------------------------------------
+                                                lwage                 
+                                           OLS            instrumental
+                                                            variable  
+                                           (1)                (2)     
+----------------------------------------------------------------------
+educ                                    0.075***            0.132**   
+                                         (0.004)            (0.054)   
+
+----------------------------------------------------------------------
+Observations                              3,010              3,010    
+R2                                        0.300              0.238    
+Adjusted R2                               0.296              0.234    
+Residual Std. Error (df = 2994)           0.372              0.388    
+F Statistic                     85.476*** (df = 15; 2994)             
+======================================================================
+Note:                                      *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div></li>
+<li><p>[3 puntos] Realice ahora el siguiente procedimiento. Primero, estime la primera etapa usando una regresión por MCO. Obtenga los valores ajustados de educación y llámelos <strong>educ_hat</strong>. Luego, estime la segunda etapa empleando <strong>educ_hat</strong> como variable independiente, además del resto de variables de control. ¿Cómo cambian sus resultados en comparación con la parte d.?</p>
+<p><em>La magnitud de los coeficientes estimados es la misma. Esto es lo que esperábamos pues sabemos que el estimador de MC2E puede entenderse como un procedimiento donde primero se estiman los valores ajustados de la variable endógena usando el instrumento y las variables de control y luego se usan estos valores ajustados en la ecuación estructural. En cambio, los errores estándar son algo distintos.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data.ingresos <span class="ot">&lt;-</span> data.ingresos <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">educ_hat =</span> <span class="fu">predict</span>(regpe, .))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>reg2e <span class="ot">&lt;-</span> <span class="fu">lm</span>(lwage <span class="sc">~</span> educ_hat <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> smsa <span class="sc">+</span> reg661 <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>              reg662 <span class="sc">+</span> reg663 <span class="sc">+</span> reg664 <span class="sc">+</span> reg665 <span class="sc">+</span> reg666 <span class="sc">+</span> reg667 <span class="sc">+</span> reg668 <span class="sc">+</span> smsa66,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data.ingresos)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Comparamos</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(regvi, reg2e,   </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">"Comparación de VI con la función ivreg y el estimador a mano"</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">type=</span><span class="st">"text"</span>, </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="fu">c</span>(<span class="st">"educ"</span>, <span class="st">"educ_hat"</span>),</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">df=</span><span class="cn">FALSE</span>, <span class="at">digits=</span><span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Comparación de VI con la función ivreg y el estimador a mano
+================================================
+                        Dependent variable:     
+                    ----------------------------
+                               lwage            
+                     instrumental       OLS     
+                       variable                 
+                          (1)           (2)     
+------------------------------------------------
+educ                   0.1315**                 
+                       (0.0550)                 
+
+educ_hat                              0.1315**  
+                                      (0.0565)  
+
+------------------------------------------------
+Observations             3,010         3,010    
+R2                      0.2382         0.1947   
+Adjusted R2             0.2343         0.1907   
+Residual Std. Error     0.3883         0.3993   
+F Statistic                          48.2537*** 
+================================================
+Note:                *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div></li>
+<li><p>[3 puntos] ¿A qué se deben las discrepancias que encuentra? ¿Cuál de las dos estrategias prefiere para estimar el modelo de variables instrumentales?</p>
+<p><em>Los coeficientes estimados son exactamente iguales, pero los errores estándar no. El problema es que nuestro procedimiento de MC2E a mano no toma en cuenta que en la ecuación estructural estamos usando valores ajustados de la variable endógena. Las funciones en la mayoría de los paquetes utilizados en econometría calculan los errores estándar de manera correcta. Preferimos usar las funciones previamente ya programadas cuando sea posible, aunque este ejercicio nos ayuda a reforzar la intuición del estimador de MC2E.</em></p></li>
+<li><p>[3 puntos] Reestime el modelo de variables instrumentales añadiendo un segundo instrumento, <strong>nearc2</strong>, y reporte errores robustos (no es necesario usar <em>gmm</em>, puede seguir con <em>ivreg</em>, por lo que no estaría obteniendo el estimador de MGM óptimo). ¿Cómo cambian sus resultados para la ecuación estructural con respecto al caso exactamente identificado?</p>
+<p><em>El efecto estimado es significativo al 1% y en magnitud se incrementa ligeramente hasta 0.157.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>regvi2 <span class="ot">&lt;-</span> <span class="fu">ivreg</span>(lwage <span class="sc">~</span> educ <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> smsa <span class="sc">+</span> reg661 <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                 reg662 <span class="sc">+</span> reg663 <span class="sc">+</span> reg664 <span class="sc">+</span> reg665 <span class="sc">+</span> reg666 <span class="sc">+</span> reg667 <span class="sc">+</span> reg668 <span class="sc">+</span> smsa66  <span class="sc">|</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                 nearc4 <span class="sc">+</span> nearc2 <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> smsa <span class="sc">+</span> reg661 <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                 reg662 <span class="sc">+</span> reg663 <span class="sc">+</span> reg664 <span class="sc">+</span> reg665 <span class="sc">+</span> reg666 <span class="sc">+</span> reg667 <span class="sc">+</span> reg668 <span class="sc">+</span> smsa66,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">data=</span>data.ingresos)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(regmco, regvi, regvi2,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">'text'</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">se =</span> <span class="fu">list</span>(<span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regmco, <span class="at">type =</span> <span class="st">"HC0"</span>))),</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regvi, <span class="at">type =</span> <span class="st">"HC0"</span>))),</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regvi2, <span class="at">type =</span> <span class="st">"HC0"</span>)))),</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="st">'educ'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+==========================================================================
+                                           Dependent variable:            
+                                ------------------------------------------
+                                                  lwage                   
+                                           OLS              instrumental  
+                                                              variable    
+                                           (1)              (2)     (3)   
+--------------------------------------------------------------------------
+educ                                    0.075***          0.132** 0.157***
+                                         (0.004)          (0.054) (0.052) 
+
+--------------------------------------------------------------------------
+Observations                              3,010            3,010   3,010  
+R2                                        0.300            0.238   0.170  
+Adjusted R2                               0.296            0.234   0.166  
+Residual Std. Error (df = 2994)           0.372            0.388   0.405  
+F Statistic                     85.476*** (df = 15; 2994)                 
+==========================================================================
+Note:                                          *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div></li>
+<li><p>[3 puntos] Con el objeto que resulta de la estimación del modelo sobreidentificado, realice <em>summary(OBJETO, vcov = sandwich, diagnostics = TRUE)</em> para obtener las tres pruebas diagnóstico más usadas en variables instrumentales: prueba de instrumentos débiles, prueba de Hausman y prueba de Sargan. Interprete cada una de las pruebas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regvi2, <span class="at">vcov =</span> sandwich, <span class="at">diagnostics =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+ivreg(formula = lwage ~ educ + exper + expersq + black + south + 
+    smsa + reg661 + reg662 + reg663 + reg664 + reg665 + reg666 + 
+    reg667 + reg668 + smsa66 | nearc4 + nearc2 + exper + expersq + 
+    black + south + smsa + reg661 + reg662 + reg663 + reg664 + 
+    reg665 + reg666 + reg667 + reg668 + smsa66, data = data.ingresos)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.93841 -0.25068  0.01932  0.26519  1.46998 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3.3396868  0.8909170   3.749 0.000181 ***
+educ         0.1570594  0.0524127   2.997 0.002753 ** 
+exper        0.1188149  0.0228905   5.191 2.24e-07 ***
+expersq     -0.0023565  0.0003674  -6.414 1.64e-10 ***
+black       -0.1232778  0.0514904  -2.394 0.016718 *  
+south       -0.1431945  0.0301873  -4.744 2.20e-06 ***
+smsa         0.1007530  0.0313621   3.213 0.001329 ** 
+reg661      -0.1029760  0.0425755  -2.419 0.015637 *  
+reg662      -0.0002286  0.0345230  -0.007 0.994716    
+reg663       0.0469556  0.0335252   1.401 0.161435    
+reg664      -0.0554084  0.0408927  -1.355 0.175529    
+reg665       0.0515041  0.0506274   1.017 0.309085    
+reg666       0.0699968  0.0534531   1.309 0.190466    
+reg667       0.0390596  0.0514309   0.759 0.447639    
+reg668      -0.1980371  0.0522335  -3.791 0.000153 ***
+smsa66       0.0150626  0.0211120   0.713 0.475616    
+
+Diagnostic tests:
+                  df1  df2 statistic  p-value    
+Weak instruments    2 2993     8.366 0.000238 ***
+Wu-Hausman          1 2993     2.978 0.084509 .  
+Sargan              1   NA     1.248 0.263905    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.4053 on 2994 degrees of freedom
+Multiple R-Squared: 0.1702,  Adjusted R-squared: 0.166 
+Wald test: 51.65 on 15 and 2994 DF,  p-value: &lt; 2.2e-16 </code></pre>
+</div>
+</div>
+<p><em>La prueba de instrumentos débiles rechaza la <span class="math inline">\(H_0\)</span> de que los instrumentos son débiles, por lo que tenemos primera etapa.</em></p>
+<p><em>La prueba de Hausman rechaza al 10% que los estimadores de VI y de MCO sean iguales, por lo que se prefiere el de VI.</em></p>
+<p><em>La prueba de Sargan no rechaza la <span class="math inline">\(H_0\)</span> de que el modelo esté mal especificado.</em></p></li>
+<li><p>[4 puntos] Considere la primera etapa del modelo sobreidentificado. Compruebe que si realiza una prueba de significancia conjunta para los instrumentos obtiene la prueba de instrumentos débiles que se reporta en el resumen que obtuvo con <em>summary</em>.</p>
+<p><em>En el apartado anterior, obtenemos un valor <span class="math inline">\(p=0.000238\)</span> para la prueba de instrumentos débiles. Noten que se especificó una matriz de varianzas robustas. Entonces, tenemos que usar la misma matriz en la prueba <span class="math inline">\(F\)</span>:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>regpe2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(educ <span class="sc">~</span> nearc4 <span class="sc">+</span> nearc2 <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> smsa <span class="sc">+</span> reg661 <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>              reg662 <span class="sc">+</span> reg663 <span class="sc">+</span> reg664 <span class="sc">+</span> reg665 <span class="sc">+</span> reg666 <span class="sc">+</span> reg667 <span class="sc">+</span> reg668 <span class="sc">+</span> smsa66,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data.ingresos)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">linearHypothesis</span>(regpe2, <span class="fu">c</span>(<span class="st">"nearc4=0"</span>, <span class="st">"nearc2=0"</span>), <span class="at">white.adjust =</span> <span class="st">"hc0"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear hypothesis test
+
+Hypothesis:
+nearc4 = 0
+nearc2 = 0
+
+Model 1: restricted model
+Model 2: educ ~ nearc4 + nearc2 + exper + expersq + black + south + smsa + 
+    reg661 + reg662 + reg663 + reg664 + reg665 + reg666 + reg667 + 
+    reg668 + smsa66
+
+Note: Coefficient covariance matrix supplied.
+
+  Res.Df Df      F    Pr(&gt;F)    
+1   2995                        
+2   2993  2 8.3662 0.0002381 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><em>Obtenemos el mismo valor <span class="math inline">\(p\)</span> y maginitud del estadístico <span class="math inline">\(F\)</span>.</em></p></li>
+<li><p>[4 puntos] Compruebe que si realiza el procedimiento de regresión auxiliar para la prueba de Hausman obtiene el mismo valor <span class="math inline">\(p\)</span> que se reporta en el resumen que obtuvo con <em>summary</em>.</p>
+<p><em>De la primera etapa, obtenemos los residuales:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>    data.ingresos <span class="ot">&lt;-</span> data.ingresos <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">vhat =</span> <span class="fu">resid</span>(regpe2))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Corremos la regresión auxiliar con los residuales:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>    regaux <span class="ot">&lt;-</span> <span class="fu">lm</span>(lwage <span class="sc">~</span> educ <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> smsa <span class="sc">+</span> reg661 <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                 reg662 <span class="sc">+</span> reg663 <span class="sc">+</span> reg664 <span class="sc">+</span> reg665 <span class="sc">+</span> reg666 <span class="sc">+</span> reg667 <span class="sc">+</span> reg668 <span class="sc">+</span> smsa66 <span class="sc">+</span> vhat,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">data=</span>data.ingresos)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(regaux,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">'text'</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">se =</span> <span class="fu">list</span>(<span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcovHC</span>(regaux, <span class="at">type =</span> <span class="st">"HC0"</span>)))),</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="st">'vhat'</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">report =</span> <span class="fu">c</span>(<span class="st">"c*s*p"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+===============================================
+                        Dependent variable:    
+                    ---------------------------
+                               lwage           
+-----------------------------------------------
+                              -0.083*          
+                             (0.048)*          
+                             p = 0.085         
+
+-----------------------------------------------
+Observations                   3,010           
+R2                             0.301           
+Adjusted R2                    0.297           
+Residual Std. Error      0.372 (df = 2993)     
+F Statistic          80.368*** (df = 16; 2993) 
+===============================================
+Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+<p><em>El valor <span class="math inline">\(p\)</span> es idéntico al obtenido con summary.</em></p></li>
+</ol>
+</section>
+<section id="pregunta-2" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
+<p>Considere los datos <em>comportamiento_wide.csv</em>, que contienen información individual de niñas y niños, incluyendo su género, edad, raza e información de sus madres. Además, se incluye una medida auto reportada de autoestima (<strong>self</strong>) y una evaluación de comportamiento antisocial (<strong>anti</strong>). Se quiere conocer cómo influye la autoestima en el comportamiento antisocial. Para cada niño o niña hay tres observaciones en el tiempo. Se busca explicar el comportamiento antisocial en función de la autoestima y la condición de pobreza (<strong>pov</strong>):</p>
+<p><span class="math display">\[anti_{it}=\alpha_i+\beta_1 self_{it}+\beta_2 pov_{it}+\varepsilon_{it}\]</span></p>
+<ol type="a">
+<li><p>[2 puntos] La base se encuentra en formato <em>wide</em>. Ponga la base en formato <em>long</em>, donde haya una columna para cada variable y donde las filas representen a un individuo en un periodo.</p>
+<p><em>Hay muchas formas de hacer esto. Podemos usar las funciones pivot_longer y pivot_wider, por ejemplo.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data.comp <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"../files/comportamiento_wide.csv"</span>,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"latin1"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(anti90<span class="sc">:</span>anti94,self90<span class="sc">:</span>self94,pov90<span class="sc">:</span>pov94),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"measure"</span>, <span class="st">"year"</span>),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_pattern =</span> <span class="st">"(.*)(..)"</span>)  <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> measure,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> value)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data.comp)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "id"       "momage"   "gender"   "childage" "hispanic" "black"   
+ [7] "momwork"  "married"  "year"     "anti"     "self"     "pov"     </code></pre>
+</div>
+</div></li>
+<li><p>[2 puntos] Estime la ecuación de comportamiento antisocial empleando MCO <em>pooled</em>. ¿Cuáles son los supuestos que se deben cumplir para que <span class="math inline">\(\hat{\beta}_1^{MCO}\)</span> sea consistente?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m.mco <span class="ot">&lt;-</span> <span class="fu">plm</span>( anti <span class="sc">~</span> self <span class="sc">+</span> pov,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data=</span>data.comp,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">model=</span><span class="st">"pooling"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"year"</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Pooling Model
+
+Call:
+plm(formula = anti ~ self + pov, data = data.comp, model = "pooling", 
+    index = c("id", "year"))
+
+Balanced Panel: n = 581, T = 3, N = 1743
+
+Residuals:
+    Min.  1st Qu.   Median  3rd Qu.     Max. 
+-2.65689 -1.29476 -0.33138  0.98912  4.77034 
+
+Coefficients:
+             Estimate Std. Error t-value  Pr(&gt;|t|)    
+(Intercept)  2.792098   0.231110 12.0812 &lt; 2.2e-16 ***
+self        -0.065102   0.011083 -5.8739 5.089e-09 ***
+pov          0.515809   0.078730  6.5516 7.476e-11 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Total Sum of Squares:    4333.1
+Residual Sum of Squares: 4140.6
+R-Squared:      0.044433
+Adj. R-Squared: 0.043335
+F-statistic: 40.4544 on 2 and 1740 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+</div>
+<p><em>La variable self tiene un efecto negativo y estadísticamente significativo sobre anti. La variable pov tiene un efecto positivo y estadísticamente significativo. El estimador de MCO será consistente solo si las variables self y pov no están correlacionadas con el error. Además, para estimar este modelo, asumimos que la heterogeneidad no observada <span class="math inline">\(\alpha_i\)</span> puede escribirse simplemente como <span class="math inline">\(\alpha\)</span>. Otra forma de pensar sobre este modelo es si el mismo modelo es válido para todos los periodos como para asumir una ordenada al origen y una pendiente común. El modelo pooled ignora la naturaleza en panel de los datos. Sin embargo, como tenemos a los mismos individuos en varios puntos del tiempo, los errores están agrupados, así que se deben de estimar errores con esta estructura. En este caso, al tomar en cuenta esta correlación entre grupos, los errores estándar son más grandes, pero los resultados siguen siendo significativos. En muchos casos, no tomar en cuenta la estructura agrupada de los errores puede llevar a rechazar hipótesis nulas que son ciertas.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(m.mco,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="fu">vcovHC</span>(m.mco, <span class="at">type =</span> <span class="st">"HC1"</span>, <span class="at">cluster=</span><span class="st">"group"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+             Estimate Std. Error t value  Pr(&gt;|t|)    
+(Intercept)  2.792098   0.293380  9.5170 &lt; 2.2e-16 ***
+self        -0.065102   0.013687 -4.7565 2.132e-06 ***
+pov          0.515809   0.104963  4.9142 9.753e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div></li>
+<li><p>[3 puntos] Estime la ecuación de comportamiento antisocial empleando el estimador <em>within</em>. ¿Cuáles son los supuestos que se deben cumplir para que <span class="math inline">\(\hat{\beta}_1^{FE}\)</span> sea consistente?</p>
+<p><em>Si asumimos que la heterogeneidad no observada y el error están potencialmente correlacionados, entonces podemos usar un estimador de efectos fijos para deshacernos de la heterogeneidad no observada y estimar consistentemente los parámetros sobre self y pov.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>m.fe <span class="ot">&lt;-</span> <span class="fu">plm</span>( anti <span class="sc">~</span> self <span class="sc">+</span> pov,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">data=</span>data.comp,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">model=</span><span class="st">"within"</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"year"</span>))</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(m.fe,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="fu">vcovHC</span>(m.fe, <span class="at">type =</span> <span class="st">"HC1"</span>, <span class="at">cluster=</span><span class="st">"group"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+      Estimate Std. Error t value  Pr(&gt;|t|)    
+self -0.051495   0.011308 -4.5540 5.818e-06 ***
+pov   0.104899   0.099188  1.0576    0.2905    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div></li>
+<li><p>[3 puntos] Estime la ecuación de comportamiento antisocial empleando efectos aleatorios. ¿Cuáles son los supuestos que se deben cumplir para que <span class="math inline">\(\hat{\beta}_1^{RE}\)</span> sea consistente?</p>
+<p><em>Si estamos dispuestos a asumir que la heterogeneidad no observada y el error son independientes, podemos emplear el estimador de efectos aleatorios. MCO pooled también es consistente pero no es eficiente.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>m.re <span class="ot">&lt;-</span> <span class="fu">plm</span>( anti <span class="sc">~</span> self <span class="sc">+</span> pov,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">data=</span>data.comp,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">model=</span><span class="st">"random"</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"year"</span>))</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(m.re,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="fu">vcovHC</span>(m.re, <span class="at">type =</span> <span class="st">"HC1"</span>, <span class="at">cluster=</span><span class="st">"group"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+             Estimate Std. Error t value  Pr(&gt;|t|)    
+(Intercept)  2.695210   0.222607 12.1075 &lt; 2.2e-16 ***
+self        -0.056732   0.010216 -5.5534 3.234e-08 ***
+pov          0.292407   0.081956  3.5679 0.0003696 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div></li>
+<li><p>[3 puntos] Se desea incorporar en el análisis el género (<strong>gender</strong>) y una variable dicotómica para los hispanos (<strong>hispanic</strong>). Indique qué modelo usaría y estime dicho modelo.</p>
+<p><em>No es posible estimar los coeficientes sobre variables que no varían en el tiempo usando efectos fijos, por lo que este modelo queda descartado. Podríamos usar MCO pooled, que impone supuestos muy fuertes. La otra alternativa es un modelo de efectos aleatorios, que asume que la heterogeneidad no observada y el error no están correlacionados.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>m.sex <span class="ot">&lt;-</span> <span class="fu">plm</span>( anti <span class="sc">~</span> self <span class="sc">+</span> pov <span class="sc">+</span> gender,</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>data.comp,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">model=</span><span class="st">"random"</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"year"</span>))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(m.sex,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="fu">vcovHC</span>(m.sex, <span class="at">type =</span> <span class="st">"HC1"</span>, <span class="at">cluster=</span><span class="st">"group"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+             Estimate Std. Error t value  Pr(&gt;|t|)    
+(Intercept)  2.970534   0.231591 12.8267 &lt; 2.2e-16 ***
+self        -0.058558   0.010223 -5.7278 1.197e-08 ***
+pov          0.304997   0.081486  3.7429 0.0001878 ***
+gender      -0.480468   0.107126 -4.4851 7.766e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div></li>
+<li><p>[2 puntos] Regrese al modelo que incluye solo la autoestima y el estado de pobreza como covariables. Realice una prueba de Hausman para determinar si se prefiere un modelo de efectos fijos o uno de efectos aleatorios.</p>
+<p><em>La implementación de la prueba de Hausman indica que se rechaza la H0 de que los coeficientes estimados son iguales (y que el modelo de efectos aleatorios es el adecuado). Hay evidencia de que se prefiere un modelo de efectos fijos, aunque tendremos que vivir con el hecho de no poder estimar el coeficiente asociado a las variables que no varían en el tiempo en este caso.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">phtest</span>(m.fe, m.re)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Hausman Test
+
+data:  anti ~ self + pov
+chisq = 13.578, df = 2, p-value = 0.001126
+alternative hypothesis: one model is inconsistent</code></pre>
+</div>
+</div></li>
+</ol>
+</section>
+<section id="pregunta-3" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
+<p>Retome los datos de la pregunta 2 y el modelo del comportamiento antisocial en función de la autoestima y la pobreza. En esta pregunta mostraremos la equivalencia del estimador within con otros estimadores.</p>
+<ol type="a">
+<li><p>[3 puntos] Compruebe que el estimador de efectos fijos es equivalente a MCO con dummies de individuos.</p>
+<p><em>Comprobamos:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>m.fe <span class="ot">&lt;-</span> <span class="fu">plm</span>( anti <span class="sc">~</span> self <span class="sc">+</span> pov,</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">data=</span>data.comp,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">model=</span><span class="st">"within"</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"year"</span>))</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>m.dummy <span class="ot">&lt;-</span> <span class="fu">lm</span>(anti <span class="sc">~</span> self <span class="sc">+</span> pov <span class="sc">+</span> <span class="fu">factor</span>(id),</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>data.comp)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(m.fe, m.dummy, <span class="at">keep=</span><span class="fu">c</span>(<span class="st">"self"</span>, <span class="st">"pov"</span>), <span class="at">type=</span><span class="st">"text"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+======================================================================
+                                   Dependent variable:                
+                    --------------------------------------------------
+                                           anti                       
+                             panel                      OLS           
+                             linear                                   
+                              (1)                       (2)           
+----------------------------------------------------------------------
+self                       -0.051***                 -0.051***        
+                            (0.011)                   (0.011)         
+
+pov                          0.105                     0.105          
+                            (0.094)                   (0.094)         
+
+----------------------------------------------------------------------
+Observations                 1,743                     1,743          
+R2                           0.021                     0.731          
+Adjusted R2                  -0.470                    0.596          
+Residual Std. Error                              1.002 (df = 1160)    
+F Statistic         12.551*** (df = 2; 1160) 5.417*** (df = 582; 1160)
+======================================================================
+Note:                                      *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div></li>
+<li><p>[2 puntos] Compruebe que en un modelo de efectos fijos las características que no varían en el tiempo no pueden ser identificadas. Añada la variable <strong>black</strong> para comprobarlo.</p>
+<p><em>Comprobamos que la variable simplemente es omitida del análisis:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">plm</span>( anti <span class="sc">~</span> self <span class="sc">+</span> pov <span class="sc">+</span> black,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">data=</span>data.comp,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">model=</span><span class="st">"within"</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"year"</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Oneway (individual) effect Within Model
+
+Call:
+plm(formula = anti ~ self + pov + black, data = data.comp, model = "within", 
+    index = c("id", "year"))
+
+Balanced Panel: n = 581, T = 3, N = 1743
+
+Residuals:
+      Min.    1st Qu.     Median    3rd Qu.       Max. 
+-3.7868224 -0.4706542 -0.0012721  0.4534891  3.2646729 
+
+Coefficients:
+      Estimate Std. Error t-value  Pr(&gt;|t|)    
+self -0.051495   0.010530 -4.8902 1.149e-06 ***
+pov   0.104899   0.093880  1.1174    0.2641    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Total Sum of Squares:    1190.7
+Residual Sum of Squares: 1165.4
+R-Squared:      0.021182
+Adj. R-Squared: -0.46991
+F-statistic: 12.5514 on 2 and 1160 DF, p-value: 4.0471e-06</code></pre>
+</div>
+</div></li>
+<li><p>[5 puntos] Compruebe que el estimador de efectos fijos es equivalente a MCO sobre el modelo en diferencias con respecto a la media. Para esto, conserve dos periodos consecutivos de datos y solo observaciones que tengan datos para las variables dependientes e independientes en los dos años que elija. Luego estime por MCO el modelo con variables transformadas.</p>
+<p><em>Nos quedamos con un subconjunto de datos:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data.comp.sub <span class="ot">&lt;-</span> data.comp <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(id, year, anti, self, pov) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">90</span> <span class="sc">|</span> year<span class="sc">==</span><span class="dv">92</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Nos quedamos con los que no son NA</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>data.comp.sub <span class="ot">&lt;-</span> data.comp.sub[<span class="fu">complete.cases</span>(data.comp.sub), ]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Creamos las variables como diferencias respecto a la media y estimamos el modelo within y el modelo de MCO en las variables transformadas:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>data.comp.sub <span class="ot">&lt;-</span> data.comp.sub <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m.anti =</span> <span class="fu">mean</span>(anti),</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">m.self =</span> <span class="fu">mean</span>(self),</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">m.pov =</span> <span class="fu">mean</span>(pov)) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dm.anti =</span> anti <span class="sc">-</span> m.anti,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">dm.self =</span> self <span class="sc">-</span> m.self,</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">dm.pov =</span> pov <span class="sc">-</span> m.pov)</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>m.fe.sub <span class="ot">&lt;-</span> <span class="fu">plm</span>( anti <span class="sc">~</span> self <span class="sc">+</span> pov,</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data=</span>data.comp.sub,</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">model=</span><span class="st">"within"</span>,</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>                 <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"year"</span>))</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>m.demean <span class="ot">&lt;-</span> <span class="fu">lm</span>(dm.anti <span class="sc">~</span> dm.self <span class="sc">+</span> dm.pov,</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>               data.comp.sub)</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(m.fe.sub, m.demean,</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep=</span><span class="fu">c</span>(<span class="st">"self"</span>, <span class="st">"pov"</span>, <span class="st">"dm.self"</span>,<span class="st">"dm.pov"</span>),</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">type=</span><span class="st">"text"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+==================================================================
+                                 Dependent variable:              
+                    ----------------------------------------------
+                             anti                  dm.anti        
+                            panel                    OLS          
+                            linear                                
+                             (1)                     (2)          
+------------------------------------------------------------------
+self                      -0.038***                               
+                           (0.014)                                
+
+pov                         0.195                                 
+                           (0.133)                                
+
+dm.self                                           -0.038***       
+                                                   (0.010)        
+
+dm.pov                                             0.195**        
+                                                   (0.094)        
+
+------------------------------------------------------------------
+Observations                1,162                   1,162         
+R2                          0.016                   0.016         
+Adjusted R2                 -0.972                  0.015         
+Residual Std. Error                           0.641 (df = 1159)   
+F Statistic         4.807*** (df = 2; 579) 9.621*** (df = 2; 1159)
+==================================================================
+Note:                                  *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div></li>
+<li><p>[5 puntos] Compruebe que el estimador de efectos fijos es equivalente a MCO sobre el modelo en primeras diferencias. Parta de la muestra con dos años de la parte d.&nbsp;para estimar por MCO el modelo con variables transformadas.</p>
+<p><em>Usando el mismo subconjunto, calculamos ahora las primeras diferencias y estimamos:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>data.comp.sub <span class="ot">&lt;-</span> data.comp.sub <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">d.anti =</span> anti<span class="sc">-</span>dplyr<span class="sc">::</span><span class="fu">lag</span>(anti, <span class="at">order_by =</span> year),</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">d.self =</span> self<span class="sc">-</span>dplyr<span class="sc">::</span><span class="fu">lag</span>(self, <span class="at">order_by =</span> year),</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">d.pov =</span> pov<span class="sc">-</span>dplyr<span class="sc">::</span><span class="fu">lag</span>(pov, <span class="at">order_by =</span> year)) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>m.difs <span class="ot">&lt;-</span> <span class="fu">lm</span>(d.anti <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">+</span> d.self <span class="sc">+</span> d.pov,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">data=</span>data.comp.sub)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(m.fe.sub, m.demean, <span class="at">keep=</span><span class="fu">c</span>(<span class="st">"self"</span>, <span class="st">"pov"</span>, <span class="st">"d.self"</span>,<span class="st">"d.pov"</span>), <span class="at">type=</span><span class="st">"text"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+==================================================================
+                                 Dependent variable:              
+                    ----------------------------------------------
+                             anti                  dm.anti        
+                            panel                    OLS          
+                            linear                                
+                             (1)                     (2)          
+------------------------------------------------------------------
+self                      -0.038***                               
+                           (0.014)                                
+
+pov                         0.195                                 
+                           (0.133)                                
+
+dm.self                                           -0.038***       
+                                                   (0.010)        
+
+dm.pov                                             0.195**        
+                                                   (0.094)        
+
+------------------------------------------------------------------
+Observations                1,162                   1,162         
+R2                          0.016                   0.016         
+Adjusted R2                 -0.972                  0.015         
+Residual Std. Error                           0.641 (df = 1159)   
+F Statistic         4.807*** (df = 2; 579) 9.621*** (df = 2; 1159)
+==================================================================
+Note:                                  *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div></li>
+</ol>
+</section>
+<section id="pregunta-4" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-4">Pregunta 4</h2>
+<p>Considere los datos <em>mlbook1.csv</em> con información sobre 2287 estudiantes en 131 escuelas. Nos interesa la relación entre una medida de aptitud verbal, (<strong>iq_vert</strong>) y el resultado de un examen de inglés (<strong>langpost</strong>). Las variables <strong>schoolnr</strong> y <strong>pupilnr</strong> identifican a las escuelas y los estudiantes, respectivamente. El modelo a estimar es el siguiente:</p>
+<p><span class="math display">\[langpost_{i}=\alpha+\beta iqvert_{i}+BX_{i}+\varepsilon_{i}\]</span> donde <span class="math inline">\(i\)</span> indexa y <span class="math inline">\(X_i\)</span> son tres características usadas como control: el sexo, <strong>sex</strong>, si el estudiante es de una población minoritaria, <strong>minority</strong> y el número de años repetidos, <strong>repeatgr</strong>.</p>
+<ol type="a">
+<li><p>[3 puntos] ¿Por qué es posible que estemos frente a una situación de errores agrupados?</p>
+<p><em>Los datos están agrupados a nivel escuela. Los estudiantes en una misma escuela comparten características observadas y no observadas que hacen altamente probable que los factores no observables estén correlacionados entre los individuos, rompiendo el supuesto de independencia.</em></p></li>
+<li><p>[2 puntos] Estime la ecuación de calificación usando MCO ignorando la agrupación de datos. ¿Qué concluye respecto a la relación entre la aptitud verbal y la prueba de inglés?</p>
+<p><em>Se concluye que una hora más en la prueba de aptitud incrementa en 2.49 puntos la calificación del examen. El error estándar es 0.072.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>data.examen<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"../files/mlbook1.csv"</span>,</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"latin1"</span>)) </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m.mco <span class="ot">&lt;-</span> <span class="fu">lm</span>(langpost <span class="sc">~</span> iq_verb <span class="sc">+</span> sex <span class="sc">+</span> minority <span class="sc">+</span> repeatgr, <span class="at">data=</span>data.examen))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = langpost ~ iq_verb + sex + minority + repeatgr, 
+    data = data.examen)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-28.0192  -4.2255   0.5218   4.8017  24.1421 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 10.93980    0.90504  12.088   &lt;2e-16 ***
+iq_verb      2.48635    0.07233  34.374   &lt;2e-16 ***
+sex          2.42228    0.28871   8.390   &lt;2e-16 ***
+minority    -0.03701    0.62762  -0.059    0.953    
+repeatgr    -4.40860    0.43222 -10.200   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.853 on 2282 degrees of freedom
+Multiple R-squared:  0.4217, Adjusted R-squared:  0.4207 
+F-statistic: 416.1 on 4 and 2282 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div></li>
+<li><p>[3 puntos] Estime ahora los errores robustos a heteroscedasticidad del tipo HC1. ¿Qué cambia y por qué en la interpretación de la relación entre la prueba de aptitud y el examen?</p>
+<p><em>El coeficiente estimado es el mismo. La fórmula empleada para calcular la varianza es una en forma de sándwich, que toma en cuenta la posible heterocedasticidad. El error estándar es apromximadamente 5% más grande, 0.076.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(m.mco, <span class="at">vcov =</span> <span class="fu">vcovHC</span>(m.mco, <span class="at">type =</span> <span class="st">"HC1"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 10.939796   0.985476 11.1010   &lt;2e-16 ***
+iq_verb      2.486350   0.075871 32.7709   &lt;2e-16 ***
+sex          2.422279   0.288525  8.3954   &lt;2e-16 ***
+minority    -0.037006   0.612455 -0.0604   0.9518    
+repeatgr    -4.408605   0.448615 -9.8271   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div></li>
+<li><p>[2 puntos] Estime la ecuación de calificación usando MCO y efectos fijos de escuela. ¿Qué resuelve este procedimiento?</p>
+<p><em>Al incluir efectos fijos a nivel escuela controlamos por características no observadas a nivel escuela. Estas diferencias se incorporan en el modelo como desplazamientos de la ordenada al origen. Este procedimiento no tiene nada que ver con la agrupación de errores.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m.mco.ef <span class="ot">&lt;-</span> <span class="fu">lm</span>(langpost <span class="sc">~</span> iq_verb <span class="sc">+</span> sex <span class="sc">+</span> minority <span class="sc">+</span> repeatgr <span class="sc">+</span> <span class="fu">factor</span>(schoolnr),</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data=</span>data.examen))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = langpost ~ iq_verb + sex + minority + repeatgr + 
+    factor(schoolnr), data = data.examen)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-24.8792  -3.6779   0.2729   4.0985  19.6755 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         12.50218    1.54290   8.103 8.89e-16 ***
+iq_verb              2.25997    0.07093  31.860  &lt; 2e-16 ***
+sex                  2.41900    0.26850   9.009  &lt; 2e-16 ***
+minority             0.23262    0.71306   0.326 0.744280    
+repeatgr            -4.43503    0.40938 -10.834  &lt; 2e-16 ***
+factor(schoolnr)2   -8.29681    2.67144  -3.106 0.001923 ** 
+factor(schoolnr)10  -7.28322    3.06053  -2.380 0.017412 *  
+factor(schoolnr)12  -4.56719    2.06924  -2.207 0.027407 *  
+factor(schoolnr)15  -7.41516    2.54948  -2.909 0.003669 ** 
+factor(schoolnr)16   2.53410    2.54854   0.994 0.320173    
+factor(schoolnr)18  -6.80332    1.81757  -3.743 0.000187 ***
+factor(schoolnr)21  -0.53872    1.99103  -0.271 0.786746    
+factor(schoolnr)24   4.20444    1.81839   2.312 0.020862 *  
+factor(schoolnr)26  -0.36076    1.96000  -0.184 0.853984    
+factor(schoolnr)27  -5.46850    1.87909  -2.910 0.003649 ** 
+factor(schoolnr)29   3.19018    2.35758   1.353 0.176147    
+factor(schoolnr)33  -0.34896    2.84408  -0.123 0.902359    
+factor(schoolnr)35   1.59577    2.08305   0.766 0.443718    
+factor(schoolnr)36  -3.99135    1.83661  -2.173 0.029873 *  
+factor(schoolnr)38   3.05382    1.75466   1.740 0.081931 .  
+factor(schoolnr)40   0.09036    1.67651   0.054 0.957022    
+factor(schoolnr)41  -2.94006    2.13296  -1.378 0.168226    
+factor(schoolnr)42  -4.99799    2.10828  -2.371 0.017845 *  
+factor(schoolnr)44  -1.49855    2.04728  -0.732 0.464268    
+factor(schoolnr)47  -5.73732    2.52469  -2.272 0.023156 *  
+factor(schoolnr)48  -1.83632    2.25583  -0.814 0.415717    
+factor(schoolnr)49  -4.14690    2.41410  -1.718 0.085979 .  
+factor(schoolnr)52  -3.60350    1.87627  -1.921 0.054918 .  
+factor(schoolnr)54   2.91142    1.72017   1.693 0.090691 .  
+factor(schoolnr)55   1.49383    1.73053   0.863 0.388111    
+factor(schoolnr)57   0.79682    1.80093   0.442 0.658210    
+factor(schoolnr)60  -1.79256    1.83760  -0.975 0.329426    
+factor(schoolnr)61   0.39402    1.89130   0.208 0.834990    
+factor(schoolnr)62   2.39062    1.88568   1.268 0.205016    
+factor(schoolnr)65   5.66979    1.85875   3.050 0.002314 ** 
+factor(schoolnr)66   1.09325    2.28956   0.477 0.633058    
+factor(schoolnr)67  -5.59969    1.78486  -3.137 0.001728 ** 
+factor(schoolnr)68  -1.22319    1.90619  -0.642 0.521140    
+factor(schoolnr)76  -1.14607    2.02551  -0.566 0.571577    
+factor(schoolnr)78   0.20198    1.99000   0.101 0.919167    
+factor(schoolnr)79   2.10981    2.10998   1.000 0.317463    
+factor(schoolnr)80   3.31569    1.87290   1.770 0.076810 .  
+factor(schoolnr)86   1.45319    1.81855   0.799 0.424322    
+factor(schoolnr)87  -0.20740    1.88076  -0.110 0.912200    
+factor(schoolnr)88   1.25972    2.35398   0.535 0.592604    
+factor(schoolnr)90   4.45169    2.06677   2.154 0.031356 *  
+factor(schoolnr)94   3.05367    2.05599   1.485 0.137621    
+factor(schoolnr)95  -0.76530    1.94512  -0.393 0.694027    
+factor(schoolnr)97   1.48348    1.98190   0.749 0.454232    
+factor(schoolnr)98  -1.40960    1.89893  -0.742 0.457977    
+factor(schoolnr)101  4.26255    1.83026   2.329 0.019955 *  
+factor(schoolnr)103 -4.54699    3.34961  -1.357 0.174775    
+factor(schoolnr)106 -2.63664    2.33290  -1.130 0.258518    
+factor(schoolnr)107 -4.50332    1.99406  -2.258 0.024023 *  
+factor(schoolnr)108 -1.87255    2.44170  -0.767 0.443222    
+factor(schoolnr)109 -4.40708    1.87743  -2.347 0.018995 *  
+factor(schoolnr)110  3.08759    1.99160   1.550 0.121215    
+factor(schoolnr)111  1.23407    1.94637   0.634 0.526125    
+factor(schoolnr)112 -0.24997    2.67934  -0.093 0.925678    
+factor(schoolnr)115 -0.13189    1.72755  -0.076 0.939152    
+factor(schoolnr)116 -0.96627    1.93966  -0.498 0.618421    
+factor(schoolnr)118 -4.19606    2.42987  -1.727 0.084335 .  
+factor(schoolnr)119 -0.37636    2.21669  -0.170 0.865195    
+factor(schoolnr)121 -3.16182    2.35853  -1.341 0.180196    
+factor(schoolnr)123  2.76021    3.34170   0.826 0.408902    
+factor(schoolnr)124  3.69157    1.89801   1.945 0.051909 .  
+factor(schoolnr)125  1.79787    1.76911   1.016 0.309622    
+factor(schoolnr)130  5.61009    2.16507   2.591 0.009629 ** 
+factor(schoolnr)132  6.28128    1.87651   3.347 0.000830 ***
+factor(schoolnr)136  3.87282    2.03048   1.907 0.056610 .  
+factor(schoolnr)137  4.40378    1.95919   2.248 0.024693 *  
+factor(schoolnr)141  1.14473    1.90727   0.600 0.548441    
+factor(schoolnr)142  5.13270    1.82046   2.819 0.004855 ** 
+factor(schoolnr)147  7.45698    1.85918   4.011 6.26e-05 ***
+factor(schoolnr)148  2.09875    1.74675   1.202 0.229682    
+factor(schoolnr)149  2.53123    1.88015   1.346 0.178351    
+factor(schoolnr)150  1.56758    1.80115   0.870 0.384221    
+factor(schoolnr)151  0.81632    1.83732   0.444 0.656871    
+factor(schoolnr)152  6.20977    1.99227   3.117 0.001852 ** 
+factor(schoolnr)155  4.06995    1.69447   2.402 0.016394 *  
+factor(schoolnr)156  1.03255    2.21442   0.466 0.641061    
+factor(schoolnr)159  2.82606    1.71234   1.650 0.099006 .  
+factor(schoolnr)160  3.52358    1.80662   1.950 0.051261 .  
+factor(schoolnr)161  5.47210    1.70824   3.203 0.001378 ** 
+factor(schoolnr)164  4.69601    1.81787   2.583 0.009853 ** 
+factor(schoolnr)167  3.85744    1.79977   2.143 0.032201 *  
+factor(schoolnr)170  1.92686    1.78368   1.080 0.280143    
+factor(schoolnr)175  4.18579    2.10407   1.989 0.046785 *  
+factor(schoolnr)176  6.59497    1.83757   3.589 0.000339 ***
+factor(schoolnr)177  1.42445    1.99027   0.716 0.474249    
+factor(schoolnr)179 -7.16566    2.82071  -2.540 0.011143 *  
+factor(schoolnr)182  1.78603    2.41396   0.740 0.459456    
+factor(schoolnr)183  0.85895    1.70516   0.504 0.614499    
+factor(schoolnr)184  0.99731    1.74622   0.571 0.567974    
+factor(schoolnr)188 -0.58465    2.19526  -0.266 0.790015    
+factor(schoolnr)189  3.22324    1.98341   1.625 0.104287    
+factor(schoolnr)192 -1.80905    2.55487  -0.708 0.478973    
+factor(schoolnr)193  6.24675    2.21572   2.819 0.004857 ** 
+factor(schoolnr)195  0.62668    1.90527   0.329 0.742247    
+factor(schoolnr)196  2.79306    1.77499   1.574 0.115735    
+factor(schoolnr)197  1.31643    1.90977   0.689 0.490700    
+factor(schoolnr)198 -2.54503    2.66624  -0.955 0.339919    
+factor(schoolnr)199 -4.10925    1.69994  -2.417 0.015719 *  
+factor(schoolnr)204  0.98462    1.81798   0.542 0.588149    
+factor(schoolnr)206  3.79180    2.28001   1.663 0.096446 .  
+factor(schoolnr)209  2.44276    1.83923   1.328 0.184272    
+factor(schoolnr)210 -0.40756    2.02750  -0.201 0.840706    
+factor(schoolnr)212  1.37659    1.80057   0.765 0.444637    
+factor(schoolnr)214 -3.50270    1.85506  -1.888 0.059136 .  
+factor(schoolnr)215  2.42072    2.21308   1.094 0.274155    
+factor(schoolnr)216  3.25053    2.68121   1.212 0.225516    
+factor(schoolnr)217  3.17962    2.55021   1.247 0.212604    
+factor(schoolnr)218  5.14348    1.79490   2.866 0.004203 ** 
+factor(schoolnr)219  5.03571    2.10754   2.389 0.016962 *  
+factor(schoolnr)222  1.27021    1.81917   0.698 0.485106    
+factor(schoolnr)224  0.16178    2.15792   0.075 0.940246    
+factor(schoolnr)226  0.43861    2.55025   0.172 0.863464    
+factor(schoolnr)227  3.11551    1.95897   1.590 0.111895    
+factor(schoolnr)228  7.82086    1.88038   4.159 3.32e-05 ***
+factor(schoolnr)231  4.99594    1.87985   2.658 0.007928 ** 
+factor(schoolnr)233 -3.62877    2.44368  -1.485 0.137700    
+factor(schoolnr)234  4.45798    2.13964   2.084 0.037322 *  
+factor(schoolnr)235  4.18463    2.35443   1.777 0.075653 .  
+factor(schoolnr)237  1.69607    2.06447   0.822 0.411422    
+factor(schoolnr)240 -0.21368    2.21446  -0.096 0.923139    
+factor(schoolnr)241  1.82195    1.83630   0.992 0.321219    
+factor(schoolnr)242  5.11955    2.27771   2.248 0.024698 *  
+factor(schoolnr)243  4.71818    2.54942   1.851 0.064352 .  
+factor(schoolnr)244 -0.81472    2.15710  -0.378 0.705695    
+factor(schoolnr)246  3.94809    2.21570   1.782 0.074911 .  
+factor(schoolnr)249  0.18111    1.81893   0.100 0.920695    
+factor(schoolnr)250 -0.69331    2.06691  -0.335 0.737332    
+factor(schoolnr)252 -0.36370    2.27756  -0.160 0.873140    
+factor(schoolnr)256 -8.25432    2.35336  -3.507 0.000462 ***
+factor(schoolnr)258 -8.24124    2.68111  -3.074 0.002140 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.186 on 2152 degrees of freedom
+Multiple R-squared:  0.5557, Adjusted R-squared:  0.528 
+F-statistic: 20.08 on 134 and 2152 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div></li>
+<li><p>[5 puntos] Estime la ecuación de calificación usando MCO y con errores agrupados a nivel escuela (sin efectos fijos de escuela). ¿Qué resuelve este procedimiento?</p>
+<p><em>Al estimar los errores agrupados y robustos a heterocedasticidad se toma en cuenta la correlación que existe en los errores dentro de cada escuela. Los errores agrupados estimados con la opción cluster asumen correlación de errores dentro del grupo, pero no entre grupos. Con respecto a las partes b. y c., el error estándar asociado al tiempo dedicado a la tarea es aproximadamente 20% mayor. Este es un ejemplo típico en el que los errores agrupados se inflan con respecto a los errores de MCO clásicos y los errores robustos.</em></p>
+<p><em>Nota: es posible que los errores agrupados sean menores que los errores de MCO. Para ver eso, considere un modelo simple con datos agrupados de la forma siguiente: <span class="math display">\[y_{ig=\alpha+\beta x_{ig}+u_{ig}}\]</span> donde <span class="math inline">\(x_{ig}\)</span> es un regresor escalar.</em></p>
+<p><em>Se asume que el tamaño promedio de los grupos es <span class="math inline">\(\bar{N}_g\)</span>. Moulton (1990) muestra que el error estándar de MCO esta sesgado hacia abajo por una cantidad igual a la raíz de <span class="math inline">\(\tau \approx 1 +\rho_x \rho_u (\bar{N}_g-1)\)</span>, donde <span class="math inline">\(\rho_x\)</span> es la correlación dentro de los grupos de <span class="math inline">\(x\)</span> y <span class="math inline">\(\rho_u\)</span> es la correlación dentro de los grupos de los errores. Esto implica que para obtener el error correcto que toma en cuenta la agrupación hay que multiplicar el error de MCO por la raíz de <span class="math inline">\(\tau\)</span>. Sin embargo, note que dependiendo del signo y la magnitud de <span class="math inline">\(\rho_x\)</span> y <span class="math inline">\(\rho_u\)</span>, la raíz de <span class="math inline">\(\tau\)</span> puede llegar a ser menor que 1 y, por tanto, el error agrupado puede llegar a ser menor que el de MCO. <span class="math inline">\(\tau\)</span> se conoce como el factor de Moulton y puede ser extendido para un modelo más complicado. La intuición funciona de manera similar para un modelo más complicado: todo depende de las correlaciones entre grupos de los regresores y la correlación de los errores.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(m.mco, <span class="at">vcov =</span> <span class="st">"CR1S"</span>, <span class="at">cluster =</span> data.examen<span class="sc">$</span>schoolnr)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Coef. Estimate     SE   t-stat d.f. (Satt) p-val (Satt) Sig.
+ (Intercept)   10.940 1.2559   8.7109        95.2       &lt;0.001  ***
+     iq_verb    2.486 0.0899  27.6464        94.5       &lt;0.001  ***
+         sex    2.422 0.2846   8.5110       110.0       &lt;0.001  ***
+    minority   -0.037 0.8547  -0.0433        20.0        0.966     
+    repeatgr   -4.409 0.3958 -11.1381        81.8       &lt;0.001  ***</code></pre>
+</div>
+</div></li>
+<li><p>[5 puntos] Estime la ecuación de calificación usando MCO, variables indicadoras de escuela y con errores agrupados a nivel escuela. ¿Qué resuelve este procedimiento?</p>
+<p><em>Al controlar por características no observadas de las escuelas empleando efectos fijos por escuela y además estimando los errores que toman en cuenta la estructura agrupada de los errores obtenemos un coeficiente estimado de 2.26, pero con un error estándar mayor, 0.0915.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(m.mco.ef, <span class="at">vcov =</span> <span class="st">"CR1S"</span>, <span class="at">cluster =</span> data.examen<span class="sc">$</span>schoolnr)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Coef. Estimate     SE  t-stat d.f. (Satt) p-val (Satt) Sig.
+         (Intercept)  12.5022 1.1668  10.715        86.2      &lt; 0.001  ***
+             iq_verb   2.2600 0.0915  24.695        94.0      &lt; 0.001  ***
+                 sex   2.4190 0.2836   8.529       106.5      &lt; 0.001  ***
+            minority   0.2326 0.7172   0.324        32.0      0.74778     
+            repeatgr  -4.4350 0.4083 -10.862        82.3      &lt; 0.001  ***
+   factor(schoolnr)2  -8.2968 0.3795 -21.863        42.8      &lt; 0.001  ***
+  factor(schoolnr)10  -7.2832 0.4270 -17.058        32.6      &lt; 0.001  ***
+  factor(schoolnr)12  -4.5672 0.4565 -10.005        37.0      &lt; 0.001  ***
+  factor(schoolnr)15  -7.4152 0.4211 -17.611        31.8      &lt; 0.001  ***
+  factor(schoolnr)16   2.5341 0.4252   5.960        30.8      &lt; 0.001  ***
+  factor(schoolnr)18  -6.8033 0.4225 -16.101        30.3      &lt; 0.001  ***
+  factor(schoolnr)21  -0.5387 0.4188  -1.286        31.1      0.20787     
+  factor(schoolnr)24   4.2044 0.4187  10.042        31.3      &lt; 0.001  ***
+  factor(schoolnr)26  -0.3608 0.4253  -0.848        31.4      0.40275     
+  factor(schoolnr)27  -5.4685 0.4170 -13.113        30.4      &lt; 0.001  ***
+  factor(schoolnr)29   3.1902 0.4536   7.033        34.2      &lt; 0.001  ***
+  factor(schoolnr)33  -0.3490 0.4205  -0.830        30.8      0.41305     
+  factor(schoolnr)35   1.5958 0.2760   5.783        31.3      &lt; 0.001  ***
+  factor(schoolnr)36  -3.9913 0.4175  -9.560        30.5      &lt; 0.001  ***
+  factor(schoolnr)38   3.0538 0.4171   7.322        31.0      &lt; 0.001  ***
+  factor(schoolnr)40   0.0904 0.4264   0.212        32.0      0.83352     
+  factor(schoolnr)41  -2.9401 0.2796 -10.515        33.9      &lt; 0.001  ***
+  factor(schoolnr)42  -4.9980 0.4168 -11.992        31.1      &lt; 0.001  ***
+  factor(schoolnr)44  -1.4985 0.3315  -4.520        30.9      &lt; 0.001  ***
+  factor(schoolnr)47  -5.7373 0.2712 -21.152        81.0      &lt; 0.001  ***
+  factor(schoolnr)48  -1.8363 0.2637  -6.963        47.5      &lt; 0.001  ***
+  factor(schoolnr)49  -4.1469 0.2037 -20.359        44.2      &lt; 0.001  ***
+  factor(schoolnr)52  -3.6035 0.3986  -9.041        34.0      &lt; 0.001  ***
+  factor(schoolnr)54   2.9114 0.4389   6.634        33.4      &lt; 0.001  ***
+  factor(schoolnr)55   1.4938 0.4230   3.532        32.1      0.00127   **
+  factor(schoolnr)57   0.7968 0.3384   2.354        32.6      0.02472    *
+  factor(schoolnr)60  -1.7926 0.3208  -5.588        30.8      &lt; 0.001  ***
+  factor(schoolnr)61   0.3940 0.3533   1.115        33.0      0.27283     
+  factor(schoolnr)62   2.3906 0.4618   5.177        34.7      &lt; 0.001  ***
+  factor(schoolnr)65   5.6698 0.4298  13.192        31.4      &lt; 0.001  ***
+  factor(schoolnr)66   1.0933 0.4601   2.376        40.1      0.02237    *
+  factor(schoolnr)67  -5.5997 0.4214 -13.289        31.4      &lt; 0.001  ***
+  factor(schoolnr)68  -1.2232 0.4360  -2.806        32.6      0.00841   **
+  factor(schoolnr)76  -1.1461 0.4266  -2.687        31.5      0.01142    *
+  factor(schoolnr)78   0.2020 0.4157   0.486        30.7      0.63054     
+  factor(schoolnr)79   2.1098 0.4214   5.006        32.2      &lt; 0.001  ***
+  factor(schoolnr)80   3.3157 0.3850   8.613        31.6      &lt; 0.001  ***
+  factor(schoolnr)86   1.4532 0.4241   3.427        30.8      0.00175   **
+  factor(schoolnr)87  -0.2074 0.4152  -0.500        31.8      0.62085     
+  factor(schoolnr)88   1.2597 0.4166   3.024        31.5      0.00493   **
+  factor(schoolnr)90   4.4517 0.4252  10.470        33.8      &lt; 0.001  ***
+  factor(schoolnr)94   3.0537 0.3997   7.641        41.1      &lt; 0.001  ***
+  factor(schoolnr)95  -0.7653 0.3455  -2.215        32.8      0.03383    *
+  factor(schoolnr)97   1.4835 0.3802   3.902        30.6      &lt; 0.001  ***
+  factor(schoolnr)98  -1.4096 0.3875  -3.637        33.2      &lt; 0.001  ***
+ factor(schoolnr)101   4.2626 0.3876  10.997        31.6      &lt; 0.001  ***
+ factor(schoolnr)103  -4.5470 0.4170 -10.903        85.5      &lt; 0.001  ***
+ factor(schoolnr)106  -2.6366 0.2861  -9.217        35.1      &lt; 0.001  ***
+ factor(schoolnr)107  -4.5033 0.4439 -10.144        33.2      &lt; 0.001  ***
+ factor(schoolnr)108  -1.8726 0.4256  -4.399        30.5      &lt; 0.001  ***
+ factor(schoolnr)109  -4.4071 0.2769 -15.917        31.5      &lt; 0.001  ***
+ factor(schoolnr)110   3.0876 0.4218   7.319        31.6      &lt; 0.001  ***
+ factor(schoolnr)111   1.2341 0.3645   3.386        33.6      0.00182   **
+ factor(schoolnr)112  -0.2500 0.4327  -0.578        32.0      0.56748     
+ factor(schoolnr)115  -0.1319 0.4179  -0.316        30.4      0.75445     
+ factor(schoolnr)116  -0.9663 0.4511  -2.142        37.6      0.03872    *
+ factor(schoolnr)118  -4.1961 0.3504 -11.975        31.3      &lt; 0.001  ***
+ factor(schoolnr)119  -0.3764 0.4254  -0.885        33.3      0.38261     
+ factor(schoolnr)121  -3.1618 0.4610  -6.858        35.0      &lt; 0.001  ***
+ factor(schoolnr)123   2.7602 0.2742  10.065        79.0      &lt; 0.001  ***
+ factor(schoolnr)124   3.6916 0.3958   9.328        32.1      &lt; 0.001  ***
+ factor(schoolnr)125   1.7979 0.3552   5.061        33.4      &lt; 0.001  ***
+ factor(schoolnr)130   5.6101 0.4385  12.793        37.4      &lt; 0.001  ***
+ factor(schoolnr)132   6.2813 0.4103  15.310        33.7      &lt; 0.001  ***
+ factor(schoolnr)136   3.8728 0.4443   8.717        35.6      &lt; 0.001  ***
+ factor(schoolnr)137   4.4038 0.4166  10.572        31.2      &lt; 0.001  ***
+ factor(schoolnr)141   1.1447 0.4237   2.702        33.3      0.01076    *
+ factor(schoolnr)142   5.1327 0.4232  12.128        32.3      &lt; 0.001  ***
+ factor(schoolnr)147   7.4570 0.4345  17.162        31.5      &lt; 0.001  ***
+ factor(schoolnr)148   2.0988 0.4457   4.709        34.9      &lt; 0.001  ***
+ factor(schoolnr)149   2.5312 0.4209   6.014        30.9      &lt; 0.001  ***
+ factor(schoolnr)150   1.5676 0.4150   3.777        31.5      &lt; 0.001  ***
+ factor(schoolnr)151   0.8163 0.4195   1.946        31.6      0.06058    .
+ factor(schoolnr)152   6.2098 0.4255  14.593        32.5      &lt; 0.001  ***
+ factor(schoolnr)155   4.0699 0.4161   9.782        31.0      &lt; 0.001  ***
+ factor(schoolnr)156   1.0325 0.4308   2.397        31.4      0.02266    *
+ factor(schoolnr)159   2.8261 0.4024   7.023        31.8      &lt; 0.001  ***
+ factor(schoolnr)160   3.5236 0.2557  13.779        38.4      &lt; 0.001  ***
+ factor(schoolnr)161   5.4721 0.3829  14.293        32.8      &lt; 0.001  ***
+ factor(schoolnr)164   4.6960 0.4234  11.091        30.5      &lt; 0.001  ***
+ factor(schoolnr)167   3.8574 0.4182   9.224        30.6      &lt; 0.001  ***
+ factor(schoolnr)170   1.9269 0.4180   4.610        31.1      &lt; 0.001  ***
+ factor(schoolnr)175   4.1858 0.4077  10.267        35.7      &lt; 0.001  ***
+ factor(schoolnr)176   6.5950 0.4201  15.700        31.0      &lt; 0.001  ***
+ factor(schoolnr)177   1.4245 0.4199   3.392        30.5      0.00194   **
+ factor(schoolnr)179  -7.1657 0.2125 -33.715        41.9      &lt; 0.001  ***
+ factor(schoolnr)182   1.7860 0.2113   8.451        34.4      &lt; 0.001  ***
+ factor(schoolnr)183   0.8589 0.3729   2.303        30.5      0.02826    *
+ factor(schoolnr)184   0.9973 0.3839   2.598        33.5      0.01383    *
+ factor(schoolnr)188  -0.5847 0.3032  -1.928        33.1      0.06242    .
+ factor(schoolnr)189   3.2232 0.3779   8.530        32.1      &lt; 0.001  ***
+ factor(schoolnr)192  -1.8091 0.4496  -4.023        37.0      &lt; 0.001  ***
+ factor(schoolnr)193   6.2468 0.4308  14.501        32.7      &lt; 0.001  ***
+ factor(schoolnr)195   0.6267 0.4210   1.488        31.7      0.14650     
+ factor(schoolnr)196   2.7931 0.4324   6.459        35.0      &lt; 0.001  ***
+ factor(schoolnr)197   1.3164 0.4603   2.860        34.6      0.00713   **
+ factor(schoolnr)198  -2.5450 0.3200  -7.953        34.3      &lt; 0.001  ***
+ factor(schoolnr)199  -4.1093 0.2785 -14.757        32.7      &lt; 0.001  ***
+ factor(schoolnr)204   0.9846 0.4150   2.373        31.2      0.02399    *
+ factor(schoolnr)206   3.7918 0.4353   8.710        32.0      &lt; 0.001  ***
+ factor(schoolnr)209   2.4428 0.4206   5.807        32.5      &lt; 0.001  ***
+ factor(schoolnr)210  -0.4076 0.4372  -0.932        32.1      0.35823     
+ factor(schoolnr)212   1.3766 0.4185   3.289        31.1      0.00250   **
+ factor(schoolnr)214  -3.5027 0.2946 -11.888        32.9      &lt; 0.001  ***
+ factor(schoolnr)215   2.4207 0.4178   5.794        30.4      &lt; 0.001  ***
+ factor(schoolnr)216   3.2505 0.4410   7.372        32.5      &lt; 0.001  ***
+ factor(schoolnr)217   3.1796 0.4449   7.147        32.2      &lt; 0.001  ***
+ factor(schoolnr)218   5.1435 0.3697  13.911        62.4      &lt; 0.001  ***
+ factor(schoolnr)219   5.0357 0.4230  11.905        30.3      &lt; 0.001  ***
+ factor(schoolnr)222   1.2702 0.4156   3.056        31.8      0.00451   **
+ factor(schoolnr)224   0.1618 0.4265   0.379        31.1      0.70703     
+ factor(schoolnr)226   0.4386 0.4260   1.030        32.3      0.31078     
+ factor(schoolnr)227   3.1155 0.4252   7.328        30.6      &lt; 0.001  ***
+ factor(schoolnr)228   7.8209 0.4246  18.420        31.2      &lt; 0.001  ***
+ factor(schoolnr)231   4.9959 0.4204  11.882        31.2      &lt; 0.001  ***
+ factor(schoolnr)233  -3.6288 0.4254  -8.531        33.5      &lt; 0.001  ***
+ factor(schoolnr)234   4.4580 0.3188  13.983        32.4      &lt; 0.001  ***
+ factor(schoolnr)235   4.1846 0.4228   9.897        31.6      &lt; 0.001  ***
+ factor(schoolnr)237   1.6961 0.4150   4.087        31.1      &lt; 0.001  ***
+ factor(schoolnr)240  -0.2137 0.4258  -0.502        31.8      0.61922     
+ factor(schoolnr)241   1.8219 0.4171   4.368        30.5      &lt; 0.001  ***
+ factor(schoolnr)242   5.1196 0.4241  12.072        31.1      &lt; 0.001  ***
+ factor(schoolnr)243   4.7182 0.4237  11.135        32.9      &lt; 0.001  ***
+ factor(schoolnr)244  -0.8147 0.4161  -1.958        31.0      0.05931    .
+ factor(schoolnr)246   3.9481 0.4392   8.989        32.1      &lt; 0.001  ***
+ factor(schoolnr)249   0.1811 0.4219   0.429        31.6      0.67064     
+ factor(schoolnr)250  -0.6933 0.4225  -1.641        33.8      0.11005     
+ factor(schoolnr)252  -0.3637 0.4199  -0.866        30.4      0.39321     
+ factor(schoolnr)256  -8.2543 0.4278 -19.295        31.9      &lt; 0.001  ***
+ factor(schoolnr)258  -8.2412 0.4220 -19.529        33.5      &lt; 0.001  ***</code></pre>
+</div>
+</div></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,39 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Econometría II 2024"
+  sidebar:
+    background: primary
+    logo: "iconoEconometria.jpg"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/rojasirvin/econometria-ii
+        text: GitHub
+    style: docked
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: programa.qmd
+        text: Programa
+      - href: reglas.qmd
+        text: Reglas
+      - href: lecturas.qmd
+        text: Lecturas
+      - href: presentaciones.qmd
+        text: Presentaciones
+      - href: cronograma.qmd
+        text: Cronograma
+      - href: tareas/index.qmd
+        text: Tareas
+
+format:
+  html:
+    theme: minty
+    css: styles.css
+    toc: true
+
+

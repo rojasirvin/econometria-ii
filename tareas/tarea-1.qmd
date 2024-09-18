@@ -1,0 +1,109 @@
+---
+title: "Tarea 1"
+lang: es
+---
+
+## Preguntas
+
+Fecha de entrega: **viernes 13 de septiembre a las 20:00 en Teams**
+
+La tarea deberá entregarse en Teams. Deberá incluir dos documentos:
+
+Un primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.
+
+Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.
+
+## Pregunta 1
+
+
+Considere el problema de regresión no lineal en el que la variable dependiente escalar $y$ tiene una media condicional $E(y_i)=g(x_i,\beta)$, siendo $g(\cdot)$ una función no lineal. Suponga que:
+
+i. El proceso generador de datos es $y_i=g(x_i,\beta_0)+u_i$.
+i. En el proceso generador de datos $E(u_i|x_i)=0$ y $E(uu'|X)=\Omega$, donde $\Omega_{0,ij}=\sigma_{ij}$.
+i. La función $g(\cdot)$ satisface $g(x, \beta^{(1)})=g(x, \beta^{(2)})$ si y solo si $\beta^{(1)}=\beta^{(2)}$.
+i. La matriz $A_0$ existe y es finita y no singular y donde $A_0=p\lim\frac{1}{N}\sum_{i=1}^{N}\left.\frac{\partial g_i}{\partial \beta}\right|_{\beta_0}\left.\frac{\partial g_i}{\partial \beta'}\right|_{\beta_0}=p\lim\frac{1}{N}\left.\frac{\partial g'}{\partial \beta}\frac{\partial g'}{\partial \beta'}\right|_{\beta_0}$
+i. $N^{-1/2}\sum_{i=1}^N \left.\frac{\partial g_i}{\partial \beta}u_i \right|_{\beta_0}\xrightarrow{d}\mathcal{N}(0,B_0)$, donde $B_0=p\lim \frac{1}{N}\sum_{i=1}^{N}\sum_{j=1}^{N}\sigma_{ij}\left.\frac{\partial g_i}{\partial \beta}\frac{\partial g_i}{\partial \beta'}\right|_{\beta_0}=p\lim\frac{1}{N}\left.\frac{\partial g'}{\partial \beta}\Omega_0 \frac{\partial g}{\partial \beta'}\right|_{\beta_0}$.
+
+a. [5 puntos] Plantee el problema de optimización para la minimización de la suma de los errores cuadráticos y obtenga las condiciones de primer orden.
+a. [10 puntos] Pruebe que $\hat{\beta}_{MCNL}$, el estimador de mínimos cuadrados no lineales (MCNL) y definido como una raíz de las condiciones de primer orden, es consistente  para $\beta_0$.
+a. [10 puntos]  Derive una expresión para $\sqrt{N}(\hat{\beta}_{MCNL}-\beta_0)$ y pruebe que $\sqrt{N}(\hat{\beta}_{MCNL}-\beta_0)\xrightarrow{d}\mathcal{N}(0,A_0^{-1}B_0A_0^{-1})$. Tip: utilice una expansión de Taylor exacta de primer orden.
+a. [5 puntos]  ¿Cómo estimaría $V(\hat{\beta}_{MCNL})$?
+
+
+## Pregunta 2
+
+Suponga que está interesado en una variable aleatoria que tiene una distribución Bernoulli con parámetro $p$. La función de densidad está definida como:
+
+$$f(x_;p)=\left\{\begin{array} .1 & \text{con probabilidad } p \\ 0 & \text{con probabilidad } 1-p \end{array} \right.$$
+Suponga que tiene una muestra de $N$ observaciones independientes e idénticamente distribuidas.
+
+a. [4 puntos] Plantee la función de log verosimilitud del problema.
+
+a. [4 puntos] Obtenga las condiciones de primer orden y resuelva para $\hat{p}$.
+
+a. [2 puntos] ¿Cuál es la media y la varianza del estimador de máxima verosimilitud que ha encontrado?
+
+
+
+
+## Pregunta 3
+
+
+Considere el modelo logit:
+
+$$f(y_i|x_i;\theta_0)=\left\{ \begin{array} .1 & \frac{\exp\{x_i'\theta_0\}}{1+\exp\{x_i'\theta_0\}}  \\ 0 &  \frac{1}{1+\exp\{x_i'\theta_0\}} \end{array} \right.$$
+donde $x_i$ es un vector de variables explicativas, $\theta_0$ y es el vector de parámetros poblacional. Asuma que dispone de observaciones $(y_i,x_i)$ que son iid.
+
+a. [5 puntos] Escriba la función de log verosimilitud condicional para la observación $i$.
+
+a. [5 puntos] Encuentre el vector score para la observación $i$.
+
+a. [5 puntos] Encuentre la hesiana de la función de log verosimilitud con respecto a $\mathbf{\theta}$.
+
+a. [5 puntos] Obtenga la matriz de información para la observación $i$.
+
+
+## Pregunta 4
+
+Suponga una variable aleatoria $X_i$ con distribución desconocida. Sin embargo, sí conocemos que $E(X)=\mu=54$ y que $\sqrt{V(X)}=\sigma=6$. Suponga que se recolecta una muestra de 50 observaciones.
+
+a. [2 punto] ¿Cuál es la distribución asintótica de la media muestral $\bar{X}$?
+
+a. [4 punto] ¿Cuál es la probabilidad de que $\bar{X}>58$?
+
+a. [2 punto] ¿Cuál es la probabilidad de que una observación elegida al azar sea tal que $X_i>58$?
+
+a. [2 punto] Provea un intervalo de confianza de 99% para la media muestral.
+
+
+
+## Pregunta 5
+
+En esta pregunta mostraremos los alcances de los teoremas del límite central. Para esto, generaremos muchas muestras de tamaño $N$ con una distribución $Bernoulli$ con probabilidad de éxito $p=0.7$. Recuerde que cuando realice simulaciones, siempre debe fijar una semilla al inicio para poder replicar su trabajo.
+
+a. [2 puntos] ¿Cuál es la media y la varianza de una variable aleatoria $y_i \sim Bernoulli(0.7)$?
+
+a. [2 puntos] Si $y_i$ son iid y podemos aplicar un teorema de límite central, ¿cuál es la distribución teórica de $\bar{y}$ cuando $N\to\infty$?
+
+a. [5 puntos] Realice el siguiente procedimiento $J=1,000$ veces. Obtenga una muestra de tamaño $N=3$ a partir de la distribución $Bernoulli(0.7)$ y calcule la media muestral $\bar{y}$. Coleccione las $J$ medias muestrales y luego grafique un histograma de las medias muestrales obtenidas junto con una curva teórica normal con la media y varianza obtenida en la parte b. Comente sobre lo que observa.
+
+a. [3 puntos] Repita lo realizado en la parte b., ahora con $N=15$. Comente sobre lo que observa.
+
+a. [3 puntos] Repita lo realizado en la parte b., ahora con $N=1,500$. Comente sobre lo que observa.
+
+a. [5 puntos] ¿Cómo usaría este ejercicio con palabras simples para explicar a una persona que no sabe mucho de estadística sobre la importancia de los teoremas de límite central?
+
+
+
+## Pregunta 6
+
+Sea $x_1$ un vector de variables continuas, $x_2$ una variable continua y $d_1$ una variable dicotómica. Considere el siguiente modelo probit:
+$$P(y=1│x_1,x_2 )=\Phi(x_1'\alpha+\beta x_2+\gamma x_2^2 )$$
+
+a. [5 punto] Provea una expresión para el efecto marginal de $x_2$ en la probabilidad. ¿Cómo estimaría este efecto marginal?
+
+a. [3 punto] Considere ahora el modelo:
+$$P(y=1│x_1  ,x_2 ,d_1)=\Phi(x_1 '\delta+\pi x_2+\rho d_1+\nu x_2 d_1 )$$
+Provea la nueva expresión para el efecto marginal de $x_2$.
+
+a. [2 punto] En el modelo de la parte b., ¿cómo evaluaría el efecto de un cambio en $d_1$ en la probabilidad? Provea una expresión para este efecto.
