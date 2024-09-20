@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Econometría II 2023 - Tarea 2</title>
+<title>Econometría II 2024 - Tarea 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,7 +44,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -53,6 +59,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
@@ -61,6 +68,33 @@ ul.task-list li input[type="checkbox"] {
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -71,12 +105,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Tarea 2</li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Tarea 2</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -86,13 +120,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../iconoEconometria.jpg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
-    <a href="https://github.com/rojasirvin/econometria-ii" rel="" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/rojasirvin/econometria-ii" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -134,6 +168,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../cronograma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cronograma</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../tareas/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tareas</span></a>
   </div>
@@ -141,20 +181,21 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#instrucciones" id="toc-instrucciones" class="nav-link active" data-scroll-target="#instrucciones">Instrucciones</a></li>
+  <li><a href="#preguntas" id="toc-preguntas" class="nav-link active" data-scroll-target="#preguntas">Preguntas</a></li>
   <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos">Datos</a></li>
   <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
-  <li><a href="#pregunta-2.-modelo-en-dos-partes-o-de-valla" id="toc-pregunta-2.-modelo-en-dos-partes-o-de-valla" class="nav-link" data-scroll-target="#pregunta-2.-modelo-en-dos-partes-o-de-valla">Pregunta 2. Modelo en dos partes o de valla</a></li>
-  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
+  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
+  <li><a href="#pregunta-3-modelo-poisson-inflado-en-cero" id="toc-pregunta-3-modelo-poisson-inflado-en-cero" class="nav-link" data-scroll-target="#pregunta-3-modelo-poisson-inflado-en-cero">Pregunta 3: modelo Poisson inflado en cero</a></li>
   <li><a href="#pregunta-4" id="toc-pregunta-4" class="nav-link" data-scroll-target="#pregunta-4">Pregunta 4</a></li>
   <li><a href="#pregunta-5" id="toc-pregunta-5" class="nav-link" data-scroll-target="#pregunta-5">Pregunta 5</a></li>
+  <li><a href="#pregunta-6" id="toc-pregunta-6" class="nav-link" data-scroll-target="#pregunta-6">Pregunta 6</a></li>
   </ul>
 </nav>
     </div>
@@ -176,74 +217,106 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
 
-<section id="instrucciones" class="level2">
-<h2 class="anchored" data-anchor-id="instrucciones">Instrucciones</h2>
-<p>Fecha de entrega: <strong>2 de octubre</strong> a las 20:00 en Teams</p>
+
+<section id="preguntas" class="level2">
+<h2 class="anchored" data-anchor-id="preguntas">Preguntas</h2>
+<p>Fecha de entrega: <strong>viernes 4 de octubre</strong> a las 20:00 en Teams</p>
 <p>La tarea deberá entregarse en Teams. Deberá incluir dos documentos:</p>
 <p>Un primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.</p>
 <p>Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.</p>
 </section>
 <section id="datos" class="level2">
 <h2 class="anchored" data-anchor-id="datos">Datos</h2>
-<p><a href="../files/phd_articulos.csv">phd_articulos.csv</a></p>
 <p><a href="../files/motral2012.csv">motral2012.csv</a></p>
+<p><a href="../files/phd_articulos.csv">phd_articulos.csv</a></p>
 </section>
 <section id="pregunta-1" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
-<p>Considere el modelo Poisson visto en clase y un vector de variables explicativas <span class="math inline">\(x\)</span>, todas continuas, usadas para parametrizar la media.</p>
+<p>Use los datos en el archivo <em>motral2012.csv</em>, que incluye una muestra de individuos con sus características socioeconómicas. Nos interesa conocer los factores que afectan la probabilidad de que los individuos tengan ahorros formales. Considere lo siguiente sobre las opciones de ahorro de los entrevistados, contenida en la variable <strong>p14</strong>:</p>
+<ul>
+<li><strong>p14</strong> igual a 1 significa cuentas de ahorro bancarias</li>
+<li><strong>p14</strong> igual a 2 significa cuenta de inversión bancaria</li>
+<li><strong>p14</strong> igual a 3 significa inversiones en bienes raíces</li>
+<li><strong>p14</strong> igual a 4 significa caja de ahorro en su trabajo</li>
+<li><strong>p14</strong> igual a 5 significa caja de ahorro con sus amigos</li>
+<li><strong>p14</strong> igual a 6 significa tandas</li>
+<li><strong>p14</strong> igual a 7 significa que ahorra en su casa o alcancías</li>
+<li><strong>p14</strong> igual a 8 significa otro lugar</li>
+<li><strong>p14</strong> NA significa que no ahorra</li>
+</ul>
 <ol type="a">
-<li><p>[3 puntos] ¿Cuál es el efecto de un cambio en el <span class="math inline">\(j\)</span>ésimo regresor sobre <span class="math inline">\(E(y│x)\)</span>?</p></li>
-<li><p>[8 puntos] Usando esta expresión, muestre que si el <span class="math inline">\(j\)</span>ésimo regresor es <span class="math inline">\(x_j\)</span>, entonces <span class="math inline">\(100 \beta_j\)</span> es la semielasticidad de <span class="math inline">\(E(y│x)\)</span> con respecto a <span class="math inline">\(x_j\)</span>. Nota: Este punto es muy útil para la interpretación de los coeficientes de un modelo Poisson.</p></li>
-<li><p>[4 puntos] ¿Cómo se interpreta <span class="math inline">\(\beta_j\)</span> si reemplazamos <span class="math inline">\(x_j\)</span> por <span class="math inline">\(\log(x_j)\)</span>)?</p></li>
+<li><p>[2 puntos] Comience generando una variable binaria <strong>ahorra_inf</strong> que tome el valor de 1 para las personas que ahorran en instrumentos informales y 0 en otro caso. Se consideran instrumentos informales las cajas de ahorro en el trabajo o amigos, las tandas y el ahorro en casa o alcancías . Construya también la variable <strong>mujer</strong> que tome el valor de 1 cuando <strong>sex</strong> toma el valor de 2 y 0 en otro caso. Luego, estime un modelo de probabilidad lineal que relacione <strong>ahorra_inf</strong> como variable dependiente con <strong>eda</strong> (edad), <strong>anios_esc</strong> (años de escolaridad) y <strong>mujer</strong>. Reporte los errores que asumen homocedasticidad y los errores robustos a heteroscedasticidad. ¿Qué observa respecto a los errores y por qué sucede?</p></li>
+<li><p>[3 puntos] ¿Cuál es el efecto en la probabilidad de ahorrar informalmente si los años de educación se incrementan en una unidad, pasando de 4 a 5 años de educación?</p></li>
+<li><p>[2 puntos] Realice una prueba de significancia conjunta de <strong>eda</strong> y <strong>anios_esc</strong>. ¿Qué concluye?</p></li>
+<li><p>[3 puntos] Estime un modelo logit relacionando las mismas variables. Use la función <em>avg_slopes</em> del paquete <em>marginaleffects</em> para obtener los efectos marginales promedio de un cambio en cada uno de los regresores. ¿Por qué difiere la magnitud de este efecto marginal con respecto a la parte b.?</p></li>
+<li><p>[2 puntos] Ahora estime el efecto marginal en la media para <strong>eda</strong> y <strong>anios_esc</strong> y para los hombres, usando la función <em>slopes</em>. ¿Por qué difiere la magnitud de este efecto marginal respecto a la parte b. y la d.?</p></li>
+<li><p>[3 puntos] Provea una expresión para la maginitud de:</p></li>
+</ol>
+<p><span class="math display">\[\frac{\frac{\partial P(y=1)}{\partial \; anios\_esc}}{\frac{\partial P(y=1)}{\partial \; eda}}\]</span></p>
+</section>
+<section id="pregunta-2" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
+<p>Ahora estimará un modelo multinomial empleando los mismos datos en <em>motral2012.csv</em>. El propósito será ahora estudiar los factores relevantes para predecir la forma de ahorro que tienen las personas que ahorran.</p>
+<ol type="a">
+<li><p>[2 punto] Genere una variable categórica llamada <strong>ahorro</strong> que sea igual a 1 cuando <strong>p14</strong> sea igual a 1 o 2, igual a 2 cuando <strong>p14</strong> sea igual a 7, e igual a 3 cuando <strong>p14</strong> sea igual a 3, 4, 5, 6 u 8. Haga que esa variable sea missing cuando <strong>p14</strong> sea missing. Posteriormente, convierta esta nueva variable en una de factores de forma que el valor 1 tenga la etiqueta “Banco”, el valor 2 tenga la etiqueta “Casa” y el valor 3 tenga la etiqueta “Otro”.</p></li>
+<li><p>[4 puntos] Estime un modelo logit multinomial (regresores invariantes a la alternativa) con la opción de ahorro como variable dependiente y los mismos regresores de la pregunta 5. Hay varios paquetes para hacer esto, pero recomiendo usar la función <em>multinom</em> del paquete <em>nnet</em>. ¿Qué puede decir sobre el coeficiente de años de educación en la alternativa “Casa”?</p></li>
+<li><p>[4 puntos] Calcule los efectos marginales promedio sobre la probabilidad de ahorrar en el banco. Al considerar el cambio en la probabilidad para el caso de las mujeres (cuando la variable <strong>mujer</strong> pasa de 0 a 1), ¿de qué tamaño es el efecto predicho en la probabilidad de ahorrar en el banco?</p></li>
+<li><p>[3 puntos] Calcule los cocientes de riesgo relativo (<em>relative risk ratios</em> o RRR). ¿Qué significa el hecho de que el RRR asociado a ser mujer sea mayor que 1 en la alternativa “Casa”?</p></li>
+<li><p>[2 puntos] Estime nuevamente el modelo, pero ahora, especifique que la alternativa “Casa” sea la alternativa base. ¿Cómo es el RRR de la edad en la alternativa “Banco”? ¿Es esto congruente con lo que obtuvo en la parte d.&nbsp;de esta pregunta?</p></li>
 </ol>
 </section>
-<section id="pregunta-2.-modelo-en-dos-partes-o-de-valla" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-2.-modelo-en-dos-partes-o-de-valla">Pregunta 2. Modelo en dos partes o de valla</h2>
-<p>En esta pregunta mostrará cómo para un modelo en dos partes Poisson la log verosimilitud del problema es la suma de log verosimilitud para un proceso binario y la log verosimilitud de un proceso Poisson truncado en cero. Considere una variable aleatoria <span class="math inline">\(Y\)</span> con observaciones iid que sigue una distribución Poisson con parámetro <span class="math inline">\(\lambda\)</span> tal que</p>
-<p><span class="math display">\[f(y,\lambda)=P(Y=y)=\frac{\lambda^y exp(-\lambda)}{y!}\]</span></p>
-<ol type="a">
-<li><p>[4 puntos] Obtenga la distribución Poisson truncada en cero, definida como <span class="math inline">\(P(Y=y|Y&gt;0)\)</span>.</p></li>
-<li><p>[5 puntos] Considere además un proceso binomial que modela la probabilidad de que la variable <span class="math inline">\(Y\)</span> tome un valor cero o un valor positivo, como sigue:</p>
-<p><span class="math display">\[P(Y=y)=\begin{cases} \pi \quad\quad y=0 \\ 1-\pi\quad\quad y=1,2,3,\ldots \end{cases} \]</span></p>
-<p>En clase vimos la forma general del modelo en dos partes:</p>
+<section id="pregunta-3-modelo-poisson-inflado-en-cero" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3-modelo-poisson-inflado-en-cero">Pregunta 3: modelo Poisson inflado en cero</h2>
+<p>Otra manera de resolver el problema del exceso de ceros que a veces nos molesta en los modelos Poisson es usar un modelo Poisson inflado en cero (CT, p.&nbsp;681). La idea es introducir un proceso binario con densidad <span class="math inline">\(f_1(\cdot)\)</span> para modelar la probabilidad de que <span class="math inline">\(y=0\)</span> y luego una densidad de conteo <span class="math inline">\(f_2(\cdot)\)</span>. Si el proceso binario toma el valor de 0, con probabilidad <span class="math inline">\(f_1(0)\)</span>, entonces <span class="math inline">\(y=0\)</span>, pero si el proceso binario toma el valor de 1, entonces <span class="math inline">\(y={0,1,2,\ldots}\)</span>. Note que podemos entonces observar ceros por dos razones, por el proceso binomial o por el conteo.</p>
+<p>Un modelo inflado en cero tendrá como densidad:</p>
 <p><span class="math display">\[
 g(y)=
 \begin{cases}
-f_1(0) \quad\text{si }y=0 \\
-\frac{(1-f_1(0))f_2(y)}{1-f_2(0)}\quad\text{si }y\geq 1
+f_1(0)+(1-f_1(0))f_2(0) &amp; \text{si }y=0 \\
+(1-f_1(0))f_2(y)&amp; \text{si }y\geq 1
+\end{cases}
+\]</span> Considere la variable aleatoria <span class="math inline">\(Y\)</span> con observaciones iid que sigue una distribución Poisson con parámetro <span class="math inline">\(\lambda\)</span>. Y considere una variable un proceso binomial tal que <span class="math inline">\(\pi\)</span> es la probabilidad de que el conteo no se realice. Entonces:</p>
+<p><span class="math display">\[
+g(y)=
+\begin{cases}
+\pi+(1-\pi)f_2(0) &amp; \text{si }y=0 \\
+(1-\pi)f_2(y)&amp; \text{si }y\geq 1
 \end{cases}
 \]</span></p>
-<p>Especialice forma general del modelo de dos partes usando la distribución truncada derivada en a. y el proceso binomial definido arriba para obtener una función de masa de probabilidad no condicional para <span class="math inline">\(Y\)</span>, <span class="math inline">\(g(y)\)</span>.</p></li>
-<li><p>[6 puntos] Obtenga la log verosimilitud para la <span class="math inline">\(i\)</span>ésima observación. Se sugiere que continúe sus cálculos con una ecuación en dos partes.</p></li>
-<li><p>[6 puntos] En este problema, parametrizaremos <span class="math inline">\(\lambda_i\)</span> como <span class="math inline">\(\lambda_i=exp(x_i'\beta_2)\)</span>, como regularmente lo hemos hecho en una regresión Poisson. Por otro lado, podemos trabajar con una parametrización general de la probabilidad <span class="math inline">\(\pi\)</span>, <span class="math inline">\(\pi=F(x_i'\beta_1)\)</span>. Escriba la función de log verosimilitud del problema usando la parametrización para <span class="math inline">\(\pi_i\)</span> y para <span class="math inline">\(\lambda_i\)</span> que acabamos de describir. Presente esta función en una sola parte.</p></li>
-<li><p>[4 puntos] Agrupe los términos para mostrar que <span class="math inline">\(\mathcal{L}=\mathcal{L}_1(\beta_1)+\mathcal{L}_2(\beta_2)\)</span>. Así, mostrará que la log verosimilitud del problema se puede descomponer en una log verosimilitud para el modelo binario y otra para el conteo truncado en cero. Por tanto, no perdemos información si estimamos los parámetros de la probabilidad binomial por un lado, y los de la distribución Poisson truncada en cero, por el otro.</p></li>
-</ol>
-</section>
-<section id="pregunta-3" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
-<p>Use los datos <em>phd_articulos.csv</em>, los cuales contienen información sobre el número de artículos publicados para una muestra de entonces estudiantes de doctorado. Nuestra variable de interés será el número de artículos <strong>art</strong>.</p>
 <ol type="a">
-<li><p>[5 puntos] Estime un modelo Poisson que incluya variables dicotómicas para estudiantes mujeres (<strong>female</strong>) y para estudiantes casadas o casados (<strong>married</strong>), el número de hijos mejores de cinco años (<strong>kid5</strong>), el ranking de prestigio del doctorado (<strong>phd</strong>) y el número de artículos publicados por su mentor (**mentor*). Realice la estimación de la matriz de varianzas primero a partir de la varianza teórica que resulta de la igualdad de la matriz de información y luego usando una matriz de sándwich. Interprete los coeficientes estimados.</p></li>
-<li><p>[5 puntos] Obtenga la razón de tasas de incidencia (IRR) para los coeficientes e interprete los resultados.</p></li>
-<li><p>[5 puntos] Considere ahora que las mujeres han tenido carreras profesionales más cortas que los hombres, es decir, han estado menos expuestas a la ocurrencia de los eventos <em>publicar</em>. Incorpore esto al análisis y reinterprete los resultados. Pista: explore la opción <em>offeset</em> en <em>glm</em> de R. La columna <strong>profage</strong> mide la duración efectiva de las carreras profesionales de cada individuo.</p></li>
-<li><p>[5 puntos] Emplee ahora un modelo negativo binomial con sobredispersión cuadrática en la media para estimar la relación entre el número de artículos publicados y las variables explicativas antes enumeradas. Interprete el coeficiente asociado al número de hijos y a la variable dicotómica para estudiantes mujeres. ¿Qué puede decir sobre la significancia del <span class="math inline">\(\alpha\)</span> estimado?</p></li>
+<li><p>[4 puntos] Termine de especializar la expresión anterior unsando la distribución Poisson para <span class="math inline">\(f_2(\cdot)\)</span> para obtener la función de masa de probabilidad del modelo Poisson inflado en cero <span class="math inline">\(g(y|\lambda, \pi)\)</span>.</p></li>
+<li><p>[5 puntos] Provea una expresión para la función de verosimilitud <span class="math inline">\(L(\lambda,\pi)=\prod_{i=1}^N g(y_i|\lambda, \pi)\)</span>. Una sugerencia para simplificar sus cálculos es definir una variable <span class="math inline">\(X\)</span> igual al numero de veces que <span class="math inline">\(Y_i\)</span> que toma el valor de cero.</p></li>
+<li><p>[3 puntos] Provea una expresión para la log verosimilitud del problema, <span class="math inline">\(\mathcal{L}(\lambda,\pi)\)</span>.</p></li>
+<li><p>[3 puntos] Obtenga las condiciones de primer orden que caracterizan la solución del problema de máxima verosimilitud, derivando la log verosimilitud con respecto a <span class="math inline">\(\lambda\)</span> y a <span class="math inline">\(\pi\)</span>.</p></li>
 </ol>
 </section>
 <section id="pregunta-4" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-4">Pregunta 4</h2>
-<p>Retome los datos del archivo <em>motral2012.csv</em> usado en la Tarea 1. Estimará un modelo Tobit para explicar los factores que afectan la oferta laboral femenina. En este archivo de datos la variable <strong>hrsocup</strong> registra las horas trabajadas a la semana.</p>
+<p>Use los datos <em>phd_articulos.csv</em>, los cuales contienen información sobre el número de artículos publicados para una muestra de entonces estudiantes de doctorado. Nuestra variable de interés será el número de artículos <strong>art</strong>.</p>
 <ol type="a">
-<li><p>[2 punto] ¿Qué proporción de la muestra femenina reporta horas trabajadas iguales a cero?</p></li>
-<li><p>[3 puntos] Se desea estimar el efecto de los años de educación (<strong>anios_esc</strong>) sobre la oferta laboral femenina controlando por el estado marital (<strong>casada</strong>), la edad (<strong>eda</strong>) y el número de hijos (<strong>n_hij</strong>) como una variable continua. En la base, <strong>e_con</strong> toma el valor de 5 para las personas casadas. Genere la variable dummy <strong>casada</strong> que tome el valor de 1 para las mujeres casadas y cero en otro caso. Estime un modelo de MCO para <strong>hrsocup</strong> mayor que cero, usando solo la población femenina. Reporte errores robustos. ¿Cuál es la interpretación sobre el coeficiente de los años de escolaridad?</p></li>
-<li><p>[3 puntos] ¿Qué problema existe con el modelo planteado en el punto anterior en términos de la selección? ¿Considera que se trata de un caso de censura o de truncamiento?</p></li>
-<li><p>[8 puntos] Estime un modelo Tobit de datos censurados. ¿Qué resuelve el modelo Tobit en este caso? Interprete nuevamente el coeficiente sobre los años de escolaridad.</p></li>
-<li><p>[4 puntos] ¿Cuál es el efecto marginal de un incremento de un año de educación en la oferta laboral? ¿Cómo cambia su respuesta si, en lugar de considerar la variable latente, considera la variable censurada?</p></li>
+<li><p>[4 puntos] Estime un modelo Poisson que incluya variables dicotómicas para estudiantes mujeres (<strong>female</strong>) y para estudiantes casadas o casados (<strong>married</strong>), el número de hijos mejores de cinco años (<strong>kid5</strong>), el ranking de prestigio del doctorado (<strong>phd</strong>) y el número de artículos publicados por su mentor (**mentor*). Realice la estimación de la matriz de varianzas primero a partir de la varianza teórica que resulta de la igualdad de la matriz de información y luego usando una matriz de sándwich. Interprete los coeficientes estimados.</p></li>
+<li><p>[3 puntos] Obtenga la razón de tasas de incidencia (IRR) para los coeficientes e interprete los resultados.</p></li>
+<li><p>[2 puntos] Considere ahora que las mujeres han tenido carreras profesionales más cortas que los hombres, es decir, han estado menos expuestas a la ocurrencia de los eventos <em>publicar</em>. Incorpore esto al análisis y reinterprete los resultados. Pista: explore la opción <em>offeset</em> en <em>glm</em> de R. La columna <strong>profage</strong> mide la duración efectiva de las carreras profesionales de cada individuo.</p></li>
+<li><p>[2 puntos] Implemente la prueba de dispersión de Cameron y Trivedi (1990) usando una regresión auxiliar y los coeficientes estimados en la parte a. ¿Qué concluye?</p></li>
+<li><p>[4 puntos] Emplee ahora un modelo negativo binomial con sobredispersión cuadrática en la media para estimar la relación entre el número de artículos publicados y las variables explicativas antes enumeradas. Interprete el coeficiente asociado al número de hijos y a la variable dicotómica para estudiantes mujeres. ¿Qué puede decir sobre la significancia del <span class="math inline">\(\alpha\)</span> estimado?</p></li>
 </ol>
 </section>
 <section id="pregunta-5" class="level2">
 <h2 class="anchored" data-anchor-id="pregunta-5">Pregunta 5</h2>
+<p>Retome los datos del archivo <em>motral2012.csv</em>. Estimará un modelo Tobit para explicar los factores que afectan la oferta laboral femenina. En este archivo de datos la variable <strong>hrsocup</strong> registra las horas trabajadas a la semana.</p>
+<ol type="a">
+<li><p>[2 punto] ¿Qué proporción de la muestra femenina reporta horas trabajadas iguales a cero?</p></li>
+<li><p>[3 puntos] Se desea estimar el efecto de los años de educación (<strong>anios_esc</strong>) sobre la oferta laboral femenina controlando por el estado marital (<strong>casada</strong>), la edad (<strong>eda</strong>) y el número de hijos (<strong>n_hij</strong>) como una variable continua. En la base, <strong>e_con</strong> toma el valor de 5 para las personas casadas. Genere la variable dummy <strong>casada</strong> que tome el valor de 1 para las mujeres casadas y cero en otro caso. Estime un modelo de MCO para <strong>hrsocup</strong> mayor que cero, usando solo la población femenina. Reporte errores robustos. ¿Cuál es la interpretación sobre el coeficiente de los años de escolaridad?</p></li>
+<li><p>[3 puntos] ¿Qué problema existe con el modelo planteado en el punto anterior en términos de la selección? ¿Explique si se trata de un caso de censura o de truncamiento?</p></li>
+<li><p>[8 puntos] Estime un modelo Tobit de datos censurados. ¿Qué resuelve el modelo Tobit en este caso? Interprete nuevamente el coeficiente sobre los años de escolaridad.</p></li>
+<li><p>[4 puntos] ¿Cuál es el efecto marginal de un incremento de un año de educación en la oferta laboral? ¿Cómo cambia su respuesta si, en lugar de considerar la variable latente, considera la variable censurada?</p></li>
+</ol>
+</section>
+<section id="pregunta-6" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-6">Pregunta 6</h2>
 <p>Usando los mismos datos del archivo <em>motral2012.csv</em> implementará un ejercicio en el mismo espíritu del famoso estudio de Mroz (1987)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> sobre la oferta laboral femenina. El propósito es estimar la relación entre el salario y el número de horas trabajadas, concentrándonos en la muestra de mujeres.</p>
 <ol type="a">
 <li><p>[5 puntos] El primer problema al que nos enfrentamos es que el salario no se observa para las mujeres que no trabajan. Estime un modelo lineal para el log del salario por hora, <strong>ing_x_hrs</strong>, usando las variables <strong>anios_esc</strong>, <strong>eda</strong>, <strong>n_hij</strong>, el cuadrado de <strong>n_hij</strong>, <strong>busqueda</strong> y <strong>casada</strong>, usando la submuestra de mujeres con salario por hora positivo. Dichas variables representan los años de escolaridad, la edad, el número de hijos, el cuadrado del número de hijos, si la persona buscó trabajo recientemente y si la persona es casada, respectivamente. Use los coeficientes estimados para imputar el ingreso por hora, faltante para las mujeres que reportan 0 en las horas trabajadas.</p></li>
@@ -340,10 +413,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -353,8 +443,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -366,7 +465,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -410,6 +632,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -435,6 +658,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -495,6 +744,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

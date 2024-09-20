@@ -1,0 +1,142 @@
+---
+title: "Tarea 2"
+lang: es
+---
+
+## Preguntas
+
+Fecha de entrega: **viernes 4 de octubre** a las 20:00 en Teams
+
+La tarea deberá entregarse en Teams. Deberá incluir dos documentos:
+
+Un primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.
+
+Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.
+
+## Datos
+
+[motral2012.csv](../files/motral2012.csv)
+
+[phd_articulos.csv](../files/phd_articulos.csv)
+
+## Pregunta 1
+
+Use los datos en el archivo *motral2012.csv*, que incluye una muestra de individuos con sus características socioeconómicas. Nos interesa conocer los factores que afectan la probabilidad de que los individuos tengan ahorros formales. Considere lo siguiente sobre las opciones de ahorro de los entrevistados, contenida en la variable **p14**:
+
+- **p14** igual a 1 significa cuentas de ahorro bancarias
+- **p14** igual a 2 significa cuenta de inversión bancaria
+- **p14** igual a 3 significa inversiones en bienes raíces
+- **p14** igual a 4 significa caja de ahorro en su trabajo
+- **p14** igual a 5 significa caja de ahorro con sus amigos
+- **p14** igual a 6 significa tandas
+- **p14** igual a 7 significa que ahorra en su casa o alcancías
+- **p14** igual a 8 significa otro lugar
+- **p14** NA significa que no ahorra
+
+a. [2 puntos] Comience generando una variable binaria **ahorra_inf** que tome el valor de 1 para las personas que ahorran en instrumentos informales y 0 en otro caso. Se consideran instrumentos informales las cajas de ahorro en el trabajo o amigos, las tandas y el ahorro en casa o alcancías . Construya también la variable **mujer** que tome el valor de 1 cuando **sex** toma el valor de 2 y 0 en otro caso. Luego, estime un modelo de probabilidad lineal que relacione **ahorra_inf** como variable dependiente con **eda** (edad), **anios_esc** (años de escolaridad) y **mujer**. Reporte los errores que asumen homocedasticidad y los errores robustos a heteroscedasticidad. ¿Qué observa respecto a los errores y por qué sucede?
+
+a. [3 puntos] ¿Cuál es el efecto en la probabilidad de ahorrar informalmente si los años de educación se incrementan en una unidad, pasando de 4 a 5 años de educación?
+
+a. [2 puntos] Realice una prueba de significancia conjunta de **eda** y **anios_esc**. ¿Qué concluye?
+
+a. [3 puntos] Estime un modelo logit relacionando las mismas variables. Use la función *avg_slopes* del paquete *marginaleffects* para obtener los efectos marginales promedio de un cambio en cada uno de los regresores. ¿Por qué difiere la magnitud de este efecto marginal con respecto a la parte b.?
+
+a. [2 puntos] Ahora estime el efecto marginal en la media para **eda** y **anios_esc** y para los hombres, usando la función *slopes*. ¿Por qué difiere la magnitud de este efecto marginal respecto a la parte b. y la d.?
+
+a. [3 puntos] Provea una expresión para la maginitud de:
+
+$$\frac{\frac{\partial P(y=1)}{\partial \; anios\_esc}}{\frac{\partial P(y=1)}{\partial \; eda}}$$
+
+
+
+## Pregunta 2
+
+Ahora estimará un modelo multinomial empleando los mismos datos en *motral2012.csv*. El propósito será ahora estudiar los factores relevantes para predecir la forma de ahorro que tienen las personas que ahorran.
+  
+a.	[2 punto] Genere una variable categórica llamada **ahorro** que sea igual a 1 cuando **p14** sea igual a 1 o 2, igual a 2 cuando **p14** sea igual a 7, e igual a 3 cuando **p14** sea igual a 3, 4, 5, 6 u 8. Haga que esa variable sea missing cuando **p14** sea missing. Posteriormente, convierta esta nueva variable en una de factores de forma que el valor 1 tenga la etiqueta “Banco”, el valor 2 tenga la etiqueta “Casa” y el valor 3 tenga la etiqueta “Otro”.
+
+a.	[4 puntos] Estime un modelo logit multinomial (regresores invariantes a la alternativa) con la opción de ahorro como variable dependiente y los mismos regresores de la pregunta 5. Hay varios paquetes para hacer esto, pero recomiendo usar la función *multinom* del paquete *nnet*. ¿Qué puede decir sobre el coeficiente de años de educación en la alternativa “Casa”?
+
+a.	[4 puntos] Calcule los efectos marginales promedio sobre la probabilidad de ahorrar en el banco. Al considerar el cambio en la probabilidad para el caso de las mujeres (cuando la variable **mujer** pasa de 0 a 1), ¿de qué tamaño es el efecto predicho en la probabilidad de ahorrar en el banco?
+
+a.	[3 puntos] Calcule los cocientes de riesgo relativo (*relative risk ratios* o RRR). ¿Qué significa el hecho de que el RRR asociado a ser mujer sea mayor que 1 en la alternativa “Casa”?
+
+a.	[2 puntos] Estime nuevamente el modelo, pero ahora, especifique que la alternativa “Casa” sea la alternativa base. ¿Cómo es el RRR de la edad en la alternativa “Banco”? ¿Es esto congruente con lo que obtuvo en la parte d. de esta pregunta?
+
+
+
+## Pregunta 3: modelo Poisson inflado en cero
+
+Otra manera de resolver el problema del exceso de ceros que a veces nos molesta en los modelos Poisson es usar un modelo Poisson inflado en cero (CT, p. 681). La idea es introducir un proceso binario  con densidad $f_1(\cdot)$ para modelar la probabilidad de que $y=0$ y luego una densidad de conteo $f_2(\cdot)$. Si el proceso binario toma el valor de 0, con probabilidad $f_1(0)$, entonces $y=0$, pero si el proceso binario toma el valor de 1, entonces $y={0,1,2,\ldots}$. Note que podemos entonces observar ceros por dos razones, por el proceso binomial o por el conteo.
+
+Un modelo inflado en cero tendrá como densidad:
+
+$$
+g(y)=
+\begin{cases}
+f_1(0)+(1-f_1(0))f_2(0) & \text{si }y=0 \\
+(1-f_1(0))f_2(y)& \text{si }y\geq 1
+\end{cases}
+$$
+Considere la variable aleatoria $Y$ con observaciones iid que sigue una distribución Poisson con parámetro $\lambda$. Y considere una variable un proceso binomial tal que $\pi$ es la probabilidad de que el conteo no se realice. Entonces:
+
+$$
+g(y)=
+\begin{cases}
+\pi+(1-\pi)f_2(0) & \text{si }y=0 \\
+(1-\pi)f_2(y)& \text{si }y\geq 1
+\end{cases}
+$$
+
+a. [4 puntos] Termine de especializar la expresión anterior unsando la distribución Poisson para $f_2(\cdot)$ para obtener la función de masa de probabilidad del modelo Poisson inflado en cero $g(y|\lambda, \pi)$.
+
+a. [5 puntos] Provea una expresión para la función de verosimilitud $L(\lambda,\pi)=\prod_{i=1}^N g(y_i|\lambda, \pi)$. Una sugerencia para simplificar sus cálculos es definir una variable $X$ igual al numero de veces que $Y_i$ que toma el valor de cero.
+
+a. [3 puntos] Provea una expresión para la log verosimilitud del problema, $\mathcal{L}(\lambda,\pi)$.
+
+a. [3 puntos] Obtenga las condiciones de primer orden que caracterizan la solución del problema de máxima verosimilitud, derivando la log verosimilitud con respecto a $\lambda$ y a $\pi$.
+
+
+
+## Pregunta 4
+
+Use los datos *phd_articulos.csv*, los cuales contienen información sobre el número de artículos publicados para una muestra de entonces estudiantes de doctorado. Nuestra variable de interés será el número de artículos **art**.
+
+a. [4 puntos] Estime un modelo Poisson que incluya variables dicotómicas para estudiantes mujeres (**female**) y para estudiantes casadas o casados (**married**), el número de hijos mejores de cinco años (**kid5**), el ranking de prestigio del doctorado (**phd**) y el número de artículos publicados por su mentor (**mentor*). Realice la estimación de la matriz de varianzas primero a partir de la varianza teórica que resulta de la igualdad de la matriz de información y luego usando una matriz de sándwich. Interprete los coeficientes estimados.
+
+a. [3 puntos] Obtenga la razón de tasas de incidencia (IRR) para los coeficientes e interprete los resultados.
+
+a. [2 puntos] Considere ahora que las mujeres han tenido carreras profesionales más cortas que los hombres, es decir, han estado menos expuestas a la ocurrencia de los eventos *publicar*. Incorpore esto al análisis y reinterprete los resultados. Pista: explore la opción *offeset* en *glm* de R. La columna **profage** mide la duración efectiva de las carreras profesionales de cada individuo.
+
+a. [2 puntos] Implemente la prueba de dispersión de Cameron y Trivedi (1990) usando una regresión auxiliar y los coeficientes estimados en la parte a. ¿Qué concluye?
+
+a. [4 puntos] Emplee ahora un modelo negativo binomial con sobredispersión cuadrática en la media para estimar la relación entre el número de artículos publicados y las variables explicativas antes enumeradas. Interprete el coeficiente asociado al número de hijos y a la variable dicotómica para estudiantes mujeres. ¿Qué puede decir sobre la significancia del $\alpha$ estimado?
+
+
+## Pregunta 5
+
+Retome los datos del archivo *motral2012.csv*. Estimará un modelo Tobit para explicar los factores que afectan la oferta laboral femenina. En este archivo de datos la variable **hrsocup** registra las horas trabajadas a la semana.
+
+a. [2 punto] ¿Qué proporción de la muestra femenina reporta horas trabajadas iguales a cero?
+
+a. [3 puntos] Se desea estimar el efecto de los años de educación (**anios_esc**) sobre la oferta laboral femenina controlando por el estado marital (**casada**), la edad (**eda**) y el número de hijos (**n_hij**) como una variable continua. En la base, **e_con** toma el valor de 5 para las personas casadas. Genere la variable dummy **casada** que tome el valor de 1 para las mujeres casadas y cero en otro caso. Estime un modelo de MCO para **hrsocup** mayor que cero, usando solo la población femenina. Reporte errores robustos. ¿Cuál es la interpretación sobre el coeficiente de los años de escolaridad?
+
+a.	[3 puntos] ¿Qué problema existe con el modelo planteado en el punto anterior en términos de la selección? ¿Explique si se trata de un caso de censura o de truncamiento?
+
+a.	[8 puntos] Estime un modelo Tobit de datos censurados. ¿Qué resuelve el modelo Tobit en este caso? Interprete nuevamente el coeficiente sobre los años de escolaridad.
+
+a.	[4 puntos] ¿Cuál es el efecto marginal de un incremento de un año de educación en la oferta laboral? ¿Cómo cambia su respuesta si, en lugar de considerar la variable latente, considera la variable censurada? 
+
+
+## Pregunta 6
+
+Usando los mismos datos del archivo *motral2012.csv* implementará un ejercicio en el mismo espíritu del famoso estudio de Mroz (1987)[^1] sobre la oferta laboral femenina. El propósito es estimar la relación entre el salario y el número de horas trabajadas, concentrándonos en la muestra de mujeres.
+
+a. [5 puntos] El primer problema al que nos enfrentamos es que el salario no se observa para las mujeres que no trabajan. Estime un modelo lineal para el log del salario por hora, **ing_x_hrs**, usando las variables **anios_esc**, **eda**, **n_hij**, el cuadrado de **n_hij**, **busqueda**  y **casada**, usando la submuestra de mujeres con salario por hora positivo. Dichas variables representan los años de escolaridad, la edad, el número de hijos, el cuadrado del número de hijos, si la persona buscó trabajo recientemente y si la persona es casada, respectivamente. Use los coeficientes estimados para imputar el ingreso por hora, faltante para las mujeres que reportan 0 en las horas trabajadas.
+
+a. [5 puntos] Use _heckit_ de la librería _sampleSelection_ para estimar por máxima verosimilitud un *heckit* para las horas trabajadas **hrsocup**. En la ecuación de selección (si la persona trabaja o no) incluya como variable explicativa el salario por hora (imputado para las mujeres que no trabajan), además de **anios_esc**, **eda**, **n_hij**, el cuadrado de **n_hij**, **casada** y **busqueda** (esta última es un indicador de si se buscó trabajo en la última semana). En la ecuación de horas, incluya los mismos regresores, excepto **n_hij**, su cuadrado y **busqueda**.
+
+a. [10 puntos] Estime ahora el *heckit* en dos pasos, *a mano*. Es decir, siga los siguientes pasos: i) estime un probit para la ecuación de selección y obtenga el índice $x_i'\hat{\beta}$; ii) calcule el inverso de la razón de Mills $\lambda_i(x_i'\hat{\beta})$; y iii) estime por MCO la ecuación para las horas trabajadas con la submuestra que tiene horas trabajadas positivas, incluyendo como regresor el inverso de la razón de Mills estimado y el resto de los regresores. Compare los coeficientes y los errores estándar obtenidos en esta parte con los de la parte b. ¿Por qué son iguales o por qué difieren?
+    
+
+[^1]: Mroz, T. A. (1987). [The sensitivity of an empirical model of married women's hours of work to economic and statistical assumptions](https://www.jstor.org/stable/1911029?casa_token=Uwxeul7XeBkAAAAA%3AyOzMP-SP9bdQNxw1FwyVjnEJt3w2ShyTtiinMVL6RZnpxKeehfas96e2ETxA6us20xyQG-NUF71svQugl78mx6vG2oJ2k7U39TtJn6P6dq-iTH2aDWsH&seq=1#metadata_info_tab_contents). *Econometrica*: Journal of the econometric society, 765-799. 
