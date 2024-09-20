@@ -7,13 +7,13 @@ Por favor, seleccione una de las lecturas marcadas con una "+" de la lista de le
 
 | **Autores** | **Tema** | **Presentador o presentadora** | **Fecha de exposición** |
 | --- | --- | --- | --- |
-| Avila-Foucat & Pérez-Campuzano (2015) |  Binaria | | Miércoles 2 de octubre |
-| Kveder & Flahaux (2013) | Multinomial | | Miércoles 2 de octubre |
+| Avila-Foucat & Pérez-Campuzano (2015) |  Binaria | Luis Ángel Ruiz | Miércoles 2 de octubre |
+| Kveder & Flahaux (2013) | Multinomial | Alejandro Altair | Miércoles 2 de octubre |
 | Zou & Luo (2019) | Tobit | | Miércoles 2 de octubre |
 | Hackett & Marquez-Padilla (2019) | VI | Moisés Barranco | Jueves 17 de octubre |
-| López-Feldman & Chávez (2017) | VI | Dante Rito | Jueves 17 de octubre |
+| López-Feldman & Chávez (2017) | VI |  | Jueves 17 de octubre |
 | Amare  t al. (2021) | Panel | Emiliano Alejo | Jueves 31 de octubre |
 | Kagin et al. (2016)| Panel | Marcial Castillo | Jueves 31 de octubre |
 | Li & Maddala (1999) | Bootstrap | Victor Rosas | Jueves 21 de noviembre |
-| Engelhardt & Kumar (2011) | Cuantil | | Jueves 21 de noviembre |
+| Engelhardt & Kumar (2011) | Cuantil | Moisés Pelayo | Jueves 21 de noviembre |
 
