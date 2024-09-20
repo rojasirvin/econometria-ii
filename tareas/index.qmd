@@ -17,6 +17,8 @@ lang: es
 
 - Fecha de entrega: viernes 4 de octubre a las 20:00 en Teams
 
+- [Preguntas](./tarea-2.qmd)
+
 ---
 
 # Tarea 3
