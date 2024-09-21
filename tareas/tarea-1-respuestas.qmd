@@ -217,7 +217,7 @@ for (i in 1:reps){
 ```
     
    *Graficamos junto con una densidad $N(0.7, \sqrt{0.21/3})$:*
-    
+
 ```{r}
 #| echo: true
 
@@ -286,7 +286,7 @@ curve(dnorm(x, mean=p, sd=sqrt(v)),
       col="darkblue", lwd=2, add=TRUE, yaxt="n")
 ```
 
-   *El histograma se parece ya a la curva normal.*
+   *El histograma se parece ya a la curva normal. Podrían repetir este ejercicio con un tamaño de muestra más grande incluso y ver qué sucede.*
 
 a. [5 puntos] ¿Cómo usaría este ejercicio con palabras simples para explicar a una persona que no sabe mucho de estadística sobre la importancia de los teoremas de límite central?
 
