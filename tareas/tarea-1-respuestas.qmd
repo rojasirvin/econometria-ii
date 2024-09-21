@@ -265,17 +265,17 @@ a. [3 puntos] Repita lo realizado en la parte b., ahora con $N=1,500$. Comente s
 
 reps <- 1000
 n <- 1500
-p <- 0.3
+p <- 0.7
 v <- p*(1-p)/n
 
 ymedias1500 <- numeric(reps)
 for (i in 1:reps){
- sample <- rbernoulli(n, p)
+ sample <- rbinom(n, 1, p)
  ymedias1500[i]<-mean(sample)
 }
 ```   
    
-   *Graficamos junto con una densidad $N(0.3, \sqrt{0.21/1500})$:*
+   *Graficamos junto con una densidad $N(0.7, \sqrt{0.21/1500})$:*
    
 ```{r}
 #| echo: true
