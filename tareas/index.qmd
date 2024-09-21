@@ -9,6 +9,7 @@ lang: es
 
 - [Preguntas](./tarea-1.qmd)
 
+- [Respuestas](./tarea-1-respuestas.qmd)
 
 
 ---

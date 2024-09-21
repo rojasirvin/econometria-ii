@@ -33,32 +33,19 @@ i. La función $g(\cdot)$ satisface $g(x, \beta^{(1)})=g(x, \beta^{(2)})$ si y s
 i. La matriz $A_0$ existe y es finita y no singular y donde $A_0=p\lim\frac{1}{N}\sum_{i=1}^{N}\left.\frac{\partial g_i}{\partial \beta}\right|_{\beta_0}\left.\frac{\partial g_i}{\partial \beta'}\right|_{\beta_0}=p\lim\frac{1}{N}\left.\frac{\partial g'}{\partial \beta}\frac{\partial g'}{\partial \beta'}\right|_{\beta_0}$
 i. $N^{-1/2}\sum_{i=1}^N \left.\frac{\partial g_i}{\partial \beta}u_i \right|_{\beta_0}\xrightarrow{d}\mathcal{N}(0,B_0)$, donde $B_0=p\lim \frac{1}{N}\sum_{i=1}^{N}\sum_{j=1}^{N}\sigma_{ij}\left.\frac{\partial g_i}{\partial \beta}\frac{\partial g_i}{\partial \beta'}\right|_{\beta_0}=p\lim\frac{1}{N}\left.\frac{\partial g'}{\partial \beta}\Omega_0 \frac{\partial g}{\partial \beta'}\right|_{\beta_0}$.
 
-a. [5 puntos] Plantee el problema de optimización para la minimización de la suma de los errores cuadráticos y obtenga las condiciones de primer orden.
+   **_Respuestas: ver proposición 5.6 en CT_.**
 
-   *El problema es minimzar $\Q_N$ con:
-   
-   $$Q_N= \sum_i (y_i-g(x_i,\beta))^2$$
-   
-   *Cuyas condiciones de primer orden implican que:*
-   
-   $$\sum_i \frac{\partial g_i}{\partial \beta}(y_i-g_i)=0$$
+a. [5 puntos] Plantee el problema de optimización para la minimización de la suma de los errores cuadráticos y obtenga las condiciones de primer orden.
 
 a. [10 puntos] Pruebe que $\hat{\beta}_{MCNL}$, el estimador de mínimos cuadrados no lineales (MCNL) y definido como una raíz de las condiciones de primer orden, es consistente  para $\beta_0$.
 
-   $$De las CPO 
-
 a. [10 puntos]  Derive una expresión para $\sqrt{N}(\hat{\beta}_{MCNL}-\beta_0)$ y pruebe que $\sqrt{N}(\hat{\beta}_{MCNL}-\beta_0)\xrightarrow{d}\mathcal{N}(0,A_0^{-1}B_0A_0^{-1})$. Tip: utilice una expansión de Taylor exacta de primer orden.
 
-a. [5 puntos]  ¿Cómo estimaría $V(\hat{\beta}_{MCNL})$?
+a. [5 puntos]  ¿Cómo estimaría $V(\hat{\beta}_{MCNL})$?}
 
 
 
-
-
-
-
-
-## Pregunta 1
+## Pregunta 2
 
 Suponga que está interesado en una variable aleatoria que tiene una distribución Bernoulli con parámetro $p$. La función de densidad está definida como:
 
@@ -95,165 +82,54 @@ a. [2 puntos] ¿Cuál es la media y la varianza del estimador de máxima verosim
 
 
 
-## Pregunta 2
-
-Suponga que $y_i|\mathbf{x}_i\sim\mathcal{N}(m(\mathbf{x}_i,\mathbf{\beta}_0),\sigma_0^2)$, donde $m(\mathbf{x},\mathbf{\beta})$ es una función del vector de variables explicativas $\mathbf{x}$ y del vector de parámetros $\mathbf{\beta}$ de dimensión $(k\times 1)$. Entonces, $E(y_i|\mathbf{x}_i)=m(\mathbf{x}_i,\mathbf{\beta}_0)$ y $V(y_i|\mathbf{x}_i)=\sigma^2_0$.
-
-a. [2 puntos] Escriba la función de log verosimilitud condicional para la observación $i$. Muestre que el estimador de máxima verosimilitud $\hat{\mathbf{\beta}}$ resuelve el problema de minimización $\min_\mathbf{\beta}\sum_i(y_i-m(\mathbf{x}_i,\mathbf{\beta}))^2$.
-
-   *La densidad de la $i$ésima observación es:*
-    
-   $$f(y|x_i)=\frac{1}{\sqrt{2\pi\sigma^2_0}}exp\left(-\frac{1}{2\sigma^2_0}(y-m(x_i,\beta))^2\right)$$
-    
-   *Por tanto, la log verosimilitud para $i$ es:*
-    
-   $$
-   \mathcal{l}_i(\beta,\sigma^2)=-\frac{1}{2}\ln(2\pi)-\frac{1}{2}\ln(\sigma^2)-\frac{1}{2\sigma^2}(y_i-m(x_i,\beta))^2
-   $$
-    
-   *Dado que solo la última parte de este problema depende de $\beta$, y siendo $\sigma^2>0$, el problema de maximizar $\sum_i\mathcal{l}_i(\beta,\sigma^2)$ es igual a maximizar $\sum_i(y_i-m(x_i,\beta))^2$.*
-
-a. [4 puntos] Sea $\mathbf{\theta}\equiv(\mathbf{\beta}'\;\sigma^2)'$ un vector de parámetros de dimensión $(k+1)\times 1$. Encuentre el vector score para la observación $i$. Muestre que $E(\mathbf{s}_i(\mathbf{\theta}_0)|\mathbf{x}_i)=\mathbf{0}$.
-
-
-   *El vector score es el vector de primeras derivadas parciales de la log verosimilitud. Las derivadas parciales son:*
-   
-   $$
-   \begin{aligned} \frac{\partial \mathcal{l}_i}{\partial\beta}&=\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'\frac{(y_i-m(x_i,\beta))}{\sigma^2} \\ \frac{\partial \mathcal{l}_i}{\partial\sigma^2}&= -\frac{1}{2\sigma^2}+\frac{1}{2\sigma^4}(y_i-m(x_i,\beta))^2\end{aligned}
-   $$
-    
-   *Noten que $\left(\frac{\partial \mathcal{l}_i}{\partial\beta}\right)'$ es un vector de $1\times k$. Podemos escribir el score como:*
-   
-    
-    $$s_i(\beta,\sigma^2)=
-    \begin{pmatrix}
-    \frac{\partial m(x,\beta)}{\partial\beta}\frac{(y_i-m(x_i,\beta))}{\sigma^2} \\ 
-    -\frac{1}{2\sigma^2}+\frac{1}{2\sigma^4}(y_i-m(x_i,\beta))^2 \\
-    \end{pmatrix}$$
-    
-   *Dado que $E(y_i|x_i)=m(x_i,\beta)$,los primeros $k$ términos del score tienen esperanza 0. Entonces, nos resta comprobar la última entrada. Calculando el valor esperado del segundo sumando de la última entrada:*
-   
-   $$E((y_i-m(x_i,\beta))^2)=E((y_i-E(y_i|x_i))^2)=V(y_i|x_i)=\sigma^2$$
-    
-   *lo que hace que la última entrada del vector score también tenga esperanza 0.*
-
-a. [2 puntos] Usando las condiciones de primer orden, encuentre $\hat{\sigma}^2$ en términos de $\hat{\mathbf{\beta}}$.
-
-   *La condición de primer orden con respecto a $\sigma^2$ es*
-   
-   $$\sum_i \left(-\frac{1}{2\sigma^2}+\frac{1}{2\sigma^4}(y_i-m(x_i,\beta))^2\right)$$
-    
-   *Resolviendo para $\sigma^2$ obtenemos*:
-   
-   $$\hat{\sigma}^2=\frac{1}{N}\sum_i (y_i-m(x_i,\hat{\beta}))^2$$
-
-a. [5 puntos] Encuentre la matriz hesiana de la función de log verosimilitud con respecto a $\mathbf{\theta}$.
-
-
-   *Procedemos a derivar el score, primero con respecto a $\beta$ y luego con respecto a $\sigma^2$.*
-   
-   - $\frac{\partial}{\partial\beta}\left(\frac{\partial m(x,\beta)}{\partial\beta}\frac{(y_i-m(x_i,\beta))}{\sigma^2}\right)=-\frac{1}{\sigma^2}\frac{\partial m(x,\beta)}{\partial\beta}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'+\frac{1}{\sigma^2}\frac{\partial m(x,\beta)}{\partial\beta\partial\beta}(y_i-m(x_i,\beta))$
-    
-   - $\frac{\partial}{\partial\sigma^2}\left(\frac{\partial m(x,\beta)}{\partial\beta}\frac{(y_i-m(x_i,\beta))}{\sigma^2}\right)=-\frac{1}{\sigma^4}\frac{\partial m(x,\beta)}{\partial\beta}(y_i-m(x_i,\beta))$
-    
-   - $\frac{\partial}{\partial\beta}\left( -\frac{1}{2\sigma^2}+\frac{1}{2\sigma^4}(y_i-m(x_i,\beta))^2\right)=-\frac{1}{\sigma^4}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'(y_i-m(x_i,\beta))$
-    
-   - $\frac{\partial}{\partial\sigma^2}\left( -\frac{1}{2\sigma^2}+\frac{1}{2\sigma^4}(y_i-m(x_i,\beta))^2\right)=\frac{1}{2\sigma^4}-\frac{1}{\sigma^6}(y-m(x_i,\beta))^2$
-    
-   *Por lo que la matriz Hessiana es:*
-    
-   $$
-  H_i(\beta,\sigma^2)=
-  \begin{pmatrix}
-  -\frac{1}{\sigma^2}\frac{\partial m(x,\beta)}{\partial\beta}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'+\frac{1}{\sigma^2}\frac{\partial m(x,\beta)}{\partial\beta\partial\beta}(y_i-m(x_i,\beta)) & -\frac{1}{\sigma^4}\frac{\partial m(x,\beta)}{\partial\beta}(y_i-m(x_i,\beta)) \\ -\frac{1}{\sigma^4}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'(y_i-m(x_i,\beta)) & \frac{1}{2\sigma^4}-\frac{1}{\sigma^6}(y-m(x_i,\beta))^2 \\
-  \end{pmatrix}
-   $$
-
-a. [5 puntos] Muestre que $-E(\mathbf{H}_i(\mathbf{\theta}_0)|\mathbf{x}_i)=E(\mathbf{s}_i(\mathbf{\theta}_0)\mathbf{s}_i(\mathbf{\theta}_0)'|\mathbf{x}_i)$.
-
-
-   *Primero mostramos el valor esperado de cada entrada de la matriz hessiana. En la parte b. mostramos que $E(y-m(x_i,\beta))=0$, por lo que los elementos fuera de la diagonal principal tiene expectativa cero.*
-   
-   *Por la misma razón:*
-   
-   $$
-   \begin{aligned}
-   & E\left(-\frac{1}{\sigma^2}\frac{\partial m(x,\beta)}{\partial\beta}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'+\frac{1}{\sigma^2}\frac{\partial  m(x,\beta)}{\partial\beta\partial\beta}(y_i-m(x_i,\beta))\right) = \\
-   & -\frac{1}{\sigma^2}\frac{\partial m(x,\beta)}{\partial\beta}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'
-   \end{aligned}
-   $$
-    
-   *El último término usa lo que hemos mostrado antes, $E((y_i-m(x_i,\beta))^2)=\sigma^2$. Por tanto:* 
-   
-   $$
-   E\left(\frac{1}{2\sigma^4}-\frac{1}{\sigma^6}(y-m(x_i,\beta))^2\right)=-\frac{1}{2\sigma^4}
-   $$
-   
-   
-   *Entonces obtenemos un primer resultado:*
-    
-    $$
-    -E(H_i(\beta,\sigma^2)|x_i)=
-    \begin{pmatrix}
-    \frac{1}{\sigma^2}\frac{\partial m(x,\beta)}{\partial\beta}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)' & 0 \\
-    0 & \frac{1}{2\sigma^4}\\
-    \end{pmatrix}
-    $$
-    
-   *Tenemos que mostrar que el valor esperado del producto exterior del score es igual a lo que acabamos de encontrar. Calculamos el valor esperado del producto exterior del score:*
-    
-   $$E(s(\beta,\sigma^2)s(\beta,\sigma^2)'|x_i)=E\left(\begin{pmatrix} A & B \\ B & C \end{pmatrix}\Bigg|x_i\right)$$.
-    
-   *El bloque superior de la matriz resultante es $E(A)$:*
-    
-   $$
-    \begin{aligned}
-    E(A)&=
-    \frac{\partial m(x,\beta)}{\partial\beta}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'\frac{(y_i-m(x_i,\beta))^2}{\sigma^4} \\
-    &=\frac{1}{\sigma^2}\frac{\partial m(x,\beta)}{\partial\beta}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'
-    \end{aligned}
-   $$
-    
-   *El término $B$ es*:
-    
-   $$E(B)=-\frac{1}{2\sigma^4}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'(y-m(x_i,\beta))+\frac{1}{2\sigma^6}\left(\frac{\partial m(x,\beta)}{\partial\beta}\right)'(y-m(x_i,\beta))^3$$
-    
-   *Este término tiene valor esperado cero porque para una variable aleatoria normal $X$ con media cero, sucede que $E(X^n)=0$ cuando $n$ es impar.*
-    
-   *Y finalmente, el término $E(C)$ será:*
-    
-   $$
-    \begin{aligned}
-    C&=
-    E\left(-\frac{1}{2\sigma^2}+\frac{1}{2\sigma^4}(y_i-m(x_i,\beta))^2\right)\\
-    &=E\left(\frac{1}{4\sigma^8}(y-m(x_i,\beta))^4-\frac{1}{2\sigma^6}(y-m(x_i,\beta))^2+\frac{1}{4\sigma^4}\right) \\
-    &=E\left(\frac{1}{4\sigma^8}(y-m(x_i,\beta))^4\right)-\frac{1}{2\sigma^4}+\frac{1}{4\sigma^4}
-    \end{aligned}
-   $$
-    
-   *Para una variable aleatoria $X\sim \mathcal{N}(0, \sigma^2)$, sucede que $E(X^4)=3\sigma^4$. Entonces:* 
-   
-   $$
-    \begin{aligned}
-    C&=\frac{3\sigma^4}{4\sigma^8}-\frac{1}{2\sigma^4}+\frac{1}{4\sigma^4} \\
-    & =\frac{1}{2\sigma^4}
-    \end{aligned}
-   $$
-   
-
-a. [2 puntos] Encuentre la varianza asintótica estimada de $\hat{\mathbf{\beta}}$ y explique cómo obtendría los errores estándar.
-
-
-   *Por los resultados generales de MV vistos en clase, sabemos que la varianza asintótica está dada por $E(A_i(\theta))^{-1}$, donde $A_i(\theta)=-E(H_i(\theta))$, obtenida en la parte e (no confundir con $A$ del punto anterior, usada para simplificar la presentación de los cálculos sobre el producto exterior del score). Un extimador para la matriz de varianzas es entonces:*
-    
-   $$
-   \hat{V}(\hat{\beta})=\hat{\sigma}^2\left(\sum_i\frac{\partial m(x_i,\hat{\beta})}{\partial\beta}\left(\frac{\partial m(x_i,\hat{\beta})}{\partial\beta}\right)'\right)^{-1}
-   $$
-    
-   *El error estándar del $j$ésimo regresor estimado es simplemente la raíz cuadrada de la $j$ésima entrada en la diagonal principal de $\hat{V}(\hat{\beta})$.*
-
 
 ## Pregunta 3
+
+
+Considere el modelo logit:
+
+$$f(y_i|x_i;\theta_0)=\left\{ \begin{array} .1 & \frac{\exp\{x_i'\theta_0\}}{1+\exp\{x_i'\theta_0\}}  \\ 0 &  \frac{1}{1+\exp\{x_i'\theta_0\}} \end{array} \right.$$
+donde $x_i$ es un vector de variables explicativas, $\theta_0$ y es el vector de parámetros poblacional. Asuma que dispone de observaciones $(y_i,x_i)$ que son iid.
+
+a. [5 puntos] Escriba la función de log verosimilitud condicional para la observación $i$.
+
+    *Es conveniente escribir el problema en término de $\Lambda (x_i'\theta_0) \equiv \frac{\exp\{x_i'\theta_0\}}{1+\exp\{x_i'\theta_0\}}$. Así, la función de verosimilitud para la observación $i$ es:*
+    
+    $$f(y_i|x_i;\theta_0)=\Lambda (x_i'\theta_0)^{y_i}(1-\Lambda (x_i'\theta_0))^{(1-y_i)}$$
+    
+    *Tomando logs, la función de log verosimilitud es:*
+    
+    $$\mathcal{l}(y_i|x_i,\theta)=\ln f(y_i|x_i;\theta)=y_i\ln \Lambda (x_i'\theta)+(1-y_i)(1-\Lambda (x_i'\theta))$$
+
+a. [5 puntos] Encuentre el vector score para la observación $i$.
+
+    *El vector score es el vector de primeras derivadas parciales de la log verosimilitud. Un pequeño truco facilita las cosas. Se puede mostrar que $\Lambda (\cdot)'=\Lambda (\cdot)(1-\Lambda (\cdot))$. Entonces:*
+    
+    $$\frac{\partial \mathcal{l}_i}{\partial\theta}=y_i \frac{1}{\Lambda (x_i'\theta)}\Lambda (x_i'\theta)(1-\Lambda (x_i'\theta))x_i+(1-y_i)\frac{1}{1-\Lambda (x_i'\theta)}\Lambda (x_i'\theta)(1-\Lambda (x_i'\theta))x_i$$
+    
+    *Simplificando:*
+    
+    $$\frac{\partial \mathcal{l}_i}{\partial\theta}=(y_i-\Lambda (x_i'\theta))x_i \equiv s(y_i,x_i;\theta)$$
+    
+a. [5 puntos] Encuentre la hesiana de la función de log verosimilitud con respecto a $\mathbf{\theta}$.
+
+    *Procedemos a derivar el score con respecto a $\theta'$*:
+    
+    $$H(y_i,x_i;\theta)\equiv \frac{\partial s(y_i,x_i;\theta)}{\partial \theta'}= -\Lambda(x_i'\theta)(1-\Lambda(x_i'\theta))x_ix_i'$$
+    
+    
+a. [5 puntos] Obtenga la matriz de información para la observación $i$.
+
+    *La matriz de información es $E(s(y_i,x_i;\theta_0)s(y_i,x_i;\theta_0)'|x_i)$*
+    
+    $$I(\theta_0)=E((y_i-\Lambda(x_i'\theta_0))^2x_ix_i')$$
+
+
+
+
+
+
+## Pregunta 4
 
 Suponga una variable aleatoria $X_i$ con distribución desconocida. Sin embargo, sí conocemos que $E(X)=\mu=54$ y que $\sqrt{V(X)}=\sigma=6$. Suponga que se recolecta una muestra de 50 observaciones.
 
@@ -301,13 +177,13 @@ qnorm(0.995)
    *Entonces, el intervalo de confianza es*: $$P(\bar{X}\pm 2.185664)=0.99$$
 
 
-## Pregunta 4
+## Pregunta 5
 
-En esta pregunta mostraremos los alcances de los teoremas del límite central. Para esto, generaremos muchas muestras de tamaño $N$ con una distribución $Bernoulli$ con probabilidad de éxito $p=0.3$. Recuerde que cuando realice simulaciones, siempre debe fijar una semilla al inicio para poder replicar su trabajo.
+En esta pregunta mostraremos los alcances de los teoremas del límite central. Para esto, generaremos muchas muestras de tamaño $N$ con una distribución $Bernoulli$ con probabilidad de éxito $p=0.7$. Recuerde que cuando realice simulaciones, siempre debe fijar una semilla al inicio para poder replicar su trabajo.
 
 a. [2 puntos] ¿Cuál es la media y la varianza de una variable aleatoria $y_i \sim Bernoulli(0.3)$?
 
-   *Para una variable que se distribuye $Bernoulli(p)$, la media es $p$ y la varianza es $p(1-p)$. Para este caso, $E(y_i)=0.3$ y $V(y_i)=0.3*0.7=0.21$.*
+   *Para una variable que se distribuye $Bernoulli(p)$, la media es $p$ y la varianza es $p(1-p)$. Para este caso, $E(y_i)=0.7$ y $V(y_i)=0.7*0.3=0.21$.*
 
 a. [2 puntos] Si $y_i$ son iid y podemos aplicar un teorema de límite central, ¿cuál es la distribución teórica de $\bar{y}$ cuando $N\to\infty$?
 
@@ -319,33 +195,33 @@ a. [2 puntos] Si $y_i$ son iid y podemos aplicar un teorema de límite central, 
 
    *Entonces, un TLC nos daría las condiciones para que:*
 
-   $$\frac{\bar{y}-0.3}{0.21/N}\sim\mathcal{N}(0, 1)$$
+   $$\frac{\bar{y}-0.7}{\sqrt{0.21/N}}\sim\mathcal{N}(0, 1)$$
     
-a. [5 puntos] Realice el siguiente procedimiento $J=1,000$ veces. Obtenga una muestra de tamaño $N=2$ a partir de la distribución $Bernoulli(0.3)$ y calcule la media muestral $\bar{y}$. Coleccione las $J$ medias muestrales y luego grafique un histograma de las medias muestrales obtenidas junto con una curva teórica normal con la media y varianza obtenida en la parte b. Comente sobre lo que observa.
+a. [5 puntos] Realice el siguiente procedimiento $J=1,000$ veces. Obtenga una muestra de tamaño $N=3$ a partir de la distribución $Bernoulli(0.7)$ y calcule la media muestral $\bar{y}$. Coleccione las $J$ medias muestrales y luego grafique un histograma de las medias muestrales obtenidas junto con una curva teórica normal con la media y varianza obtenida en la parte b. Comente sobre lo que observa.
 
 
 ```{r}
 #| echo: true
 
-set.seed(820)
+set.seed(921)
 reps <- 1000
-n <- 2
-p <- 0.3
+n <- 3
+p <- 0.7
 v <- p*(1-p)/n
 
-ymedias2 <- numeric(reps)
+ymedias3 <- numeric(reps)
 for (i in 1:reps){
- sample <- rbernoulli(n, p)
- ymedias2[i]<-mean(sample)
+ sample <- rbinom(n, 1, p)
+ ymedias3[i]<-mean(sample)
 }
 ```
     
-   *Graficamos junto con una densidad $N(0.3, 0.21/2)$:*
+   *Graficamos junto con una densidad $N(0.7, \sqrt{0.21/3})$:*
     
 ```{r}
 #| echo: true
 
-hist(ymedias2, breaks=20, prob=TRUE, 
+hist(ymedias3, breaks=20, prob=TRUE, 
      xlab="Medias")
 curve(dnorm(x, mean=p, sd=sqrt(v)), 
       col="darkblue", lwd=2, add=TRUE, yaxt="n")
@@ -354,265 +230,96 @@ curve(dnorm(x, mean=p, sd=sqrt(v)),
    *El histograma no se parece nada a la curva normal.*
 
 
-a. [3 puntos] Repita lo realizado en la parte b., ahora con $N=10$. Comente sobre lo que observa.
+a. [3 puntos] Repita lo realizado en la parte b., ahora con $N=15$. Comente sobre lo que observa.
 
 ```{r}
 #| echo: true
 
 reps <- 1000
-n <- 10
-p <- 0.3
+n <- 15
+p <- 0.7
 v <- p*(1-p)/n
 
-ymedias10 <- numeric(reps)
+ymedias15 <- numeric(reps)
 for (i in 1:reps){
- sample <- rbernoulli(n, p)
- ymedias10[i]<-mean(sample)
+ sample <- rbinom(n, 1, p)
+ ymedias15[i]<-mean(sample)
 }
 ```   
 
-   *Graficamos junto con una densidad $N(0.3, 0.21/10)$:*
+   *Graficamos junto con una densidad $N(0.7, \sqrtt{0.21/15})$:*
    
 ```{r}
 #| echo: true
-hist(ymedias10, breaks=20, prob=TRUE)
+hist(ymedias15, breaks=20, prob=TRUE)
 curve(dnorm(x, mean=p, sd=sqrt(v)), 
       col="darkblue", lwd=2, add=TRUE, yaxt="n")
 ```
 
-   *El histograma comienza a tener una forma normal. De hecho, se parece ya bastante.*
+   *El histograma comienza a tener una forma normal.*
 
-a. [3 puntos] Repita lo realizado en la parte b., ahora con $N=10,000$. Comente sobre lo que observa.
+a. [3 puntos] Repita lo realizado en la parte b., ahora con $N=1,500$. Comente sobre lo que observa.
 
 ```{r}
 #|echo: true
 
 reps <- 1000
-n <- 10000
+n <- 1500
 p <- 0.3
 v <- p*(1-p)/n
 
-ymedias10000 <- numeric(reps)
+ymedias1500 <- numeric(reps)
 for (i in 1:reps){
  sample <- rbernoulli(n, p)
- ymedias10000[i]<-mean(sample)
+ ymedias1500[i]<-mean(sample)
 }
 ```   
    
-   *Graficamos junto con una densidad $N(0.3, 0.21/10000)$:*
+   *Graficamos junto con una densidad $N(0.3, \sqrt{0.21/1500})$:*
    
 ```{r}
 #| echo: true
 
-hist(ymedias10000, breaks=20, prob=TRUE, 
+hist(ymedias1500, breaks=20, prob=TRUE, 
      xlab="Medias")
 curve(dnorm(x, mean=p, sd=sqrt(v)), 
       col="darkblue", lwd=2, add=TRUE, yaxt="n")
 ```
 
-   *El histograma se parece ya a la curva normal teórica, con una varianza muy pequeña, con la gran mayoría de las medias concentradas muy cerca del valor esperado.*
+   *El histograma se parece ya a la curva normal.*
 
 a. [5 puntos] ¿Cómo usaría este ejercicio con palabras simples para explicar a una persona que no sabe mucho de estadística sobre la importancia de los teoremas de límite central?
 
    *Un TLC nos permite hacer afirmaciones sobre la distribución de un estadístico. Un estadístico es un resumen de los datos, por lo que nos interesa usar dichos estadísticos para describir características de los fenómenos que estudiamos usando datos. Queremos saber cosas como lo que esperamos en promedio que suceda con una variable, o qué tanta variabilidad dicha variable tendrá en la población. Con un TLC podemos hacer afirmaciones sobre cómo lucen promedios muestrales de la variable que estudiamos cuando tenemos suficientes observaciones. Nos dice en particular que va a tener una distribución normal.*
 
-## Pregunta 5
-
-Use los datos en el archivo *motral2012.csv*, que incluye una muestra de individuos con sus características socioeconómicas. Nos interesa conocer los factores que afectan la probabilidad de que los individuos tengan ahorros. Considere lo siguiente sobre las opciones de ahorro de los entrevistados, contenida en la variable **p14**:
-
-- **p14** igual a 1 significa cuentas de ahorro bancarias
-- **p14** igual a 2 significa cuenta de inversión bancaria
-- **p14** igual a 3 significa inversiones en bienes raíces
-- **p14** igual a 4 significa caja de ahorro en su trabajo
-- **p14** igual a 5 significa caja de ahorro con sus amigos
-- **p14** igual a 6 significa tandas
-- **p14** igual a 7 significa que ahorra en su casa o alcancías
-- **p14** igual a 8 significa otro lugar
-- **p14** NA significa que no ahorra
-
-a. [2 puntos] Comience generando una variable binaria **ahorra** que tome el valor de 1 para las personas que ahorran y 0 en otro caso. Construya también la variable **mujer** que tome el valor de 1 cuando **sex** toma el valor de 2 y 0 en otro caso.
-
-   *Generamos variables:*
-
-```{r}
-#| echo: true
-
-data.financiero <- read_csv("../files/motral2012.csv",
-                          locale = locale(encoding = "latin1")) %>%
-  clean_names() %>% 
-  mutate(ahorra = ifelse(is.na(p14), 0, 1),
-         mujer=ifelse(sex==2,1,0))
-```
-
-a. [3 puntos] Estime un modelo de probabilidad lineal que relacione **ahorra** como variable dependiente con **eda** (edad), **anios_esc** (años de escolaridad) y **mujer**. Reporte los errores que asumen homocedasticidad y los errores robustos a heteroscedasticidad.
-
-   *Estimamos el modelo lineal y obtenemos la matriz de varianzas robusta usando vcovHC:*
-
-```{r}
-#| echo: true
-
-summary(reg.lineal <- lm(ahorra ~ eda + anios_esc + mujer,
-                         data = data.financiero))
-
-#Matriz robusta
-v_rob <- vcovHC(reg.lineal, type = "HC0")
-se_rob    <- sqrt(diag(v_rob))
-```
-
-   *Presentamos usando stargazer, aunque pueden usar el paquete de su preferencia. Por ejemplo, quizás quieran darle una revisada a modelsummary.*
-
-```{r}
-#| results: asis
-stargazer(reg.lineal, reg.lineal,
-          se = list(NULL, se_rob),
-          digits = 4,
-          type = 'html')
-
-```
-
-
-a. [3 puntos] ¿Cuál es el efecto en la probabilidad de ahorrar si los años de educación se incrementan en una unidad, pasando de 3 a 4 años de educación?
-
-   *En un modelo lineal esto es simplemente un incremento en 1.75 puntos porcentuales.*
-
-a. [4 puntos] Realice una prueba de significancia conjunta de **eda** y **anios_esc**. ¿Qué concluye?
-
-   *Podemos usar la función linearHypothesis:*
-
-```{r}
-#| echo: true
-car::linearHypothesis(reg.lineal, c("eda=0", "anios_esc=0"))
-```
-
-   *Concluimos que no hay evidencia para afirmar que $\beta_{eda}=\beta_{anios\_esc}=0$.*
-
-a. [4 puntos] Estime un modelo probit relacionando las mismas variables. Use la función *avg_slopes* del paquete *marginaleffects* para obtener los efectos marginales promedio de un cambio en cada uno de los regresores. ¿Por qué difiere la magnitud de este efecto marginal con respecto a la parte c.?
-
-   *Estimamos el modelo probit:*
-
-```{r}
-#| echo: true
-reg.probit <- glm(ahorra ~ eda + anios_esc + mujer,
-                  family = binomial(link = "probit"),
-                  data = data.financiero)
-
-summary(reg.probit)$coef
-```
-
-   *Noten que el signo de los coeficientes coinciden con el promedio de los efectos marginales:*
-
-```{r}
-#| echo: true
-avg_slopes(reg.probit)
-```
-
-   *El promedio del efecto marginal de un cambio en los años de educación es de 2 puntos porcentuales. Ligeramente superior al efecto obtenido en el modelo lineal.*
-
-a. [4 puntos] Ahora estime el efecto marginal en la media para **eda** y **anios_esc** y para las mujeres, usando la función *slopes*. ¿Por qué difiere la magnitud de este efecto marginal respecto a la parte c. y la d.?
-
-   *Para obtener los efectos marginales evaluados en algun valor $X_i$ de los covariables, debemos especificar estos valores usando datagrid:*
-
-```{r}
-#| echo: true
-avg_slopes(reg.probit,
-           newdata = datagrid(eda = mean(data.financiero$eda),
-                              anios_esc = mean(data.financiero$anios_esc),
-                              mujer = 1))
-```
-
-   *El efecto marginal de un cambio en los años de escolaridad evaluados en la media de los años de educación y edad, para las mujeres, es de 2.04 puntos. Esto difiere del modelo lineal porque en el modelo lineal los efectos marginales son constantes, mientras que los efectos marginal del modelo no lineal dependen del punto de evaluación. También difiere de los efectos marginales promedio pues aquí solo hemos calculado el efecto marginal una sola vez, para un valor $X_i$, mientras que el promedio de efectos marginales implica calcular el efecto marginal para cada individuo y luego obtener el promedio.*
-
-   *En clase les pregunté cómo estimarían el error estándar de los cambios marginales y brevemente mencioné que una forma muy usada es el Método Delta, el cual se basa en que los efectos marginales son funciones no lineales de los parámetros. Esto es lo que efectivamente se usa en la función avg_slopes para obtener los errores estándar y los intervalos de confianza. [Aquí](https://marginaleffects.com/articles/uncertainty.html) pueden leer al respecto.*
-
 
 ## Pregunta 6
 
-Ahora estimará un modelo multinomial empleando los mismos datos en *motral2012.csv*. El propósito será ahora estudiar los factores relevantes para predecir la forma de ahorro que tienen las personas que ahorran.
-  
-a. [2 punto] Genere una variable categórica llamada **ahorro** que sea igual a 1 cuando **p14** sea igual a 1 o 2, igual a 2 cuando **p14** sea igual a 7, e igual a 3 cuando **p14** sea igual a 3, 4, 5, 6 u 8. Haga que esa variable sea missing cuando **p14** sea missing. Posteriormente, convierta esta nueva variable en una de factores de forma que el valor 1 tenga la etiqueta “Banco”, el valor 2 tenga la etiqueta “Casa” y el valor 3 tenga la etiqueta “Otro”.
+Sea $x_1$ un vector de variables continuas, $x_2$ una variable continua y $d_1$ una variable dicotómica. Considere el siguiente modelo probit:
+$$P(y=1│x_1,x_2 )=\Phi(x_1'\alpha+\beta x_2+\gamma x_2^2 )$$
 
-   *Construimos la variable dependiente:*
+a. [5 punto] Provea una expresión para el efecto marginal de $x_2$ en la probabilidad. ¿Cómo estimaría este efecto marginal?
 
-```{r}
-#| echo: true
-data.financiero <- read_csv("../files/motral2012.csv",
-                            locale = locale(encoding = "latin1")) %>%
-  clean_names() %>% 
-  mutate(ahorro=NA) %>% 
-  mutate(ahorro=ifelse(p14%in%c(1,2),1,ahorro)) %>%
-  mutate(ahorro=ifelse(p14==7,2,ahorro)) %>% 
-  mutate(ahorro=ifelse(p14%in%c(3,4,5,6,8),3,ahorro)) %>% 
-  mutate(ahorro=factor(ahorro,
-                   levels=c(1,2,3), labels=c("Banco","Casa","Otro"))) %>%
-  mutate(mujer=ifelse(sex==2,1,0))
-
-```
-
-a. [4 puntos] Estime un modelo logit multinomial (regresores invariantes a la alternativa) con la opción de ahorro como variable dependiente y los mismos regresores de la pregunta 5. Hay varios paquetes para hacer esto, pero recomiendo usar la función *multinom* del paquete *nnet*. ¿Qué puede decir sobre el coeficiente de años de educación en la alternativa “Casa”?
-
-   *Usamos multinom para estimar el modelo logit multinomial:*
-
-```{r}
-#| echo: true
-
-multilogit <- nnet::multinom(ahorro~ eda + anios_esc + mujer,
-                              data=data.financiero)
-summary(multilogit)
-
-```
-
-   *En el logit multinominal (regresores invariantes) el coeficiente se interpreta con respecto a una categoría base. En este caso, la categoría base es Banco. El modelo implica que la probabilidad de ahorrar en casa disminuye con un año más de educación, en comparación con la probabilidad de ahorrar en el banco. En particular, sabemos que podemos escribir el log del cociente de la probabilidad de las categorías $j$ y $k$ sean escogidas, normalizando $k$ a ser la base, como:*
-
-   $$\ln\left(\frac{P(y=Casa)}{P(y=Banco)}\right)=x'\beta=\beta_0+\beta_1 edad + \beta_2 educación + \beta_3 mujer $$
-
-   *Es decir, un año más de educación se asocia con una reducción en el log de la razón de momios de 0.15.*
+    *El efecto marginal de interés es*:
     
-a. [6 puntos] Calcule los efectos marginales promedio sobre la probabilidad de ahorrar en el banco. Al considerar el cambio en la probabilidad para el caso de las mujeres (cuando la variable **mujer** pasa de 0 a 1), ¿de qué tamaño es el efecto predicho en la probabilidad de ahorrar en el banco?
-
-   *Usamos avg_slopes*:
-
-```{r}
-#| echo: true
-avg_slopes(multilogit)
-
-```
-   
-   *El efecto de ser mujer es de una reducción de 0.3 puntos en la probabilidad de ahorrar en el banco al estimar el promedio de los efectos marginales.*
+    $$\frac{\partial P(y=1|x_1,x_2)}{\partial x_2}=\phi(x_1\alpha+\beta x_2+\gamma x_2^2)(\beta+2\gamma x_2)$$
+    
+    *Para estimarlo, usamos máxima verosimilitud para obtener estimadores consistentes de $\alpha$, $\beta$ y $\gamma$ y empleamos software para obener los valores de las probabilidad usando las características individuales $x_1$ y $x_2$. Luego podemos obtener el efecto marginal promedio como el promedio de los efectos marginales individuales. Alternativamente, se podría calcular el efecto marginal en valores específicos de $x_1$ y $x_2$, como $\bar{x}_1$ y $\bar{x}_2$.*
 
 
-a. [4 puntos] Calcule los cocientes de riesgo relativo (*relative risk ratios* o RRR). ¿Qué significa el hecho de que el RRR asociado a ser mujer sea mayor que 1 en la alternativa “Casa”?
+a. [3 punto] Considere ahora el modelo:
+$$P(y=1│x_1  ,x_2 ,d_1)=\Phi(x_1 '\delta+\pi x_2+\rho d_1+\nu x_2 d_1 )$$
+Provea la nueva expresión para el efecto marginal de $x_2$.
 
-```{r}
-#| echo: true
+    *El efecto marginal es:* $$\frac{\partial P(y=1|x_1,x_2)}{\partial x_2}=\phi(x_1\delta+\pi x_2+\rho d_1+  \nu x_2d_1)(\pi+\nu d_1)$$
+    
+    
+a. [2 punto] En el modelo de la parte b., ¿cómo evaluaría el efecto de un cambio en $d_1$ en la probabilidad? Provea una expresión para este efecto.
 
-(multilogit_rrr = exp(coef(multilogit)))
-```
-
-   *Los coeficientes en forma de RRR tienen la interpretación del cambio en el riesgo relativo que una categoría sea elegida con relación al riesgo de escoger la categoría base. En este caso, el ser mujer está asociado con una probabilidad de ahorrar en “Casa” 1.097 veces mayor de que la de ahorrar en “Banco”.*
-
-
-a. [4 puntos] Estime nuevamente el modelo, pero ahora, especifique que la alternativa “Casa” sea la alternativa base. ¿Cómo es el RRR de la edad en la alternativa “Banco”? ¿Es esto congruente con lo que obtuvo en la parte d. de esta pregunta?
-
-   *Primero tenemos que cambiar la base. Para esto hacemos uso de que ahorro es una variable de factores. Luego estimamos:*
-
-```{r}
-#| echo: true
-
-data.financiero <- data.financiero %>% 
-  mutate(ahorro = relevel(ahorro, ref = "Casa"))
-
-multilogit2 <- nnet::multinom(ahorro ~ eda + anios_esc + mujer,
-                              data=data.financiero)
-
-```
-
-   *Obtenemos el RRR:*
-
-```{r}
-#| echo: true
-(multilogit2_rrr = exp(coef(multilogit2)))
-```
-
-   *Al cambiar la categoría base a Casa solo se modifica la interpretación relativa. En la parte d. el RRR de la edad para la opción de Casa era 0.949, es decir, si la edad se incrementa en una unidad, la probabilidad de ahorrar en Casa es 0.949 veces la de ahorrar en Banco. Con la nueva categoría base, el RRR de la edad para ahorrar en Banco es 1.054, es decir, si la edad se incrementa en un año, la probabilidad de ahorrar en Banco es 1.054 veces más probable que la probabilidad de ahorrar en Casa. La parte d. implica que $P(Casa)=0.949(Banco)$. Mientras que estimando el modelo con la nueva categoría, $P(Banco)=1.054(Casa)$, o $P(Casa)=1/1.054(Banco)$. Empleando todos los decimales en R se puede notar que 1/1.054≅0.949 Ambos resultados son consistentes.*
+    *Dado que $d_1$ es una variable dicotómica, el efecto de $d_1$ se mide como la diferencia en probabilidad cuando $d_1=1$ y cuando $d_1=0$*:
+    
+    $$P(y=1|x_1,x_2,d_1=1)-P(y=1|x_1,x_2,d_1=0)=\phi(x_1\delta+(\pi+\nu)x_2+\rho)-\phi(x_1\delta+\pi x_2)$$
+    
+    *Podemos estimar este cambio en probabilidad para cada individuo de la muestra y luego obtener un promedio de los cambios en probabilidad. Por ejemplo, supongamos que estudiamos la probabilidad de estar empleado y que $d_1$ es la pertenencia o no a un sindicato. Para cada individuo en la muestra obtemeos el cambio en probabilidad que resulta de que $d_1$ pase de 1 a 0.*
 
 
