@@ -29,6 +29,8 @@ website:
         text: Cronograma
       - href: tareas/index.qmd
         text: Tareas
+      - href: diapositivas/index.qmd
+        text: Diapositivas
 
 format:
   html:

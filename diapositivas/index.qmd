@@ -1,0 +1,6 @@
+---
+title: "Diapositivas"
+---
+
+
+[Muestra seleccionada](./muestra-seleccionada.qmd)
