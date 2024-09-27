@@ -1193,5 +1193,68 @@
     "crumbs": [
       "Diapositivas"
     ]
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#qué-sucede-si-se-violan-los-supuestos-de-mco",
+    "href": "diapositivas/variables-instrumentales.html#qué-sucede-si-se-violan-los-supuestos-de-mco",
+    "title": "Variables instrumentales",
+    "section": "¿Qué sucede si se violan los supuestos de MCO?",
+    "text": "¿Qué sucede si se violan los supuestos de MCO?\nSupongamos que el el proceso de salarios verdadero está dado por\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+\\beta_2 habilidad_i+e_i\\]\nY asumamos que la habilidad es no observada y decidimos estimar\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\]\n¿Dónde queda la habilidad?\nEl \\(\\hat{\\beta}_1\\) estimado con esta regresión corta es inconsistente porque \\(u_i\\) incluye la habilidad, que afecta tanto el desempeño en el mercado laboral como el desempeño en la escuela"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#instrumentos",
+    "href": "diapositivas/variables-instrumentales.html#instrumentos",
+    "title": "Variables instrumentales",
+    "section": "Instrumentos",
+    "text": "Instrumentos\nConsideremos el siguiente modelo\n\\[y=\\beta_0+\\beta_1 x+u\\]\ndonde \\(cov(x,u)\\neq 0\\)\nSuponga que existe una varible \\(z\\) que cumple con:\n\nExogeneidad: \\(z\\) no está correlacionada con \\(u\\)\n\n\\[cov(z,u)=0\\]\n\nRelevancia: \\(z\\) está correlacionado con \\(x\\)\n\n\\[cov(z,x)\\neq 0\\]\nEntonces \\(z\\) es un instrumento de \\(x\\)\nLa exogeneidad implica que \\(z\\) no debe estar correlacionado con factores omitidos (por ejemplo, la habilidad)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#estimador-de-vi",
+    "href": "diapositivas/variables-instrumentales.html#estimador-de-vi",
+    "title": "Variables instrumentales",
+    "section": "Estimador de VI",
+    "text": "Estimador de VI\nCalculando la covarianza con \\(z\\) de \\(y=\\beta_0+\\beta_1 x+u\\) obtenemos:\n\\[cov(y,z)=\\beta_1 cov(x,z)+cov(u,z)\\]\nY, si \\(cov(u,z)\\), resolviendo para \\(\\hat{\\beta}_1\\)\n\\[\\hat{\\beta}_1=\\frac{cov(y,z)}{cov(x,z)}\\]\nsiempre y cuando \\(cov(x,z)\\neq 0\\)\nPor una LGN se puede mostrar que \\(\\hat{\\beta}_1\\) es consistente\nSin embargo, como profundizaremos más adelante, \\(\\hat{\\beta}_1\\) siempre es sesgagado\nEl sesgo puede ser sustancial en muestras pequeñas, por lo que se recomienda tener precaución con el tamaño de la muestra"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#ejemplo-rendimientos-a-la-educación",
+    "href": "diapositivas/variables-instrumentales.html#ejemplo-rendimientos-a-la-educación",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: rendimientos a la educación",
+    "text": "Ejemplo: rendimientos a la educación\nCard (1995) estudia el problema de retornos a la educación\nTenemos una muestra de 5,525 hombres de entre 14 y 24 años\nNos interesa la relación entre educación e ingreso, pero sabemos que no observamos la habilidad\nSabemos que si estimamos \\(\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\), el coeficiente \\(\\beta_1\\) estará sesgado\nCard emplea como instrumento una variable \\(z_i\\) que indica si en el municipio de la persona \\(i\\) hay una universidad\nLa intución es que la presencia de la universidad baja el costo de ir a la universidad, pero esto no afecta directamente el ingreso\nEncontrar un instrumento casi nunca es tarea sencilla: se trata de enteder cómo los mecanismos, las instituciones y los contextos"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#lenguaje-de-vi",
+    "href": "diapositivas/variables-instrumentales.html#lenguaje-de-vi",
+    "title": "Variables instrumentales",
+    "section": "Lenguaje de VI",
+    "text": "Lenguaje de VI\nDe forma más general, partimos del la siguiente ecuación estructural para \\(y_i\\):\n\\[y_i=\\beta_0+\\beta_1 x_{1i}+\\beta_2 x_{2i}+u_i\\]\ndonde \\(cov(x_{1i},u_i)\\neq 0\\)\nA \\(x_{1i}\\) se le llama la variable endógena\nSe incluye también una o más variables exógenas como \\(x_{2i}\\) que no están correlacionadas con \\(u_i\\)\nA una regresión de la variable de interés en función del instrumento y las variables exógenas se le conoce como forma reducida\n\\[y_i=\\beta_0+\\beta_1 z_{1i}+\\beta_2 x_{2i}+u_i\\]"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#primera-etapa",
+    "href": "diapositivas/variables-instrumentales.html#primera-etapa",
+    "title": "Variables instrumentales",
+    "section": "Primera etapa",
+    "text": "Primera etapa\nLa primera etapa especifica la relación entre la variable endógena y el instrumento:\n\\[x_{1i}=\\pi_0+\\pi_1 z_i+\\pi_2x_{2i}+\\nu_i\\]\nDonde se cumple que \\(cov(z_i,\\nu_i=0)\\) y \\(cov(x_{2i},\\nu_i)=0\\)\nEntonces, la condición de relevancia puede escribirse también como \\(\\pi_1\\neq 0\\)\nNoten que la primera etapa también implica que, descontando el efecto de \\(z_i\\), todavía \\(x_{1i}\\) y \\(x_{2i}\\) están correlacionadas\nLa primera etapa puede y debe probarse empíricamente\nEn cambio, no es posible probar la restricción de exclusión, que debe estar respaldada sobre todo por la teoría económica, el conocimiento de las instituciones, la exogeneidad de experimentos naturales, etc."
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#más-de-un-instrumento",
+    "href": "diapositivas/variables-instrumentales.html#más-de-un-instrumento",
+    "title": "Variables instrumentales",
+    "section": "Más de un instrumento",
+    "text": "Más de un instrumento\nEs posible que haya \\(J\\) variables \\(z_{ij}\\) que puedan funcionar como instrumento\nSe debe cumplir que \\(cov(u_i,z_{ij})=0\\) y que cada una se correlacione con \\(x_{i1}\\)\nCon dos instrumentos, podemos escribir la primera etapa como\n\\[x_{1i}=\\pi_0+\\pi_1 z_{1i}+ \\pi_2 z_{2i} +\\pi_3x_{2i}+\\nu_i\\]\nAhora, debe cumplirse que \\(cov(z_{1i},\\nu_i)=cov(z_{2i},\\nu_i)=cov(x_{2i},\\nu_i)=0\\)\nPara lograr identificación, se requiere que \\(\\pi_1\\neq 0\\) o \\(\\pi_2\\neq 0\\)\nPodemos usar una prueba \\(F\\) para probar que \\(\\pi_1=\\pi_2=0\\)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#mínimos-cuadrados-en-dos-etapas",
+    "href": "diapositivas/variables-instrumentales.html#mínimos-cuadrados-en-dos-etapas",
+    "title": "Variables instrumentales",
+    "section": "Mínimos cuadrados en dos etapas",
+    "text": "Mínimos cuadrados en dos etapas\nEl modelo presentado anteriormente sugiere que podemos estimar \\(\\beta_1\\) con un procedimiento de dos etapas\n\nRegresión de \\(x_{1i}\\) sobre los instrumentos y las variables exógenas para obtener \\(\\hat{x}_{1i}\\)\nRegresión de \\(y_i\\) sobre las variables exógenas y \\(\\hat{x}_{1i}\\)\n\nEs como si purgáramos a \\(x_{1i}\\) de su correlación con \\(u_i\\)\nNunca hacemos esto a mano\n\nCuando tenemos tantos instrumentos como endógenas, usamos el estimador de variables instrumentales\nCuando tenemos más instrumentos que endógenas, recurrimos al método generalizado de momentos"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#más-sobre-rendimientos-a-la-educación",
+    "href": "diapositivas/variables-instrumentales.html#más-sobre-rendimientos-a-la-educación",
+    "title": "Variables instrumentales",
+    "section": "Más sobre rendimientos a la educación",
+    "text": "Más sobre rendimientos a la educación\nEn el problema de Card (1995), la primera etapa es\n\\[esc_i=\\pi_0+\\pi_1 X_i+ \\phi unicerca_i +\\nu_i\\] donde \\(unicerca_i= \\begin{cases} 1 \\quad\\text{había una universidad en el municipio} \\\\ 0 \\quad\\text{otro caso}\\\\ \\end{cases}\\)\nY la forma reducida es\n\\[\\ln(w_i)=\\gamma_0+\\gamma_1 X_i+  \\delta unicerca_i+\\varepsilon_i\\]\nSabemos que el salario estará correlacionado con la presencia de la universidad, pero estas diferencias ocurren por la vía de la escolaridad"
   }
 ]
