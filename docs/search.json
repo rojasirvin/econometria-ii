@@ -1001,5 +1001,187 @@
     "title": "Respuestas a la tarea 1",
     "section": "",
     "text": "Suponga que está interesado en una variable aleatoria que tiene una distribución Bernoulli con parámetro \\(p\\). La función de densidad está definida como:\n\\[f(x_;p)=\\left\\{\\begin{array} .1 & \\text{con probabilidad } p \\\\ 0 & \\text{con probabilidad } 1-p \\end{array} \\right.\\] Suponga que tiene una muestra de \\(N\\) observaciones independientes e idénticamente distribuidas.\n\n[4 puntos] Plantee la función de log verosimilitud del problema.\nPodemos escribir la función de densidad para la \\(i\\)-ésima observación como\n\\[f(x_i;p)=p^{x_i}(1-p)^{(1-x_i)}\\]\nPor tanto, la función de verosimilitud es\n\\[L_N(p)=\\prod_{i=1}^N f(x;p)=\\prod_{i=1}^N p^{x_i}(1-p)^{(1-x_i)} = p^{\\sum_{i=1}^N x_i}(1-p)^{N-\\sum_{i=1}^N x_i}\\]\nY la función de log verosimilitud será\n\\[\\mathcal{L_N(p)}=\\ln{L_N(p)}=\\sum x_i \\ln(p)-(N-\\sum x_i)\\ln(1-p)\\]\n[4 puntos] Obtenga las condiciones de primer orden y resuelva para \\(\\hat{p}\\).\nDerivando \\(\\mathcal{L}_N\\) con respecto a \\(p\\) obtenemos la condición de primer orden:\n\\[\\frac{d\\mathcal{L}_N(p)}{d p}=\\frac{\\sum x_i}{p}-\\frac{N-\\sum x_i}{1-p}=0\\]\nY resolviendo, obtenemos el estimador de máxima verosimilitud \\[\\hat{p}_{MV}=\\bar{x}\\] es decir, la media muestral.\n[2 puntos] ¿Cuál es la media y la varianza del estimador de máxima verosimilitud que ha encontrado?\nObtenemos directamente la media \\[E(\\hat{p}_{MV})=E(\\bar{x})=\\frac{1}{N}E\\left(\\sum x_i\\right)=\\frac{1}{N}N p=p\\]\nMientras que la varianza es \\[V(\\hat{p}_{MV})=\\frac{1}{N^2}V\\left(\\sum x_i\\right)=\\frac{p(1-p)}{N}\\]"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#mecanismos-de-censura-y-truncamiento",
+    "href": "diapositivas/muestra-seleccionada.html#mecanismos-de-censura-y-truncamiento",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Mecanismos de censura y truncamiento",
+    "text": "Mecanismos de censura y truncamiento\nConsideremos una variable latente \\(y^*\\) que se observa de acuerdo a una regla de observación \\(g(\\cdot)\\)\nLo que observamos es \\(y=g(y^*)\\)"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#censura",
+    "href": "diapositivas/muestra-seleccionada.html#censura",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Censura",
+    "text": "Censura\nSiempre observamos \\(X\\) pero no \\(y\\):\n\nCensura por abajo: \\(y=\\begin{cases}y^* \\quad \\text{si }y^*&gt;L \\\\ L \\quad \\text{si }y^*\\leq L \\end{cases}\\)\nCensura por arriba: \\(y=\\begin{cases}y^* \\quad \\text{si }y^*&lt;U \\\\ U \\quad \\text{si }y^*\\geq U \\end{cases}\\)\n\nEl típico ejemplo de censura se encuentra en los datos top coded, como los de ingreso\nOtro ejemplo es la oferta laboral: en un problema de optimización, las horas óptimas pueden ser negativas, pero entonces observamos la variable censurada en el cero"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#truncamiento",
+    "href": "diapositivas/muestra-seleccionada.html#truncamiento",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Truncamiento",
+    "text": "Truncamiento\nTanto \\(X\\) como \\(y\\) son no observados para ciertos valores de \\(y\\)\n\nTruncamiento por abajo: \\(y=y^*\\) si \\(y^*&gt;L\\) y no osbervada si \\(y^*\\leq L\\)\nTruncamiento por arriba: \\(y=y^*\\) si \\(y^*&lt;U\\) y no osbervada si \\(y^*\\geq U\\)"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#función-de-verosimilitud-censurada",
+    "href": "diapositivas/muestra-seleccionada.html#función-de-verosimilitud-censurada",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Función de verosimilitud censurada",
+    "text": "Función de verosimilitud censurada\nLa censura y el truncamiento cambian la función de verosimilitud de los datos observados\nVerosimilitud censurada (usando censura por abajo)\n\nCuando \\(&gt;L\\), la densidad de \\(y\\) es la misma que la de \\(y^*\\), es decir, \\(f(y|x)=f^*(y|x)\\)\nCuando \\(y=L\\), la densidad es discreta con masa igual a la probabilidad de que \\(y^*\\leq L\\)\n\nEn resumen \\[\nf(y|x)=\n\\begin{cases}\nf^*(y|x) \\quad\\text{si } y&gt;L \\\\\nF^*(L|x)\\quad\\text{si }y=L \\\\\n\\end{cases}\n\\]\nLa densidad es un híbrido entre una función de masa de probabilidad (una densidad propiamente) y una función de densidad acumulada"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#función-de-verosimilitud-censurada-1",
+    "href": "diapositivas/muestra-seleccionada.html#función-de-verosimilitud-censurada-1",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Función de verosimilitud censurada",
+    "text": "Función de verosimilitud censurada\nDefinamos\n\\[\nd=\n\\begin{cases}\n1\\quad\\text{si }y&gt;L \\\\\n0\\quad\\text{si }y=L \\\\\n\\end{cases}\n\\]\nEntonces la densidad condicional debido a la censura es\n\\[f(y|x)=f^*(y|x)^dF^*(L|x)^{1-d}\\]\nY la función de log verosimilitud será \\[\\mathcal{L}_N(\\theta)=\\sum_i\\left(d_i\\ln f^*(y_i|x_i,\\theta) + (1-d_i)\\ln F^*(L_i|x_i,\\theta)\\right)\\]\nNoten que hemos dejado abierta la opción de que \\(L\\) difiera entre individuos, es decir, que \\(L=L_i\\)\nSi la densidad de \\(y^*\\), \\(f^*(y^*|x,\\theta)\\), está bien especificada, \\(\\theta_{MV}\\) es consitente y asintóticamente normal"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#función-de-verosimilitud-truncada",
+    "href": "diapositivas/muestra-seleccionada.html#función-de-verosimilitud-truncada",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Función de verosimilitud truncada",
+    "text": "Función de verosimilitud truncada\nConsideremos el caso de truncamiento por abajo\nNoten que la función de densidad de \\(y\\) es\n\\[\n\\begin{aligned}\nf(y)&=f^*(y|y&gt;L) \\\\\n&=\\frac{f^*(y)}{P(y|y&gt;L)}\\\\\n&=\\frac{f^*(y)}{1-F^*(L)}\n\\end{aligned}\n\\]\nEntonces, la log verosimilitud truncada es:\n\\[\\mathcal{L}_N(\\theta)=\\sum_i\\left(\\ln f^*(y_i|x_i,\\theta)-\\ln(1-F^*(L_i|x_i,\\theta))\\right)\\]"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#modelo-tobit",
+    "href": "diapositivas/muestra-seleccionada.html#modelo-tobit",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Modelo Tobit",
+    "text": "Modelo Tobit\nEs una modelo simple y con supuestos muy fuertes sobre la estructura de la censura\nTobin (1958) lo planteó originalmente como una forma de modelar la compra de bienes durables (muchos hogares gastan 0 en bienes durables)\nConsideramos un proceso con errores normales \\[\n\\begin{aligned}\n&y^*=x'\\beta+\\varepsilon \\\\\n&\\varepsilon\\sim\\mathcal{N}(0,\\sigma^2)\n\\end{aligned}\n\\]\nSupongamos que observamos \\(y\\) de acuerdo a la siguiente regla:\n\\[\ny=\n\\begin{cases}\ny^*\\quad\\text{si }y^*&gt;0 \\\\\n-\\quad\\text{si } y^*\\leq 0\\\\\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#modelo-tobit-1",
+    "href": "diapositivas/muestra-seleccionada.html#modelo-tobit-1",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Modelo Tobit",
+    "text": "Modelo Tobit\nCon los errores normales, podemos definir la cdf como \\[\n\\begin{aligned}\nF^*(0)&=P(y^*\\leq0) \\\\\n&=P(x'\\beta+\\varepsilon\\leq 0) \\\\\n&=\\Phi(-x'\\beta/\\sigma) \\\\\n&=1-\\Phi(x'\\beta/\\sigma)\n\\end{aligned}\n\\]\nEsto nos permite definir la densidad censurada como \\[\nf(y)=\\left(\\frac{1}{\\sqrt{2\\pi\\sigma^2}}exp\\left(-\\frac{1}{2\\sigma^2}(y-x'\\beta)^2\\right)\\right)^d\\left(1-\\Phi\\left(\\frac{x'\\beta}{\\sigma}\\right)\\right)^{1-d}\n\\]\nY entonces la función de log verosimilitud será \\[\n\\begin{aligned}\n\\mathcal{L}_N(\\beta,\\sigma^2)&=\\sum_i\\left( d_i\\left(-\\frac{1}{2}\\ln(\\sigma^2)-\\frac{1}{2}\\ln(2\\pi)-\\frac{1}{2\\sigma^2}(y_i-x'\\beta)^2\\right)+ \\right. \\\\\n&\\left. +(1-d_i)\\ln\\left(1-\\Phi\\left(\\frac{x_i'\\beta}{\\sigma}\\right)\\right) \\right)\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#condiciones-de-primer-orden",
+    "href": "diapositivas/muestra-seleccionada.html#condiciones-de-primer-orden",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Condiciones de primer orden",
+    "text": "Condiciones de primer orden\n\\[\\frac{\\partial \\mathcal{L}_N}{\\partial \\beta}=\\sum_i\\frac{1}{\\sigma^2}\\left(d_i(y_i-x_i'\\beta)-(1-d_i)\\frac{\\sigma \\phi_i}{1-\\Phi_i}\\right)x_i=0\\] \\[\\frac{\\partial \\mathcal{L}_N}{\\partial \\sigma^2}=\\sum_i\\left(di\\left(-\\frac{1}{2\\sigma^2}+\\frac{(y_i-x_i'\\beta)^2}{2\\sigma^4}\\right)+(1-d_i)\\left(\\frac{\\phi_ix_i'\\beta}{(1-\\Phi_i)2\\sigma ^3}\\right)\\right)=0\\]\nLa solución se obtiene numéricamente\n\\(\\hat{\\theta}\\) es consistente si la densidad está bien especificada\nEl estimador de MV es asintóticamente normal: \\(\\theta\\stackrel{a}{\\sim}\\mathcal{N}(\\theta,V(\\hat{\\theta}))\\)\nMaddala (1983) y Amemiya (1985) proveen expresiones para la matriz de varianzas"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#nota-sobre-terminología",
+    "href": "diapositivas/muestra-seleccionada.html#nota-sobre-terminología",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Nota sobre terminología",
+    "text": "Nota sobre terminología\nEl modelo Tobit fue plantado inicialmente para un problema de censura en cero\nCuando nos refiramos al Tobit estaremos pensando en la estructura particular que tienen \\(y^*\\) y \\(y\\)\nSi en vez de censura, ocurriera truncamiento, la log verosimilitud sería \\[\\mathcal{L}_N(\\beta,\\sigma^2)=\\sum_i \\left(-\\frac{1}{2}\\ln(\\sigma^2)-\\frac{1}{2}\\ln(2\\pi)-\\frac{1}{2\\sigma^2}(y_i-x'\\beta)^2-\\ln\\left(\\Phi(x_i'\\beta/\\sigma)\\right)\\right)\\]"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#ejemplo-tobit",
+    "href": "diapositivas/muestra-seleccionada.html#ejemplo-tobit",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Ejemplo: tobit",
+    "text": "Ejemplo: tobit\nVeamos un problema típico de economía laboral, la participación de las mujeres en el mercado de trabajo\nUsemos unos datos bastante estudiados mroz.csv\n\n\ndata.part &lt;- read.dta(\"../files/mroz.dta\") \n\ndata.part %&gt;% \n  filter(hours&lt;=3000) %&gt;% \n  ggplot(aes(x=hours)) +\n  geom_histogram()"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#modelos-de-muestras-seleccionadas",
+    "href": "diapositivas/muestra-seleccionada.html#modelos-de-muestras-seleccionadas",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Modelos de muestras seleccionadas",
+    "text": "Modelos de muestras seleccionadas\n\n\nLas muestras pueden estar seleccionadas\n\nPor el econometrista\nPor que los agentes escogen participar\n\nEcuación de participación\n\\[\ny_1=\n\\begin{cases}\n1\\quad\\text{si } y_1^*&gt;0\\\\\n0\\quad\\text{si } y_1^*\\leq 0\n\\end{cases}\n\\] Ecuación de resultados\n\\[\ny_2=\n\\begin{cases}\ny_2^*\\quad\\text{si } y_1^*&gt;0\\\\\nNA \\quad\\text{si } y_1^*\\leq 0\n\\end{cases}\n\\]\n\nPor tanto\n\\[\n\\begin{aligned}\ny_1^*=x_1'\\beta_1+\\varepsilon_1 \\\\\ny_2^*=x_2'\\beta_2+\\varepsilon_2 \\\\\n\\end{aligned}\n\\] En el caso en que \\(y_1^*=y_2^*\\), el modelo se colapsa al Tobit"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#modelo-de-heckman",
+    "href": "diapositivas/muestra-seleccionada.html#modelo-de-heckman",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Modelo de Heckman",
+    "text": "Modelo de Heckman\nNo hay consenso de cómo llamarlo\nEl estimador que veremos fue desarrollado por Heckman\nAlgunos otros autores le llaman Tobit de Tipo II o modelo con ecuación de selección\nSupuesto: errores con distribución conjunta normal\n\\[\n\\begin{pmatrix} \\varepsilon_1 \\\\ \\varepsilon_2 \\end{pmatrix}\\sim \\mathcal{N}\\left(A, B \\right)\n\\] \\(A=\\begin{pmatrix} 0 \\\\ 0  \\end{pmatrix}\\)\n\\(B=\\begin{pmatrix} 1 & \\sigma_{12} \\\\ \\sigma_{21} & \\sigma_2^2 \\\\ \\end{pmatrix}\\)\n\\(\\sigma_1^2=1\\) es una normalización"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#resultados-de-la-distribución-normal-conjunta",
+    "href": "diapositivas/muestra-seleccionada.html#resultados-de-la-distribución-normal-conjunta",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Resultados de la distribución normal conjunta",
+    "text": "Resultados de la distribución normal conjunta\nPor nuestro supuesto de normalidad resulta que: \\(\\varepsilon_2=\\sigma_{12}\\varepsilon_1 +\\xi\\)\n\\(\\xi\\) es independiente de \\(\\varepsilon_1\\)\nMedia truncada\n\\[E(y_2|x,y_1^*&gt;0)=x_2'\\beta_2+E(\\varepsilon_2|\\varepsilon_1&gt;-x_1'\\beta_1)\\]\nUsando el resultado de la normalidad de los errores\n\\[\n\\begin{aligned}\nE(y_2|x,y_1^*&gt;0)&=x_2'\\beta_2+E(\\sigma_{12}\\varepsilon_1+\\xi|\\varepsilon_1&gt;-x_1'\\beta_1) \\\\\n&=x_2'\\beta_2+\\sigma_{12}E(\\varepsilon_1|\\varepsilon&gt;-x_1'\\beta_1) \\\\\n&=x_2'\\beta_2+\\sigma_{12}\\lambda(x_1'\\beta_1)\n\\end{aligned}\n\\]\nSimilarmente\n\\[V(y_2|x,y_1^*)=\\sigma_2^2-\\sigma_{12}^2\\lambda(x_1'\\beta_1)(x_1'\\beta_1+\\lambda(x_1'\\beta_1))\\]"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#resultados-de-la-distribución-normal-conjunta-1",
+    "href": "diapositivas/muestra-seleccionada.html#resultados-de-la-distribución-normal-conjunta-1",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Resultados de la distribución normal conjunta",
+    "text": "Resultados de la distribución normal conjunta\nMedia censurada\nCuando \\(y_2=0\\) si \\(y_1^*&lt;0\\)\n\\[\n\\begin{aligned}\nE(y_2|x)&=E_{y_{1}^{*}}(E(y_2|x,y_1^*)) \\\\\n&=P(y_1^*\\leq 0 | x)\\times 0+P(y_1^* &gt; 0 | x)E(y_2^*|X,y_1^*&gt;0) \\\\\n&=0+\\Phi(x_1'\\beta_1)(x_2'\\beta_2+\\sigma_{12}\\lambda(x_1'\\beta_1)) \\\\\n&=\\Phi(x_1'\\beta_1)x_2'\\beta_2 + \\sigma_{12}\\phi(x_1'\\beta_1)\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#estimación-por-mv",
+    "href": "diapositivas/muestra-seleccionada.html#estimación-por-mv",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Estimación por MV",
+    "text": "Estimación por MV\nBajo los supuestos de normalidad podemos escribir la verosimilitud como sigue\n\\[L=\\prod_{i=1}^{N}\nP(y_{1i}^*\\leq 0)^{1-y_{1i}}\\left(f(y_{2i}|y_{1i}^*&gt;0)\\times P(y_{1i}^*&gt;0)\\right)^{y_{1i}}\\]\nLa forma final de la log verosimilitud es una fórmula larga que no tiene caso plantear aquí (ver Amemiya, 1985, p. 368)\nLa intuición es que los parámetros de interés, especialmente \\(\\beta_1\\), son estimados de la misma manera en que hemos hecho en otros problemas\nEl vector de parámetros estimados será consistente si la verosimilitud está bien planteada"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#estimador-de-heckman-en-dos-etapas",
+    "href": "diapositivas/muestra-seleccionada.html#estimador-de-heckman-en-dos-etapas",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Estimador de Heckman en dos etapas",
+    "text": "Estimador de Heckman en dos etapas\nAlgunos autores lo conocen como heckit\nConsiste en ver el problema como uno de variable omitida donde la variable omitida es \\(\\lambda(x_{1i}'\\beta_1)\\)\nPodemos pensar el problema en dos etapas\n\nProbit de \\(y_1\\) en \\(x_1\\) usando toda la muestra, dado que asumimos que \\(P(y_1^*&gt;0)=\\Phi(X_1'\\beta_1)\\):\nUsamos \\(\\hat{\\beta}_1\\) para calcular el estimado del inverso de la razón de Mills:\n\\[\\lambda(x_i'\\hat{\\beta}_1)=\\frac{\\phi(x_1'\\hat{\\beta}_1)}{\\Phi(x_1'\\hat{\\beta}_1)}=\\hat{\\lambda}(x_1'\\hat{\\beta}_1)\\]\nUsamos los valores positivos de \\(y_2\\) para estimar la regresión \\[y_{2i}=x_{2i}'\\beta_2+\\sigma_{12}\\lambda(x_{1i}'\\beta_1)+v_i\\]"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#estimador-de-heckman-en-dos-etapas-1",
+    "href": "diapositivas/muestra-seleccionada.html#estimador-de-heckman-en-dos-etapas-1",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Estimador de Heckman en dos etapas",
+    "text": "Estimador de Heckman en dos etapas\nUsando el resultado de la varianza truncada podemos estimar \\[\\sigma_2^2=\\frac{1}{N}\\sum_i(\\hat{v}_i+\\hat{\\sigma}_{12}^2\\hat{\\lambda}_i(x_1'\\beta_1+\\hat{\\lambda}_i))\\] donde \\(\\hat{v}_i\\) son los residuales estimados\nLa correlación de errores puede ser estimada como \\[\\hat{\\rho}=\\hat{\\sigma}_{12}/\\hat{\\sigma}_2\\]\nPor tanto, una prueba de que \\(\\rho=0\\) o \\(\\sigma_{12}=0\\) es una prueba de si los errores están correlacionados y si es necesaria la correción por muestra seleccionada\nPoner atención a la significancia del inverso de la razón de Mills en la segunda etapa"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#ejemplo-heckit",
+    "href": "diapositivas/muestra-seleccionada.html#ejemplo-heckit",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Ejemplo: heckit",
+    "text": "Ejemplo: heckit\nUsamos datos de una muestra de hogares que reportan sus gastos médicos ambulatorios limdep_ambexp.dta\nMuchos hogares tienen cero gastos"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#errores-estándar",
+    "href": "diapositivas/muestra-seleccionada.html#errores-estándar",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Errores estándar",
+    "text": "Errores estándar\nPara estimar la varianza hay que considerar dos cosas:\n\nSabemos que \\(V(y_2|x,y_1^*&gt;0)\\) depende de \\(X\\), es decir, la varianza es heterocedástica\nEn la segunda etapa, \\(\\hat{\\lambda}_i\\) no es observado sino estimado\n\nHeckman (1979) provee las fórmulas de los errores correctos (R y otros paquetes ya lo implementan correctamente)"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#efectos-marginales",
+    "href": "diapositivas/muestra-seleccionada.html#efectos-marginales",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Efectos marginales",
+    "text": "Efectos marginales\nDefinamos en un solo vector \\(x=[x_1\\;x_2]\\)\nPodemos reescribir \\(x_1\\beta_1=x'\\gamma_1\\) y \\(x_2'\\beta_2=x'\\gamma_2\\), donde \\(\\gamma_1\\) y \\(\\gamma_2\\) tendrán algunas entradas iguales a cero si \\(x_1\\neq x_2\\)\nAsí, la media truncada es \\[E(y_2|x)=x'\\gamma+\\sigma_{12}\\lambda(x'\\gamma_1)\\]\nY los efectos marginales relevantes son:\n\nProceso sin censura: \\(\\frac{\\partial E(y_2^*|x)}{\\partial x}=\\gamma_2\\)\nTruncado en cero: \\(\\frac{\\partial E(y_2|x, y_1=1)}{\\partial x}=\\gamma_2-\\sigma_{12}\\lambda(x'\\gamma_1)(x'\\gamma_1+\\lambda(x'\\gamma_1))\\)\nCensurado en cero: \\(\\frac{\\partial E(y_2|x)}{\\partial x}=\\gamma_1\\phi(x'\\gamma_1)x'\\gamma_2+\\Phi(x'\\gamma_1)\\gamma_2-\\sigma_{12}x'\\gamma_1\\phi(x'\\gamma_1)\\gamma_1\\)"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#detalles-de-la-estimación",
+    "href": "diapositivas/muestra-seleccionada.html#detalles-de-la-estimación",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Detalles de la estimación",
+    "text": "Detalles de la estimación\nEn teoría, los parámetros del modelo de dos ecuaciones están identificados si los mismos regresores se incluyen en ambas ecuaciones\nPero cuando imponemos errores normales, al hacer \\(x_1=x_2\\) y, recordando que el IRM es casi lineal para un rango grande de su argumento, la segunda ecuación indica que\n\\[E(y_2|y_1^*&gt;0)\\approx x_2'\\beta_2+a+bx_2'\\beta_1\\] Es decir, el modelo está cerca de no estar identificado\nPor tanto, en la práctica, se recomienda que haya una o varias variables que estén en una ecuación y no en la otra\nAlgunos autores llaman a esto restricción de exclusión, término que no me gusta tanto porque se confunde con la misma restricción en el contexto de variables instrumentales"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#resumen",
+    "href": "diapositivas/muestra-seleccionada.html#resumen",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Resumen",
+    "text": "Resumen\nTanto el tobit como el modelo de muestras seleccionadas recaen en fuertes supuestos distribucionales\nEn el modelo de muestras seleccionadas relajamos el supuesto de que el mismo proceso da origen a la censura o truncamiento, y a la variable dependiente\nEl tobit requiere de una interpretación de \\(y^*\\) similar a la de horas deseadas\nEl modelo de muestra seleccionada es más intuitivo para un proceso del tipo:\n\nDecisión de participación\nMargen intensivo"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#ejemplo-heckit-1",
+    "href": "diapositivas/muestra-seleccionada.html#ejemplo-heckit-1",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Ejemplo: heckit",
+    "text": "Ejemplo: heckit\nProcedimiento en dos etapas"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#ejemplo-tobit-1",
+    "href": "diapositivas/muestra-seleccionada.html#ejemplo-tobit-1",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Ejemplo: tobit",
+    "text": "Ejemplo: tobit\nEstimemos ahora el tobit, usando tobit del paquete AER\nTambién estimamos MCO a la muestra completa y a la muestra de participantes\n\n#Hacemos MCO ignorando la solución de esquina\nmmco &lt;- lm(hours ~ nwifeinc + educ + exper +\n           expersq + age + kidslt6 + kidsge6,\n         data = data.part)\n\n#Si truncamos la muestra\nmmcot &lt;- lm(hours ~ nwifeinc + educ + exper +\n             expersq + age + kidslt6 + kidsge6,\n           data = filter(data.part,hours&gt;0))\n\n#Usando tobit\nmtobit &lt;- AER::tobit(hours ~ nwifeinc + educ + exper +\n        expersq + age + kidslt6 + kidsge6,\n        left = 0,\n        data = data.part)"
+  },
+  {
+    "objectID": "diapositivas/muestra-seleccionada.html#ejemplo-tobit-2",
+    "href": "diapositivas/muestra-seleccionada.html#ejemplo-tobit-2",
+    "title": "Modelos de muestras seleccionadas",
+    "section": "Ejemplo: tobit",
+    "text": "Ejemplo: tobit\n\n\nmodelsummary(list(mmco, mmcot, mtobit))\n\n\n \n\n  \n    \n    \n    tinytable_siyf53j76ae5588q7hr3\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                (1)\n                (2)\n                (3)\n              \n        \n        \n        \n                \n                  (Intercept)\n                  1330.482 \n                  2056.643 \n                  965.305  \n                \n                \n                             \n                  (270.785)\n                  (346.484)\n                  (446.436)\n                \n                \n                  nwifeinc   \n                  -3.447   \n                  0.444    \n                  -8.814   \n                \n                \n                             \n                  (2.544)  \n                  (3.613)  \n                  (4.459)  \n                \n                \n                  educ       \n                  28.761   \n                  -22.788  \n                  80.646   \n                \n                \n                             \n                  (12.955) \n                  (16.434) \n                  (21.583) \n                \n                \n                  exper      \n                  65.673   \n                  47.005   \n                  131.564  \n                \n                \n                             \n                  (9.963)  \n                  (14.556) \n                  (17.279) \n                \n                \n                  expersq    \n                  -0.700   \n                  -0.514   \n                  -1.864   \n                \n                \n                             \n                  (0.325)  \n                  (0.437)  \n                  (0.538)  \n                \n                \n                  age        \n                  -30.512  \n                  -19.664  \n                  -54.405  \n                \n                \n                             \n                  (4.364)  \n                  (5.894)  \n                  (7.419)  \n                \n                \n                  kidslt6    \n                  -442.090 \n                  -305.721 \n                  -894.022 \n                \n                \n                             \n                  (58.847) \n                  (96.450) \n                  (111.878)\n                \n                \n                  kidsge6    \n                  -32.779  \n                  -72.367  \n                  -16.218  \n                \n                \n                             \n                  (23.176) \n                  (30.361) \n                  (38.641) \n                \n                \n                  Num.Obs.   \n                  753      \n                  428      \n                  753      \n                \n                \n                  R2         \n                  0.266    \n                  0.140    \n                           \n                \n                \n                  R2 Adj.    \n                  0.259    \n                  0.126    \n                           \n                \n                \n                  AIC        \n                  12117.1  \n                  6863.2   \n                  7656.2   \n                \n                \n                  BIC        \n                  12158.7  \n                  6899.7   \n                  7697.8   \n                \n                \n                  Log.Lik.   \n                  -6049.534\n                  -3422.581\n                           \n                \n                \n                  F          \n                  38.495   \n                  9.792    \n                           \n                \n                \n                  RMSE       \n                  746.18   \n                  718.92   \n                  953.68"
   }
 ]

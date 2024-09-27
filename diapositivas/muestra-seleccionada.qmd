@@ -1,0 +1,528 @@
+---
+title: "Modelos de muestras seleccionadas"
+author: "Irvin Rojas"
+format: 
+  revealjs:
+    slide-number: c/t
+    width: 1600
+    height: 900
+---
+
+
+```{r setup}
+#| echo: false
+#| warning: false 
+#| message: false
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+library(tidyverse)
+library(knitr)
+library(stargazer)
+library(janitor)
+library(sandwich)
+library(nnet)
+library(marginaleffects)
+library(foreign)
+library(AER)
+library(sampleSelection)
+library(modelsummary)
+
+```
+
+
+## Mecanismos de censura y truncamiento
+
+Consideremos una variable latente $y^*$ que se observa de acuerdo a una regla de observación $g(\cdot)$
+
+Lo que observamos es $y=g(y^*)$
+
+
+## Censura
+
+Siempre observamos $X$ pero no $y$:
+
+  - Censura por abajo: $y=\begin{cases}y^* \quad \text{si }y^*>L \\ L \quad \text{si }y^*\leq L \end{cases}$
+  
+  - Censura por arriba: $y=\begin{cases}y^* \quad \text{si }y^*<U \\ U \quad \text{si }y^*\geq U \end{cases}$
+  
+El típico ejemplo de censura se encuentra en los datos *top coded*, como los de ingreso
+
+Otro ejemplo es la oferta laboral: en un problema de optimización, las horas óptimas pueden ser negativas, pero entonces observamos la variable censurada en el cero
+
+
+## Truncamiento
+
+Tanto $X$ como $y$ son no observados para ciertos valores de $y$
+
+  - Truncamiento por abajo: $y=y^*$ si $y^*>L$ y no osbervada si $y^*\leq L$
+  
+  - Truncamiento por arriba: $y=y^*$ si $y^*<U$ y no osbervada si $y^*\geq U$
+
+
+## Función de verosimilitud censurada
+
+La censura y el truncamiento cambian la función de verosimilitud de los datos observados
+
+Verosimilitud censurada (usando censura por abajo)
+
+- Cuando $>L$, la densidad de $y$ es la misma que la de $y^*$, es decir, $f(y|x)=f^*(y|x)$
+
+- Cuando $y=L$, la densidad es discreta con masa igual a la probabilidad de que $y^*\leq L$
+
+En resumen
+$$
+f(y|x)=
+\begin{cases}
+f^*(y|x) \quad\text{si } y>L \\
+F^*(L|x)\quad\text{si }y=L \\
+\end{cases}
+$$
+
+La densidad es un híbrido entre una función de masa de probabilidad (una densidad propiamente) y una función de densidad acumulada
+
+## Función de verosimilitud censurada
+
+Definamos
+
+$$
+d=
+\begin{cases}
+1\quad\text{si }y>L \\
+0\quad\text{si }y=L \\
+\end{cases}
+$$
+
+Entonces la densidad condicional debido a la censura es
+
+$$f(y|x)=f^*(y|x)^dF^*(L|x)^{1-d}$$
+
+
+Y la función de log verosimilitud será
+$$\mathcal{L}_N(\theta)=\sum_i\left(d_i\ln f^*(y_i|x_i,\theta) + (1-d_i)\ln F^*(L_i|x_i,\theta)\right)$$
+
+Noten que hemos dejado abierta la opción de que $L$ difiera entre individuos, es decir, que $L=L_i$
+
+Si la densidad de $y^*$, $f^*(y^*|x,\theta)$, está bien especificada, $\theta_{MV}$ es consitente y asintóticamente normal
+
+
+
+## Función de verosimilitud truncada
+
+Consideremos el caso de truncamiento por abajo
+
+Noten que la función de densidad de $y$ es
+
+$$
+\begin{aligned}
+f(y)&=f^*(y|y>L) \\
+&=\frac{f^*(y)}{P(y|y>L)}\\
+&=\frac{f^*(y)}{1-F^*(L)}
+\end{aligned}
+$$
+
+Entonces, la log verosimilitud truncada es:
+
+$$\mathcal{L}_N(\theta)=\sum_i\left(\ln f^*(y_i|x_i,\theta)-\ln(1-F^*(L_i|x_i,\theta))\right)$$
+
+
+
+## Modelo Tobit
+
+Es una modelo simple y con supuestos muy fuertes sobre la estructura de la censura
+
+Tobin (1958) lo planteó originalmente como una forma de modelar la compra de bienes durables (muchos hogares gastan 0 en bienes durables)
+
+Consideramos un proceso con errores normales
+$$
+\begin{aligned}
+&y^*=x'\beta+\varepsilon \\
+&\varepsilon\sim\mathcal{N}(0,\sigma^2)
+\end{aligned}
+$$
+
+Supongamos que observamos $y$ de acuerdo a la siguiente regla:
+
+$$
+y=
+\begin{cases}
+y^*\quad\text{si }y^*>0 \\
+-\quad\text{si } y^*\leq 0\\
+\end{cases}
+$$
+
+
+## Modelo Tobit
+
+Con los errores normales, podemos definir la cdf como
+$$
+\begin{aligned}
+F^*(0)&=P(y^*\leq0) \\
+&=P(x'\beta+\varepsilon\leq 0) \\
+&=\Phi(-x'\beta/\sigma) \\
+&=1-\Phi(x'\beta/\sigma)
+\end{aligned}
+$$
+
+Esto nos permite definir la densidad censurada como
+$$
+f(y)=\left(\frac{1}{\sqrt{2\pi\sigma^2}}exp\left(-\frac{1}{2\sigma^2}(y-x'\beta)^2\right)\right)^d\left(1-\Phi\left(\frac{x'\beta}{\sigma}\right)\right)^{1-d}
+$$
+
+Y entonces la función de log verosimilitud será
+$$
+\begin{aligned}
+\mathcal{L}_N(\beta,\sigma^2)&=\sum_i\left( d_i\left(-\frac{1}{2}\ln(\sigma^2)-\frac{1}{2}\ln(2\pi)-\frac{1}{2\sigma^2}(y_i-x'\beta)^2\right)+ \right. \\
+&\left. +(1-d_i)\ln\left(1-\Phi\left(\frac{x_i'\beta}{\sigma}\right)\right) \right)
+\end{aligned}
+$$
+
+
+
+## Condiciones de primer orden
+
+$$\frac{\partial \mathcal{L}_N}{\partial \beta}=\sum_i\frac{1}{\sigma^2}\left(d_i(y_i-x_i'\beta)-(1-d_i)\frac{\sigma \phi_i}{1-\Phi_i}\right)x_i=0$$
+$$\frac{\partial \mathcal{L}_N}{\partial \sigma^2}=\sum_i\left(di\left(-\frac{1}{2\sigma^2}+\frac{(y_i-x_i'\beta)^2}{2\sigma^4}\right)+(1-d_i)\left(\frac{\phi_ix_i'\beta}{(1-\Phi_i)2\sigma ^3}\right)\right)=0$$
+
+La solución se obtiene numéricamente
+
+$\hat{\theta}$ es consistente si la densidad está bien especificada
+
+El estimador de MV es asintóticamente normal: $\theta\stackrel{a}{\sim}\mathcal{N}(\theta,V(\hat{\theta}))$
+
+Maddala (1983) y Amemiya (1985) proveen expresiones para la matriz de varianzas
+
+
+
+## Nota sobre terminología
+
+El modelo Tobit fue plantado inicialmente para un problema de censura en cero
+
+Cuando nos refiramos al Tobit estaremos pensando en la estructura particular que tienen $y^*$ y $y$
+
+Si en vez de censura, ocurriera truncamiento, la log verosimilitud sería
+$$\mathcal{L}_N(\beta,\sigma^2)=\sum_i \left(-\frac{1}{2}\ln(\sigma^2)-\frac{1}{2}\ln(2\pi)-\frac{1}{2\sigma^2}(y_i-x'\beta)^2-\ln\left(\Phi(x_i'\beta/\sigma)\right)\right)$$
+
+
+
+
+## Ejemplo: *tobit*
+
+
+Veamos un problema típico de economía laboral, la participación de las mujeres en el mercado de trabajo
+
+Usemos unos datos bastante estudiados [mroz.csv](../files/mroz.csv)
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "|2"
+
+data.part <- read.dta("../files/mroz.dta") 
+
+data.part %>% 
+  filter(hours<=3000) %>% 
+  ggplot(aes(x=hours)) +
+  geom_histogram()
+```
+
+## Ejemplo: *tobit*
+
+Estimemos ahora el tobit, usando *tobit* del paquete *AER*
+
+También estimamos MCO a la muestra completa y a la muestra de participantes
+
+```{r}
+#| echo: true
+
+#Hacemos MCO ignorando la solución de esquina
+mmco <- lm(hours ~ nwifeinc + educ + exper +
+           expersq + age + kidslt6 + kidsge6,
+         data = data.part)
+
+#Si truncamos la muestra
+mmcot <- lm(hours ~ nwifeinc + educ + exper +
+             expersq + age + kidslt6 + kidsge6,
+           data = filter(data.part,hours>0))
+
+#Usando tobit
+mtobit <- AER::tobit(hours ~ nwifeinc + educ + exper +
+        expersq + age + kidslt6 + kidsge6,
+        left = 0,
+        data = data.part)
+```
+
+## Ejemplo: *tobit*
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "|2"
+
+modelsummary(list(mmco, mmcot, mtobit))
+```
+
+
+
+
+## Modelos de muestras seleccionadas
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Las muestras pueden estar seleccionadas
+
+  - Por el econometrista
+  - Por que los agentes escogen participar
+
+Ecuación de participación
+
+$$
+y_1=
+\begin{cases}
+1\quad\text{si } y_1^*>0\\
+0\quad\text{si } y_1^*\leq 0
+\end{cases}
+$$
+Ecuación de resultados
+
+$$
+y_2=
+\begin{cases}
+y_2^*\quad\text{si } y_1^*>0\\
+NA \quad\text{si } y_1^*\leq 0
+\end{cases}
+$$
+:::
+
+::: {.column width="50%"}
+Por tanto
+
+$$
+\begin{aligned}
+y_1^*=x_1'\beta_1+\varepsilon_1 \\
+y_2^*=x_2'\beta_2+\varepsilon_2 \\
+\end{aligned}
+$$
+En el caso en que $y_1^*=y_2^*$, el modelo se colapsa al Tobit
+:::
+
+::::
+
+## Modelo de Heckman
+
+No hay consenso de cómo llamarlo
+
+El estimador que veremos fue desarrollado por Heckman
+
+Algunos otros autores le llaman **Tobit de Tipo II** o **modelo con ecuación de selección**
+
+Supuesto: errores con distribución conjunta normal
+
+$$
+\begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \end{pmatrix}\sim \mathcal{N}\left(A, B \right)
+$$
+$A=\begin{pmatrix} 0 \\ 0  \end{pmatrix}$
+
+$B=\begin{pmatrix} 1 & \sigma_{12} \\ \sigma_{21} & \sigma_2^2 \\ \end{pmatrix}$
+
+$\sigma_1^2=1$ es una normalización
+
+
+
+## Resultados de la distribución normal conjunta
+
+Por nuestro supuesto de normalidad resulta que: $\varepsilon_2=\sigma_{12}\varepsilon_1 +\xi$
+
+$\xi$ es independiente de $\varepsilon_1$
+
+
+**Media truncada**
+
+$$E(y_2|x,y_1^*>0)=x_2'\beta_2+E(\varepsilon_2|\varepsilon_1>-x_1'\beta_1)$$
+
+Usando el resultado de la normalidad de los errores
+
+$$
+\begin{aligned}
+E(y_2|x,y_1^*>0)&=x_2'\beta_2+E(\sigma_{12}\varepsilon_1+\xi|\varepsilon_1>-x_1'\beta_1) \\
+&=x_2'\beta_2+\sigma_{12}E(\varepsilon_1|\varepsilon>-x_1'\beta_1) \\
+&=x_2'\beta_2+\sigma_{12}\lambda(x_1'\beta_1)
+\end{aligned}
+$$
+
+Similarmente
+
+$$V(y_2|x,y_1^*)=\sigma_2^2-\sigma_{12}^2\lambda(x_1'\beta_1)(x_1'\beta_1+\lambda(x_1'\beta_1))$$
+
+
+## Resultados de la distribución normal conjunta
+
+**Media censurada**
+
+Cuando $y_2=0$ si $y_1^*<0$
+
+$$
+\begin{aligned}
+E(y_2|x)&=E_{y_{1}^{*}}(E(y_2|x,y_1^*)) \\
+&=P(y_1^*\leq 0 | x)\times 0+P(y_1^* > 0 | x)E(y_2^*|X,y_1^*>0) \\
+&=0+\Phi(x_1'\beta_1)(x_2'\beta_2+\sigma_{12}\lambda(x_1'\beta_1)) \\
+&=\Phi(x_1'\beta_1)x_2'\beta_2 + \sigma_{12}\phi(x_1'\beta_1)
+\end{aligned}
+$$
+
+
+## Estimación por MV
+
+Bajo los supuestos de normalidad podemos escribir la verosimilitud como sigue
+
+$$L=\prod_{i=1}^{N}
+P(y_{1i}^*\leq 0)^{1-y_{1i}}\left(f(y_{2i}|y_{1i}^*>0)\times P(y_{1i}^*>0)\right)^{y_{1i}}$$
+
+La forma final de la log verosimilitud es una fórmula larga que no tiene caso plantear aquí (ver Amemiya, 1985, p. 368)
+
+La intuición es que los parámetros de interés, especialmente $\beta_1$, son estimados de la misma manera en que hemos hecho en otros problemas
+
+El vector de parámetros estimados será consistente si la verosimilitud está bien planteada
+
+## Estimador de Heckman en dos etapas
+
+Algunos autores lo conocen como *heckit*
+
+Consiste en ver el problema como uno de *variable omitida* donde la variable omitida es $\lambda(x_{1i}'\beta_1)$
+
+Podemos pensar el problema en dos etapas
+
+1. Probit de $y_1$ en $x_1$ usando toda la muestra, dado que asumimos que $P(y_1^*>0)=\Phi(X_1'\beta_1)$:
+
+   Usamos $\hat{\beta}_1$ para calcular el estimado del inverso de la razón de Mills:
+    
+   $$\lambda(x_i'\hat{\beta}_1)=\frac{\phi(x_1'\hat{\beta}_1)}{\Phi(x_1'\hat{\beta}_1)}=\hat{\lambda}(x_1'\hat{\beta}_1)$$
+
+1. Usamos los valores positivos de $y_2$ para estimar la regresión $$y_{2i}=x_{2i}'\beta_2+\sigma_{12}\lambda(x_{1i}'\beta_1)+v_i$$
+  
+
+## Estimador de Heckman en dos etapas
+
+Usando el resultado de la varianza truncada podemos estimar $$\sigma_2^2=\frac{1}{N}\sum_i(\hat{v}_i+\hat{\sigma}_{12}^2\hat{\lambda}_i(x_1'\beta_1+\hat{\lambda}_i))$$
+donde $\hat{v}_i$ son los residuales estimados
+
+La correlación de errores puede ser estimada como $$\hat{\rho}=\hat{\sigma}_{12}/\hat{\sigma}_2$$
+
+Por tanto, una prueba de que $\rho=0$ o $\sigma_{12}=0$ es una prueba de si los errores están correlacionados y si es necesaria la correción por muestra seleccionada
+
+Poner atención a la significancia del inverso de la razón de Mills en la segunda etapa
+
+
+## Ejemplo: *heckit*
+
+Usamos datos de una muestra de hogares que reportan sus gastos médicos ambulatorios [limdep_ambexp.dta](../files/limdep_ambexp.dta)
+
+Muchos hogares tienen cero gastos
+
+```{r}
+
+data.gasto <- read.dta("../files/limdep_ambexp.dta")
+
+#Heckit en un solo paso
+mheck.mv <- heckit(selection = dambexp ~ income + age + female + educ + blhisp + totchr + ins,
+                outcome = lambexp ~ age + female  + blhisp + totchr,
+                method = "ml",
+                data = data.gasto)
+
+mheck.2e <- heckit(selection = dambexp ~ income + age + female + educ + blhisp + totchr + ins,
+                   outcome = lambexp ~ age + female  + blhisp + totchr,
+                   method = "2step",
+                   data = data.gasto)
+```
+
+
+
+## Ejemplo: *heckit*
+
+Procedimiento en dos etapas
+
+```{r}
+mheck1 <- probit(dambexp ~ income + age + female + educ + blhisp + totchr + ins,
+                 data = data.gasto)
+
+data.gasto <- data.gasto %>% 
+  mutate(index=predict(mheck1,.),
+         imr = dnorm(index)/pnorm(index))
+
+mheck2 <- lm(lambexp ~ age + female  + blhisp + totchr + imr,
+             data = filter(data.gasto, dambexp==1))
+
+```
+
+
+# Ejemplo: *heckit*
+
+Usamos *modelsummary* para presentar los resutlados
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "|2"
+#| output: 'asis'
+
+stargazer::stargazer(mheck.mv, mheck.2e, mheck1, mheck2,
+                     type='html')
+```
+
+## Errores estándar
+
+Para estimar la varianza hay que considerar dos cosas:
+
+  1. Sabemos que $V(y_2|x,y_1^*>0)$ depende de $X$, es decir, la varianza es heterocedástica
+  1. En la segunda etapa, $\hat{\lambda}_i$ no es observado sino estimado
+  
+Heckman (1979) provee las fórmulas de los errores correctos (R y otros paquetes ya lo implementan correctamente)
+
+
+## Efectos marginales
+
+Definamos en un solo vector $x=[x_1\;x_2]$
+
+Podemos reescribir $x_1\beta_1=x'\gamma_1$ y $x_2'\beta_2=x'\gamma_2$, donde $\gamma_1$ y $\gamma_2$ tendrán algunas entradas iguales a cero si $x_1\neq x_2$
+
+Así, la media truncada es $$E(y_2|x)=x'\gamma+\sigma_{12}\lambda(x'\gamma_1)$$
+
+Y los efectos marginales relevantes son:
+
+1. Proceso sin censura: $\frac{\partial E(y_2^*|x)}{\partial x}=\gamma_2$
+
+1. Truncado en cero: $\frac{\partial E(y_2|x, y_1=1)}{\partial x}=\gamma_2-\sigma_{12}\lambda(x'\gamma_1)(x'\gamma_1+\lambda(x'\gamma_1))$
+
+1. Censurado en cero: $\frac{\partial E(y_2|x)}{\partial x}=\gamma_1\phi(x'\gamma_1)x'\gamma_2+\Phi(x'\gamma_1)\gamma_2-\sigma_{12}x'\gamma_1\phi(x'\gamma_1)\gamma_1$
+
+
+
+## Detalles de la estimación
+
+En teoría, los parámetros del modelo de dos ecuaciones están identificados si los mismos regresores se incluyen en ambas ecuaciones
+
+Pero cuando imponemos errores normales, al hacer $x_1=x_2$ y, recordando que el IRM es casi lineal para un rango grande de su argumento, la segunda ecuación indica que
+
+$$E(y_2|y_1^*>0)\approx x_2'\beta_2+a+bx_2'\beta_1$$
+Es decir, el modelo está cerca de no estar identificado
+
+Por tanto, en la práctica, se recomienda que haya una o varias variables que estén en una ecuación y no en la otra
+
+Algunos autores llaman a esto **restricción de exclusión**, término que no me gusta tanto porque se confunde con la misma restricción en el contexto de variables instrumentales
+
+
+
+## Resumen
+
+Tanto el tobit como el modelo de muestras seleccionadas recaen en fuertes supuestos distribucionales
+
+En el modelo de muestras seleccionadas relajamos el supuesto de que el mismo proceso da origen a la censura o truncamiento, y a la variable dependiente
+
+El tobit requiere de una interpretación de $y^*$ similar a la de *horas deseadas*
+
+El modelo de muestra seleccionada es más intuitivo para un proceso del tipo:
+
+- Decisión de participación
+
+- Margen intensivo
