@@ -1256,5 +1256,110 @@
     "title": "Variables instrumentales",
     "section": "Más sobre rendimientos a la educación",
     "text": "Más sobre rendimientos a la educación\nEn el problema de Card (1995), la primera etapa es\n\\[esc_i=\\pi_0+\\pi_1 X_i+ \\phi unicerca_i +\\nu_i\\] donde \\(unicerca_i= \\begin{cases} 1 \\quad\\text{había una universidad en el municipio} \\\\ 0 \\quad\\text{otro caso}\\\\ \\end{cases}\\)\nY la forma reducida es\n\\[\\ln(w_i)=\\gamma_0+\\gamma_1 X_i+  \\delta unicerca_i+\\varepsilon_i\\]\nSabemos que el salario estará correlacionado con la presencia de la universidad, pero estas diferencias ocurren por la vía de la escolaridad"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#ejemplo-card-1995",
+    "href": "diapositivas/variables-instrumentales.html#ejemplo-card-1995",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: Card (1995)",
+    "text": "Ejemplo: Card (1995)\nUsamos los datos en ingresos_iv.csv, del estudio de Card que hemos mencionado como ejemplo\nLa librería AER, que ya hemos usado, tiene la función ivreg\nTambién usaremos una nueva librería, gmm\nEstimemos la relación entre el log del salario y la educación\n\ndata.ingresos &lt;- read_csv(\"../files/ingresos_iv.csv\",\n                          locale = locale(encoding = \"latin1\"))\n#MCO\nmco &lt;- lm(lwage ~ educ + exper + black + south + married + smsa,\n          data = data.ingresos)\n\n#Variables instrumentales (asume homocedasticidad)\nvi &lt;- ivreg(lwage ~  educ + exper + black + south + married + smsa |\n               . - educ + nearc4, data = data.ingresos)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-1",
+    "href": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-1",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: Card (1995)",
+    "text": "Ejemplo: Card (1995)\nSabemos que \\(\\beta_1\\) estimado por MCO es inconsistente\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi),\n             coef_map = c(\"educ\", \"exper\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n\n \n\n  \n    \n    \n    tinytable_t0qsr5rax7s7juw9dth8\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-2",
+    "href": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-2",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: Card (1995)",
+    "text": "Ejemplo: Card (1995)\nLa primera etapa de este ejercicio es\n\n# Primera etapa\npe_vi &lt;- lm(educ ~  nearc4 + exper + black + south + married + smsa,\n            data = data.ingresos)\n\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi, \"Primera etapa\"=pe_vi),\n             coef_map = c(\"educ\", \"exper\", \"nearc4\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n\n \n\n  \n    \n    \n    tinytable_hynm2p20lpc3v4ght3p5\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n                Primera etapa\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                         \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                         \n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                  -0.404 \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                  (0.009)\n                \n                \n                  nearc4  \n                         \n                         \n                  0.327  \n                \n                \n                          \n                         \n                         \n                  (0.082)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153\n                         \n                  456.140"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#método-generalizado-de-momentos",
+    "href": "diapositivas/variables-instrumentales.html#método-generalizado-de-momentos",
+    "title": "Variables instrumentales",
+    "section": "Método generalizado de momentos",
+    "text": "Método generalizado de momentos\nEl GMM generaliza una serie de estimadores comúnmente usados en econometría (incluyendo MCO, MV, VI, etc)\nAsumimos que existen \\(r\\) condiciones de momentos independientes para \\(q\\) parámetros \\[E(h(w_i,\\theta_0))=0\\]\ndonde \\(\\theta\\) es un vector de \\(q\\times 1\\), \\(h(\\cdot)\\) es una función vector de \\(r \\times 1\\) con \\(r\\geq q\\)\n\\(w_i\\) son los datos observables, incluyendo las variables dependientes, los regresores exógenos, potenciales regresores endógenos, así como instrumentos"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#método-generalizado-de-momentos-1",
+    "href": "diapositivas/variables-instrumentales.html#método-generalizado-de-momentos-1",
+    "title": "Variables instrumentales",
+    "section": "Método generalizado de momentos",
+    "text": "Método generalizado de momentos\nLa forma de \\(h(\\cdot)\\) es equivalente a escoger el modelo\nPor ejemplo:\n\n\n\n\\(h(\\cdot)\\)\nMétodo de estimación\n\n\n\n\n\\(x(y-x'\\beta)\\)\nMCO\n\n\n\\(\\partial\\mathcal{L}/\\partial\\theta\\)\nMV\n\n\n\\(z(y-x'\\beta)\\)\nVI"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#método-generalizado-de-momentos-2",
+    "href": "diapositivas/variables-instrumentales.html#método-generalizado-de-momentos-2",
+    "title": "Variables instrumentales",
+    "section": "Método generalizado de momentos",
+    "text": "Método generalizado de momentos\nCuando \\(r=q\\), tenemos un modelo exactamente identificado, es decir, tenemos tantos momentos como parámetros a estimar\nPodemos obtener el estimador de método de momentos \\(\\hat{\\theta}_{MM}\\) como la solución a\n\\[\\frac{1}{N}h(w_i,\\hat{\\theta})=0\\]"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#método-generalizado-de-momentos-3",
+    "href": "diapositivas/variables-instrumentales.html#método-generalizado-de-momentos-3",
+    "title": "Variables instrumentales",
+    "section": "Método generalizado de momentos",
+    "text": "Método generalizado de momentos\nEl caso que nos ocupa más en el contexto de MC2E es cuando \\(r&gt;q\\), es decir, un modelo sobreidentificado\nEn este caso, tenemos más ecuaciones que incógnitas en la condición de momentos\nEl estimador de método generalizado de momentos \\(\\hat{\\theta}_{GMM}\\) se define como el vector de parámetros que minimiza la forma cuadrática\n\\[Q_N(\\theta)=\\left(\\frac{1}{N}\\sum_ih(w_i,\\theta)\\right)'W_N\\left(\\frac{1}{N}\\sum_ih(w_i,\\theta)\\right)\\]\ndonde \\(W_N\\) es una matriz simétrica y positiva definida que no depende de \\(\\theta\\)\nDiferentes matrices \\(W_N\\) dan origen a distintos estimadores"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#estimador-de-mgm",
+    "href": "diapositivas/variables-instrumentales.html#estimador-de-mgm",
+    "title": "Variables instrumentales",
+    "section": "Estimador de MGM",
+    "text": "Estimador de MGM\nProposición 6.1 en CT: bajo una serie de supuestos para poder establecer LGN y TLC, \\(\\hat{\\theta}_{GMM}\\), definido como una raíz de las condiciones de primer orden \\(\\partial Q_N(\\theta) / \\partial \\theta=0\\), es tal que:\n\\[\\sqrt{N}\\left(\\hat{\\theta}_{GMM}-\\theta_0\\right)\\stackrel{a}{\\sim}\\mathcal{N}\\left(0,(G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)^{-1}\\right)\\]\ndonde \\(W_0\\) es una matriz finita, simétrica y positiva definida, y\n\\[\n\\begin{aligned}\nG_0&=p\\lim\\frac{1}{N}\\sum_{i=1}^N \\left(\\frac{\\partial h_i}{\\partial\\theta'}\\Bigg|_{\\theta_0}\\right) \\\\\nS_0&=p\\lim \\frac{1}{N} \\sum_{i=1}^N \\sum_{j=1}^N \\left(h_i h_j \\Bigg|_{\\theta_0} \\right)\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#matriz-de-varianzas-óptima",
+    "href": "diapositivas/variables-instrumentales.html#matriz-de-varianzas-óptima",
+    "title": "Variables instrumentales",
+    "section": "Matriz de varianzas óptima",
+    "text": "Matriz de varianzas óptima\nPara implementar MGM debemos especificar las condiciones de momentos y la matriz \\(W_N\\)\nEn el caso de modelos sobreidentificados y con \\(S_0\\) conocida, el estimador de MGM más eficiente se obtiene al especificar \\(W_N=S_0^{-1}\\)\nCon esta elección, la expresión para la varianza de \\(\\hat{\\beta}_{MGM}\\) se simplifica a\n\\[\\sqrt{N}\\left(\\hat{\\theta}_{GMM}-\\theta_0\\right)\\stackrel{a}{\\sim}\\mathcal{N}\\left(0,(G_0'S_0^{-1}G_0)^{-1}\\right)\\]\nEn la práctica, \\(S_0\\) es desconocida, así que la sustituimos por un estimador consistente \\(\\hat{S}\\)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#mgm-óptimo",
+    "href": "diapositivas/variables-instrumentales.html#mgm-óptimo",
+    "title": "Variables instrumentales",
+    "section": "MGM óptimo",
+    "text": "MGM óptimo\nLa matriz de varianzas se estima siguiendo un procedimiento de dos etapas\n\nObtener el estimador de MGM usando una matriz subóptima, generalmente \\(W_N=I_r\\) y con estos coeficientes obtener un estimador para \\(S_0\\): \\[\\hat{S}=\\frac{1}{N}\\sum_i h_i(\\hat{\\theta})h_j(\\hat{\\theta})'\\]\nObtener un estimador de MGM óptimo o estimador de MGM de dos etapas óptimo \\(\\hat{\\theta}_{MGM,O}\\) minimizando\n\n\\[Q_N(\\theta)=\\left(\\frac{1}{N}\\sum_ih(\\theta)\\right)'\\hat{S}^{-1}\\left(\\frac{1}{N}\\sum_ih(\\theta)\\right)\\]"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#mgm-óptimo-1",
+    "href": "diapositivas/variables-instrumentales.html#mgm-óptimo-1",
+    "title": "Variables instrumentales",
+    "section": "MGM óptimo",
+    "text": "MGM óptimo\nPara estimar la varianza de \\(\\hat{\\theta}_{MGM,O}\\) usamos\n\\[\\hat{V}(\\hat{\\theta}_{MGM,O})=N^{-1}(\\hat{G}\\tilde{S}^{-1}\\hat{G})^{-1}\\]\ndonde \\(\\hat{G}\\) y \\(\\tilde{S}\\) se evalúan en \\(\\hat{\\theta}_{MGM,O}\\)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#ejemplo-con-oferta-y-demanda",
+    "href": "diapositivas/variables-instrumentales.html#ejemplo-con-oferta-y-demanda",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\nSupongamos que nos interesa estimar la elasticidad del consumo de mantequilla\n\\[\\ln(q_{_i})=\\alpha + \\beta \\ln(p_i) + \\varepsilon_i\\] Supongamos que tenemos datos del precio y el consumo en una muestra grande de localidades \\(i\\)\nSi estimamos la ecuación anterior por MCO, el coeficiente estimado \\(\\hat{\\beta}\\) será inconsistente por un problema de simulateneidad\nEl precio y la cantidad se determinan en equilibrio por la interacción de la oferta y la demanda\nUn choque a la oferta o la demanda afectará tanto la cantidad como el precio de equilibrio"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#ejemplo-con-oferta-y-demanda-1",
+    "href": "diapositivas/variables-instrumentales.html#ejemplo-con-oferta-y-demanda-1",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\nPodemos usar variables instrumentales para estimar la elasticidad de la demanda\nNecesitamos una variable \\(z\\) que afecte solo la oferta, pero que no afecte directamente la demanda\n\\(z\\) puede ser precipitación o temperatura\nAl desplazar la oferta, manteniendo la demanda fija, se revela la forma de la curva de demanda\nPodemos estimar la elasticidad de la demanda"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#ejemplo-con-oferta-y-demanda-2",
+    "href": "diapositivas/variables-instrumentales.html#ejemplo-con-oferta-y-demanda-2",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\n\n# Add custom curves\ndemand1 &lt;- data.frame(Hmisc::bezier(c(1, 3, 9),\n                                    c(9, 3, 1))) \n\nsupply1 &lt;- data.frame(Hmisc::bezier(c(1, 8, 9),\n                                    c(1, 5, 9))) \n\nsupply2 &lt;- data.frame(Hmisc::bezier(c(1, 8, 9),\n                                    c(3, 8, 12))) \n\nsupply3 &lt;- data.frame(Hmisc::bezier(c(1, 8, 9),\n                                    c(5, 10, 14)))"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html#ejemplo-con-oferta-y-demanda-3",
+    "href": "diapositivas/variables-instrumentales.html#ejemplo-con-oferta-y-demanda-3",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\n\neconocharts::sdcurve(supply1, demand1, supply2, demand1, supply3, demand1,\n        names = c(\"S[1]\", \"D[1]\",\"S[2]\", \"D[1]\", \"S[3]\", \"D[1]\"),\n        xmax = 15, ymax=10)\n\n# A tibble: 3 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1  4.65  3.40\n2  3.31  4.76\n3  2.39  6.03"
   }
 ]

@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -435,13 +500,555 @@ Irvin Rojas
 <p>Y la forma reducida es</p>
 <p><span class="math display">\[\ln(w_i)=\gamma_0+\gamma_1 X_i+  \delta unicerca_i+\varepsilon_i\]</span></p>
 <p>Sabemos que el salario estará correlacionado con la presencia de la universidad, pero estas diferencias ocurren por la vía de la escolaridad</p>
+</section>
+<section id="ejemplo-card-1995" class="slide level2">
+<h2>Ejemplo: Card (1995)</h2>
+<p>Usamos los datos en <em>ingresos_iv.csv</em>, del estudio de Card que hemos mencionado como ejemplo</p>
+<p>La librería <em>AER</em>, que ya hemos usado, tiene la función <em>ivreg</em></p>
+<p>También usaremos una nueva librería, <em>gmm</em></p>
+<p>Estimemos la relación entre el log del salario y la educación</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>data.ingresos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../files/ingresos_iv.csv"</span>,</span>
+<span id="cb1-2"><a></a>                          <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"latin1"</span>))</span>
+<span id="cb1-3"><a></a><span class="co">#MCO</span></span>
+<span id="cb1-4"><a></a>mco <span class="ot">&lt;-</span> <span class="fu">lm</span>(lwage <span class="sc">~</span> educ <span class="sc">+</span> exper <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> married <span class="sc">+</span> smsa,</span>
+<span id="cb1-5"><a></a>          <span class="at">data =</span> data.ingresos)</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a><span class="co">#Variables instrumentales (asume homocedasticidad)</span></span>
+<span id="cb1-8"><a></a>vi <span class="ot">&lt;-</span> <span class="fu">ivreg</span>(lwage <span class="sc">~</span>  educ <span class="sc">+</span> exper <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> married <span class="sc">+</span> smsa <span class="sc">|</span></span>
+<span id="cb1-9"><a></a>               . <span class="sc">-</span> educ <span class="sc">+</span> nearc4, <span class="at">data =</span> data.ingresos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ejemplo-card-1995-1" class="slide level2">
+<h2>Ejemplo: Card (1995)</h2>
+<p>Sabemos que <span class="math inline">\(\beta_1\)</span> estimado por MCO es inconsistente</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">"MCO"</span><span class="ot">=</span>mco, <span class="st">"VI"</span><span class="ot">=</span>vi),</span>
+<span id="cb2-2"><a></a>             <span class="at">coef_map =</span> <span class="fu">c</span>(<span class="st">"educ"</span>, <span class="st">"exper"</span>),</span>
+<span id="cb2-3"><a></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"F"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+ 
+
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_t0qsr5rax7s7juw9dth8</title>
+    <style>
+.table td.tinytable_css_cd4cx2wp0l93b2tnwc76, .table th.tinytable_css_cd4cx2wp0l93b2tnwc76 {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_kf2v1ddnqetk9fipoa1w, .table th.tinytable_css_kf2v1ddnqetk9fipoa1w {    text-align: left; }
+.table td.tinytable_css_rrq93y62ybpxhl0i4qoy, .table th.tinytable_css_rrq93y62ybpxhl0i4qoy {    text-align: center; }
+.table td.tinytable_css_qnjvaslo9tdt1emkw6tj, .table th.tinytable_css_qnjvaslo9tdt1emkw6tj {    text-align: center; }
+.table td.tinytable_css_c8k87wga4kban2qes8r4, .table th.tinytable_css_c8k87wga4kban2qes8r4 {    border-bottom: solid 0.05em black; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  
+
+  
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_t0qsr5rax7s7juw9dth8" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">MCO</th>
+                <th scope="col">VI</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>educ    </td>
+                  <td>0.071  </td>
+                  <td>0.124  </td>
+                </tr>
+                <tr>
+                  <td>        </td>
+                  <td>(0.003)</td>
+                  <td>(0.050)</td>
+                </tr>
+                <tr>
+                  <td>exper   </td>
+                  <td>0.034  </td>
+                  <td>0.056  </td>
+                </tr>
+                <tr>
+                  <td>        </td>
+                  <td>(0.002)</td>
+                  <td>(0.020)</td>
+                </tr>
+                <tr>
+                  <td>Num.Obs.</td>
+                  <td>3003   </td>
+                  <td>3003   </td>
+                </tr>
+                <tr>
+                  <td>F       </td>
+                  <td>219.153</td>
+                  <td>       </td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_0hgdm1953sbymeti9lv4(i, j, css_id) {
+        var table = document.getElementById("tinytable_t0qsr5rax7s7juw9dth8");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_t0qsr5rax7s7juw9dth8');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_0hgdm1953sbymeti9lv4(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_t0qsr5rax7s7juw9dth8");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(0, 0, 'tinytable_css_cd4cx2wp0l93b2tnwc76') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(0, 1, 'tinytable_css_cd4cx2wp0l93b2tnwc76') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(0, 2, 'tinytable_css_cd4cx2wp0l93b2tnwc76') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(0, 0, 'tinytable_css_kf2v1ddnqetk9fipoa1w') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(1, 0, 'tinytable_css_kf2v1ddnqetk9fipoa1w') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(2, 0, 'tinytable_css_kf2v1ddnqetk9fipoa1w') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(3, 0, 'tinytable_css_kf2v1ddnqetk9fipoa1w') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(4, 0, 'tinytable_css_kf2v1ddnqetk9fipoa1w') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(5, 0, 'tinytable_css_kf2v1ddnqetk9fipoa1w') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(6, 0, 'tinytable_css_kf2v1ddnqetk9fipoa1w') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(0, 1, 'tinytable_css_rrq93y62ybpxhl0i4qoy') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(1, 1, 'tinytable_css_rrq93y62ybpxhl0i4qoy') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(2, 1, 'tinytable_css_rrq93y62ybpxhl0i4qoy') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(3, 1, 'tinytable_css_rrq93y62ybpxhl0i4qoy') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(4, 1, 'tinytable_css_rrq93y62ybpxhl0i4qoy') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(5, 1, 'tinytable_css_rrq93y62ybpxhl0i4qoy') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(6, 1, 'tinytable_css_rrq93y62ybpxhl0i4qoy') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(0, 2, 'tinytable_css_qnjvaslo9tdt1emkw6tj') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(1, 2, 'tinytable_css_qnjvaslo9tdt1emkw6tj') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(2, 2, 'tinytable_css_qnjvaslo9tdt1emkw6tj') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(3, 2, 'tinytable_css_qnjvaslo9tdt1emkw6tj') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(4, 2, 'tinytable_css_qnjvaslo9tdt1emkw6tj') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(5, 2, 'tinytable_css_qnjvaslo9tdt1emkw6tj') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(6, 2, 'tinytable_css_qnjvaslo9tdt1emkw6tj') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(4, 0, 'tinytable_css_c8k87wga4kban2qes8r4') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(4, 1, 'tinytable_css_c8k87wga4kban2qes8r4') })
+window.addEventListener('load', function () { styleCell_tinytable_0hgdm1953sbymeti9lv4(4, 2, 'tinytable_css_c8k87wga4kban2qes8r4') })
+    </script>
+
+  
+
+
+</div>
+</div>
+</div>
+</section>
+<section id="ejemplo-card-1995-2" class="slide level2">
+<h2>Ejemplo: Card (1995)</h2>
+<p>La primera etapa de este ejercicio es</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Primera etapa</span></span>
+<span id="cb3-2"><a></a>pe_vi <span class="ot">&lt;-</span> <span class="fu">lm</span>(educ <span class="sc">~</span>  nearc4 <span class="sc">+</span> exper <span class="sc">+</span> black <span class="sc">+</span> south <span class="sc">+</span> married <span class="sc">+</span> smsa,</span>
+<span id="cb3-3"><a></a>            <span class="at">data =</span> data.ingresos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">"MCO"</span><span class="ot">=</span>mco, <span class="st">"VI"</span><span class="ot">=</span>vi, <span class="st">"Primera etapa"</span><span class="ot">=</span>pe_vi),</span>
+<span id="cb4-2"><a></a>             <span class="at">coef_map =</span> <span class="fu">c</span>(<span class="st">"educ"</span>, <span class="st">"exper"</span>, <span class="st">"nearc4"</span>),</span>
+<span id="cb4-3"><a></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"F"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+ 
+
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_hynm2p20lpc3v4ght3p5</title>
+    <style>
+.table td.tinytable_css_9xsk3haujyk60gml2bgu, .table th.tinytable_css_9xsk3haujyk60gml2bgu {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_vfb0aihgu2o5gw68266x, .table th.tinytable_css_vfb0aihgu2o5gw68266x {    text-align: left; }
+.table td.tinytable_css_vwdb10ebhvs1oqc0xvzc, .table th.tinytable_css_vwdb10ebhvs1oqc0xvzc {    text-align: center; }
+.table td.tinytable_css_av6vee908naf7229qaka, .table th.tinytable_css_av6vee908naf7229qaka {    text-align: center; }
+.table td.tinytable_css_wbrx5qmr1r7blmfdv65b, .table th.tinytable_css_wbrx5qmr1r7blmfdv65b {    text-align: center; }
+.table td.tinytable_css_vgm7lflsnyp7inagpg51, .table th.tinytable_css_vgm7lflsnyp7inagpg51 {    border-bottom: solid 0.05em black; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  
+
+  
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_hynm2p20lpc3v4ght3p5" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">MCO</th>
+                <th scope="col">VI</th>
+                <th scope="col">Primera etapa</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>educ    </td>
+                  <td>0.071  </td>
+                  <td>0.124  </td>
+                  <td>       </td>
+                </tr>
+                <tr>
+                  <td>        </td>
+                  <td>(0.003)</td>
+                  <td>(0.050)</td>
+                  <td>       </td>
+                </tr>
+                <tr>
+                  <td>exper   </td>
+                  <td>0.034  </td>
+                  <td>0.056  </td>
+                  <td>-0.404 </td>
+                </tr>
+                <tr>
+                  <td>        </td>
+                  <td>(0.002)</td>
+                  <td>(0.020)</td>
+                  <td>(0.009)</td>
+                </tr>
+                <tr>
+                  <td>nearc4  </td>
+                  <td>       </td>
+                  <td>       </td>
+                  <td>0.327  </td>
+                </tr>
+                <tr>
+                  <td>        </td>
+                  <td>       </td>
+                  <td>       </td>
+                  <td>(0.082)</td>
+                </tr>
+                <tr>
+                  <td>Num.Obs.</td>
+                  <td>3003   </td>
+                  <td>3003   </td>
+                  <td>3003   </td>
+                </tr>
+                <tr>
+                  <td>F       </td>
+                  <td>219.153</td>
+                  <td>       </td>
+                  <td>456.140</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(i, j, css_id) {
+        var table = document.getElementById("tinytable_hynm2p20lpc3v4ght3p5");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_hynm2p20lpc3v4ght3p5');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_ejdrnf7v9t0bdt3os1ws(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_hynm2p20lpc3v4ght3p5");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(0, 0, 'tinytable_css_9xsk3haujyk60gml2bgu') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(0, 1, 'tinytable_css_9xsk3haujyk60gml2bgu') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(0, 2, 'tinytable_css_9xsk3haujyk60gml2bgu') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(0, 3, 'tinytable_css_9xsk3haujyk60gml2bgu') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(0, 0, 'tinytable_css_vfb0aihgu2o5gw68266x') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(1, 0, 'tinytable_css_vfb0aihgu2o5gw68266x') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(2, 0, 'tinytable_css_vfb0aihgu2o5gw68266x') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(3, 0, 'tinytable_css_vfb0aihgu2o5gw68266x') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(4, 0, 'tinytable_css_vfb0aihgu2o5gw68266x') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(5, 0, 'tinytable_css_vfb0aihgu2o5gw68266x') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(6, 0, 'tinytable_css_vfb0aihgu2o5gw68266x') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(7, 0, 'tinytable_css_vfb0aihgu2o5gw68266x') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(8, 0, 'tinytable_css_vfb0aihgu2o5gw68266x') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(0, 1, 'tinytable_css_vwdb10ebhvs1oqc0xvzc') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(1, 1, 'tinytable_css_vwdb10ebhvs1oqc0xvzc') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(2, 1, 'tinytable_css_vwdb10ebhvs1oqc0xvzc') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(3, 1, 'tinytable_css_vwdb10ebhvs1oqc0xvzc') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(4, 1, 'tinytable_css_vwdb10ebhvs1oqc0xvzc') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(5, 1, 'tinytable_css_vwdb10ebhvs1oqc0xvzc') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(6, 1, 'tinytable_css_vwdb10ebhvs1oqc0xvzc') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(7, 1, 'tinytable_css_vwdb10ebhvs1oqc0xvzc') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(8, 1, 'tinytable_css_vwdb10ebhvs1oqc0xvzc') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(0, 2, 'tinytable_css_av6vee908naf7229qaka') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(1, 2, 'tinytable_css_av6vee908naf7229qaka') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(2, 2, 'tinytable_css_av6vee908naf7229qaka') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(3, 2, 'tinytable_css_av6vee908naf7229qaka') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(4, 2, 'tinytable_css_av6vee908naf7229qaka') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(5, 2, 'tinytable_css_av6vee908naf7229qaka') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(6, 2, 'tinytable_css_av6vee908naf7229qaka') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(7, 2, 'tinytable_css_av6vee908naf7229qaka') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(8, 2, 'tinytable_css_av6vee908naf7229qaka') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(0, 3, 'tinytable_css_wbrx5qmr1r7blmfdv65b') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(1, 3, 'tinytable_css_wbrx5qmr1r7blmfdv65b') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(2, 3, 'tinytable_css_wbrx5qmr1r7blmfdv65b') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(3, 3, 'tinytable_css_wbrx5qmr1r7blmfdv65b') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(4, 3, 'tinytable_css_wbrx5qmr1r7blmfdv65b') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(5, 3, 'tinytable_css_wbrx5qmr1r7blmfdv65b') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(6, 3, 'tinytable_css_wbrx5qmr1r7blmfdv65b') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(7, 3, 'tinytable_css_wbrx5qmr1r7blmfdv65b') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(8, 3, 'tinytable_css_wbrx5qmr1r7blmfdv65b') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(6, 0, 'tinytable_css_vgm7lflsnyp7inagpg51') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(6, 1, 'tinytable_css_vgm7lflsnyp7inagpg51') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(6, 2, 'tinytable_css_vgm7lflsnyp7inagpg51') })
+window.addEventListener('load', function () { styleCell_tinytable_ejdrnf7v9t0bdt3os1ws(6, 3, 'tinytable_css_vgm7lflsnyp7inagpg51') })
+    </script>
+
+  
+
+
+</div>
+</div>
+</div>
+</section>
+<section>
+<section id="ejemplo-card-1995-3" class="title-slide slide level1 center">
+<h1>Ejemplo: Card (1995)</h1>
+<p>Debemos verificar el estadístico <span class="math inline">\(F\)</span> de la primera etapa (para los instrumentos)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co">#F de los instrumentos</span></span>
+<span id="cb5-2"><a></a><span class="fu">linearHypothesis</span>(pe_vi, <span class="fu">c</span>(<span class="st">"nearc4=0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear hypothesis test
+
+Hypothesis:
+nearc4 = 0
+
+Model 1: restricted model
+Model 2: educ ~ nearc4 + exper + black + south + married + smsa
+
+  Res.Df   RSS Df Sum of Sq      F    Pr(&gt;F)    
+1   2997 11304                                  
+2   2996 11245  1    59.176 15.767 7.334e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="ejemplo-con-oferta-y-demanda" class="slide level2">
+<h2>Ejemplo con oferta y demanda</h2>
+<p>Supongamos que nos interesa estimar la elasticidad del consumo de mantequilla</p>
+<p><span class="math display">\[\ln(q_{_i})=\alpha + \beta \ln(p_i) + \varepsilon_i\]</span> Supongamos que tenemos datos del precio y el consumo en una muestra grande de localidades <span class="math inline">\(i\)</span></p>
+<p>Si estimamos la ecuación anterior por MCO, el coeficiente estimado <span class="math inline">\(\hat{\beta}\)</span> será inconsistente por un problema de simulateneidad</p>
+<p>El precio y la cantidad se determinan en equilibrio por la interacción de la oferta y la demanda</p>
+<p>Un choque a la oferta o la demanda afectará tanto la cantidad como el precio de equilibrio</p>
+</section>
+<section id="ejemplo-con-oferta-y-demanda-1" class="slide level2">
+<h2>Ejemplo con oferta y demanda</h2>
+<p>Podemos usar variables instrumentales para estimar la elasticidad de la demanda</p>
+<p>Necesitamos una variable <span class="math inline">\(z\)</span> que afecte solo la oferta, pero que no afecte directamente la demanda</p>
+<p><span class="math inline">\(z\)</span> puede ser precipitación o temperatura</p>
+<p>Al desplazar la oferta, manteniendo la demanda fija, se revela la forma de la curva de demanda</p>
+<p>Podemos estimar la elasticidad de la demanda</p>
+</section>
+<section id="ejemplo-con-oferta-y-demanda-2" class="slide level2">
+<h2>Ejemplo con oferta y demanda</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Add custom curves</span></span>
+<span id="cb7-2"><a></a>demand1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Hmisc<span class="sc">::</span><span class="fu">bezier</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">9</span>),</span>
+<span id="cb7-3"><a></a>                                    <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">1</span>))) </span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a>supply1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Hmisc<span class="sc">::</span><span class="fu">bezier</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">9</span>),</span>
+<span id="cb7-6"><a></a>                                    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>))) </span>
+<span id="cb7-7"><a></a></span>
+<span id="cb7-8"><a></a>supply2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Hmisc<span class="sc">::</span><span class="fu">bezier</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">9</span>),</span>
+<span id="cb7-9"><a></a>                                    <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">12</span>))) </span>
+<span id="cb7-10"><a></a></span>
+<span id="cb7-11"><a></a>supply3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Hmisc<span class="sc">::</span><span class="fu">bezier</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">9</span>),</span>
+<span id="cb7-12"><a></a>                                    <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">14</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ejemplo-con-oferta-y-demanda-3" class="slide level2">
+<h2>Ejemplo con oferta y demanda</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>econocharts<span class="sc">::</span><span class="fu">sdcurve</span>(supply1, demand1, supply2, demand1, supply3, demand1,</span>
+<span id="cb8-2"><a></a>        <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"S[1]"</span>, <span class="st">"D[1]"</span>,<span class="st">"S[2]"</span>, <span class="st">"D[1]"</span>, <span class="st">"S[3]"</span>, <span class="st">"D[1]"</span>),</span>
+<span id="cb8-3"><a></a>        <span class="at">xmax =</span> <span class="dv">15</span>, <span class="at">ymax=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+      x     y
+  &lt;dbl&gt; &lt;dbl&gt;
+1  4.65  3.40
+2  3.31  4.76
+3  2.39  6.03</code></pre>
+</div>
+
+</div>
+<img data-src="variables-instrumentales_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="método-generalizado-de-momentos" class="slide level2">
+<h2>Método generalizado de momentos</h2>
+<p>El GMM generaliza una serie de estimadores comúnmente usados en econometría (incluyendo MCO, MV, VI, etc)</p>
+<p>Asumimos que existen <span class="math inline">\(r\)</span> condiciones de momentos independientes para <span class="math inline">\(q\)</span> parámetros <span class="math display">\[E(h(w_i,\theta_0))=0\]</span></p>
+<p>donde <span class="math inline">\(\theta\)</span> es un vector de <span class="math inline">\(q\times 1\)</span>, <span class="math inline">\(h(\cdot)\)</span> es una función vector de <span class="math inline">\(r \times 1\)</span> con <span class="math inline">\(r\geq q\)</span></p>
+<p><span class="math inline">\(w_i\)</span> son los datos observables, incluyendo las variables dependientes, los regresores exógenos, potenciales regresores endógenos, así como instrumentos</p>
+</section>
+<section id="método-generalizado-de-momentos-1" class="slide level2">
+<h2>Método generalizado de momentos</h2>
+<p>La forma de <span class="math inline">\(h(\cdot)\)</span> es equivalente a escoger el modelo</p>
+<p>Por ejemplo:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(h(\cdot)\)</span></th>
+<th style="text-align: center;">Método de estimación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x(y-x'\beta)\)</span></td>
+<td style="text-align: center;">MCO</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\partial\mathcal{L}/\partial\theta\)</span></td>
+<td style="text-align: center;">MV</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(z(y-x'\beta)\)</span></td>
+<td style="text-align: center;">VI</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="método-generalizado-de-momentos-2" class="slide level2">
+<h2>Método generalizado de momentos</h2>
+<p>Cuando <span class="math inline">\(r=q\)</span>, tenemos un modelo <strong>exactamente identificado</strong>, es decir, tenemos tantos momentos como parámetros a estimar</p>
+<p>Podemos obtener el <strong>estimador de método de momentos</strong> <span class="math inline">\(\hat{\theta}_{MM}\)</span> como la solución a</p>
+<p><span class="math display">\[\frac{1}{N}h(w_i,\hat{\theta})=0\]</span></p>
+</section>
+<section id="método-generalizado-de-momentos-3" class="slide level2">
+<h2>Método generalizado de momentos</h2>
+<p>El caso que nos ocupa más en el contexto de MC2E es cuando <span class="math inline">\(r&gt;q\)</span>, es decir, un <strong>modelo sobreidentificado</strong></p>
+<p>En este caso, tenemos más ecuaciones que incógnitas en la condición de momentos</p>
+<p>El <strong>estimador de método generalizado de momentos</strong> <span class="math inline">\(\hat{\theta}_{GMM}\)</span> se define como el vector de parámetros que minimiza la forma cuadrática</p>
+<p><span class="math display">\[Q_N(\theta)=\left(\frac{1}{N}\sum_ih(w_i,\theta)\right)'W_N\left(\frac{1}{N}\sum_ih(w_i,\theta)\right)\]</span></p>
+<p>donde <span class="math inline">\(W_N\)</span> es una matriz simétrica y positiva definida que no depende de <span class="math inline">\(\theta\)</span></p>
+<p>Diferentes matrices <span class="math inline">\(W_N\)</span> dan origen a distintos estimadores</p>
+</section>
+<section id="estimador-de-mgm" class="slide level2">
+<h2>Estimador de MGM</h2>
+<p><strong>Proposición 6.1 en CT</strong>: bajo una serie de supuestos para poder establecer LGN y TLC, <span class="math inline">\(\hat{\theta}_{GMM}\)</span>, definido como una raíz de las condiciones de primer orden <span class="math inline">\(\partial Q_N(\theta) / \partial \theta=0\)</span>, es tal que:</p>
+<p><span class="math display">\[\sqrt{N}\left(\hat{\theta}_{GMM}-\theta_0\right)\stackrel{a}{\sim}\mathcal{N}\left(0,(G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)^{-1}\right)\]</span></p>
+<p>donde <span class="math inline">\(W_0\)</span> es una matriz finita, simétrica y positiva definida, y</p>
+<p><span class="math display">\[
+\begin{aligned}
+G_0&amp;=p\lim\frac{1}{N}\sum_{i=1}^N \left(\frac{\partial h_i}{\partial\theta'}\Bigg|_{\theta_0}\right) \\
+S_0&amp;=p\lim \frac{1}{N} \sum_{i=1}^N \sum_{j=1}^N \left(h_i h_j \Bigg|_{\theta_0} \right)
+\end{aligned}
+\]</span></p>
+</section>
+<section id="matriz-de-varianzas-óptima" class="slide level2">
+<h2>Matriz de varianzas óptima</h2>
+<p>Para implementar MGM debemos especificar las condiciones de momentos y la matriz <span class="math inline">\(W_N\)</span></p>
+<p>En el caso de modelos sobreidentificados y con <span class="math inline">\(S_0\)</span> conocida, el estimador de MGM más eficiente se obtiene al especificar <span class="math inline">\(W_N=S_0^{-1}\)</span></p>
+<p>Con esta elección, la expresión para la varianza de <span class="math inline">\(\hat{\beta}_{MGM}\)</span> se simplifica a</p>
+<p><span class="math display">\[\sqrt{N}\left(\hat{\theta}_{GMM}-\theta_0\right)\stackrel{a}{\sim}\mathcal{N}\left(0,(G_0'S_0^{-1}G_0)^{-1}\right)\]</span></p>
+<p>En la práctica, <span class="math inline">\(S_0\)</span> es desconocida, así que la sustituimos por un estimador consistente <span class="math inline">\(\hat{S}\)</span></p>
+</section>
+<section id="mgm-óptimo" class="slide level2">
+<h2>MGM óptimo</h2>
+<p>La matriz de varianzas se estima siguiendo un procedimiento de dos etapas</p>
+<ol type="1">
+<li><p>Obtener el estimador de MGM usando una matriz subóptima, generalmente <span class="math inline">\(W_N=I_r\)</span> y con estos coeficientes obtener un estimador para <span class="math inline">\(S_0\)</span>: <span class="math display">\[\hat{S}=\frac{1}{N}\sum_i h_i(\hat{\theta})h_j(\hat{\theta})'\]</span></p></li>
+<li><p>Obtener un estimador de MGM óptimo o <strong>estimador de MGM de dos etapas óptimo</strong> <span class="math inline">\(\hat{\theta}_{MGM,O}\)</span> minimizando</p></li>
+</ol>
+<p><span class="math display">\[Q_N(\theta)=\left(\frac{1}{N}\sum_ih(\theta)\right)'\hat{S}^{-1}\left(\frac{1}{N}\sum_ih(\theta)\right)\]</span></p>
+</section>
+<section id="mgm-óptimo-1" class="slide level2">
+<h2>MGM óptimo</h2>
+<p>Para estimar la varianza de <span class="math inline">\(\hat{\theta}_{MGM,O}\)</span> usamos</p>
+<p><span class="math display">\[\hat{V}(\hat{\theta}_{MGM,O})=N^{-1}(\hat{G}\tilde{S}^{-1}\hat{G})^{-1}\]</span></p>
+<p>donde <span class="math inline">\(\hat{G}\)</span> y <span class="math inline">\(\tilde{S}\)</span> se evalúan en <span class="math inline">\(\hat{\theta}_{MGM,O}\)</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -652,6 +1259,82 @@ Irvin Rojas
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
