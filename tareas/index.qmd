@@ -20,6 +20,8 @@ lang: es
 
 - [Preguntas](./tarea-2.qmd)
 
+- [Respuestas](./tarea-2-respuestas.qmd)
+
 ---
 
 # Tarea 3

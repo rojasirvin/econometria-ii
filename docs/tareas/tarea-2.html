@@ -178,6 +178,12 @@ window.Quarto = {
  <span class="menu-text">Tareas</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../diapositivas/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diapositivas</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -262,7 +268,7 @@ window.Quarto = {
 <p>Ahora estimará un modelo multinomial empleando los mismos datos en <em>motral2012.csv</em>. El propósito será ahora estudiar los factores relevantes para predecir la forma de ahorro que tienen las personas que ahorran.</p>
 <ol type="a">
 <li><p>[2 punto] Genere una variable categórica llamada <strong>ahorro</strong> que sea igual a 1 cuando <strong>p14</strong> sea igual a 1 o 2, igual a 2 cuando <strong>p14</strong> sea igual a 7, e igual a 3 cuando <strong>p14</strong> sea igual a 3, 4, 5, 6 u 8. Haga que esa variable sea missing cuando <strong>p14</strong> sea missing. Posteriormente, convierta esta nueva variable en una de factores de forma que el valor 1 tenga la etiqueta “Banco”, el valor 2 tenga la etiqueta “Casa” y el valor 3 tenga la etiqueta “Otro”.</p></li>
-<li><p>[4 puntos] Estime un modelo logit multinomial (regresores invariantes a la alternativa) con la opción de ahorro como variable dependiente y los mismos regresores de la pregunta 5. Hay varios paquetes para hacer esto, pero recomiendo usar la función <em>multinom</em> del paquete <em>nnet</em>. ¿Qué puede decir sobre el coeficiente de años de educación en la alternativa “Casa”?</p></li>
+<li><p>[4 puntos] Estime un modelo logit multinomial (regresores invariantes a la alternativa) con la opción de ahorro como variable dependiente y los mismos regresores de la pregunta 1. Hay varios paquetes para hacer esto, pero recomiendo usar la función <em>multinom</em> del paquete <em>nnet</em>. ¿Qué puede decir sobre el coeficiente de años de educación en la alternativa “Casa”?</p></li>
 <li><p>[4 puntos] Calcule los efectos marginales promedio sobre la probabilidad de ahorrar en el banco. Al considerar el cambio en la probabilidad para el caso de las mujeres (cuando la variable <strong>mujer</strong> pasa de 0 a 1), ¿de qué tamaño es el efecto predicho en la probabilidad de ahorrar en el banco?</p></li>
 <li><p>[3 puntos] Calcule los cocientes de riesgo relativo (<em>relative risk ratios</em> o RRR). ¿Qué significa el hecho de que el RRR asociado a ser mujer sea mayor que 1 en la alternativa “Casa”?</p></li>
 <li><p>[2 puntos] Estime nuevamente el modelo, pero ahora, especifique que la alternativa “Casa” sea la alternativa base. ¿Cómo es el RRR de la edad en la alternativa “Banco”? ¿Es esto congruente con lo que obtuvo en la parte d.&nbsp;de esta pregunta?</p></li>
