@@ -6,3 +6,5 @@ title: "Diapositivas"
 [Muestra seleccionada](./muestra-seleccionada.qmd)
 
 [Variables instrumentales](./variables-instrumentales.qmd)
+
+[Método generalizado de momentos](./mgm.qmd)

@@ -1189,7 +1189,7 @@
     "href": "diapositivas/index.html",
     "title": "Diapositivas",
     "section": "",
-    "text": "Muestra seleccionada\nVariables instrumentales",
+    "text": "Muestra seleccionada\nVariables instrumentales\nMétodo generalizado de momentos",
     "crumbs": [
       "Diapositivas"
     ]
@@ -1198,8 +1198,8 @@
     "objectID": "diapositivas/variables-instrumentales.html#qué-sucede-si-se-violan-los-supuestos-de-mco",
     "href": "diapositivas/variables-instrumentales.html#qué-sucede-si-se-violan-los-supuestos-de-mco",
     "title": "Variables instrumentales",
-    "section": "¿Qué sucede si se violan los supuestos de MCO?",
-    "text": "¿Qué sucede si se violan los supuestos de MCO?\nSupongamos que el el proceso de salarios verdadero está dado por\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+\\beta_2 habilidad_i+e_i\\]\nY asumamos que la habilidad es no observada y decidimos estimar\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\]\n¿Dónde queda la habilidad?\nEl \\(\\hat{\\beta}_1\\) estimado con esta regresión corta es inconsistente porque \\(u_i\\) incluye la habilidad, que afecta tanto el desempeño en el mercado laboral como el desempeño en la escuela"
+    "section": "",
+    "text": "Supongamos que el el proceso de salarios verdadero está dado por\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+\\beta_2 habilidad_i+e_i\\]\nY asumamos que la habilidad es no observada y decidimos estimar\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\]\n¿Dónde queda la habilidad?\nEl \\(\\hat{\\beta}_1\\) estimado con esta regresión corta es inconsistente porque \\(u_i\\) incluye la habilidad, que afecta tanto el desempeño en el mercado laboral como el desempeño en la escuela"
   },
   {
     "objectID": "diapositivas/variables-instrumentales.html#instrumentos",
@@ -1269,14 +1269,14 @@
     "href": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-1",
     "title": "Variables instrumentales",
     "section": "Ejemplo: Card (1995)",
-    "text": "Ejemplo: Card (1995)\nSabemos que \\(\\beta_1\\) estimado por MCO es inconsistente\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi),\n             coef_map = c(\"educ\", \"exper\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n\n \n\n  \n    \n    \n    tinytable_t0qsr5rax7s7juw9dth8\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153"
+    "text": "Ejemplo: Card (1995)\nSabemos que \\(\\beta_1\\) estimado por MCO es inconsistente\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi),\n             coef_map = c(\"educ\", \"exper\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n \n\n  \n    \n    \n    tinytable_spnkfnkieg6dn9dmadk8\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153"
   },
   {
     "objectID": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-2",
     "href": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-2",
     "title": "Variables instrumentales",
     "section": "Ejemplo: Card (1995)",
-    "text": "Ejemplo: Card (1995)\nLa primera etapa de este ejercicio es\n\n# Primera etapa\npe_vi &lt;- lm(educ ~  nearc4 + exper + black + south + married + smsa,\n            data = data.ingresos)\n\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi, \"Primera etapa\"=pe_vi),\n             coef_map = c(\"educ\", \"exper\", \"nearc4\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n\n \n\n  \n    \n    \n    tinytable_hynm2p20lpc3v4ght3p5\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n                Primera etapa\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                         \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                         \n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                  -0.404 \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                  (0.009)\n                \n                \n                  nearc4  \n                         \n                         \n                  0.327  \n                \n                \n                          \n                         \n                         \n                  (0.082)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153\n                         \n                  456.140"
+    "text": "Ejemplo: Card (1995)\nLa primera etapa de este ejercicio es\n\n# Primera etapa\npe_vi &lt;- lm(educ ~  nearc4 + exper + black + south + married + smsa,\n            data = data.ingresos)\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi, \"Primera etapa\"=pe_vi),\n             coef_map = c(\"educ\", \"exper\", \"nearc4\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n \n\n  \n    \n    \n    tinytable_rt1edjiz0u3qwvmj0lux\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n                Primera etapa\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                         \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                         \n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                  -0.404 \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                  (0.009)\n                \n                \n                  nearc4  \n                         \n                         \n                  0.327  \n                \n                \n                          \n                         \n                         \n                  (0.082)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153\n                         \n                  456.140"
   },
   {
     "objectID": "diapositivas/variables-instrumentales.html#método-generalizado-de-momentos",
@@ -1389,5 +1389,292 @@
     "title": "Respuestas a la tarea 2",
     "section": "",
     "text": "Usando los mismos datos del archivo motral2012.csv implementará un ejercicio en el mismo espíritu del famoso estudio de Mroz (1987)1 sobre la oferta laboral femenina. El propósito es estimar la relación entre el salario y el número de horas trabajadas, concentrándonos en la muestra de mujeres.\n\n[5 puntos] El primer problema al que nos enfrentamos es que el salario no se observa para las mujeres que no trabajan. Estime un modelo lineal para el log del salario por hora, ing_x_hrs, usando las variables anios_esc, eda, n_hij, el cuadrado de n_hij, busqueda y casada, usando la submuestra de mujeres con salario por hora positivo. Dichas variables representan los años de escolaridad, la edad, el número de hijos, el cuadrado del número de hijos, si la persona buscó trabajo recientemente y si la persona es casada, respectivamente. Use los coeficientes estimados para imputar el ingreso por hora, faltante para las mujeres que reportan 0 en las horas trabajadas.\nImputamos el salario faltante:\n\ndata.salarios&lt;-read_csv(\"../files/motral2012.csv\",\n                        locale = locale(encoding = \"latin1\")) %&gt;%\n  filter(sex==2) %&gt;% \n  mutate(casada=ifelse(e_con==5,1,0))\n\ndata.salarios &lt;- data.salarios %&gt;% \n  mutate(ly=ifelse(ing_x_hrs&gt;0,log(ing_x_hrs),NA)) \n\nreg_imput &lt;- lm(ly ~ anios_esc+casada+eda+n_hij+n_hij^2+busqueda,\n              data = data.salarios)\n\ndata.salarios &lt;- data.salarios %&gt;% \n  mutate(lyhat = predict(reg_imput, .)) %&gt;% \n  mutate(ly = ifelse(is.na(ly), lyhat, ly))\n\nAquí tomé en cuenta que hay personas con horas trabajadas positivas e ingreso cero. En ese caso puse un NA al log del salario. Luego, en la imputación, le asigné el valor ajustado a estas observaciones junto con todas las que tienen el log del salario faltante.\n[5 puntos] Use heckit de la librería sampleSelection para estimar por máxima verosimilitud un heckit para las horas trabajadas hrsocup. En la ecuación de selección (si la persona trabaja o no) incluya como variable explicativa el salario por hora (imputado para las mujeres que no trabajan), además de anios_esc, eda, n_hij, el cuadrado de n_hij, casada y busqueda (esta última es un indicador de si se buscó trabajo en la última semana). En la ecuación de horas, incluya los mismos regresores, excepto n_hij, su cuadrado y busqueda.\nLa función heckit permite estimar el modelo de Heckman por máxima verosimilitud de manera muy simple. Hay que especificar method=“ml” para que la estimación sea por máxima verosimilitud:\n\ndata.salarios &lt;- data.salarios %&gt;% \n  mutate(trabaja = ifelse(hrsocup&gt;0,1,0)) %&gt;% \n  mutate(trabaja = factor(trabaja,levels=c(0,1)))\n\nreg_heckit_mv &lt;- heckit(trabaja ~ anios_esc+casada+eda+ly+n_hij+n_hij^2+busqueda,\n                hrsocup ~ anios_esc+casada+eda+ly,\n                method=\"ml\",\n                data = data.salarios)\n\nsummary(reg_heckit_mv)\n\n--------------------------------------------\nTobit 2 model (sample selection model)\nMaximum Likelihood estimation\nNewton-Raphson maximisation, 3 iterations\nReturn code 8: successive function values within relative tolerance limit (reltol)\nLog-Likelihood: -7181.675 \n2625 observations (926 censored and 1699 observed)\n14 free parameters (df = 2611)\nProbit selection equation:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -2.583614   0.448320  -5.763 9.24e-09 ***\nanios_esc    0.005346   0.020341   0.263    0.793    \ncasada      -0.213125   0.145135  -1.468    0.142    \neda         -0.003391   0.008137  -0.417    0.677    \nly          -0.004236   0.133344  -0.032    0.975    \nn_hij        0.023985   0.058900   0.407    0.684    \nbusqueda     2.406669   0.104595  23.009  &lt; 2e-16 ***\nOutcome equation:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 55.62469    2.17656  25.556  &lt; 2e-16 ***\nanios_esc    1.04819    0.09995  10.487  &lt; 2e-16 ***\ncasada      -3.58856    0.77967  -4.603 4.37e-06 ***\neda          0.11614    0.03902   2.977  0.00294 ** \nly          -9.83418    0.60389 -16.285  &lt; 2e-16 ***\n   Error terms:\n      Estimate Std. Error t value Pr(&gt;|t|)    \nsigma  14.8579     0.2591  57.350   &lt;2e-16 ***\nrho    -0.1606     0.1964  -0.818    0.414    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n--------------------------------------------\n\n\nPodemos reportar con modelsummary, aunque realmente lo hace muy mal:\n\nmodelsummary(list(reg_heckit_mv),\n             stars = c('***' = 0.01, '**' = 0.05, '*' = 0.1))\n\n \n\n  \n    \n    \n    tinytable_njc58qm6fgmyuyg8631a\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n\n              \n                 \n                (1)\n              \n        \n        * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01\n        \n                \n                  (Intercept)\n                  -2.584***\n                \n                \n                             \n                  55.625***\n                \n                \n                             \n                  (0.448)  \n                \n                \n                             \n                  (2.177)  \n                \n                \n                  anios_esc  \n                  0.005    \n                \n                \n                             \n                  1.048*** \n                \n                \n                             \n                  (0.020)  \n                \n                \n                             \n                  (0.100)  \n                \n                \n                  casada     \n                  -0.213   \n                \n                \n                             \n                  -3.589***\n                \n                \n                             \n                  (0.145)  \n                \n                \n                             \n                  (0.780)  \n                \n                \n                  eda        \n                  -0.003   \n                \n                \n                             \n                  0.116*** \n                \n                \n                             \n                  (0.008)  \n                \n                \n                             \n                  (0.039)  \n                \n                \n                  ly         \n                  -0.004   \n                \n                \n                             \n                  -9.834***\n                \n                \n                             \n                  (0.133)  \n                \n                \n                             \n                  (0.604)  \n                \n                \n                  n_hij      \n                  0.024    \n                \n                \n                             \n                  (0.059)  \n                \n                \n                  busqueda   \n                  2.407*** \n                \n                \n                             \n                  (0.105)  \n                \n                \n                  sigma      \n                  14.858***\n                \n                \n                             \n                  (0.259)  \n                \n                \n                  rho        \n                  -0.161   \n                \n                \n                             \n                  (0.196)  \n                \n                \n                  Num.Obs.   \n                  2625     \n                \n                \n                  AIC        \n                  14391.4  \n                \n                \n                  BIC        \n                  14473.6  \n                \n                \n                  RMSE       \n                  14.84    \n                \n        \n      \n    \n\n    \n\n  \n\n\n\n\n[10 puntos] Estime ahora el heckit en dos pasos, a mano. Es decir, siga los siguientes pasos: i) estime un probit para la ecuación de selección y obtenga el índice \\(x_i'\\hat{\\beta}\\); ii) calcule el inverso de la razón de Mills \\(\\lambda_i(x_i'\\hat{\\beta})\\); y iii) estime por MCO la ecuación para las horas trabajadas con la submuestra que tiene horas trabajadas positivas, incluyendo como regresor el inverso de la razón de Mills estimado y el resto de los regresores. Compare los coeficientes y los errores estándar obtenidos en esta parte con los de la parte b. ¿Por qué son iguales o por qué difieren?\nEstimamos ahora el heckit a mano. Estimamos el probit y obtenemos el valor ajustado del IMR:\n\nreg_heckit_pe &lt;- glm(trabaja ~ anios_esc+casada+eda+ly+n_hij+n_hij^2+busqueda,\n                  family = binomial(link = \"probit\"),\n                  data = data.salarios)\n\ndata.salarios &lt;- data.salarios %&gt;% \n  mutate(index = predict(reg_heckit_pe, .)) %&gt;% \n  mutate(imr = dnorm(index)/pnorm(index))\n\n\nreg_heckit_se &lt;- lm(hrsocup ~ anios_esc+casada+eda+ly+imr,\n            data=filter(data.salarios,trabaja==1))\n\nsummary(reg_heckit_se)\n\n\nCall:\nlm(formula = hrsocup ~ anios_esc + casada + eda + ly + imr, data = filter(data.salarios, \n    trabaja == 1))\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-46.172 -10.085   1.915   9.253  57.689 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 55.68676    2.17948  25.550  &lt; 2e-16 ***\nanios_esc    1.04814    0.10000  10.481  &lt; 2e-16 ***\ncasada      -3.56927    0.78057  -4.573 5.17e-06 ***\neda          0.11621    0.03904   2.977  0.00296 ** \nly          -9.82971    0.60406 -16.273  &lt; 2e-16 ***\nimr         -3.94669    3.62684  -1.088  0.27667    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 14.86 on 1693 degrees of freedom\nMultiple R-squared:  0.1563, Adjusted R-squared:  0.1539 \nF-statistic: 62.75 on 5 and 1693 DF,  p-value: &lt; 2.2e-16\n\n\nComparamos coeficientes (aquí stargazer lo hace mejor):\nstargazer(reg_heckit_mv, reg_heckit_se,\n          type=\"html\", \n          df=FALSE,\n          digits=4)\n\n\n\n\n\n\n\n\n\nDependent variable:\n\n\n\n\n\n\n\n\n\n\n\n\nhrsocup\n\n\n\n\n\n\nHeckman\n\n\nOLS\n\n\n\n\n\n\nselection\n\n\n\n\n\n\n\n\n\n(1)\n\n\n(2)\n\n\n\n\n\n\n\n\nanios_esc\n\n\n1.0482***\n\n\n1.0481***\n\n\n\n\n\n\n(0.0999)\n\n\n(0.1000)\n\n\n\n\n\n\n\n\n\n\n\n\ncasada\n\n\n-3.5886***\n\n\n-3.5693***\n\n\n\n\n\n\n(0.7797)\n\n\n(0.7806)\n\n\n\n\n\n\n\n\n\n\n\n\neda\n\n\n0.1161***\n\n\n0.1162***\n\n\n\n\n\n\n(0.0390)\n\n\n(0.0390)\n\n\n\n\n\n\n\n\n\n\n\n\nly\n\n\n-9.8342***\n\n\n-9.8297***\n\n\n\n\n\n\n(0.6039)\n\n\n(0.6041)\n\n\n\n\n\n\n\n\n\n\n\n\nimr\n\n\n\n\n-3.9467\n\n\n\n\n\n\n\n\n(3.6268)\n\n\n\n\n\n\n\n\n\n\n\n\nConstant\n\n\n55.6247***\n\n\n55.6868***\n\n\n\n\n\n\n(2.1766)\n\n\n(2.1795)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObservations\n\n\n2,625\n\n\n1,699\n\n\n\n\nR2\n\n\n0.1563\n\n\n\n\n\n\nAdjusted R2\n\n\n0.1539\n\n\n\n\n\n\nResidual Std. Error\n\n\n\n\n14.8614\n\n\n\n\nF Statistic\n\n\n\n\n62.7490***\n\n\n\n\n\n\n\n\nNote:\n\n\np&lt;0.1; p&lt;0.05; p&lt;0.01\n\n\n\nLa magnitud de los coeficientes es práctiamente la misma entre el modelo estimado por máxima verosimilitud y con un procedimiento en dos etapas a mano. En este ejemplo las diferencias son sutiles, aunque recordemos que en general la estimación por MV es más eficiente si la verosimilitud está bien planteada."
+  },
+  {
+    "objectID": "diapositivas/mgm.html#qué-sucede-si-se-violan-los-supuestos-de-mco",
+    "href": "diapositivas/mgm.html#qué-sucede-si-se-violan-los-supuestos-de-mco",
+    "title": "Variables instrumentales",
+    "section": "¿Qué sucede si se violan los supuestos de MCO?",
+    "text": "¿Qué sucede si se violan los supuestos de MCO?\nSupongamos que el el proceso de salarios verdadero está dado por\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+\\beta_2 habilidad_i+e_i\\]\nY asumamos que la habilidad es no observada y decidimos estimar\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\]\n¿Dónde queda la habilidad?\nEl \\(\\hat{\\beta}_1\\) estimado con esta regresión corta es inconsistente porque \\(u_i\\) incluye la habilidad, que afecta tanto el desempeño en el mercado laboral como el desempeño en la escuela"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#instrumentos",
+    "href": "diapositivas/mgm.html#instrumentos",
+    "title": "Variables instrumentales",
+    "section": "Instrumentos",
+    "text": "Instrumentos\nConsideremos el siguiente modelo\n\\[y=\\beta_0+\\beta_1 x+u\\]\ndonde \\(cov(x,u)\\neq 0\\)\nSuponga que existe una varible \\(z\\) que cumple con:\n\nExogeneidad: \\(z\\) no está correlacionada con \\(u\\)\n\n\\[cov(z,u)=0\\]\n\nRelevancia: \\(z\\) está correlacionado con \\(x\\)\n\n\\[cov(z,x)\\neq 0\\]\nEntonces \\(z\\) es un instrumento de \\(x\\)\nLa exogeneidad implica que \\(z\\) no debe estar correlacionado con factores omitidos (por ejemplo, la habilidad)"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-de-vi",
+    "href": "diapositivas/mgm.html#estimador-de-vi",
+    "title": "Variables instrumentales",
+    "section": "Estimador de VI",
+    "text": "Estimador de VI\nCalculando la covarianza con \\(z\\) de \\(y=\\beta_0+\\beta_1 x+u\\) obtenemos:\n\\[cov(y,z)=\\beta_1 cov(x,z)+cov(u,z)\\]\nY, si \\(cov(u,z)\\), resolviendo para \\(\\hat{\\beta}_1\\)\n\\[\\hat{\\beta}_1=\\frac{cov(y,z)}{cov(x,z)}\\]\nsiempre y cuando \\(cov(x,z)\\neq 0\\)\nPor una LGN se puede mostrar que \\(\\hat{\\beta}_1\\) es consistente\nSin embargo, como profundizaremos más adelante, \\(\\hat{\\beta}_1\\) siempre es sesgagado\nEl sesgo puede ser sustancial en muestras pequeñas, por lo que se recomienda tener precaución con el tamaño de la muestra"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#ejemplo-rendimientos-a-la-educación",
+    "href": "diapositivas/mgm.html#ejemplo-rendimientos-a-la-educación",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: rendimientos a la educación",
+    "text": "Ejemplo: rendimientos a la educación\nCard (1995) estudia el problema de retornos a la educación\nTenemos una muestra de 5,525 hombres de entre 14 y 24 años\nNos interesa la relación entre educación e ingreso, pero sabemos que no observamos la habilidad\nSabemos que si estimamos \\(\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\), el coeficiente \\(\\beta_1\\) estará sesgado\nCard emplea como instrumento una variable \\(z_i\\) que indica si en el municipio de la persona \\(i\\) hay una universidad\nLa intución es que la presencia de la universidad baja el costo de ir a la universidad, pero esto no afecta directamente el ingreso\nEncontrar un instrumento casi nunca es tarea sencilla: se trata de enteder cómo los mecanismos, las instituciones y los contextos"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#lenguaje-de-vi",
+    "href": "diapositivas/mgm.html#lenguaje-de-vi",
+    "title": "Variables instrumentales",
+    "section": "Lenguaje de VI",
+    "text": "Lenguaje de VI\nDe forma más general, partimos del la siguiente ecuación estructural para \\(y_i\\):\n\\[y_i=\\beta_0+\\beta_1 x_{1i}+\\beta_2 x_{2i}+u_i\\]\ndonde \\(cov(x_{1i},u_i)\\neq 0\\)\nA \\(x_{1i}\\) se le llama la variable endógena\nSe incluye también una o más variables exógenas como \\(x_{2i}\\) que no están correlacionadas con \\(u_i\\)\nA una regresión de la variable de interés en función del instrumento y las variables exógenas se le conoce como forma reducida\n\\[y_i=\\beta_0+\\beta_1 z_{1i}+\\beta_2 x_{2i}+u_i\\]"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#primera-etapa",
+    "href": "diapositivas/mgm.html#primera-etapa",
+    "title": "Variables instrumentales",
+    "section": "Primera etapa",
+    "text": "Primera etapa\nLa primera etapa especifica la relación entre la variable endógena y el instrumento:\n\\[x_{1i}=\\pi_0+\\pi_1 z_i+\\pi_2x_{2i}+\\nu_i\\]\nDonde se cumple que \\(cov(z_i,\\nu_i=0)\\) y \\(cov(x_{2i},\\nu_i)=0\\)\nEntonces, la condición de relevancia puede escribirse también como \\(\\pi_1\\neq 0\\)\nNoten que la primera etapa también implica que, descontando el efecto de \\(z_i\\), todavía \\(x_{1i}\\) y \\(x_{2i}\\) están correlacionadas\nLa primera etapa puede y debe probarse empíricamente\nEn cambio, no es posible probar la restricción de exclusión, que debe estar respaldada sobre todo por la teoría económica, el conocimiento de las instituciones, la exogeneidad de experimentos naturales, etc."
+  },
+  {
+    "objectID": "diapositivas/mgm.html#más-de-un-instrumento",
+    "href": "diapositivas/mgm.html#más-de-un-instrumento",
+    "title": "Variables instrumentales",
+    "section": "Más de un instrumento",
+    "text": "Más de un instrumento\nEs posible que haya \\(J\\) variables \\(z_{ij}\\) que puedan funcionar como instrumento\nSe debe cumplir que \\(cov(u_i,z_{ij})=0\\) y que cada una se correlacione con \\(x_{i1}\\)\nCon dos instrumentos, podemos escribir la primera etapa como\n\\[x_{1i}=\\pi_0+\\pi_1 z_{1i}+ \\pi_2 z_{2i} +\\pi_3x_{2i}+\\nu_i\\]\nAhora, debe cumplirse que \\(cov(z_{1i},\\nu_i)=cov(z_{2i},\\nu_i)=cov(x_{2i},\\nu_i)=0\\)\nPara lograr identificación, se requiere que \\(\\pi_1\\neq 0\\) o \\(\\pi_2\\neq 0\\)\nPodemos usar una prueba \\(F\\) para probar que \\(\\pi_1=\\pi_2=0\\)"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#mínimos-cuadrados-en-dos-etapas",
+    "href": "diapositivas/mgm.html#mínimos-cuadrados-en-dos-etapas",
+    "title": "Método generalizado de momentos",
+    "section": "Mínimos cuadrados en dos etapas",
+    "text": "Mínimos cuadrados en dos etapas\nSi estamos dispuestos a asumir errores homocedásticos\n\\[\\hat{S}^{-1}=\\left(\\frac{1}{N}s^2Z'Z\\right)^{-1}\\]\nY entonces hacemos\n\\[W=\\left(\\frac{1}{N}Z'Z\\right)^{-1}\\]\nCon esta simplificación, el estimador de MGM es\n\\[\n\\begin{aligned}\n\\hat{\\beta}_{MC2E}&=(X'Z(Z'Z)^{-1}Z'X)^{-1}X'ZZ(Z'Z)^{-1}Z'y \\\\\n&=(X'P_ZX)^{-1}X'P_Zy\n\\end{aligned}\n\\]\nEste es el estimador de MC2E, también llamado estimador de variables instrumentales generalizado"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#más-sobre-rendimientos-a-la-educación",
+    "href": "diapositivas/mgm.html#más-sobre-rendimientos-a-la-educación",
+    "title": "Variables instrumentales",
+    "section": "Más sobre rendimientos a la educación",
+    "text": "Más sobre rendimientos a la educación\nEn el problema de Card (1995), la primera etapa es\n\\[esc_i=\\pi_0+\\pi_1 X_i+ \\phi unicerca_i +\\nu_i\\] donde \\(unicerca_i= \\begin{cases} 1 \\quad\\text{había una universidad en el municipio} \\\\ 0 \\quad\\text{otro caso}\\\\ \\end{cases}\\)\nY la forma reducida es\n\\[\\ln(w_i)=\\gamma_0+\\gamma_1 X_i+  \\delta unicerca_i+\\varepsilon_i\\]\nSabemos que el salario estará correlacionado con la presencia de la universidad, pero estas diferencias ocurren por la vía de la escolaridad"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#ejemplo-card-1995",
+    "href": "diapositivas/mgm.html#ejemplo-card-1995",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: Card (1995)",
+    "text": "Ejemplo: Card (1995)\nUsamos los datos en ingresos_iv.csv, del estudio de Card que hemos mencionado como ejemplo\nLa librería AER, que ya hemos usado, tiene la función ivreg\nTambién usaremos una nueva librería, gmm\nEstimemos la relación entre el log del salario y la educación\n\ndata.ingresos &lt;- read_csv(\"../files/ingresos_iv.csv\",\n                          locale = locale(encoding = \"latin1\"))\n#MCO\nmco &lt;- lm(lwage ~ educ + exper + black + south + married + smsa,\n          data = data.ingresos)\n\n#Variables instrumentales (asume homocedasticidad)\nvi &lt;- ivreg(lwage ~  educ + exper + black + south + married + smsa |\n               . - educ + nearc4, data = data.ingresos)"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#ejemplo-card-1995-1",
+    "href": "diapositivas/mgm.html#ejemplo-card-1995-1",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: Card (1995)",
+    "text": "Ejemplo: Card (1995)\nSabemos que \\(\\beta_1\\) estimado por MCO es inconsistente\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi),\n             coef_map = c(\"educ\", \"exper\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n\n \n\n  \n    \n    \n    tinytable_zzz439pod56wjm61fdaj\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#ejemplo-card-1995-2",
+    "href": "diapositivas/mgm.html#ejemplo-card-1995-2",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: Card (1995)",
+    "text": "Ejemplo: Card (1995)\nLa primera etapa de este ejercicio es\n\n# Primera etapa\npe_vi &lt;- lm(educ ~  nearc4 + exper + black + south + married + smsa,\n            data = data.ingresos)\n\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi, \"Primera etapa\"=pe_vi),\n             coef_map = c(\"educ\", \"exper\", \"nearc4\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n\n \n\n  \n    \n    \n    tinytable_ef12qnl50925c75ted5j\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n                Primera etapa\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                         \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                         \n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                  -0.404 \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                  (0.009)\n                \n                \n                  nearc4  \n                         \n                         \n                  0.327  \n                \n                \n                          \n                         \n                         \n                  (0.082)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153\n                         \n                  456.140"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#ejemplo-con-oferta-y-demanda",
+    "href": "diapositivas/mgm.html#ejemplo-con-oferta-y-demanda",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\nSupongamos que nos interesa estimar la elasticidad del consumo de mantequilla\n\\[\\ln(q_{_i})=\\alpha + \\beta \\ln(p_i) + \\varepsilon_i\\] Supongamos que tenemos datos del precio y el consumo en una muestra grande de localidades \\(i\\)\nSi estimamos la ecuación anterior por MCO, el coeficiente estimado \\(\\hat{\\beta}\\) será inconsistente por un problema de simulateneidad\nEl precio y la cantidad se determinan en equilibrio por la interacción de la oferta y la demanda\nUn choque a la oferta o la demanda afectará tanto la cantidad como el precio de equilibrio"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#ejemplo-con-oferta-y-demanda-1",
+    "href": "diapositivas/mgm.html#ejemplo-con-oferta-y-demanda-1",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\nPodemos usar variables instrumentales para estimar la elasticidad de la demanda\nNecesitamos una variable \\(z\\) que afecte solo la oferta, pero que no afecte directamente la demanda\n\\(z\\) puede ser precipitación o temperatura\nAl desplazar la oferta, manteniendo la demanda fija, se revela la forma de la curva de demanda\nPodemos estimar la elasticidad de la demanda"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#ejemplo-con-oferta-y-demanda-2",
+    "href": "diapositivas/mgm.html#ejemplo-con-oferta-y-demanda-2",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\n\n# Add custom curves\ndemand1 &lt;- data.frame(Hmisc::bezier(c(1, 3, 9),\n                                    c(9, 3, 1))) \n\nsupply1 &lt;- data.frame(Hmisc::bezier(c(1, 8, 9),\n                                    c(1, 5, 9))) \n\nsupply2 &lt;- data.frame(Hmisc::bezier(c(1, 8, 9),\n                                    c(3, 8, 12))) \n\nsupply3 &lt;- data.frame(Hmisc::bezier(c(1, 8, 9),\n                                    c(5, 10, 14)))"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#ejemplo-con-oferta-y-demanda-3",
+    "href": "diapositivas/mgm.html#ejemplo-con-oferta-y-demanda-3",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\n\neconocharts::sdcurve(supply1, demand1, supply2, demand1, supply3, demand1,\n        names = c(\"S[1]\", \"D[1]\",\"S[2]\", \"D[1]\", \"S[3]\", \"D[1]\"),\n        xmax = 15, ymax=10)\n\n# A tibble: 3 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1  4.65  3.40\n2  3.31  4.76\n3  2.39  6.03"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#método-generalizado-de-momentos",
+    "href": "diapositivas/mgm.html#método-generalizado-de-momentos",
+    "title": "Variables instrumentales",
+    "section": "Método generalizado de momentos",
+    "text": "Método generalizado de momentos\nEl GMM generaliza una serie de estimadores comúnmente usados en econometría (incluyendo MCO, MV, VI, etc)\nAsumimos que existen \\(r\\) condiciones de momentos independientes para \\(q\\) parámetros \\[E(h(w_i,\\theta_0))=0\\]\ndonde \\(\\theta\\) es un vector de \\(q\\times 1\\), \\(h(\\cdot)\\) es una función vector de \\(r \\times 1\\) con \\(r\\geq q\\)\n\\(w_i\\) son los datos observables, incluyendo las variables dependientes, los regresores exógenos, potenciales regresores endógenos, así como instrumentos"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#método-generalizado-de-momentos-1",
+    "href": "diapositivas/mgm.html#método-generalizado-de-momentos-1",
+    "title": "Método generalizado de momentos",
+    "section": "Método generalizado de momentos",
+    "text": "Método generalizado de momentos\nLa forma de \\(h(\\cdot)\\) es equivalente a escoger el modelo\nPor ejemplo:\n\n\n\n\\(h(\\cdot)\\)\nMétodo de estimación\n\n\n\n\n\\(x(y-x'\\beta)\\)\nMCO\n\n\n\\(\\partial\\mathcal{L}/\\partial\\theta\\)\nMV\n\n\n\\(z(y-x'\\beta)\\)\nVI"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#método-generalizado-de-momentos-2",
+    "href": "diapositivas/mgm.html#método-generalizado-de-momentos-2",
+    "title": "Método generalizado de momentos",
+    "section": "Método generalizado de momentos",
+    "text": "Método generalizado de momentos\nEl caso que nos ocupa más en el contexto de MC2E es cuando \\(r&gt;q\\), es decir, un modelo sobreidentificado\nEn este caso, tenemos más ecuaciones que incógnitas en la condición de momentos\nEl estimador de método generalizado de momentos \\(\\hat{\\theta}_{GMM}\\) se define como el vector de parámetros que minimiza la forma cuadrática\n\\[Q_N(\\theta)=\\left(\\frac{1}{N}\\sum_ih(w_i,\\theta)\\right)'W_N\\left(\\frac{1}{N}\\sum_ih(w_i,\\theta)\\right)\\]\ndonde \\(W_N\\) es una matriz simétrica y positiva definida que no depende de \\(\\theta\\)\nDiferentes matrices \\(W_N\\) dan origen a distintos estimadores"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#método-generalizado-de-momentos-3",
+    "href": "diapositivas/mgm.html#método-generalizado-de-momentos-3",
+    "title": "Método generalizado de momentos",
+    "section": "Método generalizado de momentos",
+    "text": "Método generalizado de momentos\nLas COP son:\n\\[\\left(\\frac{1}{N}\\sum_{i=1}^N\\frac{\\partial h_i(\\hat{\\theta})'}{\\partial\\theta}\\right)W_N\\left(\\frac{1}{N}\\sum_{i=1}^Nh_i(\\hat{\\theta})\\right)=\\mathbf{0}\\] donde para acotar la notación \\(h_i(\\theta)=h_i(w_i,\\theta)\\)\nEsto es un sistema de ecuaciones en general no lineal y complicado de resolver\nRecurrimos a métodos numéricos para encontrar \\(\\hat{\\theta}_{MGM}\\)\nPodemos establecer teoría asintótica para mostrar las propiedades asintóticas del estimador de MGM"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-de-mgm",
+    "href": "diapositivas/mgm.html#estimador-de-mgm",
+    "title": "Método generalizado de momentos",
+    "section": "Estimador de MGM",
+    "text": "Estimador de MGM\nProposición 6.1 en CT: bajo una serie de supuestos para poder establecer LGN y TLC, \\(\\hat{\\theta}_{GMM}\\), definido como una raíz de las condiciones de primer orden \\(\\partial Q_N(\\theta) / \\partial \\theta=0\\), es tal que:\n\\[\\sqrt{N}\\left(\\hat{\\theta}_{GMM}-\\theta_0\\right)\\stackrel{a}{\\sim}\\mathcal{N}\\left(0,(G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)^{-1}\\right)\\]\ndonde \\(W_0\\) es una matriz finita, simétrica y positiva definida, y\n\\[\n\\begin{aligned}\nG_0&=p\\lim\\frac{1}{N}\\sum_{i=1}^N \\left(\\frac{\\partial h_i}{\\partial\\theta'}\\Bigg|_{\\theta_0}\\right) \\\\\nS_0&=p\\lim \\frac{1}{N} \\sum_{i=1}^N \\sum_{j=1}^N \\left(h_i h_j \\Bigg|_{\\theta_0} \\right)\n\\end{aligned}\n\\]\nLa derivación es un poco más complicada que la usada para los estimadores extremos, pero pueden ver una propuesta en la sección 6.3.9 de CT"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#matriz-de-varianzas-óptima",
+    "href": "diapositivas/mgm.html#matriz-de-varianzas-óptima",
+    "title": "Método generalizado de momentos",
+    "section": "Matriz de varianzas óptima",
+    "text": "Matriz de varianzas óptima\nPara implementar MGM debemos especificar las condiciones de momentos y la matriz \\(W_N\\)\nEn el caso de modelos sobreidentificados y con \\(S_0\\) conocida, el estimador de MGM más eficiente se obtiene al especificar \\(W_N=S_0^{-1}\\)\nCon esta elección, la expresión para la varianza de \\(\\hat{\\beta}_{MGM}\\) se simplifica a\n\\[\\sqrt{N}\\left(\\hat{\\theta}_{GMM}-\\theta_0\\right)\\stackrel{a}{\\sim}\\mathcal{N}\\left(0,(G_0'S_0^{-1}G_0)^{-1}\\right)\\]\nEn la práctica, \\(S_0\\) es desconocida, así que la sustituimos por un estimador consistente \\(\\hat{S}\\)"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#mgm-óptimo",
+    "href": "diapositivas/mgm.html#mgm-óptimo",
+    "title": "Método generalizado de momentos",
+    "section": "MGM óptimo",
+    "text": "MGM óptimo\nEn la práctica, no se conoce \\(S_0\\) sino que se sustituye por un estimador consistente \\(\\hat{S}\\)\nLa matriz de varianzas se estima siguiendo un procedimiento de dos etapas\n\nObtener el estimador de MGM usando una matriz subóptima, generalmente \\(W_N=I_r\\) y con estos coeficientes obtener un estimador para \\(S_0\\): \\[\\hat{S}=\\frac{1}{N}\\sum_i h_i(\\hat{\\theta})h_j(\\hat{\\theta})'\\]\nObtener un estimador de MGM óptimo o estimador de MGM de dos etapas óptimo \\(\\hat{\\theta}_{MGM,O}\\) minimizando\n\n\\[Q_N(\\theta)=\\left(\\frac{1}{N}\\sum_ih(\\theta)\\right)'\\hat{S}^{-1}\\left(\\frac{1}{N}\\sum_ih(\\theta)\\right)\\]"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#mgm-óptimo-1",
+    "href": "diapositivas/mgm.html#mgm-óptimo-1",
+    "title": "Método generalizado de momentos",
+    "section": "MGM óptimo",
+    "text": "MGM óptimo\nLa distribución límite de \\(hat{\\theta}_{MGM,O}\\) es normal, centrada en \\(\\theta_0\\)\nPara estimar la varianza de \\(\\hat{\\theta}_{MGM,O}\\) usamos\n\\[\\hat{V}(\\hat{\\theta}_{MGM,O})=N^{-1}(\\hat{G}\\tilde{S}^{-1}\\hat{G})^{-1}\\]\ndonde \\(\\hat{G}\\) y \\(\\tilde{S}\\) se evalúan en \\(\\hat{\\theta}_{MGM,O}\\)"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-lineal-de-mgm",
+    "href": "diapositivas/mgm.html#estimador-lineal-de-mgm",
+    "title": "Método generalizado de momentos",
+    "section": "Estimador lineal de MGM",
+    "text": "Estimador lineal de MGM\nConsideremos el modelo lineal\n\\[y_i=x_i'\\beta + u_i\\]\nSupongamos que algún componente de \\(x\\) es endógeno, por lo que recurrimos a un instrumento que cumple con:\n\\[E(u_i|z_i)=0\\]\nLa restricción de exclusión nos especifica una condición de momentos\n\\[E(z_i(y_i-x_i'\\beta))=0\\]"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-lineal-de-mgm-1",
+    "href": "diapositivas/mgm.html#estimador-lineal-de-mgm-1",
+    "title": "Método generalizado de momentos",
+    "section": "Estimador lineal de MGM",
+    "text": "Estimador lineal de MGM\nEl estimador MGM minimiza la forma cuadrática siguiente\n\\[\n\\begin{aligned}\nQ(\\beta)&=\\left(\\frac{1}{N}\\sum_i (y_i-x_i'\\beta)z_i\\right)'W_N\\left(\\frac{1}{N}\\sum_i (y_i-x_i'\\beta)z_i\\right) \\\\\n&=\\left(\\frac{1}{N}(y-X\\beta)'Z\\right)W_N\\left(\\frac{1}{N}Z'(y-X\\beta)\\right)\n\\end{aligned}\n\\]\nLas condiciones de primer orden son\n\\[\\frac{\\partial Q_N(\\beta)}{\\partial\\beta}=-2\\left(\\frac{1}{N}X'Z\\right)W_N\\Big(\\frac{1}{N}Z'(y-X\\beta)\\Big)=0\\]\nResolviendo para \\(\\beta\\) obtenemos el estimador lineal de VI de GMM:\n\\[\\hat{\\beta}_{GMM}=(X'ZW_NZ'X)^{-1}X'ZW_NZ'y\\]\nLas propiedades asintóticas de este estimador se pueden obtener de manera similar a como se obtuvieron las del estimador de MCO o usando las propiedades más generales para problemas de MGM"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-de-la-varianza-de-hatbeta_mgm",
+    "href": "diapositivas/mgm.html#estimador-de-la-varianza-de-hatbeta_mgm",
+    "title": "Método generalizado de momentos",
+    "section": "Estimador de la varianza de \\(\\hat{\\beta}_{MGM}\\)",
+    "text": "Estimador de la varianza de \\(\\hat{\\beta}_{MGM}\\)\nPodemos hacer un procedimiento similar al que hacíamos con MCO\n\\[\n\\begin{aligned}\n\\hat{\\beta}_{GMM}&=(X'ZW_NZ'X)^{-1}X'ZW_NZ'(X\\beta+u) \\\\\n&=\\beta + (X'ZW_NZ'X)^{-1}X'ZW_NZ'u\n\\end{aligned}\n\\] Por lo tanto, reescalando:\n\\[\n\\begin{aligned}\n\\sqrt{N}(\\hat{\\beta}_{GMM}-\\beta)&=\\sqrt{N}(X'ZW_NZ'X)^{-1}X'ZW_NZ'u \\\\\n\\end{aligned}\n\\] Si podemos aplicar un TLC a \\(\\frac{1}{\\sqrt{N}}Z'u\\) entonces\n\\[\\frac{1}{\\sqrt{N}}Z'u\\xrightarrow{d}\\mathcal{N}(0,S)\\]\ncon \\(S=\\lim\\frac{1}{N}\\sum_iE(u_i^2z_iz_i')\\)"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-óptimo-de-mgm",
+    "href": "diapositivas/mgm.html#estimador-óptimo-de-mgm",
+    "title": "Método generalizado de momentos",
+    "section": "Estimador óptimo de MGM",
+    "text": "Estimador óptimo de MGM\nPara obtener el estimador óptimo escogemos una forma particular para la matriz de pesos\n\\[W=\\hat{S}^{-1}\\] Y entonces el estimador de MGM se vuelve\n\\[\\hat{\\beta}_{GMM,O}=(X'Z\\hat{S}^{-1}Z'X)^{-1}X'Z\\hat{S}^{-1}Z'y\\] Si permitimos heterocedasticidad arbitraria, obtenemos \\(\\hat{\\beta}\\) en una primera etapa con una matriz subóptima para calcular \\(\\hat{S}\\)\nLuego obtenemos \\(\\hat{\\beta}_{GMM,O}\\) usando \\(\\hat{S}^{-1}\\) como matriz de pesos\n#Matriz de varianzas\nY el estimador de varianza se simplifica a\n\\[\n\\begin{aligned}\n\\hat{V}(\\hat{\\beta}_{GMM,O})&=N(X'Z\\hat{S}^{-1}Z'X)^{-1}X'Z\\hat{S}^{-1}\\hat{S}\\hat{S}^{-1}Z'X(X'Z\\hat{S}^{-1}Z'X)^{-1} \\\\\n&=N(X'Z\\hat{S}^{-1}Z'X)^{-1}\n\\end{aligned}\n\\]\nPara estimar \\(\\hat{S}\\) usamos los residuales dados por \\(\\hat{u}_i=y_i-X\\hat{\\beta}_{GMM,O}\\)"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#mínimos-cuadrados-en-dos-etapas-1",
+    "href": "diapositivas/mgm.html#mínimos-cuadrados-en-dos-etapas-1",
+    "title": "Método generalizado de momentos",
+    "section": "Mínimos cuadrados en dos etapas",
+    "text": "Mínimos cuadrados en dos etapas\nA \\(P_Z=Z(Z'Z)^{-1}Z'\\) se le conoce como matriz de proyección\nY la matriz de varianzas se simplifica a\n\\[\\hat{V}(\\hat{\\beta}_{MC2E})=s^2\\left(X'P_z X\\right)^{-1}\\]\nEste estimador también se conoce como estimador de variables instrumentales generalizado porque generaliza el estimador de VI al caso sobreidentificado\nTambien se conoce como estimador de MGM de una etapa por obvias razones"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#mínimos-cuadrados-en-dos-etapas-2",
+    "href": "diapositivas/mgm.html#mínimos-cuadrados-en-dos-etapas-2",
+    "title": "Variables instrumentales",
+    "section": "Mínimos cuadrados en dos etapas",
+    "text": "Mínimos cuadrados en dos etapas\nA \\(P_Z=Z(Z'Z)^{-1}Z'\\) se le conoce como matriz de proyección\nY la matriz de varianzas se simplifica a\n\\[\\hat{V}(\\hat{\\beta}_{MC2E})=s^2\\left(X'P_z X\\right)^{-1}\\]"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-de-variables-instrumentales",
+    "href": "diapositivas/mgm.html#estimador-de-variables-instrumentales",
+    "title": "Método generalizado de momentos",
+    "section": "Estimador de variables instrumentales",
+    "text": "Estimador de variables instrumentales\nEn el caso cuando \\(r=q\\), es decir, tantos instrumentos como variables endógenas, \\(X'Z\\) es una matriz cuadrada que puede ser invertida, resultando que\n\\[(X'ZW_NZ'X)^{-1}=(Z'X)^{-1}W_N^{-1}(X'Z)^{-1}\\]\nSustituyendo esto en la forma general del estimador de MGM obtenemos:\n\\[\n\\begin{aligned}\n\\hat{\\beta}_{VI}&=(X'ZW_NZ'X)^{-1}X'ZW_NZ'y \\\\\n&=(Z'X)^{-1}W_N^{-1}(X'Z)^{-1} X'ZW_NZ'y\\\\\n&=(Z'X)^{-1}Z'y \\\\\n\\end{aligned}\n\\]\nEste es el estimador de variables instrumentales\nEn otras palabras, el estimador de MGM es igual al de VI para cualquier matriz \\(W_N\\)"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#modelo-exactamente-identificado",
+    "href": "diapositivas/mgm.html#modelo-exactamente-identificado",
+    "title": "Método generalizado de momentos",
+    "section": "Modelo exactamente identificado",
+    "text": "Modelo exactamente identificado\nCon posible heterocedasticidad, tenemos una matriz de varianzas de la forma\n\\[\\begin{align}\\hat{V}(\\hat{\\beta}_{VI})&=N(Z'X)^{-1}\\hat{S}(X'Z)^{-1}\\end{align}\\]\ncon \\(\\hat{S}=Z'DZ/N\\), y donde \\(D=diag[\\hat{u}_i^2]\\)\nY con homocedasticidad, la matriz de varianzas de nuevo es:\n\\[\\hat{V}(\\hat{\\beta}_{VI})=s ^2\\left(X'P_z X\\right)^{-1}\\]"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#recapitulando",
+    "href": "diapositivas/mgm.html#recapitulando",
+    "title": "Método generalizado de momentos",
+    "section": "Recapitulando",
+    "text": "Recapitulando\nSiguiendo las convenciones de Camerony Trivedi (2005)\nEl estimador de MGM es el estimador para el caso general de método de momentos, cuales quiera que sean las formas de los momentos especificados\nEl estimador óptimo de MGM ocurre cuando asumimos una forma particular para la matriz de pesos, \\(W=\\hat{S}^{-1}\\)\nEl estimador óptimo de MGM se emplea en el caso más general de modelos de variables instrumentales sobreidentificados con heterocedasticidad\nEl estimador de variables instrumentales generalizado se obtiene cuando asumimos homocedasticidad en el modelo sobreidentificado y lleva el apellido generalizado porque es la generalización del estimador IV para el caso sobreidentificado\nEl estimador de variables instrumentales surge en el modelo exactamente identificado"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#introducción",
+    "href": "diapositivas/mgm.html#introducción",
+    "title": "Método generalizado de momentos",
+    "section": "Introducción",
+    "text": "Introducción\nEl GMM generaliza una serie de estimadores comúnmente usados en econometría (incluyendo MCO, MV, VI, etc)\nAsumimos que existen \\(r\\) condiciones de momentos independientes para \\(q\\) parámetros \\[E(h(w_i,\\theta_0))=0\\]\ndonde \\(\\theta\\) es un vector de \\(q\\times 1\\), \\(h(\\cdot)\\) es una función vector de \\(r \\times 1\\) con \\(r\\geq q\\)\n\\(w_i\\) son los datos observables, incluyendo las variables dependientes, los regresores exógenos, potenciales regresores endógenos, así como instrumentos"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#método-de-momentos",
+    "href": "diapositivas/mgm.html#método-de-momentos",
+    "title": "Método generalizado de momentos",
+    "section": "Método de momentos",
+    "text": "Método de momentos\nCuando \\(r=q\\), tenemos un modelo exactamente identificado, es decir, tenemos tantos momentos como parámetros a estimar\nPodemos obtener el estimador de método de momentos \\(\\hat{\\theta}_{MM}\\) como la solución a\n\\[\\frac{1}{N}h(w_i,\\hat{\\theta})=0\\]"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#método-de-momentos-1",
+    "href": "diapositivas/mgm.html#método-de-momentos-1",
+    "title": "Método generalizado de momentos",
+    "section": "Método de momentos",
+    "text": "Método de momentos\nLos momentos poblacionales dan lugar a momentos muestrales que pueden ser usados para estimar los parámetros\nEjemplo: estimación de la media poblacional con observaciones iid y media \\(\\mu\\)\nEl momento poblacional es:\n\\[E(y-\\mu)=0\\]\nSi sustituimos con el momento poblacional, es decir, sustituyendo la esperanza con el operador del promedio obtenemos el momento muestral correspondiente:\n\\[\\frac{1}{N}\\sum_{i=1}^N (y_i-\\mu)=0\\]\nAl resolver para \\(\\mu\\) obtenemos \\(\\mu_{MM}=\\frac{1}{N}\\sum_i y_i =\\bar{y}\\)\nEl estimador de MM de a media poblacional es la media muestral"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-lineal-de-mgm-2",
+    "href": "diapositivas/mgm.html#estimador-lineal-de-mgm-2",
+    "title": "Método generalizado de momentos",
+    "section": "Estimador lineal de MGM",
+    "text": "Estimador lineal de MGM\nResolviendo para \\(\\beta\\) obtenemos el estimador lineal de VI de GMM:\n\\[\\hat{\\beta}_{GMM}=(X'ZW_NZ'X)^{-1}X'ZW_NZ'y\\]\nLas propiedades asintóticas de este estimador se pueden obtener de manera similar a como se obtuvieron las del estimador de MCO o usando las propiedades más generales para problemas de MGM"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-de-la-varianza-de-hatbeta_mgm-1",
+    "href": "diapositivas/mgm.html#estimador-de-la-varianza-de-hatbeta_mgm-1",
+    "title": "Método generalizado de momentos",
+    "section": "Estimador de la varianza de \\(\\hat{\\beta}_{MGM}\\)",
+    "text": "Estimador de la varianza de \\(\\hat{\\beta}_{MGM}\\)\nEl estimador \\(\\hat{\\beta}_{MGM}\\) es asintóticamente normal, centrado en \\(\\beta\\) y con una varianza asintótica estimada dada por\n\\[\\hat{V}(\\hat{\\beta}_{GMM})=N(X'ZW_NZ'X)^{-1}(X'ZW_N\\hat{S}W_NZ'X)(X'ZW_NZ'X)^{-1}\\]\ndonde \\(\\hat{S}\\) es un estimador consistente de \\(S\\)\nDependiendo de si estamos en un modelo exactamente identificado o sobreidentificado y de cómo especificamos la matriz \\(W_N\\), los resultados anteriores sobre \\(\\hat{\\beta}_{GMM}\\) y \\(\\hat{V}(\\hat{\\beta}_{GMM})\\) se especializan"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#estimador-de-la-varianza-de-hatbeta_mgm-2",
+    "href": "diapositivas/mgm.html#estimador-de-la-varianza-de-hatbeta_mgm-2",
+    "title": "Método generalizado de momentos",
+    "section": "Estimador de la varianza de \\(\\hat{\\beta}_{MGM}\\)",
+    "text": "Estimador de la varianza de \\(\\hat{\\beta}_{MGM}\\)\n¿Cómo estimamos \\(\\hat{S}\\)\nEn el caso general, con posible heterocedasticidad:\n\\[\\hat{S}=\\frac{1}{N}\\sum_i\\hat{u}_i^2z_iz_i = \\frac{1}{N}Z'DZ\\] con\n\\[\nD=\n\\begin{pmatrix}\n\\hat{u}_1^2 & 0 & 0 &\\ldots 0 \\\\\n0 & \\hat{u}_2^2 & 0 &\\ldots 0 \\\\\n\\vdots \\\\\n0 & 0 & 0 &\\ldots \\hat{u}_n^2 \\\\\n\\end{pmatrix}\n\\] Con homocedasticidad, se simplifica a:\n\\[\\hat{S}=\\frac{1}{N}s^2Z'Z\\]"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#matriz-de-varianzas-óptima-1",
+    "href": "diapositivas/mgm.html#matriz-de-varianzas-óptima-1",
+    "title": "Método generalizado de momentos",
+    "section": "Matriz de varianzas óptima",
+    "text": "Matriz de varianzas óptima\nImportante: el que la elección de la matriz de varianzas óptima sea \\(W_N=S_0^{-1}\\) no ocurre por que \\((G_0'S_0^{-1}G_0)\\) se escribe mucho más corto que \\((G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)\\)\nMás bien, es óptima porque se puede mostrar que\n\\[(G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)^{-1}\\geq (G_0'S_0^{-1}G_0)^{-1}\\]\npara cualquier \\(W_0\\) positiva definida"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.html",
+    "href": "diapositivas/variables-instrumentales.html",
+    "title": "Variables instrumentales",
+    "section": "",
+    "text": "Supongamos que el el proceso de salarios verdadero está dado por\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+\\beta_2 habilidad_i+e_i\\]\nY asumamos que la habilidad es no observada y decidimos estimar\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\]\n¿Dónde queda la habilidad?\nEl \\(\\hat{\\beta}_1\\) estimado con esta regresión corta es inconsistente porque \\(u_i\\) incluye la habilidad, que afecta tanto el desempeño en el mercado laboral como el desempeño en la escuela"
   }
 ]
