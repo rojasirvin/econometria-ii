@@ -437,6 +437,7 @@ S_0&amp;=p\lim \frac{1}{N} \sum_{i=1}^N \sum_{j=1}^N \left(h_i h_j \Bigg|_{\thet
 <p>Más bien, es óptima porque se puede mostrar que</p>
 <p><span class="math display">\[(G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)^{-1}\geq (G_0'S_0^{-1}G_0)^{-1}\]</span></p>
 <p>para cualquier <span class="math inline">\(W_0\)</span> positiva definida</p>
+<p>Pueden ver una procedimiento para mostrar esto en Hayashi (2000) p.&nbsp;245</p>
 </section>
 <section id="mgm-óptimo" class="slide level2">
 <h2>MGM óptimo</h2>
@@ -450,7 +451,7 @@ S_0&amp;=p\lim \frac{1}{N} \sum_{i=1}^N \sum_{j=1}^N \left(h_i h_j \Bigg|_{\thet
 </section>
 <section id="mgm-óptimo-1" class="slide level2">
 <h2>MGM óptimo</h2>
-<p>La distribución límite de <span class="math inline">\(hat{\theta}_{MGM,O}\)</span> es normal, centrada en <span class="math inline">\(\theta_0\)</span></p>
+<p>La distribución límite de <span class="math inline">\(\hat{\theta}_{MGM,O}\)</span> es normal, centrada en <span class="math inline">\(\theta_0\)</span></p>
 <p>Para estimar la varianza de <span class="math inline">\(\hat{\theta}_{MGM,O}\)</span> usamos</p>
 <p><span class="math display">\[\hat{V}(\hat{\theta}_{MGM,O})=N^{-1}(\hat{G}\tilde{S}^{-1}\hat{G})^{-1}\]</span></p>
 <p>donde <span class="math inline">\(\hat{G}\)</span> y <span class="math inline">\(\tilde{S}\)</span> se evalúan en <span class="math inline">\(\hat{\theta}_{MGM,O}\)</span></p>
@@ -535,7 +536,9 @@ D=
 <p><span class="math display">\[W=\hat{S}^{-1}\]</span> Y entonces el estimador de MGM se vuelve</p>
 <p><span class="math display">\[\hat{\beta}_{GMM,O}=(X'Z\hat{S}^{-1}Z'X)^{-1}X'Z\hat{S}^{-1}Z'y\]</span> Si permitimos heterocedasticidad arbitraria, obtenemos <span class="math inline">\(\hat{\beta}\)</span> en una primera etapa con una matriz subóptima para calcular <span class="math inline">\(\hat{S}\)</span></p>
 <p>Luego obtenemos <span class="math inline">\(\hat{\beta}_{GMM,O}\)</span> usando <span class="math inline">\(\hat{S}^{-1}\)</span> como matriz de pesos</p>
-<p>#Matriz de varianzas</p>
+</section>
+<section id="matriz-de-varianzas" class="slide level2">
+<h2>Matriz de varianzas</h2>
 <p>Y el estimador de varianza se simplifica a</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -598,7 +601,7 @@ D=
 </section>
 <section id="recapitulando" class="slide level2">
 <h2>Recapitulando</h2>
-<p>Siguiendo las convenciones de Camerony Trivedi (2005)</p>
+<p>Siguiendo las convenciones de Cameron y Trivedi (2005)</p>
 <p>El <strong>estimador de MGM</strong> es el estimador para el caso general de método de momentos, cuales quiera que sean las formas de los momentos especificados</p>
 <p>El <strong>estimador óptimo de MGM</strong> ocurre cuando asumimos una forma particular para la matriz de pesos, <span class="math inline">\(W=\hat{S}^{-1}\)</span></p>
 <p>El <strong>estimador óptimo de MGM</strong> se emplea en el caso más general de modelos de variables instrumentales sobreidentificados con heterocedasticidad</p>

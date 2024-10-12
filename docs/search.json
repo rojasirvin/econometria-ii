@@ -1556,7 +1556,7 @@
     "href": "diapositivas/mgm.html#mgm-óptimo-1",
     "title": "Método generalizado de momentos",
     "section": "MGM óptimo",
-    "text": "MGM óptimo\nLa distribución límite de \\(hat{\\theta}_{MGM,O}\\) es normal, centrada en \\(\\theta_0\\)\nPara estimar la varianza de \\(\\hat{\\theta}_{MGM,O}\\) usamos\n\\[\\hat{V}(\\hat{\\theta}_{MGM,O})=N^{-1}(\\hat{G}\\tilde{S}^{-1}\\hat{G})^{-1}\\]\ndonde \\(\\hat{G}\\) y \\(\\tilde{S}\\) se evalúan en \\(\\hat{\\theta}_{MGM,O}\\)"
+    "text": "MGM óptimo\nLa distribución límite de \\(\\hat{\\theta}_{MGM,O}\\) es normal, centrada en \\(\\theta_0\\)\nPara estimar la varianza de \\(\\hat{\\theta}_{MGM,O}\\) usamos\n\\[\\hat{V}(\\hat{\\theta}_{MGM,O})=N^{-1}(\\hat{G}\\tilde{S}^{-1}\\hat{G})^{-1}\\]\ndonde \\(\\hat{G}\\) y \\(\\tilde{S}\\) se evalúan en \\(\\hat{\\theta}_{MGM,O}\\)"
   },
   {
     "objectID": "diapositivas/mgm.html#estimador-lineal-de-mgm",
@@ -1584,7 +1584,7 @@
     "href": "diapositivas/mgm.html#estimador-óptimo-de-mgm",
     "title": "Método generalizado de momentos",
     "section": "Estimador óptimo de MGM",
-    "text": "Estimador óptimo de MGM\nPara obtener el estimador óptimo escogemos una forma particular para la matriz de pesos\n\\[W=\\hat{S}^{-1}\\] Y entonces el estimador de MGM se vuelve\n\\[\\hat{\\beta}_{GMM,O}=(X'Z\\hat{S}^{-1}Z'X)^{-1}X'Z\\hat{S}^{-1}Z'y\\] Si permitimos heterocedasticidad arbitraria, obtenemos \\(\\hat{\\beta}\\) en una primera etapa con una matriz subóptima para calcular \\(\\hat{S}\\)\nLuego obtenemos \\(\\hat{\\beta}_{GMM,O}\\) usando \\(\\hat{S}^{-1}\\) como matriz de pesos\n#Matriz de varianzas\nY el estimador de varianza se simplifica a\n\\[\n\\begin{aligned}\n\\hat{V}(\\hat{\\beta}_{GMM,O})&=N(X'Z\\hat{S}^{-1}Z'X)^{-1}X'Z\\hat{S}^{-1}\\hat{S}\\hat{S}^{-1}Z'X(X'Z\\hat{S}^{-1}Z'X)^{-1} \\\\\n&=N(X'Z\\hat{S}^{-1}Z'X)^{-1}\n\\end{aligned}\n\\]\nPara estimar \\(\\hat{S}\\) usamos los residuales dados por \\(\\hat{u}_i=y_i-X\\hat{\\beta}_{GMM,O}\\)"
+    "text": "Estimador óptimo de MGM\nPara obtener el estimador óptimo escogemos una forma particular para la matriz de pesos\n\\[W=\\hat{S}^{-1}\\] Y entonces el estimador de MGM se vuelve\n\\[\\hat{\\beta}_{GMM,O}=(X'Z\\hat{S}^{-1}Z'X)^{-1}X'Z\\hat{S}^{-1}Z'y\\] Si permitimos heterocedasticidad arbitraria, obtenemos \\(\\hat{\\beta}\\) en una primera etapa con una matriz subóptima para calcular \\(\\hat{S}\\)\nLuego obtenemos \\(\\hat{\\beta}_{GMM,O}\\) usando \\(\\hat{S}^{-1}\\) como matriz de pesos"
   },
   {
     "objectID": "diapositivas/mgm.html#mínimos-cuadrados-en-dos-etapas-1",
@@ -1619,7 +1619,7 @@
     "href": "diapositivas/mgm.html#recapitulando",
     "title": "Método generalizado de momentos",
     "section": "Recapitulando",
-    "text": "Recapitulando\nSiguiendo las convenciones de Camerony Trivedi (2005)\nEl estimador de MGM es el estimador para el caso general de método de momentos, cuales quiera que sean las formas de los momentos especificados\nEl estimador óptimo de MGM ocurre cuando asumimos una forma particular para la matriz de pesos, \\(W=\\hat{S}^{-1}\\)\nEl estimador óptimo de MGM se emplea en el caso más general de modelos de variables instrumentales sobreidentificados con heterocedasticidad\nEl estimador de variables instrumentales generalizado se obtiene cuando asumimos homocedasticidad en el modelo sobreidentificado y lleva el apellido generalizado porque es la generalización del estimador IV para el caso sobreidentificado\nEl estimador de variables instrumentales surge en el modelo exactamente identificado"
+    "text": "Recapitulando\nSiguiendo las convenciones de Cameron y Trivedi (2005)\nEl estimador de MGM es el estimador para el caso general de método de momentos, cuales quiera que sean las formas de los momentos especificados\nEl estimador óptimo de MGM ocurre cuando asumimos una forma particular para la matriz de pesos, \\(W=\\hat{S}^{-1}\\)\nEl estimador óptimo de MGM se emplea en el caso más general de modelos de variables instrumentales sobreidentificados con heterocedasticidad\nEl estimador de variables instrumentales generalizado se obtiene cuando asumimos homocedasticidad en el modelo sobreidentificado y lleva el apellido generalizado porque es la generalización del estimador IV para el caso sobreidentificado\nEl estimador de variables instrumentales surge en el modelo exactamente identificado"
   },
   {
     "objectID": "diapositivas/mgm.html#introducción",
@@ -1668,7 +1668,7 @@
     "href": "diapositivas/mgm.html#matriz-de-varianzas-óptima-1",
     "title": "Método generalizado de momentos",
     "section": "Matriz de varianzas óptima",
-    "text": "Matriz de varianzas óptima\nImportante: el que la elección de la matriz de varianzas óptima sea \\(W_N=S_0^{-1}\\) no ocurre por que \\((G_0'S_0^{-1}G_0)\\) se escribe mucho más corto que \\((G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)\\)\nMás bien, es óptima porque se puede mostrar que\n\\[(G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)^{-1}\\geq (G_0'S_0^{-1}G_0)^{-1}\\]\npara cualquier \\(W_0\\) positiva definida"
+    "text": "Matriz de varianzas óptima\nImportante: el que la elección de la matriz de varianzas óptima sea \\(W_N=S_0^{-1}\\) no ocurre por que \\((G_0'S_0^{-1}G_0)\\) se escribe mucho más corto que \\((G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)\\)\nMás bien, es óptima porque se puede mostrar que\n\\[(G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)^{-1}\\geq (G_0'S_0^{-1}G_0)^{-1}\\]\npara cualquier \\(W_0\\) positiva definida\nPueden ver una procedimiento para mostrar esto en Hayashi (2000) p. 245"
   },
   {
     "objectID": "diapositivas/variables-instrumentales.html",
@@ -1676,5 +1676,12 @@
     "title": "Variables instrumentales",
     "section": "",
     "text": "Supongamos que el el proceso de salarios verdadero está dado por\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+\\beta_2 habilidad_i+e_i\\]\nY asumamos que la habilidad es no observada y decidimos estimar\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\]\n¿Dónde queda la habilidad?\nEl \\(\\hat{\\beta}_1\\) estimado con esta regresión corta es inconsistente porque \\(u_i\\) incluye la habilidad, que afecta tanto el desempeño en el mercado laboral como el desempeño en la escuela"
+  },
+  {
+    "objectID": "diapositivas/mgm.html#matriz-de-varianzas",
+    "href": "diapositivas/mgm.html#matriz-de-varianzas",
+    "title": "Método generalizado de momentos",
+    "section": "Matriz de varianzas",
+    "text": "Matriz de varianzas\nY el estimador de varianza se simplifica a\n\\[\n\\begin{aligned}\n\\hat{V}(\\hat{\\beta}_{GMM,O})&=N(X'Z\\hat{S}^{-1}Z'X)^{-1}X'Z\\hat{S}^{-1}\\hat{S}\\hat{S}^{-1}Z'X(X'Z\\hat{S}^{-1}Z'X)^{-1} \\\\\n&=N(X'Z\\hat{S}^{-1}Z'X)^{-1}\n\\end{aligned}\n\\]\nPara estimar \\(\\hat{S}\\) usamos los residuales dados por \\(\\hat{u}_i=y_i-X\\hat{\\beta}_{GMM,O}\\)"
   }
 ]

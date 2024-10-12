@@ -153,6 +153,8 @@ $$(G_0'W_0G_0)^{-1}(G_0'W_0S_0W_0G_0)(G_0'W_0G_0)^{-1}\geq (G_0'S_0^{-1}G_0)^{-1
 
 para cualquier $W_0$ positiva definida
 
+Pueden ver una procedimiento para mostrar esto en Hayashi (2000) p. 245
+
 
 ## MGM óptimo
 
@@ -168,7 +170,7 @@ $$Q_N(\theta)=\left(\frac{1}{N}\sum_ih(\theta)\right)'\hat{S}^{-1}\left(\frac{1}
 
 ## MGM óptimo
 
-La distribución límite de $hat{\theta}_{MGM,O}$ es normal, centrada en $\theta_0$ 
+La distribución límite de $\hat{\theta}_{MGM,O}$ es normal, centrada en $\theta_0$ 
 
 Para estimar la varianza de $\hat{\theta}_{MGM,O}$ usamos
 
@@ -292,8 +294,7 @@ Si permitimos heterocedasticidad arbitraria, obtenemos $\hat{\beta}$ en una prim
 
 Luego obtenemos $\hat{\beta}_{GMM,O}$ usando $\hat{S}^{-1}$ como matriz de pesos
 
-
-#Matriz de varianzas
+## Matriz de varianzas
 
 Y el estimador de varianza se simplifica a
 
@@ -381,7 +382,7 @@ $$\hat{V}(\hat{\beta}_{VI})=s ^2\left(X'P_z X\right)^{-1}$$
 
 ## Recapitulando
 
-Siguiendo las convenciones de Camerony Trivedi (2005)
+Siguiendo las convenciones de Cameron y Trivedi (2005)
 
 El **estimador de MGM** es el estimador para el caso general de método de momentos, cuales quiera que sean las formas de los momentos especificados
 
