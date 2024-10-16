@@ -244,14 +244,14 @@
     "href": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-1",
     "title": "Variables instrumentales",
     "section": "Ejemplo: Card (1995)",
-    "text": "Ejemplo: Card (1995)\nSabemos que \\(\\beta_1\\) estimado por MCO es inconsistente\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi),\n             coef_map = c(\"educ\", \"exper\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n \n\n  \n    \n    \n    tinytable_mwr6l6doyuxzk35k486s\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153"
+    "text": "Ejemplo: Card (1995)\nSabemos que \\(\\beta_1\\) estimado por MCO es inconsistente\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi),\n             coef_map = c(\"educ\", \"exper\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n \n\n  \n    \n    \n    tinytable_elbvu1tt0pxpg5lx0ywk\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153"
   },
   {
     "objectID": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-2",
     "href": "diapositivas/variables-instrumentales.html#ejemplo-card-1995-2",
     "title": "Variables instrumentales",
     "section": "Ejemplo: Card (1995)",
-    "text": "Ejemplo: Card (1995)\nLa primera etapa de este ejercicio es\n\n# Primera etapa\npe_vi &lt;- lm(educ ~  nearc4 + exper + black + south + married + smsa,\n            data = data.ingresos)\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi, \"Primera etapa\"=pe_vi),\n             coef_map = c(\"educ\", \"exper\", \"nearc4\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n \n\n  \n    \n    \n    tinytable_c1qk1ek9ggyi6ju4xrea\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n                Primera etapa\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                         \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                         \n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                  -0.404 \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                  (0.009)\n                \n                \n                  nearc4  \n                         \n                         \n                  0.327  \n                \n                \n                          \n                         \n                         \n                  (0.082)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153\n                         \n                  456.140"
+    "text": "Ejemplo: Card (1995)\nLa primera etapa de este ejercicio es\n\n# Primera etapa\npe_vi &lt;- lm(educ ~  nearc4 + exper + black + south + married + smsa,\n            data = data.ingresos)\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi, \"Primera etapa\"=pe_vi),\n             coef_map = c(\"educ\", \"exper\", \"nearc4\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n \n\n  \n    \n    \n    tinytable_rrum14qygerdj5zc3oae\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n                Primera etapa\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                         \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                         \n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                  -0.404 \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                  (0.009)\n                \n                \n                  nearc4  \n                         \n                         \n                  0.327  \n                \n                \n                          \n                         \n                         \n                  (0.082)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153\n                         \n                  456.140"
   },
   {
     "objectID": "diapositivas/variables-instrumentales.html#ejemplo-con-oferta-y-demanda",
@@ -652,5 +652,225 @@
     "title": "Respuestas a la tarea 2",
     "section": "Notas",
     "text": "Notas\n\n\nMroz, T. A. (1987). The sensitivity of an empirical model of married women’s hours of work to economic and statistical assumptions. Econometrica: Journal of the econometric society, 765-799.↩︎"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#cuestiones-prácticas-de-vi-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#cuestiones-prácticas-de-vi-1",
+    "title": "Variables instrumentales en R",
+    "section": "Cuestiones prácticas de VI",
+    "text": "Cuestiones prácticas de VI\n\nHemos aprendido que la forma general del estimador de MGMes:\n\n\\[\\hat{\\beta}_{GMM}=(X'ZW_NZ'X)^{-1}X'ZW_NZ'y\\]\n\nY vimos también la forma general del estimador de la varianza:\n\n\\[\\hat{V}(\\hat{\\beta}_{GMM})=N(X'ZW_NZ'X)^{-1}(X'ZW_N\\hat{S}W_NZ'X)(X'ZW_NZ'X)^{-1}\\]"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#estimador-óptimo-de-mgm",
+    "href": "diapositivas/variables-instrumentales-practica.html#estimador-óptimo-de-mgm",
+    "title": "Variables instrumentales en R",
+    "section": "Estimador óptimo de MGM",
+    "text": "Estimador óptimo de MGM\nPara obtener el estimador óptimo escogemos una forma particular para la matriz de pesos:\n\\[W=\\hat{S}^{-1}\\]\nY entonces el estimador de MGM se vuelve:\n\\[\\hat{\\beta}_{GMM,O}=(X'Z\\hat{S}^{-1}Z'X)^{-1}X'Z\\hat{S}^{-1}Z'y\\]\nY el estimador de varianza se simplifica a:\n\\[\\hat{V}(\\hat{\\beta}_{GMM,O})=N(X'Z\\hat{S}^{-1}Z'X)^{-1}\\]\nHasta aquí no asumimos nada sobre la forma de los errores\nLo único que nos permitió pasar de la forma general al estimador óptimo es la elección de \\(W\\)\nCon esto obtenemos el estimador más eficiente"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#álgebra-de-matrices",
+    "href": "diapositivas/variables-instrumentales-practica.html#álgebra-de-matrices",
+    "title": "Variables instrumentales en R",
+    "section": "Álgebra de matrices",
+    "text": "Álgebra de matrices\nUsaremos los datos del estudio de Card (1995) sobre rendimientos a la educación para mostrar cómo funcionan las expresiones para estimar el vector de coeficientes y los errores estándar de los distintos estimadores de VI.\nCard usa la proximidad a una institución de educación superior como instrumento de los años de educación acumulados.\n\ndata.ingresos &lt;- read_csv(\"ingresos_iv.csv\",\n                          locale = locale(encoding = \"latin1\"))"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo exactamente identificado",
+    "text": "Modelo exactamente identificado\nPara tener una referencia, veamos lo que obtenemos con ivreg del paquete AER. Nuestro modelo tiene cinco regresores más una constante:\n\n\niv_ei &lt;- ivreg(lwage ~ educ + exper + expersq + black + south |\n                 . - educ + nearc4, data = data.ingresos)\n\nmodelsummary(list(iv_ei),\n          output=\"gt\",\n          coef_map = c(\"educ\", \"exper\"),\n          fmt = 4)\n\n\n\n\n\n\n\n\n\n(1)\n\n\n\n\neduc\n0.2214\n\n\n\n(0.0409)\n\n\nexper\n0.1439\n\n\n\n(0.0187)\n\n\nNum.Obs.\n3010\n\n\nR2\n-0.134\n\n\nR2 Adj.\n-0.136\n\n\nAIC\n4043.8\n\n\nBIC\n4085.9\n\n\nRMSE\n0.47"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-1",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo exactamente identificado",
+    "text": "Modelo exactamente identificado\nRepliquemos lo anterior con matrices. Primero construimos \\(X\\), \\(Y\\) y \\(Z\\):\n\ndata.ingresos &lt;- data.ingresos %&gt;% \n  mutate(constant=1)\n\nX &lt;- data.matrix(select(data.ingresos, constant, educ, exper, expersq, black,\n              south),\n       rownames.force = T)\n\nY &lt;- data.matrix(select(data.ingresos,lwage),\n       rownames.force = T)\n\nZ &lt;- data.matrix(select(data.ingresos, constant, nearc4, exper, expersq, black,\n              south),\n       rownames.force = T)\n\nN &lt;- nrow(X)\nk &lt;- ncol(X) # incluyendo la constante"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-2",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-2",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo exactamente identificado",
+    "text": "Modelo exactamente identificado\nEstimamos beta\n\nb &lt;- solve(t(Z) %*% X) %*% t(Z) %*% Y\nb\n\n                lwage\nconstant  2.324805209\neduc      0.221390289\nexper     0.143933017\nexpersq  -0.002401759\nblack    -0.036938558\nsouth    -0.088888463"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-3",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-3",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo exactamente identificado",
+    "text": "Modelo exactamente identificado\nLa matriz de varianzas, asumiendo homocedasticidad:\n\nu_hat &lt;- Y-X%*%b\nsigma2 &lt;- as.numeric((1/N)*t(u_hat)%*%u_hat)\n\nConstruimos la matriz de proyección\n\nP &lt;- Z%*%(solve(t(Z)%*%Z))%*%t(Z)\n\nLa matriz de varianzas que construye R por defecto multiplica por \\(N/N-k\\):\n\nV=sigma2*solve(t(X)%*%P%*%X)*(N/(N-k))\nsqrt(diag(V))\n\n    constant         educ        exper      expersq        black        south \n0.7071765685 0.0409013368 0.0186980191 0.0004020113 0.0458381726 0.0257238774"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-4",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-4",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo exactamente identificado",
+    "text": "Modelo exactamente identificado\nComparamos el coeficiente y el de educación con lo obtenido con ivreg:\n\n\nmodelsummary(list(iv_ei),\n          output=\"gt\",\n          coef_map = c(\"educ\", \"exper\"),\n          gof_map = c(\"nobs\"),\n          fmt = 4)\n\n\n\n\n\n\n\n\n\n(1)\n\n\n\n\neduc\n0.2214\n\n\n\n(0.0409)\n\n\nexper\n0.1439\n\n\n\n(0.0187)\n\n\nNum.Obs.\n3010"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-5",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-5",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo exactamente identificado",
+    "text": "Modelo exactamente identificado\nSi permitimos una heterocedasticidad arbitraria:\n\n\nmodelsummary(list(\"Clásicos\"=iv_ei, \"HC0\"=iv_ei, \"HC3 (default)\"=iv_ei),\n          output=\"gt\",\n          coef_map = c(\"educ\", \"exper\"),\n          gof_map = c(\"nobs\"),\n          vcov = c(\"iid\",\"HC0\", \"robust\"),\n          fmt = 4)\n\n\n\n\n\n\n\n\n\nClásicos\nHC0\nHC3 (default)\n\n\n\n\neduc\n0.2214\n0.2214\n0.2214\n\n\n\n(0.0409)\n(0.0403)\n(0.0404)\n\n\nexper\n0.1439\n0.1439\n0.1439\n\n\n\n(0.0187)\n(0.0185)\n(0.0186)\n\n\nNum.Obs.\n3010\n3010\n3010"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-sobreidentificado",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-sobreidentificado",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo sobreidentificado",
+    "text": "Modelo sobreidentificado\nConsideremos ahora el modelo sobreidentificado con dos instrumentos:\n\n\niv_si &lt;- ivreg(lwage ~ educ + exper + expersq + black + south |\n                 . - educ + nearc4 + nearc2, data = data.ingresos)\n\nmodelsummary(list(\"Clásicos\"=iv_si),\n          output=\"gt\",\n          coef_map = c(\"educ\", \"exper\"),\n          gof_map = c(\"nobs\"),\n          fmt = 4)\n\n\n\n\n\n\n\n\n\nClásicos\n\n\n\n\neduc\n0.2403\n\n\n\n(0.0406)\n\n\nexper\n0.1517\n\n\n\n(0.0188)\n\n\nNum.Obs.\n3010"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-sobreidentificado-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-sobreidentificado-1",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo sobreidentificado",
+    "text": "Modelo sobreidentificado\nConstruyamos la nueva matriz de instrumentos y la nueva matriz de proyección para obtener el vector de coeficientes:\n\nZ &lt;- data.matrix(select(data.ingresos, constant, nearc4, nearc2, exper, expersq, black,\n                        south),\n                 rownames.force = T)\n\nP &lt;- Z%*%(solve(t(Z)%*%Z))%*%t(Z)\n\nb &lt;- solve(t(X)%*%P%*%X) %*% t(X)%*%P%*%Y\nb\n\n                lwage\nconstant  1.998075910\neduc      0.240315358\nexper     0.151707063\nexpersq  -0.002409864\nblack    -0.018284247\nsouth    -0.080744611"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-sobreidentificado-2",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-sobreidentificado-2",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo sobreidentificado",
+    "text": "Modelo sobreidentificado\nLa matriz de varianzas se estima igual que en el caso exactamente identificado:\n\nu_hat &lt;- Y-X%*%b\nsigma2 &lt;- as.numeric((1/N)*t(u_hat)%*%u_hat)\n\nNoten que R hace correción de muestras finitas:\n\nV=sigma2*solve(t(X)%*%P%*%X)*(N/(N-k))\nsqrt(diag(V))\n\n    constant         educ        exper      expersq        black        south \n0.7015640369 0.0405697227 0.0187547264 0.0004214487 0.0460663648 0.0262991839"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-sobreidentificado-3",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-sobreidentificado-3",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo sobreidentificado",
+    "text": "Modelo sobreidentificado\nComparamos:\n\n\nmodelsummary(list(\"Clásicos\"=iv_si),\n          output=\"gt\",\n          coef_map = c(\"educ\", \"exper\"),\n          gof_map = c(\"nobs\"),\n          fmt = 4)\n\n\n\n\n\n\n\n\n\nClásicos\n\n\n\n\neduc\n0.2403\n\n\n\n(0.0406)\n\n\nexper\n0.1517\n\n\n\n(0.0188)\n\n\nNum.Obs.\n3010"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#estimador-de-mgm-óptimo",
+    "href": "diapositivas/variables-instrumentales-practica.html#estimador-de-mgm-óptimo",
+    "title": "Variables instrumentales en R",
+    "section": "Estimador de MGM óptimo",
+    "text": "Estimador de MGM óptimo\nPara estimar por el MGM usaremos la librería gmm y la función del mismo nombre. La opción vcov indica que queremos una matriz robusta a heterocedasticidad y wmatrix especifica el estimador óptimo, es decir, donde \\(W=S^{-1}\\).\n\ngmm_opt &lt;- gmm(lwage ~ educ + exper + expersq + black + south,\n               ~ nearc4 + nearc2 + exper + expersq + black + south,\n               vcov = \"HAC\",\n               wmatrix = \"optimal\",\n               type = \"twoStep\",\n               data = data.ingresos)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#estimador-de-mgm-óptimo-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#estimador-de-mgm-óptimo-1",
+    "title": "Variables instrumentales en R",
+    "section": "Estimador de MGM óptimo",
+    "text": "Estimador de MGM óptimo\nRepliquemos esto con matrices. Obtenemos el vector de parámetros con alguna matriz subóptima, por ejemplo, la identidad:\n\nr &lt;- k -1 + 2 # 1 endógena y 2 instrumentos\nI &lt;- data.matrix(diag(r))\n\nb1 &lt;- solve(t(X)%*%Z%*%I%*%t(Z)%*%X)%*%t(X)%*%Z%*%I%*%t(Z)%*%Y\n\nUsemos este vector de parámetros para estimar \\(\\hat{S}\\):\n\nD &lt;- diag(as.vector((Y-X%*%b1)^2))\nS_hat &lt;- (1/N) * t(Z) %*% D %*% Z \n\nY volvamos a estimar el vector de parámetros, ahora usando \\(W=\\hat{S}^{-1}\\):\n\nbo &lt;- solve(t(X)%*%Z%*%solve(S_hat)%*%t(Z)%*%X)%*%\n  t(X)%*%Z%*%solve(S_hat)%*%t(Z)%*%Y\nbo\n\n                lwage\nconstant  2.022002957\neduc      0.238977697\nexper     0.150984069\nexpersq  -0.002402233\nblack    -0.021611174\nsouth    -0.081455256"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#iv-es-el-estimador-de-mgm-para-cualquier-w",
+    "href": "diapositivas/variables-instrumentales-practica.html#iv-es-el-estimador-de-mgm-para-cualquier-w",
+    "title": "Variables instrumentales en R",
+    "section": "IV es el estimador de MGM para cualquier W",
+    "text": "IV es el estimador de MGM para cualquier W\nUsemos gmm para estimar el modelo exactamente identificado, usando diferentes matrices \\(W\\):\n\n\ngmm_iv_opt &lt;- gmm(lwage ~ educ + exper + expersq + black + south,\n               ~ nearc4 + exper + expersq + black + south,\n               vcov = \"iid\",\n               wmatrix = \"optimal\",\n               type = \"twoStep\",\n               data = data.ingresos)\n\ngmm_iv_ident &lt;- gmm(lwage ~ educ + exper + expersq + black + south,\n                  ~ nearc4 + exper + expersq + black + south,\n                  vcov = \"iid\",\n                  wmatrix = \"ident\",\n                  type = \"twoStep\",\n                  data = data.ingresos)\n\n\nmodelsummary(list(\"Mátriz óptima\"=gmm_iv_opt,\"Identidad\"= gmm_iv_ident),\n          output=\"gt\",\n          coef_map = c(\"educ\", \"exper\"),\n          gof_map = c(\"nobs\"),\n          fmt = 4)\n\n\n\n\n\n\n\n\n\nMátriz óptima\nIdentidad\n\n\n\n\neduc\n0.2214\n0.2214\n\n\n\n(0.0409)\n(0.0409)\n\n\nexper\n0.1439\n0.1439\n\n\n\n(0.0187)\n(0.0187)\n\n\nNum.Obs.\n3010\n3010"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-6",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-6",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo exactamente identificado",
+    "text": "Modelo exactamente identificado\nRepliquemos esto con matrices, obteniendo primero la matriz \\(D\\), que colecciona los errores ajustados, y luego la matriz \\(S\\):\n\nD &lt;- diag(as.vector((Y-X%*%b)^2))\nS_hat &lt;- (1/(N)) * t(Z) %*% D %*% Z \n\nNoten que HC0 no hace corrección por muestras pequeñas:\n\nVr= N*solve(t(X)%*%Z%*%solve(t(Z)%*%Z)%*%t(Z)%*%X)%*%(t(X)%*%Z%*%solve(t(Z)%*%Z)%*%S_hat%*%solve(t(Z)%*%Z)%*%t(Z)%*%X)%*%solve(t(X)%*%Z%*%solve(t(Z)%*%Z)%*%t(Z)%*%X)\nsqrt(diag(Vr))\n\n    constant         educ        exper      expersq        black        south \n0.6957801830 0.0403033738 0.0185093210 0.0004295362 0.0442735580 0.0253631935"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-7",
+    "href": "diapositivas/variables-instrumentales-practica.html#modelo-exactamente-identificado-7",
+    "title": "Variables instrumentales en R",
+    "section": "Modelo exactamente identificado",
+    "text": "Modelo exactamente identificado\nComparamos:\n\n\nmodelsummary(list(\"Clásicos\"=iv_ei, \"HC0\"=iv_ei, \"HC3 (default)\"=iv_ei),\n          output=\"gt\",\n          coef_map = c(\"educ\", \"exper\"),\n          gof_map = c(\"nobs\"),\n          vcov = c(\"iid\",\"HC0\", \"robust\"),\n          fmt = 4)\n\n\n\n\n\n\n\n\n\nClásicos\nHC0\nHC3 (default)\n\n\n\n\neduc\n0.2214\n0.2214\n0.2214\n\n\n\n(0.0409)\n(0.0403)\n(0.0404)\n\n\nexper\n0.1439\n0.1439\n0.1439\n\n\n\n(0.0187)\n(0.0185)\n(0.0186)\n\n\nNum.Obs.\n3010\n3010\n3010"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#iv-es-el-estimador-de-mgm-para-cualquier-w-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#iv-es-el-estimador-de-mgm-para-cualquier-w-1",
+    "title": "Variables instrumentales en R",
+    "section": "IV es el estimador de MGM para cualquier W",
+    "text": "IV es el estimador de MGM para cualquier W\nRegresamos a la matriz \\(Z\\) con un solo instrumento y estimamos el vector de parámetros:\n\nZ &lt;- data.matrix(select(data.ingresos, constant, nearc4, exper, expersq, black,\n                        south),\n                 rownames.force = T)\n\nEstimamos el vector de coeficientes:\n\nb &lt;- solve(t(Z) %*% X) %*% t(Z) %*% Y\nb\n\n                lwage\nconstant  2.324805209\neduc      0.221390289\nexper     0.143933017\nexpersq  -0.002401759\nblack    -0.036938558\nsouth    -0.088888463"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#iv-es-el-estimador-de-mgm-para-cualquier-w-2",
+    "href": "diapositivas/variables-instrumentales-practica.html#iv-es-el-estimador-de-mgm-para-cualquier-w-2",
+    "title": "Variables instrumentales en R",
+    "section": "IV es el estimador de MGM para cualquier W",
+    "text": "IV es el estimador de MGM para cualquier W\nEl estimador de VI es el estimador de GMM para cualquier matriz \\(W\\) cuando \\(r=q\\):\n\n\nmodelsummary(list(\"Mátriz óptima\"=gmm_iv_opt,\"Identidad\"= gmm_iv_ident),\n          output=\"gt\",\n          coef_map = c(\"educ\", \"exper\"),\n          gof_map = c(\"nobs\"),\n          fmt = 4)\n\n\n\n\n\n\n\n\n\nMátriz óptima\nIdentidad\n\n\n\n\neduc\n0.2214\n0.2214\n\n\n\n(0.0409)\n(0.0409)\n\n\nexper\n0.1439\n0.1439\n\n\n\n(0.0187)\n(0.0187)\n\n\nNum.Obs.\n3010\n3010"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#estimador-de-mgm-óptimo-2",
+    "href": "diapositivas/variables-instrumentales-practica.html#estimador-de-mgm-óptimo-2",
+    "title": "Variables instrumentales en R",
+    "section": "Estimador de MGM óptimo",
+    "text": "Estimador de MGM óptimo\nCon este vector de parámetros, obtenemos la matriz de varianzas:\n\nD &lt;- diag(as.vector((Y-X%*%bo)^2))\nS_tilde &lt;- (1/N) * t(Z) %*% D %*% Z \n\nVr &lt;- (N)*solve(t(X) %*% Z %*% solve(S_tilde) %*% t(Z) %*% X)\nsqrt(diag(Vr))\n\n    constant         educ        exper      expersq        black        south \n0.6925828141 0.0401027981 0.0186490442 0.0004500697 0.0448916940 0.0258844828"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#estimador-de-mgm-óptimo-3",
+    "href": "diapositivas/variables-instrumentales-practica.html#estimador-de-mgm-óptimo-3",
+    "title": "Variables instrumentales en R",
+    "section": "Estimador de MGM óptimo",
+    "text": "Estimador de MGM óptimo\nComparamos:\n\n\nmodelsummary(list(gmm_opt),\n          output=\"gt\",\n          coef_map = c(\"educ\", \"exper\"),\n          gof_map = c(\"nobs\"),\n          fmt = 4)\n\n\n\n\n\n\n\n\n\n(1)\n\n\n\n\neduc\n0.2391\n\n\n\n(0.0446)\n\n\nexper\n0.1506\n\n\n\n(0.0205)\n\n\nNum.Obs.\n3010"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#prueba-de-hausman",
+    "href": "diapositivas/variables-instrumentales-practica.html#prueba-de-hausman",
+    "title": "Variables instrumentales en R",
+    "section": "Prueba de Hausman",
+    "text": "Prueba de Hausman\n\nEn general, las pruebas que comparan dos estimadores distintos se conocen como pruebas de Hausman, Wu-Hausman o Durbin-Wu-Hausman\nConsideremos dos estimadores \\(\\tilde{\\theta}\\) y \\(\\hat{\\theta}\\) que tienen la misma probabilidad límite bajo la \\(H_0\\) pero que difieren bajo la \\(H_a\\)\n\n\\[\n\\begin{aligned}\nH_0:\\quad\\quad p\\lim(\\tilde{\\theta}-\\hat{\\theta})=0 \\\\\nH_a:\\quad\\quad p\\lim(\\tilde{\\theta}-\\hat{\\theta})\\neq 0 \\\\\n\\end{aligned}\n\\]\n\nConstruimos el estadístico de prueba \\(H\\):\n\n\\[H=(\\tilde{\\theta}-\\hat{\\theta})'(\\hat{V}(\\tilde{\\theta}-\\hat{\\theta}))^{-1}(\\tilde{\\theta}-\\hat{\\theta})\\stackrel{a}{\\sim}\\chi^2(q)\\]\n\nSe rechaza la \\(H_0\\) si \\(H&gt;\\chi^2_{\\alpha}(q)\\)\nLa implementación es un poco complicada dado que\n\n\\[\\hat{V}(\\tilde{\\theta}-\\hat{\\theta})=\\hat{V}(\\tilde{\\theta})-\\hat{V}(\\hat{\\theta})-2cov(\\tilde{\\theta},\\hat{\\theta})\\]"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#prueba-de-hausman-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#prueba-de-hausman-1",
+    "title": "Variables instrumentales en R",
+    "section": "Prueba de Hausman",
+    "text": "Prueba de Hausman\n\nCon errores homocedásticos, el estimador de MCO es eficiente\nEn ese caso, se puede mostrar que\n\n\\[H_{h}=(\\tilde{\\theta}-\\hat{\\theta})'(\\hat{V}(\\tilde{\\theta})-\\hat{V}(\\hat{\\theta}))^{-1}(\\tilde{\\theta}-\\hat{\\theta})\\stackrel{a}{\\sim}\\chi^2(q)\\] que es fácil de calcular en el software\n\nSi no estamos dispuestos a asumir homocedasticidad, se requiere estimar \\(cov(\\tilde{\\theta},\\hat{\\theta})\\), que se implementa en R y otros paquetes\nLa prueba de Hausman puede usarse para comparar dos estimadores, uno más eficiente que otro\nLa estimación de la prueba robusta puede complicarse en algunas aplicaciones, aunque como prueba de endogeneidad casi todo está disponible como funciones en R y otros paquetes"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#prueba-de-sobreidentificación",
+    "href": "diapositivas/variables-instrumentales-practica.html#prueba-de-sobreidentificación",
+    "title": "Variables instrumentales en R",
+    "section": "Prueba de sobreidentificación",
+    "text": "Prueba de sobreidentificación\n\nTambién conocida como prueba de Hansen, quien propuso la forma general de la prueba, o prueba de Sargan, quien propuso la forma particular para el modelo lineal de VI\nEs una prueba sobre qué tan cerca está de cumplirse la hipótesis nula de que \\(E(h(w,\\theta_0))=0\\)\nHansen (1982) define el estadístico de prueba como\n\n\\[J=\\left(\\frac{1}{N}\\sum_i \\hat{h}_i\\right)'\\hat{S}^{-1}\\left(\\frac{1}{N}\\sum_i \\hat{h}_i\\right)\\stackrel{a}{\\sim}\\chi^2(r-q)\\]\n\nEl estadístico \\(J\\) es la función objetivo de MGM evaluada en \\(\\hat{\\theta}_{MGM}\\)\nSi el estadístico es grande en magnitud, rechazamos la hipótesis de que las condiciones de momentos poblacionales se cumplen y se concluye que el estimador de MGM es inconsistente"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#prueba-de-sobreidentificación-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#prueba-de-sobreidentificación-1",
+    "title": "Variables instrumentales en R",
+    "section": "Prueba de sobreidentificación",
+    "text": "Prueba de sobreidentificación\n\nEn el caso de variables instrumentales, el estadístico tiene la forma específica:\n\n\\[J=\\hat{u}'Z\\hat{S}^{-1}Z'\\hat{u}\\] donde \\(\\hat{u}=y-X'\\hat{\\beta}_{MGM}\\)\n\nSi se rechaza \\(H_0\\), hay evidencia de que los instrumentos \\(z\\) son endógenos (aunque también podría ser que haya una mala especificación del modelo)\nRechazar la \\(H0\\) indica que debemos replantear el modelo, aunque no nos dice cómo"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#instrumentos-débiles-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#instrumentos-débiles-1",
+    "title": "Variables instrumentales en R",
+    "section": "Instrumentos débiles",
+    "text": "Instrumentos débiles\n\nDiscusión intuitiva en Angrist & Pischke (MHE, 2009)\nEl estimador de MCO tiene las propiedades de ser consistente e insesgado\n\nEn una muestra de tamaño arbitrario, la distribución del coeficiente de MCO está centrada en el coeficiente de poblacional\n\nEn cambio, el estimador de MC2E, aunque consistente, es sesgado\n\nEn muestras grandes el estimador está cerca del coeficiente poblacional\n\nEsto tiene importantes consecuencias para la estimación y la inferencia"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#sesgo-del-estimador-de-mc2e",
+    "href": "diapositivas/variables-instrumentales-practica.html#sesgo-del-estimador-de-mc2e",
+    "title": "Variables instrumentales en R",
+    "section": "Sesgo del estimador de MC2E",
+    "text": "Sesgo del estimador de MC2E\n\nConsideremos el modelo simple con un solo regresor endógeno \\(y=\\beta x+ \\eta\\)\nSupongamos que tenemos una matriz de instrumentos \\(Z\\), por lo que la primera etapa es:\n\n\\[x=Z\\pi+\\xi\\]\n\nEl estimador de MCE es:\n\n\\[\\hat{\\beta}_{MC2E}=\\beta+(x'P_Z x)^{-1}x'P_Z\\eta\\]\n\nSustituyendo \\(x\\):\n\n\\[\\hat{\\beta}_{MC2E}-\\beta=(x'P_z x)^{-1}\\pi'Z'\\eta+(x'P_z x)^{-1}\\xi'P_z\\eta=sesgo_{Mc2E}\\]\n\nNo podemos calcular directamente el sesgo pues el operador esperanza es un operador lineal\nAngrist & Pischke (2009) aproximan el sesgo como.\n\n\\[E(\\hat{\\beta}_{MC2E}-\\beta)\\approx(E(x'P_z x))^{-1}E(\\pi'Z'\\eta)+(E(x'P_z x))^{-1}\\xi'P_z\\eta\\]"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#sesgo-del-estimador-de-mc2e-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#sesgo-del-estimador-de-mc2e-1",
+    "title": "Variables instrumentales en R",
+    "section": "Sesgo del estimador de MC2E",
+    "text": "Sesgo del estimador de MC2E\n\nLa expresión del sesgo puede reescribirse como\n\n\\[E(\\hat{\\beta}_{MC2E}-\\beta)\\approx\\frac{\\sigma_{\\eta\\xi}}{\\sigma_{xi}^2}\\frac{1}{F+1}\\]\ndonde \\(\\frac{\\sigma_{\\eta \\xi}}{\\sigma_{xi}^2}\\) es el sesgo del estimador de MCO\n\nCuando \\(\\pi=0\\), el sesgo de MC2E es el mismo que el de MCO\nEs decir, cuando \\(F\\) es pequeña, el sesgo de MC2E se acerca al sesgo de MCO: el estimador de MC2E está sesgado hacia el de MCO cuando la primera etapa es débil\nStaiger & Stock (1997) mostraron con simulaciones que cuando \\(F&gt;10\\), el sesgo máximo en el estimador de MC2E es de 10%\nDe aquí viene la regla de dedo frecuentemente usada para juzgar instrumentos débiles"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#recomendaciones-prácticas",
+    "href": "diapositivas/variables-instrumentales-practica.html#recomendaciones-prácticas",
+    "title": "Variables instrumentales en R",
+    "section": "Recomendaciones prácticas",
+    "text": "Recomendaciones prácticas\n\nReportar la primera etapa y ver si los coeficientes tienen sentido económico\nReportar el estadístico \\(F\\) de la primera etapa para los instrumentos excluidos\nReportar los resultados usando un modelo exactamente identificado usando el mejor instrumento\nPoner atención a la forma reducida, recordando que la forma reducida es proporcional al efecto causal de interés\n\n\n“Si no puedes ver la relación causal de interés en la forma reducida es porque probablemente no haya nada ahí.”\n— Angrist & Krueger (2001)"
+  },
+  {
+    "objectID": "diapositivas/index.html",
+    "href": "diapositivas/index.html",
+    "title": "Diapositivas",
+    "section": "",
+    "text": "Muestra seleccionada\nVariables instrumentales\nMétodo generalizado de momentos\nVariables instrumentales en la práctica",
+    "crumbs": [
+      "Diapositivas"
+    ]
   }
 ]

@@ -317,3 +317,4 @@ econocharts::sdcurve(supply1, demand1, supply2, demand1, supply3, demand1,
         names = c("S[1]", "D[1]","S[2]", "D[1]", "S[3]", "D[1]"),
         xmax = 15, ymax=10)
 ```
+

@@ -1,0 +1,538 @@
+---
+title: "Variables instrumentales en R"
+author: "Irvin Rojas"
+format: 
+  revealjs:
+    slide-number: c/t
+    width: 1600
+    height: 900
+---
+
+```{r setup}
+#| echo: false
+#| warning: false 
+#| message: false
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+library(tidyverse)
+library(knitr)
+library(stargazer)
+library(janitor)
+library(sandwich)
+library(marginaleffects)
+library(foreign)
+library(AER)
+library(sampleSelection)
+library(modelsummary)
+library(gmm)
+
+```
+
+
+
+# Cuestiones prácticas de VI
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8s4pgc3DPN0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+## Cuestiones prácticas de VI
+
+- Hemos aprendido que la forma general del estimador de MGMes:
+
+$$\hat{\beta}_{GMM}=(X'ZW_NZ'X)^{-1}X'ZW_NZ'y$$
+
+- Y vimos también la forma general del estimador de la varianza:
+
+$$\hat{V}(\hat{\beta}_{GMM})=N(X'ZW_NZ'X)^{-1}(X'ZW_N\hat{S}W_NZ'X)(X'ZW_NZ'X)^{-1}$$
+
+
+## Estimador óptimo de MGM
+
+Para obtener el **estimador óptimo** escogemos una forma particular para la matriz de pesos:
+
+$$W=\hat{S}^{-1}$$
+
+Y entonces el estimador de MGM se vuelve:
+
+$$\hat{\beta}_{GMM,O}=(X'Z\hat{S}^{-1}Z'X)^{-1}X'Z\hat{S}^{-1}Z'y$$
+
+Y el estimador de varianza se simplifica a:
+
+$$\hat{V}(\hat{\beta}_{GMM,O})=N(X'Z\hat{S}^{-1}Z'X)^{-1}$$
+
+Hasta aquí no asumimos nada sobre la forma de los errores
+
+Lo único que nos permitió pasar de la forma general al estimador óptimo es la elección de $W$
+
+Con esto obtenemos el estimador más eficiente
+
+
+## Álgebra de matrices
+
+Usaremos los [datos](ingresos_iv.csv) del estudio de [Card (1995)](https://www.nber.org/papers/w4483) sobre rendimientos a la educación para mostrar cómo funcionan las expresiones para estimar el vector de coeficientes y los errores estándar de los distintos estimadores de VI.
+
+Card usa la proximidad a una institución de educación superior como instrumento de los años de educación acumulados.
+
+
+```{r}
+data.ingresos <- read_csv("ingresos_iv.csv",
+                          locale = locale(encoding = "latin1"))
+```
+
+
+
+## Modelo exactamente identificado
+
+Para tener una referencia, veamos lo que obtenemos con *ivreg* del paquete *AER*. Nuestro modelo tiene cinco regresores más una constante:
+
+```{r}
+#| output-location: column
+iv_ei <- ivreg(lwage ~ educ + exper + expersq + black + south |
+                 . - educ + nearc4, data = data.ingresos)
+
+modelsummary(list(iv_ei),
+          output="gt",
+          coef_map = c("educ", "exper"),
+          fmt = 4)
+```
+
+## Modelo exactamente identificado
+
+Repliquemos lo anterior con matrices. Primero construimos $X$, $Y$ y $Z$:
+
+```{r}
+data.ingresos <- data.ingresos %>% 
+  mutate(constant=1)
+
+X <- data.matrix(select(data.ingresos, constant, educ, exper, expersq, black,
+              south),
+       rownames.force = T)
+
+Y <- data.matrix(select(data.ingresos,lwage),
+       rownames.force = T)
+
+Z <- data.matrix(select(data.ingresos, constant, nearc4, exper, expersq, black,
+              south),
+       rownames.force = T)
+
+N <- nrow(X)
+k <- ncol(X) # incluyendo la constante
+```
+
+## Modelo exactamente identificado
+
+Estimamos beta
+
+```{r}
+b <- solve(t(Z) %*% X) %*% t(Z) %*% Y
+b
+```
+
+## Modelo exactamente identificado
+
+La matriz de varianzas, asumiendo homocedasticidad:
+
+```{r}
+u_hat <- Y-X%*%b
+sigma2 <- as.numeric((1/N)*t(u_hat)%*%u_hat)
+```
+
+Construimos la matriz de proyección
+
+```{r}
+P <- Z%*%(solve(t(Z)%*%Z))%*%t(Z)
+```
+
+La matriz de varianzas que construye R por defecto multiplica por $N/N-k$:
+
+```{r}
+V=sigma2*solve(t(X)%*%P%*%X)*(N/(N-k))
+sqrt(diag(V))
+```
+## Modelo exactamente identificado
+
+Comparamos el coeficiente y el de educación con lo obtenido con *ivreg*:
+
+```{r}
+#| output-location: column
+modelsummary(list(iv_ei),
+          output="gt",
+          coef_map = c("educ", "exper"),
+          gof_map = c("nobs"),
+          fmt = 4)
+```
+
+## Modelo exactamente identificado
+
+Si permitimos una heterocedasticidad arbitraria:
+
+```{r}
+#| output-location: column
+modelsummary(list("Clásicos"=iv_ei, "HC0"=iv_ei, "HC3 (default)"=iv_ei),
+          output="gt",
+          coef_map = c("educ", "exper"),
+          gof_map = c("nobs"),
+          vcov = c("iid","HC0", "robust"),
+          fmt = 4)
+
+
+```
+
+## Modelo exactamente identificado
+
+Repliquemos esto con matrices, obteniendo primero la matriz $D$, que colecciona los errores ajustados, y luego la matriz $S$:
+
+```{r}
+D <- diag(as.vector((Y-X%*%b)^2))
+S_hat <- (1/(N)) * t(Z) %*% D %*% Z 
+```
+
+Noten que HC0 no hace corrección por muestras pequeñas:
+
+```{r}
+Vr= N*solve(t(X)%*%Z%*%solve(t(Z)%*%Z)%*%t(Z)%*%X)%*%(t(X)%*%Z%*%solve(t(Z)%*%Z)%*%S_hat%*%solve(t(Z)%*%Z)%*%t(Z)%*%X)%*%solve(t(X)%*%Z%*%solve(t(Z)%*%Z)%*%t(Z)%*%X)
+sqrt(diag(Vr))
+```
+
+## Modelo exactamente identificado
+
+Comparamos:
+
+```{r}
+#| output-location: column
+modelsummary(list("Clásicos"=iv_ei, "HC0"=iv_ei, "HC3 (default)"=iv_ei),
+          output="gt",
+          coef_map = c("educ", "exper"),
+          gof_map = c("nobs"),
+          vcov = c("iid","HC0", "robust"),
+          fmt = 4)
+
+```
+
+
+
+## Modelo sobreidentificado
+
+Consideremos ahora el modelo sobreidentificado con dos instrumentos:
+
+```{r}
+#| output-location: column
+
+iv_si <- ivreg(lwage ~ educ + exper + expersq + black + south |
+                 . - educ + nearc4 + nearc2, data = data.ingresos)
+
+modelsummary(list("Clásicos"=iv_si),
+          output="gt",
+          coef_map = c("educ", "exper"),
+          gof_map = c("nobs"),
+          fmt = 4)
+```
+## Modelo sobreidentificado
+
+Construyamos la nueva matriz de instrumentos y la nueva matriz de proyección para obtener el vector de coeficientes:
+
+```{r}
+Z <- data.matrix(select(data.ingresos, constant, nearc4, nearc2, exper, expersq, black,
+                        south),
+                 rownames.force = T)
+
+P <- Z%*%(solve(t(Z)%*%Z))%*%t(Z)
+
+b <- solve(t(X)%*%P%*%X) %*% t(X)%*%P%*%Y
+b
+```
+## Modelo sobreidentificado
+
+La matriz de varianzas se estima igual que en el caso exactamente identificado:
+
+```{r}
+u_hat <- Y-X%*%b
+sigma2 <- as.numeric((1/N)*t(u_hat)%*%u_hat)
+```
+
+Noten que R hace correción de muestras finitas:
+
+```{r}
+V=sigma2*solve(t(X)%*%P%*%X)*(N/(N-k))
+sqrt(diag(V))
+```
+
+## Modelo sobreidentificado
+
+Comparamos:
+
+```{r}
+#| output-location: column
+modelsummary(list("Clásicos"=iv_si),
+          output="gt",
+          coef_map = c("educ", "exper"),
+          gof_map = c("nobs"),
+          fmt = 4)
+```
+
+## Estimador de MGM óptimo
+
+Para estimar por el MGM usaremos la librería *gmm* y la función del mismo nombre. La opción *vcov* indica que queremos una matriz robusta a heterocedasticidad y *wmatrix* especifica el estimador óptimo, es decir, donde $W=S^{-1}$.
+
+```{r}
+gmm_opt <- gmm(lwage ~ educ + exper + expersq + black + south,
+               ~ nearc4 + nearc2 + exper + expersq + black + south,
+               vcov = "HAC",
+               wmatrix = "optimal",
+               type = "twoStep",
+               data = data.ingresos)
+```
+
+## Estimador de MGM óptimo
+
+Repliquemos esto con matrices. Obtenemos el vector de parámetros con alguna matriz subóptima, por ejemplo, la identidad:
+
+```{r}
+r <- k -1 + 2 # 1 endógena y 2 instrumentos
+I <- data.matrix(diag(r))
+
+b1 <- solve(t(X)%*%Z%*%I%*%t(Z)%*%X)%*%t(X)%*%Z%*%I%*%t(Z)%*%Y
+```
+
+Usemos este vector de parámetros para estimar $\hat{S}$:
+
+```{r}
+D <- diag(as.vector((Y-X%*%b1)^2))
+S_hat <- (1/N) * t(Z) %*% D %*% Z 
+```
+
+Y volvamos a estimar el vector de parámetros, ahora usando $W=\hat{S}^{-1}$:
+
+```{r}
+bo <- solve(t(X)%*%Z%*%solve(S_hat)%*%t(Z)%*%X)%*%
+  t(X)%*%Z%*%solve(S_hat)%*%t(Z)%*%Y
+bo
+```
+## Estimador de MGM óptimo
+
+Con este vector de parámetros, obtenemos la matriz de varianzas:
+
+```{r}
+D <- diag(as.vector((Y-X%*%bo)^2))
+S_tilde <- (1/N) * t(Z) %*% D %*% Z 
+
+Vr <- (N)*solve(t(X) %*% Z %*% solve(S_tilde) %*% t(Z) %*% X)
+sqrt(diag(Vr))
+```
+
+
+## Estimador de MGM óptimo
+
+Comparamos:
+
+```{r}
+#| output-location: column
+modelsummary(list(gmm_opt),
+          output="gt",
+          coef_map = c("educ", "exper"),
+          gof_map = c("nobs"),
+          fmt = 4)
+```
+
+## IV es el estimador de MGM para cualquier W
+
+Usemos *gmm* para estimar el modelo exactamente identificado, usando diferentes matrices $W$:
+
+```{r}
+#| output-location: column
+
+gmm_iv_opt <- gmm(lwage ~ educ + exper + expersq + black + south,
+               ~ nearc4 + exper + expersq + black + south,
+               vcov = "iid",
+               wmatrix = "optimal",
+               type = "twoStep",
+               data = data.ingresos)
+
+gmm_iv_ident <- gmm(lwage ~ educ + exper + expersq + black + south,
+                  ~ nearc4 + exper + expersq + black + south,
+                  vcov = "iid",
+                  wmatrix = "ident",
+                  type = "twoStep",
+                  data = data.ingresos)
+
+
+modelsummary(list("Mátriz óptima"=gmm_iv_opt,"Identidad"= gmm_iv_ident),
+          output="gt",
+          coef_map = c("educ", "exper"),
+          gof_map = c("nobs"),
+          fmt = 4)
+
+```
+## IV es el estimador de MGM para cualquier W
+
+Regresamos a la matriz $Z$ con un solo instrumento y estimamos el vector de parámetros:
+
+```{r}
+Z <- data.matrix(select(data.ingresos, constant, nearc4, exper, expersq, black,
+                        south),
+                 rownames.force = T)
+```
+
+Estimamos el vector de coeficientes:
+
+```{r}
+b <- solve(t(Z) %*% X) %*% t(Z) %*% Y
+b
+```
+## IV es el estimador de MGM para cualquier W
+
+El estimador de VI es el estimador de GMM para cualquier matriz $W$ cuando $r=q$:
+
+```{r}
+#| output-location: column
+
+modelsummary(list("Mátriz óptima"=gmm_iv_opt,"Identidad"= gmm_iv_ident),
+          output="gt",
+          coef_map = c("educ", "exper"),
+          gof_map = c("nobs"),
+          fmt = 4)
+```
+
+
+
+# ¿Hace diferencia usar variables instrumentales?
+
+## Prueba de Hausman
+
+- En general, las pruebas que comparan dos estimadores distintos se conocen como pruebas de Hausman, Wu-Hausman o Durbin-Wu-Hausman
+
+- Consideremos dos estimadores $\tilde{\theta}$ y $\hat{\theta}$ que tienen la misma probabilidad límite bajo la $H_0$ pero que difieren bajo la $H_a$
+
+$$
+\begin{aligned}
+H_0:\quad\quad p\lim(\tilde{\theta}-\hat{\theta})=0 \\
+H_a:\quad\quad p\lim(\tilde{\theta}-\hat{\theta})\neq 0 \\
+\end{aligned}
+$$
+
+- Construimos el estadístico de prueba $H$:
+
+$$H=(\tilde{\theta}-\hat{\theta})'(\hat{V}(\tilde{\theta}-\hat{\theta}))^{-1}(\tilde{\theta}-\hat{\theta})\stackrel{a}{\sim}\chi^2(q)$$
+
+- Se rechaza la $H_0$ si $H>\chi^2_{\alpha}(q)$
+
+- La implementación es un poco complicada dado que
+
+$$\hat{V}(\tilde{\theta}-\hat{\theta})=\hat{V}(\tilde{\theta})-\hat{V}(\hat{\theta})-2cov(\tilde{\theta},\hat{\theta})$$
+
+---
+
+## Prueba de Hausman
+
+- Con errores homocedásticos, el estimador de MCO es eficiente
+
+- En ese caso, se puede mostrar que
+
+$$H_{h}=(\tilde{\theta}-\hat{\theta})'(\hat{V}(\tilde{\theta})-\hat{V}(\hat{\theta}))^{-1}(\tilde{\theta}-\hat{\theta})\stackrel{a}{\sim}\chi^2(q)$$
+que es fácil de calcular en el software
+
+- Si no estamos dispuestos a asumir homocedasticidad, se requiere estimar $cov(\tilde{\theta},\hat{\theta})$, que se implementa en R y otros paquetes
+
+- La prueba de Hausman puede usarse para comparar dos estimadores, uno más eficiente que otro
+
+- La estimación de la prueba robusta puede complicarse en algunas aplicaciones, aunque como prueba de endogeneidad casi todo está disponible como funciones en R y otros paquetes
+
+# Sobreidentificación
+
+## Prueba de sobreidentificación
+
+- También conocida como prueba de Hansen, quien propuso la forma general de la prueba, o prueba de Sargan, quien propuso la forma particular para el modelo lineal de VI
+
+- Es una prueba sobre qué tan cerca está de cumplirse la hipótesis nula de que $E(h(w,\theta_0))=0$
+
+- Hansen (1982) define el estadístico de prueba como
+
+$$J=\left(\frac{1}{N}\sum_i \hat{h}_i\right)'\hat{S}^{-1}\left(\frac{1}{N}\sum_i \hat{h}_i\right)\stackrel{a}{\sim}\chi^2(r-q)$$
+
+- El estadístico $J$ es la función objetivo de MGM evaluada en $\hat{\theta}_{MGM}$
+
+- Si el estadístico es grande en magnitud, rechazamos la hipótesis de que las condiciones de momentos poblacionales se cumplen y se concluye que el estimador de MGM es inconsistente
+
+## Prueba de sobreidentificación
+
+- En el caso de variables instrumentales, el estadístico tiene la forma específica:
+
+$$J=\hat{u}'Z\hat{S}^{-1}Z'\hat{u}$$
+donde $\hat{u}=y-X'\hat{\beta}_{MGM}$
+
+- Si se rechaza $H_0$, hay evidencia de que los instrumentos $z$ son endógenos (aunque también podría ser que haya una mala especificación del modelo)
+
+- Rechazar la $H0$ indica que debemos replantear el modelo, aunque no nos dice cómo
+
+# Instrumentos débiles
+
+## Instrumentos débiles
+
+- Discusión intuitiva en Angrist & Pischke (MHE, 2009)
+
+- El estimador de MCO tiene las propiedades de ser consistente e insesgado
+
+  - En una muestra de tamaño arbitrario, la distribución del coeficiente de MCO está centrada en el coeficiente de  poblacional
+
+- En cambio, el estimador de MC2E, aunque consistente, **es sesgado**
+
+  - En muestras grandes el estimador está *cerca* del coeficiente poblacional
+
+- Esto tiene importantes consecuencias para la estimación y la inferencia
+
+
+## Sesgo del estimador de MC2E
+
+- Consideremos el modelo simple con un solo regresor endógeno $y=\beta x+ \eta$
+
+- Supongamos que tenemos una matriz de instrumentos $Z$, por lo que la primera etapa es:
+
+$$x=Z\pi+\xi$$
+
+- El estimador de MCE es:
+
+$$\hat{\beta}_{MC2E}=\beta+(x'P_Z x)^{-1}x'P_Z\eta$$
+
+- Sustituyendo $x$:
+
+$$\hat{\beta}_{MC2E}-\beta=(x'P_z x)^{-1}\pi'Z'\eta+(x'P_z x)^{-1}\xi'P_z\eta=sesgo_{Mc2E}$$
+
+- No podemos calcular directamente el sesgo pues el operador esperanza es un operador lineal
+
+- Angrist & Pischke (2009) aproximan el sesgo como.
+
+
+$$E(\hat{\beta}_{MC2E}-\beta)\approx(E(x'P_z x))^{-1}E(\pi'Z'\eta)+(E(x'P_z x))^{-1}\xi'P_z\eta$$
+
+
+## Sesgo del estimador de MC2E
+
+- La expresión del sesgo puede reescribirse como
+
+$$E(\hat{\beta}_{MC2E}-\beta)\approx\frac{\sigma_{\eta\xi}}{\sigma_{xi}^2}\frac{1}{F+1}$$
+
+donde $\frac{\sigma_{\eta \xi}}{\sigma_{xi}^2}$ es el sesgo del estimador de MCO
+
+- Cuando $\pi=0$, el sesgo de MC2E es el mismo que el de MCO
+
+- Es decir, cuando $F$ es pequeña, el sesgo de MC2E se acerca al sesgo de MCO: el estimador de MC2E está sesgado hacia el de MCO cuando la primera etapa es débil
+
+- Staiger & Stock (1997) mostraron con simulaciones que cuando $F>10$, el sesgo máximo en el estimador de MC2E es de 10%
+
+- De aquí viene la regla de dedo frecuentemente usada para juzgar instrumentos débiles
+
+
+## Recomendaciones prácticas
+
+1. Reportar la primera etapa y ver si los coeficientes tienen sentido económico
+
+1. Reportar el estadístico $F$ de la primera etapa para los instrumentos excluidos
+
+1. Reportar los resultados usando un modelo exactamente identificado usando el *mejor* instrumento
+
+1. Poner atención a la forma reducida, recordando que la forma reducida es proporcional al efecto causal de interés
+
+> "Si no puedes ver la relación causal de interés en la forma reducida es porque probablemente no haya nada ahí."
+>
+> --- Angrist & Krueger (2001)

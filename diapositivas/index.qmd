@@ -8,3 +8,5 @@ title: "Diapositivas"
 [Variables instrumentales](./variables-instrumentales.qmd)
 
 [Método generalizado de momentos](./mgm.qmd)
+
+[Variables instrumentales en la práctica](./variables-instrumentales-practica.qmd)
