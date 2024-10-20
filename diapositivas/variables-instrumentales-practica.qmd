@@ -421,8 +421,6 @@ $$H=(\tilde{\theta}-\hat{\theta})'(\hat{V}(\tilde{\theta}-\hat{\theta}))^{-1}(\t
 
 $$\hat{V}(\tilde{\theta}-\hat{\theta})=\hat{V}(\tilde{\theta})-\hat{V}(\hat{\theta})-2cov(\tilde{\theta},\hat{\theta})$$
 
----
-
 ## Prueba de Hausman
 
 - Con errores homocedásticos, el estimador de MCO es eficiente
@@ -437,6 +435,40 @@ que es fácil de calcular en el software
 - La prueba de Hausman puede usarse para comparar dos estimadores, uno más eficiente que otro
 
 - La estimación de la prueba robusta puede complicarse en algunas aplicaciones, aunque como prueba de endogeneidad casi todo está disponible como funciones en R y otros paquetes
+
+
+## Prueba de Hausman con regresión auxiliar
+
+- Una forma equivalente de realizar el test de Hausman es con una regresión auxiliar
+
+- Consideremos el siguiente modelo:
+
+$$y=x_1\beta_1 + x_2\beta_2  + u$$
+con $x_1$ endógna y $x_2$ exógena
+
+- La regresión auxiliar es:
+
+$$y=x_1\gamma_21 + x_2\gamma_2 +\hat{v} \gamma_3+ \varepsilon$$
+donde $\hat{v}=x_1-\hat{x}_1$ y $\hat{x}_1$ son los valores ajustados de la primera etapa
+
+- El test de Hausman consiste en evaluar la significancia estadística de $\gamma_3$
+
+
+## Prueba de Hausman con regresión auxiliar
+
+- Consideremos la primera etapa
+
+$$x_1 = z\pi_1 + x_2\pi + v$$
+donde $z$ es un instrumento válido
+
+- Si $x_1$ está correlacionado con $u$ en la ecuación estructural entonces $\nu$ también lo está
+
+- Es decir, $u=v\gamma_3 + \varepsilon$
+
+- Planteamos la hipótesis nula de que $\gamma_3=0$
+
+- Si rechazamos la hipótesis nula, concluimos que hay correlación entre $x_1$ y $u$
+
 
 # Sobreidentificación
 

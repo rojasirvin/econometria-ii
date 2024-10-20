@@ -1277,5 +1277,19 @@
     "title": "Tarea 2",
     "section": "Notas",
     "text": "Notas\n\n\nMroz, T. A. (1987). The sensitivity of an empirical model of married women’s hours of work to economic and statistical assumptions. Econometrica: Journal of the econometric society, 765-799.↩︎"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#prueba-de-hausman-con-regresión-auxiliar",
+    "href": "diapositivas/variables-instrumentales-practica.html#prueba-de-hausman-con-regresión-auxiliar",
+    "title": "Variables instrumentales en R",
+    "section": "Prueba de Hausman con regresión auxiliar",
+    "text": "Prueba de Hausman con regresión auxiliar\n\nUna forma equivalente de realizar el test de Hausman es con una regresión auxiliar\nConsideremos el siguiente modelo:\n\n\\[y=x_1\\beta_1 + x_2\\beta_2  + u\\] con \\(x_1\\) endógna y \\(x_2\\) exógena\n\nLa regresión auxiliar es:\n\n\\[y=x_1\\gamma_21 + x_2\\gamma_2 +\\hat{v} \\gamma_3+ \\varepsilon\\] donde \\(\\hat{v}=x_1-\\hat{x}_1\\) y \\(\\hat{x}_1\\) son los valores ajustados de la primera etapa\n\nEl test de Hausman consiste en evaluar la significancia estadística de \\(\\gamma_3\\)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales-practica.html#prueba-de-hausman-con-regresión-auxiliar-1",
+    "href": "diapositivas/variables-instrumentales-practica.html#prueba-de-hausman-con-regresión-auxiliar-1",
+    "title": "Variables instrumentales en R",
+    "section": "Prueba de Hausman con regresión auxiliar",
+    "text": "Prueba de Hausman con regresión auxiliar\n\nConsideremos la primera etapa\n\n\\[x_1 = z\\pi_1 + x_2\\pi + v\\] donde \\(z\\) es un instrumento válido\n\nSi \\(x_1\\) está correlacionado con \\(u\\) en la ecuación estructural entonces \\(\\nu\\) también lo está\nEs decir, \\(u=v\\gamma_3 + \\varepsilon\\)\nPlanteamos la hipótesis nula de que \\(\\gamma_3=0\\)\nSi rechazamos la hipótesis nula, concluimos que hay correlación entre \\(x_1\\) y \\(u\\)"
   }
 ]
