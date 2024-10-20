@@ -1,0 +1,103 @@
+---
+title: "Tarea 3"
+lang: es
+---
+
+## Preguntas
+
+Fecha de entrega: **viernes 8 de noviembre a las 20:00 en Teams**
+
+La tarea deberá entregarse en Teams. Deberá incluir dos documentos:
+
+Un primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.
+
+Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.
+
+
+
+## Datos
+
+[comportamiento_wide.csv](../files/comportamiento_wide.csv)
+
+[mlbook1.csv](../files/mlbook1.csv)
+
+
+## Pregunta 1
+
+En este ejercicio usaremos los datos de Blackburn & Neumark (1992), que pueden accederse instalando el paquete *wooldridge* y luego llamando el objeto *wooldridge::wage2*. La pregunta de investigación de este trabajo es la misma que la del estudio de Card (1993) visto en clase, pero con otra estrategia de identificación. El propósito de este ejercicio es estimar los retornos a la educación.
+
+a. [3 puntos] Estime una regresión por MCO para explicar el log del salario (**lwage**) en función de la educación **educ** y los siguientes controles: experiencia (**exper**), tiempo en el empleo actual (**tenure**), edad (**age**), casado (**married**), número de hermanos (**sibs**) y urbano (**urban**). Reporte errores clásicos y errores robustos. ¿Qué problema encuentra en la estimación de esta relación? ¿El coeficiente sobre **educ** tiene una interpretación causal del efecto de la educación en el salario?
+
+a. [3 puntos] Se propone usar como instrumento de los años de educación a la educación del padre. ¿Qué condiciones debe cumplir la variable propuesta para funcionar como instrumento válido?
+
+a. [4 puntos] ¿Cómo juzga la propuesta de usar la variable antes descrita como instrumento?
+
+a. [3 puntos] Estime la relación entre el logaritmo del salario y la educación usando la educación del padre, **feduc**, como instrumento. Emplee las mismas variables de control que en el modelo de MCO. Reporte errores clásicos y errores robustos. 
+
+a. [4 puntos] Interprete la primera etapa en términos del coeficiente sobre el instrumento. Obtenga el estadístico $F$ del instrumento excluido e interprete su magnitud.
+
+a. [3 puntos] Interprete el coeficiente sobre la variable de educación en el modelo estructural. Compare la magnitud del efecto estimado con el resultado de MCO.
+
+a. [3 puntos] Realice ahora el siguiente procedimiento. Primero, estime la primera etapa usando una regresión por MCO. Obtenga los valores ajustados de educación y llámelos **educ_hat**. Luego, estime la segunda etapa empleando **educ_hat** como variable independiente, además del resto de variables de control. ¿Cómo cambian sus resultados en comparación con la parte d.?
+
+a. [3 puntos] ¿A qué se deben las discrepancias que encuentra? ¿Cuál de las dos estrategias prefiere para estimar el modelo de variables instrumentales?
+
+a. [3 puntos] Reestime el modelo de variables instrumentales añadiendo un segundo instrumento, la educación de la madre, **meduc**, y reporte errores robustos (no es necesario usar *gmm*, puede seguir con *ivreg*, por lo que no estaría obteniendo el estimador de MGM óptimo). ¿Cómo cambian sus resultados para la ecuación estructural con respecto al caso exactamente identificado?
+    
+a. [3 puntos] Con el objeto que resulta de la estimación del modelo sobreidentificado, realice *summary(OBJETO, vcov = sandwich, diagnostics = TRUE)* para obtener las tres pruebas diagnóstico más usadas en variables instrumentales: prueba de instrumentos débiles, prueba de Hausman y prueba de Sargan. Interprete cada una de las pruebas.
+
+a. [4 puntos] Considere la primera etapa del modelo sobreidentificado. Compruebe que si realiza una prueba de significancia conjunta para los instrumentos obtiene la prueba de instrumentos débiles que se reporta en el resumen que obtuvo con *summary*.
+
+a. [4 puntos] Compruebe que si realiza el procedimiento de regresión auxiliar para la prueba de Hausman obtiene el mismo valor $p$ que se reporta en el resumen que obtuvo con *summary*.
+
+## Pregunta 2
+
+Considere los datos *comportamiento_wide.csv*, que contienen información individual de niñas y niños, incluyendo su género, edad, raza e información de sus madres. Además, se incluye una medida auto reportada de autoestima (**self**) y una evaluación de comportamiento antisocial (**anti**). Se quiere conocer cómo influye la autoestima en el comportamiento antisocial. Para cada niño o niña hay tres observaciones en el tiempo. Se busca explicar el comportamiento antisocial en función de la autoestima y la condición de pobreza (**pov**):
+
+$$anti_{it}=\alpha_i+\beta_1 self_{it}+\beta_2 pov_{it}+\varepsilon_{it}$$
+
+a. [2 puntos] La base se encuentra en formato *wide*. Ponga la base en formato *long*, donde haya una columna para cada variable y donde las filas representen a un individuo en un periodo.
+
+a. [2 puntos] Estime la ecuación de comportamiento antisocial empleando MCO *pooled*. ¿Cuáles son los supuestos que se deben cumplir para que $\hat{\beta}_1^{MCO}$ sea consistente?
+
+a. [3 puntos] Estime la ecuación de comportamiento antisocial empleando el estimador *within*. ¿Cuáles son los supuestos que se deben cumplir para que $\hat{\beta}_1^{FE}$ sea consistente?
+
+a. [3 puntos] Estime la ecuación de comportamiento antisocial empleando efectos aleatorios. ¿Cuáles son los supuestos que se deben cumplir para que $\hat{\beta}_1^{RE}$ sea consistente?
+
+a. [3 puntos] Se desea incorporar en el análisis el género (**gender**) y una variable dicotómica para los hispanos (**hispanic**). Indique qué modelo usaría y estime dicho modelo.
+
+a. [2 puntos] Regrese al modelo que incluye solo la autoestima y el estado de pobreza como covariables. Realice una prueba de Hausman para determinar si se prefiere un modelo de efectos fijos o uno de efectos aleatorios.
+
+## Pregunta 3
+
+Retome los datos de la pregunta 2 y el modelo del comportamiento antisocial en función de la autoestima y la pobreza. En esta pregunta mostraremos la equivalencia del estimador within con otros estimadores.
+
+a. [3 puntos] Compruebe que el estimador de efectos fijos es equivalente a MCO con dummies de individuos.
+
+a. [2 puntos] Compruebe que en un modelo de efectos fijos las características que no varían en el tiempo no pueden ser identificadas. Añada la variable **black** para comprobarlo.
+
+a. [5 puntos] Compruebe que el estimador de efectos fijos es equivalente a MCO sobre el modelo en diferencias con respecto a la media. Para esto, conserve dos periodos consecutivos de datos y solo observaciones que tengan datos para las variables dependientes e independientes en los dos años que elija. Luego estime por MCO el modelo con variables transformadas.
+
+a. [5 puntos] Compruebe que el estimador de efectos fijos es equivalente a MCO sobre el modelo en primeras diferencias. Parta de la muestra con dos años de la parte d. para estimar por MCO el modelo con variables transformadas.
+
+
+## Pregunta 4
+
+Considere los datos *mlbook1.csv* con información sobre 2287 estudiantes en 131 escuelas. Nos interesa la relación entre una medida de aptitud verbal,  (**iq_vert**) y el resultado de un examen de inglés (**langpost**). Las variables **schoolnr** y **pupilnr** identifican a las escuelas y los estudiantes, respectivamente. El modelo a estimar es el siguiente: 
+
+$$langpost_{i}=\alpha+\beta iqvert_{i}+BX_{i}+\varepsilon_{i}$$
+
+donde $i$ indexa y $X_i$ son tres características usadas como control: el sexo, **sex**, si el estudiante es de una población minoritaria, **minority** y el número de años repetidos, **repeatgr**.
+
+a. [3 puntos] ¿Por qué es posible que estemos frente a una situación de errores agrupados?
+
+a. [2 puntos] Estime la ecuación de calificación usando MCO ignorando la agrupación de datos. ¿Qué concluye respecto a la relación entre la aptitud verbal y la prueba de inglés?
+
+a. [3 puntos] Estime ahora los errores robustos a heteroscedasticidad del tipo HC1. ¿Qué cambia y por qué en la interpretación de la relación entre la prueba de aptitud y el examen?
+
+a. [2 puntos] Estime la ecuación de calificación usando MCO y efectos fijos de escuela. ¿Qué resuelve este procedimiento?
+
+a. [5 puntos] Estime la ecuación de calificación usando MCO y con errores agrupados a nivel escuela (sin efectos fijos de escuela). ¿Qué resuelve este procedimiento?
+
+a. [5 puntos] Estime la ecuación de calificación usando MCO, efectos fijos de escuela y con errores agrupados a nivel escuela. ¿Qué resuelve este procedimiento?
+

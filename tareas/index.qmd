@@ -28,6 +28,8 @@ lang: es
 
 - Fecha de entrega: viernes 8 de noviembre a las 20:00 en Teams
 
+- [Preguntas](./tarea-3.qmd)
+
 ---
 
 # Tarea 4
