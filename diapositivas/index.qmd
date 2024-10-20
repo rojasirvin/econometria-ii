@@ -3,10 +3,10 @@ title: "Diapositivas"
 ---
 
 
-[Muestra seleccionada](./muestra-seleccionada.qmd)
+[Muestra seleccionada](./muestra-seleccionada.qmd){target="_blank"}
 
-[Variables instrumentales](./variables-instrumentales.qmd)
+[Variables instrumentales](./variables-instrumentales.qmd){target="_blank"}
 
-[Método generalizado de momentos](./mgm.qmd)
+[Método generalizado de momentos](./mgm.qmd){target="_blank"}
 
-[Variables instrumentales en la práctica](./variables-instrumentales-practica.qmd)
+[Variables instrumentales en la práctica](./variables-instrumentales-practica.qmd){target="_blank"}

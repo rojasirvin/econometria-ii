@@ -1291,5 +1291,124 @@
     "title": "Variables instrumentales en R",
     "section": "Prueba de Hausman con regresión auxiliar",
     "text": "Prueba de Hausman con regresión auxiliar\n\nConsideremos la primera etapa\n\n\\[x_1 = z\\pi_1 + x_2\\pi + v\\] donde \\(z\\) es un instrumento válido\n\nSi \\(x_1\\) está correlacionado con \\(u\\) en la ecuación estructural entonces \\(\\nu\\) también lo está\nEs decir, \\(u=v\\gamma_3 + \\varepsilon\\)\nPlanteamos la hipótesis nula de que \\(\\gamma_3=0\\)\nSi rechazamos la hipótesis nula, concluimos que hay correlación entre \\(x_1\\) y \\(u\\)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html",
+    "href": "diapositivas/variables-instrumentales.knit.html",
+    "title": "Variables instrumentales",
+    "section": "",
+    "text": "Supongamos que el el proceso de salarios verdadero está dado por\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+\\beta_2 habilidad_i+e_i\\]\nY asumamos que la habilidad es no observada y decidimos estimar\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\]\n¿Dónde queda la habilidad?\nEl \\(\\hat{\\beta}_1\\) estimado con esta regresión corta es inconsistente porque \\(u_i\\) incluye la habilidad, que afecta tanto el desempeño en el mercado laboral como el desempeño en la escuela"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#qué-sucede-si-se-violan-los-supuestos-de-mco",
+    "href": "diapositivas/variables-instrumentales.knit.html#qué-sucede-si-se-violan-los-supuestos-de-mco",
+    "title": "Variables instrumentales",
+    "section": "",
+    "text": "Supongamos que el el proceso de salarios verdadero está dado por\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+\\beta_2 habilidad_i+e_i\\]\nY asumamos que la habilidad es no observada y decidimos estimar\n\\[\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\]\n¿Dónde queda la habilidad?\nEl \\(\\hat{\\beta}_1\\) estimado con esta regresión corta es inconsistente porque \\(u_i\\) incluye la habilidad, que afecta tanto el desempeño en el mercado laboral como el desempeño en la escuela"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#instrumentos",
+    "href": "diapositivas/variables-instrumentales.knit.html#instrumentos",
+    "title": "Variables instrumentales",
+    "section": "Instrumentos",
+    "text": "Instrumentos\nConsideremos el siguiente modelo\n\\[y=\\beta_0+\\beta_1 x+u\\]\ndonde \\(cov(x,u)\\neq 0\\)\nSuponga que existe una varible \\(z\\) que cumple con:\n\nExogeneidad: \\(z\\) no está correlacionada con \\(u\\)\n\n\\[cov(z,u)=0\\]\n\nRelevancia: \\(z\\) está correlacionado con \\(x\\)\n\n\\[cov(z,x)\\neq 0\\]\nEntonces \\(z\\) es un instrumento de \\(x\\)\nLa exogeneidad implica que \\(z\\) no debe estar correlacionado con factores omitidos (por ejemplo, la habilidad)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#estimador-de-vi",
+    "href": "diapositivas/variables-instrumentales.knit.html#estimador-de-vi",
+    "title": "Variables instrumentales",
+    "section": "Estimador de VI",
+    "text": "Estimador de VI\nCalculando la covarianza con \\(z\\) de \\(y=\\beta_0+\\beta_1 x+u\\) obtenemos:\n\\[cov(y,z)=\\beta_1 cov(x,z)+cov(u,z)\\]\nY, si \\(cov(u,z)\\), resolviendo para \\(\\hat{\\beta}_1\\)\n\\[\\hat{\\beta}_1=\\frac{cov(y,z)}{cov(x,z)}\\]\nsiempre y cuando \\(cov(x,z)\\neq 0\\)\nPor una LGN se puede mostrar que \\(\\hat{\\beta}_1\\) es consistente\nSin embargo, como profundizaremos más adelante, \\(\\hat{\\beta}_1\\) siempre es sesgagado\nEl sesgo puede ser sustancial en muestras pequeñas, por lo que se recomienda tener precaución con el tamaño de la muestra"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#ejemplo-rendimientos-a-la-educación",
+    "href": "diapositivas/variables-instrumentales.knit.html#ejemplo-rendimientos-a-la-educación",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: rendimientos a la educación",
+    "text": "Ejemplo: rendimientos a la educación\nCard (1995) estudia el problema de retornos a la educación\nTenemos una muestra de 5,525 hombres de entre 14 y 24 años\nNos interesa la relación entre educación e ingreso, pero sabemos que no observamos la habilidad\nSabemos que si estimamos \\(\\ln(w_i)=\\beta_0+\\beta_1 educ_i+u_i\\), el coeficiente \\(\\beta_1\\) estará sesgado\nCard emplea como instrumento una variable \\(z_i\\) que indica si en el municipio de la persona \\(i\\) hay una universidad\nLa intución es que la presencia de la universidad baja el costo de ir a la universidad, pero esto no afecta directamente el ingreso\nEncontrar un instrumento casi nunca es tarea sencilla: se trata de enteder cómo los mecanismos, las instituciones y los contextos"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#lenguaje-de-vi",
+    "href": "diapositivas/variables-instrumentales.knit.html#lenguaje-de-vi",
+    "title": "Variables instrumentales",
+    "section": "Lenguaje de VI",
+    "text": "Lenguaje de VI\nDe forma más general, partimos del la siguiente ecuación estructural para \\(y_i\\):\n\\[y_i=\\beta_0+\\beta_1 x_{1i}+\\beta_2 x_{2i}+u_i\\]\ndonde \\(cov(x_{1i},u_i)\\neq 0\\)\nA \\(x_{1i}\\) se le llama la variable endógena\nSe incluye también una o más variables exógenas como \\(x_{2i}\\) que no están correlacionadas con \\(u_i\\)\nA una regresión de la variable de interés en función del instrumento y las variables exógenas se le conoce como forma reducida\n\\[y_i=\\beta_0+\\beta_1 z_{1i}+\\beta_2 x_{2i}+u_i\\]"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#primera-etapa",
+    "href": "diapositivas/variables-instrumentales.knit.html#primera-etapa",
+    "title": "Variables instrumentales",
+    "section": "Primera etapa",
+    "text": "Primera etapa\nLa primera etapa especifica la relación entre la variable endógena y el instrumento:\n\\[x_{1i}=\\pi_0+\\pi_1 z_i+\\pi_2x_{2i}+\\nu_i\\]\nDonde se cumple que \\(cov(z_i,\\nu_i=0)\\) y \\(cov(x_{2i},\\nu_i)=0\\)\nEntonces, la condición de relevancia puede escribirse también como \\(\\pi_1\\neq 0\\)\nNoten que la primera etapa también implica que, descontando el efecto de \\(z_i\\), todavía \\(x_{1i}\\) y \\(x_{2i}\\) están correlacionadas\nLa primera etapa puede y debe probarse empíricamente\nEn cambio, no es posible probar la restricción de exclusión, que debe estar respaldada sobre todo por la teoría económica, el conocimiento de las instituciones, la exogeneidad de experimentos naturales, etc."
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#más-de-un-instrumento",
+    "href": "diapositivas/variables-instrumentales.knit.html#más-de-un-instrumento",
+    "title": "Variables instrumentales",
+    "section": "Más de un instrumento",
+    "text": "Más de un instrumento\nEs posible que haya \\(J\\) variables \\(z_{ij}\\) que puedan funcionar como instrumento\nSe debe cumplir que \\(cov(u_i,z_{ij})=0\\) y que cada una se correlacione con \\(x_{i1}\\)\nCon dos instrumentos, podemos escribir la primera etapa como\n\\[x_{1i}=\\pi_0+\\pi_1 z_{1i}+ \\pi_2 z_{2i} +\\pi_3x_{2i}+\\nu_i\\]\nAhora, debe cumplirse que \\(cov(z_{1i},\\nu_i)=cov(z_{2i},\\nu_i)=cov(x_{2i},\\nu_i)=0\\)\nPara lograr identificación, se requiere que \\(\\pi_1\\neq 0\\) o \\(\\pi_2\\neq 0\\)\nPodemos usar una prueba \\(F\\) para probar que \\(\\pi_1=\\pi_2=0\\)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#mínimos-cuadrados-en-dos-etapas",
+    "href": "diapositivas/variables-instrumentales.knit.html#mínimos-cuadrados-en-dos-etapas",
+    "title": "Variables instrumentales",
+    "section": "Mínimos cuadrados en dos etapas",
+    "text": "Mínimos cuadrados en dos etapas\nEl modelo presentado anteriormente sugiere que podemos estimar \\(\\beta_1\\) con un procedimiento de dos etapas\n\nRegresión de \\(x_{1i}\\) sobre los instrumentos y las variables exógenas para obtener \\(\\hat{x}_{1i}\\)\nRegresión de \\(y_i\\) sobre las variables exógenas y \\(\\hat{x}_{1i}\\)\n\nEs como si purgáramos a \\(x_{1i}\\) de su correlación con \\(u_i\\)\nNunca hacemos esto a mano\n\nCuando tenemos tantos instrumentos como endógenas, usamos el estimador de variables instrumentales\nCuando tenemos más instrumentos que endógenas, recurrimos al método generalizado de momentos"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#más-sobre-rendimientos-a-la-educación",
+    "href": "diapositivas/variables-instrumentales.knit.html#más-sobre-rendimientos-a-la-educación",
+    "title": "Variables instrumentales",
+    "section": "Más sobre rendimientos a la educación",
+    "text": "Más sobre rendimientos a la educación\nEn el problema de Card (1995), la primera etapa es\n\\[esc_i=\\pi_0+\\pi_1 X_i+ \\phi unicerca_i +\\nu_i\\] donde \\(unicerca_i= \\begin{cases} 1 \\quad\\text{había una universidad en el municipio} \\\\ 0 \\quad\\text{otro caso}\\\\ \\end{cases}\\)\nY la forma reducida es\n\\[\\ln(w_i)=\\gamma_0+\\gamma_1 X_i+  \\delta unicerca_i+\\varepsilon_i\\]\nSabemos que el salario estará correlacionado con la presencia de la universidad, pero estas diferencias ocurren por la vía de la escolaridad"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#ejemplo-card-1995",
+    "href": "diapositivas/variables-instrumentales.knit.html#ejemplo-card-1995",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: Card (1995)",
+    "text": "Ejemplo: Card (1995)\nUsamos los datos en ingresos_iv.csv, del estudio de Card que hemos mencionado como ejemplo\nLa librería AER, que ya hemos usado, tiene la función ivreg\nTambién usaremos una nueva librería, gmm\nEstimemos la relación entre el log del salario y la educación\n\ndata.ingresos &lt;- read_csv(\"../files/ingresos_iv.csv\",\n                          locale = locale(encoding = \"latin1\"))\n#MCO\nmco &lt;- lm(lwage ~ educ + exper + black + south + married + smsa,\n          data = data.ingresos)\n\n#Variables instrumentales (asume homocedasticidad)\nvi &lt;- ivreg(lwage ~  educ + exper + black + south + married + smsa |\n               . - educ + nearc4, data = data.ingresos)"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#ejemplo-card-1995-1",
+    "href": "diapositivas/variables-instrumentales.knit.html#ejemplo-card-1995-1",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: Card (1995)",
+    "text": "Ejemplo: Card (1995)\nSabemos que \\(\\beta_1\\) estimado por MCO es inconsistente\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi),\n             coef_map = c(\"educ\", \"exper\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n \n\n  \n    \n    \n    tinytable_j5aqhrk0yf2abz2fcng4\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#ejemplo-card-1995-2",
+    "href": "diapositivas/variables-instrumentales.knit.html#ejemplo-card-1995-2",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo: Card (1995)",
+    "text": "Ejemplo: Card (1995)\nLa primera etapa de este ejercicio es\n\n# Primera etapa\npe_vi &lt;- lm(educ ~  nearc4 + exper + black + south + married + smsa,\n            data = data.ingresos)\n\n\nmodelsummary(list(\"MCO\"=mco, \"VI\"=vi, \"Primera etapa\"=pe_vi),\n             coef_map = c(\"educ\", \"exper\", \"nearc4\"),\n             gof_map = c(\"nobs\", \"F\"))\n\n \n\n  \n    \n    \n    tinytable_9jmof75fchisi3ve9zp8\n    \n    \n    \n    \n  \n\n  \n    \n      \n        \n        \n              \n                 \n                MCO\n                VI\n                Primera etapa\n              \n        \n        \n        \n                \n                  educ    \n                  0.071  \n                  0.124  \n                         \n                \n                \n                          \n                  (0.003)\n                  (0.050)\n                         \n                \n                \n                  exper   \n                  0.034  \n                  0.056  \n                  -0.404 \n                \n                \n                          \n                  (0.002)\n                  (0.020)\n                  (0.009)\n                \n                \n                  nearc4  \n                         \n                         \n                  0.327  \n                \n                \n                          \n                         \n                         \n                  (0.082)\n                \n                \n                  Num.Obs.\n                  3003   \n                  3003   \n                  3003   \n                \n                \n                  F       \n                  219.153\n                         \n                  456.140"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#ejemplo-con-oferta-y-demanda",
+    "href": "diapositivas/variables-instrumentales.knit.html#ejemplo-con-oferta-y-demanda",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\nSupongamos que nos interesa estimar la elasticidad del consumo de mantequilla\n\\[\\ln(q_{_i})=\\alpha + \\beta \\ln(p_i) + \\varepsilon_i\\] Supongamos que tenemos datos del precio y el consumo en una muestra grande de localidades \\(i\\)\nSi estimamos la ecuación anterior por MCO, el coeficiente estimado \\(\\hat{\\beta}\\) será inconsistente por un problema de simulateneidad\nEl precio y la cantidad se determinan en equilibrio por la interacción de la oferta y la demanda\nUn choque a la oferta o la demanda afectará tanto la cantidad como el precio de equilibrio"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#ejemplo-con-oferta-y-demanda-1",
+    "href": "diapositivas/variables-instrumentales.knit.html#ejemplo-con-oferta-y-demanda-1",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\nPodemos usar variables instrumentales para estimar la elasticidad de la demanda\nNecesitamos una variable \\(z\\) que afecte solo la oferta, pero que no afecte directamente la demanda\n\\(z\\) puede ser precipitación o temperatura\nAl desplazar la oferta, manteniendo la demanda fija, se revela la forma de la curva de demanda\nPodemos estimar la elasticidad de la demanda"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#ejemplo-con-oferta-y-demanda-2",
+    "href": "diapositivas/variables-instrumentales.knit.html#ejemplo-con-oferta-y-demanda-2",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\n\n# Add custom curves\ndemand1 &lt;- data.frame(Hmisc::bezier(c(1, 3, 9),\n                                    c(9, 3, 1))) \n\nsupply1 &lt;- data.frame(Hmisc::bezier(c(1, 8, 9),\n                                    c(1, 5, 9))) \n\nsupply2 &lt;- data.frame(Hmisc::bezier(c(1, 8, 9),\n                                    c(3, 8, 12))) \n\nsupply3 &lt;- data.frame(Hmisc::bezier(c(1, 8, 9),\n                                    c(5, 10, 14)))"
+  },
+  {
+    "objectID": "diapositivas/variables-instrumentales.knit.html#ejemplo-con-oferta-y-demanda-3",
+    "href": "diapositivas/variables-instrumentales.knit.html#ejemplo-con-oferta-y-demanda-3",
+    "title": "Variables instrumentales",
+    "section": "Ejemplo con oferta y demanda",
+    "text": "Ejemplo con oferta y demanda\n\neconocharts::sdcurve(supply1, demand1, supply2, demand1, supply3, demand1,\n        names = c(\"S[1]\", \"D[1]\",\"S[2]\", \"D[1]\", \"S[3]\", \"D[1]\"),\n        xmax = 15, ymax=10)\n\n# A tibble: 3 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1  4.65  3.40\n2  3.31  4.76\n3  2.39  6.03"
   }
 ]
