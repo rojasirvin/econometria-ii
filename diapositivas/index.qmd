@@ -10,3 +10,5 @@ title: "Diapositivas"
 [Método generalizado de momentos](./mgm.qmd){target="_blank"}
 
 [Variables instrumentales en la práctica](./variables-instrumentales-practica.qmd){target="_blank"}
+
+[Panel](./panel.qmd){target="_blank"}
