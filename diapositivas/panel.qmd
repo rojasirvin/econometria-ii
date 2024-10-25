@@ -93,7 +93,7 @@ $$y_{it}=x_{it}'\beta+u_{it}$$
 
 $$
 \begin{aligned}
-\frac{1}{N}\sum_iy_{it}&=\frac{1}{N}\sum_i\alpha_i+\frac{1}{N}\sum_ix_{it}'\beta+\frac{1}{N}\sum_i\varepsilon_{it} \\
+\frac{1}{T}\sum_iy_{it}&=\frac{1}{T}\sum_i\alpha_i+\frac{1}{T}\sum_ix_{it}'\beta+\frac{1}{T}\sum_i\varepsilon_{it} \\
 \bar{y}_{i}&=\alpha_i+ \bar{x}_i\beta+\bar{\varepsilon}_i
 \end{aligned}
 $$
@@ -173,7 +173,7 @@ donde se puede estimar $\hat{\sigma}^2_{\varepsilon}=\frac{1}{N(T-1)-K}\sum_i\su
 
 $$
 \begin{aligned}
-\hat{V}(\hat{\beta}_{W})&=\sigma^2_{\varepsilon}\left(\sum_i\sum_t \ddot{x}_{it}\ddot{x}_{it}'\right)^{-1}\left(\sum_i \sum_t \sum_s \ddot{x}_{it}\ddot{x}_{is}'\hat{\ddot{e}}_{it}\hat{\ddot{e}}_{is}\right)\left(\sum_i\sum_t \ddot{x}_{it}\ddot{x}_{it}'\right)^{-1}
+\hat{V}(\hat{\beta}_{W})&=\left(\sum_i\sum_t \ddot{x}_{it}\ddot{x}_{it}'\right)^{-1}\left(\sum_i \sum_t \sum_s \ddot{x}_{it}\ddot{x}_{is}'\hat{\ddot{e}}_{it}\hat{\ddot{e}}_{is}\right)\left(\sum_i\sum_t \ddot{x}_{it}\ddot{x}_{it}'\right)^{-1}
 \end{aligned}
 $$
 
@@ -218,6 +218,34 @@ $$\hat{\beta}_{MCG}=(X'\Omega^{-1}X)^{-1}X'\Omega^{-1}y$$
 - Esto da lugar al estimador de **mínimos cuadrados generalizados feasibles**
 
 $$\hat{\beta}_{MCGF}=(X'\hat{\Omega}^{-1}X)^{-1}X'\hat{\Omega}^{-1}y$$
+# Estimador between
+
+- Aunque es de poca utilidad práctica, el estimador *between* nos servirá de auxiliar más adelante
+
+- Explota la variación entre unidades
+
+- Al promediar sobre el tiempo recordemos que obtenemos
+
+$$
+\begin{aligned}
+\bar{y}_{i}&=\alpha_i+ \bar{x}_i\beta+\bar{\varepsilon}_i
+\end{aligned}
+$$
+- Sumando 0 obtenemos:
+
+
+$$
+\begin{aligned}
+\bar{y}_{i}&=\alpha + \bar{x}_i\beta+(\alpha_i - \alpha + \bar{\varepsilon}_i)
+\end{aligned}
+$$
+
+- El estimador between es MCO a la ecuación transformada (con intercepto)
+
+- Solo es consistente si $\bar{x}_$ es independiente de el error compuesto $\alpha_i - \alpha + \bar{\varepsilon}_i$
+
+- Es equivalente a una regresión de sección cruzada con $T=1$
+
 
 # Estimador para modelo de efectos aleatorios
 
@@ -226,34 +254,50 @@ $$\hat{\beta}_{MCGF}=(X'\hat{\Omega}^{-1}X)^{-1}X'\hat{\Omega}^{-1}y$$
 - Podemos escribir el modelo general añadiendo un intercepto no aleatorio $\mu$ para que los efectos aleatorios puedan tener media cero:
 
 $$y_{it}=\mu+x_{it}'\beta+\alpha_i+\varepsilon_{it}=w_{it}'\delta+\alpha_i+\varepsilon_{it}$$
-donde $w_{it}=[1\;w_{it}]$ y $\delta=[\mu\;\beta']'$
+donde $w_{it}=[1\;x_{it}]$ y $\delta=[\mu\;\beta']'$
 
 - Asumimos que $\alpha_i$ y $\varepsilon_i$ son iid
 
-
-- Podríamos estimar este modelo usando el estimador de MCGF
-
-- Como $\alpha_i$ y $\varepsilon_{it}$ son independientes, la matriz de varianzas del error compuesto es
-
-$$\Omega=\sigma_{\varepsilon}^2 I_T+\varepsilon_{\alpha}^2ee'$$
-donde $e=(1,1,\ldots,1)'$ es un vector de unos de dimensión $T\times 1$
-
-- Premultiplicamos entonces el modelo con efectos aleatorios para obtener uno que tenga como matriz de varianzas $\sigma^2_{\varepsilon}I_T$, es decir, que sea homocedástico
+- $\mu$ simplemente garantiza que los errores tengan media cero
 
 ## Estimador de efectos aleatorios
 
-- El estimador de MCGF de $\mu$ y $\beta$ puede implementarse como MCO a la ecuación transformada
+- El estimador de MCG de $\mu$ y $\beta$ puede implementarse como MCO a la ecuación transformada
 
 $$y_{it}-\lambda\bar{y}_i=(1-\lambda)\mu+(x_{it}-\lambda\bar{x}_i)'\beta+\nu_{it}$$
 donde $\nu_{it}=(1-\lambda)\alpha_i+(\varepsilon_{it}-\lambda\bar{\varepsilon}_i)$
 
-- Esto se logra premultiplicando el modelo $y_{it}=w_{it}'\delta+\alpha_i+\varepsilon_{it}$ por $\Omega^{-1/2}$ y con algo de álgebra
-
 - Construimos un estimador consistente de $\lambda$ usando estimadores consistentes de $\sigma^2_{\varepsilon}$ y $\hat{\alpha}^2$
 
-
 $$\hat{\lambda}=1-\frac{\hat{\sigma}_{\varepsilon}}{\sqrt{T\hat{\sigma}_{\alpha}^2+\hat{\sigma}_{\varepsilon}^2}}$$
+## Estimación de $\hat{\lambda}$
+
 - El software estadístico hace estas estimaciones basadas en las ecuaciones 21.48 y 21.49 en CT
+
+- Para $\sigma_{\varepsilon}^2$ usamos el estimador within $\hat{\beta}_W$ para obtener:
+
+$$\hat{\sigma_{\varepsilon}}^2=\frac{1}{N(T-1)-k}\sum_i\sum_t\left((y_{it}-\bar{y}_i)-(x_{it}-\bar{x}_i)'\hat{\beta}_W\right)^2$$
+- Para $\sigma_{\alpha}^2$, usamos el estimador between $\hat{\beta}_B$ para obtener
+
+$$\hat{\sigma_{\alpha}}^2=\frac{1}{N-(k-1)}\sum_i\left(\bar{y}_i-\hat{\alpha}_B-\bar{x}_i'\hat{\beta}_B\right)^2-\frac{1}{T}\hat{\sigma_{\varepsilon}}^2$$
+
+
+
+## Estimador de efectos aleatorios
+
+- El estimador de efectos aleatorios se logra premultiplicando el modelo $y_{it}=w_{it}'\delta+\alpha_i+\varepsilon_{it}$ por $\Omega^{-1/2}$ y con algo de álgebra
+
+- Se asume que $\alpha_i$ y $\varepsilon_{it}$ son independientes
+
+- Hacemos $\Omega_i$ con entradas $\sigma_{\alpha}^2+\sigma_{\varepsilon}^2$ en la diagonal principal
+
+- Fuera de la diagonal tiene $\sigma_{\alpha}^2$
+
+
+$$\Omega=\sigma_{\varepsilon}^2 I_T+\sigma_{\alpha}^2ee'$$
+donde $e=(1,1,\ldots,1)'$ es un vector de unos de dimensión $T\times 1$
+
+- Premultiplicamos entonces el modelo con efectos aleatorios para obtener uno que tenga como matriz de varianzas $\sigma^2_{\varepsilon}I_T$, es decir, que sea homoscedástico
 
 ## Propiedades del estimador de efectos aleatorios
 

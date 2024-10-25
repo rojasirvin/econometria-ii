@@ -415,7 +415,7 @@ Irvin Rojas
 </ul>
 <p><span class="math display">\[
 \begin{aligned}
-\frac{1}{N}\sum_iy_{it}&amp;=\frac{1}{N}\sum_i\alpha_i+\frac{1}{N}\sum_ix_{it}'\beta+\frac{1}{N}\sum_i\varepsilon_{it} \\
+\frac{1}{T}\sum_iy_{it}&amp;=\frac{1}{T}\sum_i\alpha_i+\frac{1}{T}\sum_ix_{it}'\beta+\frac{1}{T}\sum_i\varepsilon_{it} \\
 \bar{y}_{i}&amp;=\alpha_i+ \bar{x}_i\beta+\bar{\varepsilon}_i
 \end{aligned}
 \]</span></p>
@@ -492,7 +492,7 @@ Irvin Rojas
 </ul>
 <p><span class="math display">\[
 \begin{aligned}
-\hat{V}(\hat{\beta}_{W})&amp;=\sigma^2_{\varepsilon}\left(\sum_i\sum_t \ddot{x}_{it}\ddot{x}_{it}'\right)^{-1}\left(\sum_i \sum_t \sum_s \ddot{x}_{it}\ddot{x}_{is}'\hat{\ddot{e}}_{it}\hat{\ddot{e}}_{is}\right)\left(\sum_i\sum_t \ddot{x}_{it}\ddot{x}_{it}'\right)^{-1}
+\hat{V}(\hat{\beta}_{W})&amp;=\left(\sum_i\sum_t \ddot{x}_{it}\ddot{x}_{it}'\right)^{-1}\left(\sum_i \sum_t \sum_s \ddot{x}_{it}\ddot{x}_{is}'\hat{\ddot{e}}_{it}\hat{\ddot{e}}_{is}\right)\left(\sum_i\sum_t \ddot{x}_{it}\ddot{x}_{it}'\right)^{-1}
 \end{aligned}
 \]</span></p>
 <ul>
@@ -530,7 +530,27 @@ Irvin Rojas
 <li><p>Podemos proponer un modelo para <span class="math inline">\(V(u|x)\)</span> y obtener un estimador consistente para <span class="math inline">\(\Omega\)</span></p></li>
 <li><p>Esto da lugar al estimador de <strong>mínimos cuadrados generalizados feasibles</strong></p></li>
 </ul>
-<p><span class="math display">\[\hat{\beta}_{MCGF}=(X'\hat{\Omega}^{-1}X)^{-1}X'\hat{\Omega}^{-1}y\]</span></p>
+<p><span class="math display">\[\hat{\beta}_{MCGF}=(X'\hat{\Omega}^{-1}X)^{-1}X'\hat{\Omega}^{-1}y\]</span> # Estimador between</p>
+<ul>
+<li><p>Aunque es de poca utilidad práctica, el estimador <em>between</em> nos servirá de auxiliar más adelante</p></li>
+<li><p>Explota la variación entre unidades</p></li>
+<li><p>Al promediar sobre el tiempo recordemos que obtenemos</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+\bar{y}_{i}&amp;=\alpha_i+ \bar{x}_i\beta+\bar{\varepsilon}_i
+\end{aligned}
+\]</span> - Sumando 0 obtenemos:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\bar{y}_{i}&amp;=\alpha + \bar{x}_i\beta+(\alpha_i - \alpha + \bar{\varepsilon}_i)
+\end{aligned}
+\]</span></p>
+<ul>
+<li><p>El estimador between es MCO a la ecuación transformada (con intercepto)</p></li>
+<li><p>Solo es consistente si <span class="math inline">\(\bar{x}_\)</span> es independiente de el error compuesto <span class="math inline">\(\alpha_i - \alpha + \bar{\varepsilon}_i\)</span></p></li>
+<li><p>Es equivalente a una regresión de sección cruzada con <span class="math inline">\(T=1\)</span></p></li>
+</ul>
 </section></section>
 <section>
 <section id="estimador-para-modelo-de-efectos-aleatorios" class="title-slide slide level1 center">
@@ -542,28 +562,41 @@ Irvin Rojas
 <ul>
 <li>Podemos escribir el modelo general añadiendo un intercepto no aleatorio <span class="math inline">\(\mu\)</span> para que los efectos aleatorios puedan tener media cero:</li>
 </ul>
-<p><span class="math display">\[y_{it}=\mu+x_{it}'\beta+\alpha_i+\varepsilon_{it}=w_{it}'\delta+\alpha_i+\varepsilon_{it}\]</span> donde <span class="math inline">\(w_{it}=[1\;w_{it}]\)</span> y <span class="math inline">\(\delta=[\mu\;\beta']'\)</span></p>
+<p><span class="math display">\[y_{it}=\mu+x_{it}'\beta+\alpha_i+\varepsilon_{it}=w_{it}'\delta+\alpha_i+\varepsilon_{it}\]</span> donde <span class="math inline">\(w_{it}=[1\;x_{it}]\)</span> y <span class="math inline">\(\delta=[\mu\;\beta']'\)</span></p>
 <ul>
 <li><p>Asumimos que <span class="math inline">\(\alpha_i\)</span> y <span class="math inline">\(\varepsilon_i\)</span> son iid</p></li>
-<li><p>Podríamos estimar este modelo usando el estimador de MCGF</p></li>
-<li><p>Como <span class="math inline">\(\alpha_i\)</span> y <span class="math inline">\(\varepsilon_{it}\)</span> son independientes, la matriz de varianzas del error compuesto es</p></li>
-</ul>
-<p><span class="math display">\[\Omega=\sigma_{\varepsilon}^2 I_T+\varepsilon_{\alpha}^2ee'\]</span> donde <span class="math inline">\(e=(1,1,\ldots,1)'\)</span> es un vector de unos de dimensión <span class="math inline">\(T\times 1\)</span></p>
-<ul>
-<li>Premultiplicamos entonces el modelo con efectos aleatorios para obtener uno que tenga como matriz de varianzas <span class="math inline">\(\sigma^2_{\varepsilon}I_T\)</span>, es decir, que sea homocedástico</li>
+<li><p><span class="math inline">\(\mu\)</span> simplemente garantiza que los errores tengan media cero</p></li>
 </ul>
 </section>
 <section id="estimador-de-efectos-aleatorios-1" class="slide level2">
 <h2>Estimador de efectos aleatorios</h2>
 <ul>
-<li>El estimador de MCGF de <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\beta\)</span> puede implementarse como MCO a la ecuación transformada</li>
+<li>El estimador de MCG de <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\beta\)</span> puede implementarse como MCO a la ecuación transformada</li>
 </ul>
 <p><span class="math display">\[y_{it}-\lambda\bar{y}_i=(1-\lambda)\mu+(x_{it}-\lambda\bar{x}_i)'\beta+\nu_{it}\]</span> donde <span class="math inline">\(\nu_{it}=(1-\lambda)\alpha_i+(\varepsilon_{it}-\lambda\bar{\varepsilon}_i)\)</span></p>
 <ul>
-<li><p>Esto se logra premultiplicando el modelo <span class="math inline">\(y_{it}=w_{it}'\delta+\alpha_i+\varepsilon_{it}\)</span> por <span class="math inline">\(\Omega^{-1/2}\)</span> y con algo de álgebra</p></li>
-<li><p>Construimos un estimador consistente de <span class="math inline">\(\lambda\)</span> usando estimadores consistentes de <span class="math inline">\(\sigma^2_{\varepsilon}\)</span> y <span class="math inline">\(\hat{\alpha}^2\)</span></p></li>
+<li>Construimos un estimador consistente de <span class="math inline">\(\lambda\)</span> usando estimadores consistentes de <span class="math inline">\(\sigma^2_{\varepsilon}\)</span> y <span class="math inline">\(\hat{\alpha}^2\)</span></li>
 </ul>
-<p><span class="math display">\[\hat{\lambda}=1-\frac{\hat{\sigma}_{\varepsilon}}{\sqrt{T\hat{\sigma}_{\alpha}^2+\hat{\sigma}_{\varepsilon}^2}}\]</span> - El software estadístico hace estas estimaciones basadas en las ecuaciones 21.48 y 21.49 en CT</p>
+<p><span class="math display">\[\hat{\lambda}=1-\frac{\hat{\sigma}_{\varepsilon}}{\sqrt{T\hat{\sigma}_{\alpha}^2+\hat{\sigma}_{\varepsilon}^2}}\]</span> ## Estimación de <span class="math inline">\(\hat{\lambda}\)</span></p>
+<ul>
+<li><p>El software estadístico hace estas estimaciones basadas en las ecuaciones 21.48 y 21.49 en CT</p></li>
+<li><p>Para <span class="math inline">\(\sigma_{\varepsilon}^2\)</span> usamos el estimador within <span class="math inline">\(\hat{\beta}_W\)</span> para obtener:</p></li>
+</ul>
+<p><span class="math display">\[\hat{\sigma_{\varepsilon}}^2=\frac{1}{N(T-1)-k}\sum_i\sum_t\left((y_{it}-\bar{y}_i)-(x_{it}-\bar{x}_i)'\hat{\beta}_W\right)^2\]</span> - Para <span class="math inline">\(\sigma_{\alpha}^2\)</span>, usamos el estimador between <span class="math inline">\(\hat{\beta}_B\)</span> para obtener</p>
+<p><span class="math display">\[\hat{\sigma_{\alpha}}^2=\frac{1}{N-(k-1)}\sum_i\left(\bar{y}_i-\hat{\alpha}_B-\bar{x}_i'\hat{\beta}_B\right)^2-\frac{1}{T}\hat{\sigma_{\varepsilon}}^2\]</span></p>
+</section>
+<section id="estimador-de-efectos-aleatorios-2" class="slide level2">
+<h2>Estimador de efectos aleatorios</h2>
+<ul>
+<li><p>El estimador de efectos aleatorios se logra premultiplicando el modelo <span class="math inline">\(y_{it}=w_{it}'\delta+\alpha_i+\varepsilon_{it}\)</span> por <span class="math inline">\(\Omega^{-1/2}\)</span> y con algo de álgebra</p></li>
+<li><p>Se asume que <span class="math inline">\(\alpha_i\)</span> y <span class="math inline">\(\varepsilon_{it}\)</span> son independientes</p></li>
+<li><p>Hacemos <span class="math inline">\(\Omega_i\)</span> con entradas <span class="math inline">\(\sigma_{\alpha}^2+\sigma_{\varepsilon}^2\)</span> en la diagonal principal</p></li>
+<li><p>Fuera de la diagonal tiene <span class="math inline">\(\sigma_{\alpha}^2\)</span></p></li>
+</ul>
+<p><span class="math display">\[\Omega=\sigma_{\varepsilon}^2 I_T+\sigma_{\alpha}^2ee'\]</span> donde <span class="math inline">\(e=(1,1,\ldots,1)'\)</span> es un vector de unos de dimensión <span class="math inline">\(T\times 1\)</span></p>
+<ul>
+<li>Premultiplicamos entonces el modelo con efectos aleatorios para obtener uno que tenga como matriz de varianzas <span class="math inline">\(\sigma^2_{\varepsilon}I_T\)</span>, es decir, que sea homoscedástico</li>
+</ul>
 </section>
 <section id="propiedades-del-estimador-de-efectos-aleatorios" class="slide level2">
 <h2>Propiedades del estimador de efectos aleatorios</h2>
