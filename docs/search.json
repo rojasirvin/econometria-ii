@@ -663,7 +663,7 @@
     "href": "diapositivas/index.html",
     "title": "Diapositivas",
     "section": "",
-    "text": "Muestra seleccionada\nVariables instrumentales\nMétodo generalizado de momentos\nVariables instrumentales en la práctica\nPanel",
+    "text": "Muestra seleccionada\nVariables instrumentales\nMétodo generalizado de momentos\nVariables instrumentales en la práctica\nPanel\nErrores estándar",
     "crumbs": [
       "Diapositivas"
     ]
@@ -1550,5 +1550,124 @@
     "title": "Modelos y datos de panel",
     "section": "Estimador de efectos aleatorios",
     "text": "Estimador de efectos aleatorios\n\nEl estimador de efectos aleatorios se logra premultiplicando el modelo \\(y_{it}=w_{it}'\\delta+\\alpha_i+\\varepsilon_{it}\\) por \\(\\Omega^{-1/2}\\) y con algo de álgebra\nSe asume que \\(\\alpha_i\\) y \\(\\varepsilon_{it}\\) son independientes\nHacemos \\(\\Omega_i\\) con entradas \\(\\sigma_{\\alpha}^2+\\sigma_{\\varepsilon}^2\\) en la diagonal principal\nFuera de la diagonal tiene \\(\\sigma_{\\alpha}^2\\)\n\n\\[\\Omega=\\sigma_{\\varepsilon}^2 I_T+\\sigma_{\\alpha}^2ee'\\] donde \\(e=(1,1,\\ldots,1)'\\) es un vector de unos de dimensión \\(T\\times 1\\)\n\nPremultiplicamos entonces el modelo con efectos aleatorios para obtener uno que tenga como matriz de varianzas \\(\\sigma^2_{\\varepsilon}I_T\\), es decir, que sea homoscedástico"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-robustos-a-la-heterocedasticidad",
+    "href": "diapositivas/errores-estandar.html#errores-robustos-a-la-heterocedasticidad",
+    "title": "Errores estándar",
+    "section": "Errores robustos a la heterocedasticidad",
+    "text": "Errores robustos a la heterocedasticidad\nUn estimador de la varianza del estimador de MCO que no asume homocedasticidad es el estimador propuesto por White (1980)\n\\[\\hat{V}(\\beta_{MCO}^R)=(X'X)^{-1}\\left(\\sum_i\\hat{u}_i^2x_ix_i'\\right)(X'X)^{-1}\\]\nAquí un recordatorio de por qué podemos escribir \\(X'uu'X\\) como una sumatoria\nConsideremos la carnita del sándiwch\n\\[\\sum_i\\hat{u}_i^2x_ix_i \\equiv \\sum_i \\hat{\\psi}_i x_ix_i'\\]"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-estándar-robustos-1",
+    "href": "diapositivas/errores-estandar.html#errores-estándar-robustos-1",
+    "title": "Errores estándar",
+    "section": "Errores estándar robustos",
+    "text": "Errores estándar robustos\nDependiendo de cómo se especifique \\(\\hat{\\psi}_i\\), obtenemos distintas versiones del estimador de varianzas robusto\nLa propuesta de White original es:\n\\[HC0:\\quad\\hat{\\psi}_i=\\hat{u}_i^2\\]\nEste estimador asintóticamente consistente\nEn muestras pequeñas, muchas veces se emplea la siguiente corrección:\n\\[HC1:\\quad\\hat{\\psi}_i=\\frac{N}{N-k}\\hat{u}_i^2\\]"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#desviación-a-la-influencia",
+    "href": "diapositivas/errores-estandar.html#desviación-a-la-influencia",
+    "title": "Errores estándar",
+    "section": "Desviación a la influencia",
+    "text": "Desviación a la influencia\nUn par de resultados nos ayudarán a entender qué hacen las otras correcciones a la matriz robusta en el software\nDefinimos la influencia de la observación \\(i\\) como:\n\\[h_{ii}=X_i'(X'X)^{-1}X_i\\]\n\\(h_{ii}\\) nos dice qué tanto jala la observación \\(i\\) a la línea de regresión\nEn una regresión con un solo regresor \\(x\\), se puede mostrar que la influencia de la observación \\(i\\) es:\n\\[h_{ii}=\\frac{1}{N}+\\frac{(x_i-\\bar{x})^2}{\\sum(x_j-\\bar{x})^2}\\] es decir, que la influencia se incrementa cuando \\(x_i\\) se aleja de la media\nLa influencia es un número entre 0 y 1 y además \\(\\sum_i h_{ii}=k\\), siendo \\(k\\) el número de regresores"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-estándar-robustos-2",
+    "href": "diapositivas/errores-estandar.html#errores-estándar-robustos-2",
+    "title": "Errores estándar",
+    "section": "Errores estándar robustos",
+    "text": "Errores estándar robustos\nAlgunos autores sugieren usar la influencia en la matriz de varianzas robusta\nSe proponen algunas alternativas:\n\\[HC2:\\quad\\hat{\\psi}_i=\\frac{1}{1-h_{ii}}\\hat{u}_i^2\\]\n\\[HC3:\\quad\\hat{\\psi}_i=\\frac{1}{(1-h_{ii})^2}\\hat{u}_i^2\\]\nLong & Ervin (2000) realizaron un experimento de simulación y recomendaron usar \\(HC3\\) en muestras pequeñas, por lo que el paquete sandwich en R usa \\(HC3\\) por default\nEs importante tener en cuenta qué tipo de errores estándar piden que el software calcule"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-agrupados-2",
+    "href": "diapositivas/errores-estandar.html#errores-agrupados-2",
+    "title": "Errores estándar",
+    "section": "Errores agrupados",
+    "text": "Errores agrupados\nPodemos mostrar que la correlación de errores entre dos observaciones \\(i\\) y \\(j\\) que pertenecen a \\(g\\) es \\[E(e_{ig}e_{jg})=\\overbrace{\\rho_e}^{\\substack{\\text{coeficiente de correlación} \\\\ \\text{intraclase residual}}} \\underbrace{\\sigma_e^2}_{\\text{varianza residual}}\\]\nLe damos una estructura aditiva a los errores:\n\\[e_{ig}=\\nu_g+\\eta_{ig}\\] donde \\(\\nu_g\\) captura toda la correlación dentro del grupo\n\\(\\eta_{ig}\\) es un error idiosincrático con media cero e independiente de cualquier otro \\(\\eta_{jg}\\)\nComo queremos analizar el problema del agrupamiento, asumimos que tanto \\(v_g\\) y \\(\\eta_{ig}\\) son homocedásticos"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-agrupados-3",
+    "href": "diapositivas/errores-estandar.html#errores-agrupados-3",
+    "title": "Errores estándar",
+    "section": "Errores agrupados",
+    "text": "Errores agrupados\nCon esta estructura de errores, el coeficiente de correlación intraclase es:\n\\[\\rho_e=\\frac{\\sigma_{\\nu}^2}{\\sigma_{\\nu}^2+\\sigma_{\\eta}^2}\\]\nDeberíamos calcular la matriz de varianzas \\(V_C(\\hat{\\beta})\\) tomando en cuenta esta estructura\n¿Qué pasa si hacemos MCO en el contexto de este problema?\nMoulton (1984) muestra que:\n\\[\\frac{V_C(\\hat{\\beta})}{V_{MCO}(\\hat{\\beta})}=1+(n-1)\\rho_e\\] - A \\(\\sqrt{\\frac{V_C(\\hat{\\beta})}{V_{MCO}(\\hat{\\beta})}}\\) se le conoce como el factor de Moulton"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#factor-de-moulton",
+    "href": "diapositivas/errores-estandar.html#factor-de-moulton",
+    "title": "Errores estándar",
+    "section": "Factor de Moulton",
+    "text": "Factor de Moulton\nEl factor de Moulton nos dice qué tanto sobreestimamos la precisión al ignorar la correlación intra clase\nVisto de otro modo:\n\\[V_C(\\hat{\\beta})=\\left(1+(n-1)\\rho_e\\right)V_{MCO}(\\hat{\\beta})\\]\nEs decir entre más grande sea la correlación dentro de los grupos, más deberíamos inflar los errores de MCO\nConsideremos el caso extremo de que \\(\\rho_e=1\\), es decir, que todas las \\(y_{ig}\\) dentro del mismo \\(g\\) son iguales\nEntonces el factor de Moulton es simplemente \\(\\sqrt{n}\\)\nVisto de otro modo, la matriz de varianzas correcta se obtendría multiplicando por \\(n\\) la matriz \\(V_{MCO}(\\hat{\\beta})\\)\n\\[V_C(\\hat{\\beta})=n V_{MCO}(\\hat{\\beta})\\]"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-agrupados-en-general",
+    "href": "diapositivas/errores-estandar.html#errores-agrupados-en-general",
+    "title": "Errores estándar",
+    "section": "Errores agrupados en general",
+    "text": "Errores agrupados en general\nEn general, \\(x_{ig}\\) varía a nivel individual y tenemos grupos de tamaño \\(n_g\\)\nEn este caso, el factor de Moulton es la raíz cuadrada de:\n\\[\\frac{V_C(\\hat{\\beta})}{V_{MCO}(\\hat{\\beta})}=1+\\left(\\frac{V(n_g)}{\\bar{n}}+\\bar{n}-1\\right)\\rho_x\\rho_e\\] donde \\(\\bar{n}\\) es el tamaño promedio del grupo y \\(\\rho_x\\) es la correlación intraclase de \\(x_{ig}\\)\nNo es necesario asumir una forma para \\(\\rho_x\\) (se puede calcular)\nNoten que el error que cometemos es más grande entre más heterogéneo es el tamaño de grupos y entre más grande es \\(\\rho_x\\)\nPor tanto, cuando el tratamiento no varía entre grupos, este error es grande"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#soluciones-para-errores-agrupados",
+    "href": "diapositivas/errores-estandar.html#soluciones-para-errores-agrupados",
+    "title": "Errores estándar",
+    "section": "Soluciones para errores agrupados",
+    "text": "Soluciones para errores agrupados\nSolución paramétrica: calcular directamente el factor de Moulton e inflar los errores de MCO\nBootstrap por bloques: ver más adelante el concept de bootstrap\nEstimar los errores agrupados (clustered standard errors)"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-estándar-agrupados",
+    "href": "diapositivas/errores-estandar.html#errores-estándar-agrupados",
+    "title": "Errores estándar",
+    "section": "Errores estándar agrupados",
+    "text": "Errores estándar agrupados\nCon errores agrupados podemos escribir el estimador de MCO como\n\\[\n\\begin{aligned}\n\\hat{\\beta}&=\\beta+(X'X)^{-1}X'u \\\\\n&=(X'X)^{-1}\\left(\\sum_{g=1}^G X_gu_g\\right)\n\\end{aligned}\n\\]\nSuponiendo independencia entre \\(g\\) y correlación dentro de cada grupo:\n\\[E(u_{ig}u_{jg'}|x_{ig}x_{jg'})=0\\]\nexcepto cuando \\(g=g'\\)\nEn este caso, el estimador de MCO tiene una varianza asintótica dada por\n\\[V({\\hat{\\beta}}_{MCO})=(X'X)^{-1}\\left(\\sum_{g=1}^G X_g'u_gu_g'X\\right)(X'X)^{-1}\\]"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-estándar-agrupados-1",
+    "href": "diapositivas/errores-estandar.html#errores-estándar-agrupados-1",
+    "title": "Errores estándar",
+    "section": "Errores estándar agrupados",
+    "text": "Errores estándar agrupados\nCon errores heterocedásticos, pero sin agrupamiento, la matriz de varianzas de White (1980) tiene una estructura como sigue:\n\\[\\hat{V}(\\hat{\\beta}_{R})=(X'X)^{-1}X'\\hat{\\Sigma} X (X'X)^{-1}\\]\nDonde\n\\[\\hat{\\Sigma}=\\left(\\begin{matrix} \\hat{u}_{1}^2 & 0  & 0  & \\ldots & 0 \\\\ 0 & \\hat{u}_{2}^2 & 0 & \\ldots & 0 \\\\ \\vdots & & & & \\\\ 0 & & &  \\ldots & \\hat{u}_{n}^2\\end{matrix}\\right)\\]"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-estándar-agrupados-2",
+    "href": "diapositivas/errores-estandar.html#errores-estándar-agrupados-2",
+    "title": "Errores estándar",
+    "section": "Errores estándar agrupados",
+    "text": "Errores estándar agrupados\nPara estimar la varianza con errores agrupados empleamos una generalización de la propuesta de White para errores robustos\nSi \\(G\\to\\infty\\), el estimador de la matriz de errores agrupados robusta (CRVE) es consistente para estimar \\(V(\\hat{\\beta})\\):\n\\[\\hat{V}_{CR}(\\hat{\\beta})=(X'X)^{-1}\\left(\\sum_{g=1}^G X_g'\\hat{u}_g\\hat{u}_g'X_g\\right)(X'X)^{-1}\\] donde \\(\\hat{u}_g\\hat{u}_g'\\) es la matriz de varianzas para los individuos del grupo \\(g\\)\nDe manera compacta\n\\[\\hat{V}_{CR}(\\hat{\\beta})=(X'X)^{-1}X'\\hat{\\Sigma} X(X'X)^{-1}\\]"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-estándar-agrupados-3",
+    "href": "diapositivas/errores-estandar.html#errores-estándar-agrupados-3",
+    "title": "Errores estándar",
+    "section": "Errores estándar agrupados",
+    "text": "Errores estándar agrupados\nY en este caso la matriz \\(\\hat{\\Sigma}\\) tiene una estructura agrupada\n\\[\\small \\hat{\\Sigma}=\\left(\\begin{matrix} \\hat{u}_{1,1}^2 & \\hat{u}_{1,1}\\hat{u}_{2,1} & \\ldots & \\hat{u}_{1,1} \\hat{u}_{n,1}& 0 & 0 & \\ldots &  0 & \\ldots & 0 & 0 & \\ldots &  0 \\\\ \\hat{u}_{2,1}\\hat{u}_{1,1} & \\hat{u}_{2,1}^2 & \\ldots & \\hat{u}_{2,1}\\hat{u}_{n,1} & 0 & 0 & \\ldots & 0 & \\ldots  & 0 & 0 & \\ldots &  0\\\\\n\\vdots & \\vdots  & & \\vdots & \\vdots & \\vdots  & &  \\vdots& & \\vdots & \\vdots &  &  \\vdots \\\\ \\hat{u}_{n,1}\\hat{u}_{1,1} & \\hat{u}_{n,1}\\hat{u}_{2,1}& \\ldots & \\hat{u}_{n,1}^2& 0 & 0 &\\ldots & 0 & \\ldots & 0 & 0 & \\ldots &  0 \\\\  0 & 0 & \\ldots &  0 & \\hat{u}_{1,2}^2 & \\hat{u}_{1,2}\\hat{u}_{2,2} & \\ldots & \\hat{u}_{1,2}\\hat{u}_{n,2} &\\ldots & 0 & 0 & \\ldots &  0  \\\\ 0 & 0 & \\ldots &  0 & \\hat{u}_{2,2}\\hat{u}_{1,2} & \\hat{u}_{2,2}^2 & \\ldots & \\hat{u}_{2,2}\\hat{u}_{n,2} &\\ldots & 0 & 0 & \\ldots &  0 \\\\ \\vdots & \\vdots  & & \\vdots & \\vdots & \\vdots  & &  \\vdots& & \\vdots & \\vdots &  &  \\vdots  \\\\ 0 & 0 & \\ldots &  0 & \\hat{u}_{n,2}\\hat{u}_{1,2} & \\hat{u}_{n,2}\\hat{u}_{2,2} & \\ldots & \\hat{u}_{n,2}^2 &\\ldots & 0 & 0 & \\ldots &  0 \\\\ \\vdots & \\vdots  & & \\vdots & \\vdots & \\vdots  & &  \\vdots& & \\vdots & \\vdots &  &  \\vdots \\\\ 0 & 0 & \\ldots &  0 & 0 &  0 & \\ldots & 0 &\\ldots & \\hat{u}_{1,G}^2 & \\hat{u}_{12,G}\\hat{u}_{2,G} & \\ldots &  \\hat{u}_{1,G}\\hat{u}_{n,G} \\\\  0 & 0 & \\ldots &  0 & 0 &  0 & \\ldots & 0 &\\ldots & \\hat{u}_{2,G}\\hat{u}_{1,G} & \\hat{u}_{2,G}^2 & \\ldots &  \\hat{u}_{2,G}\\hat{u}_{n,G} \\\\ \\vdots & \\vdots  & & \\vdots & \\vdots & \\vdots  & &  \\vdots& & \\vdots & \\vdots &  &  \\vdots \\\\  0 & 0 & \\ldots &  0 & 0 &  0 & \\ldots & 0 &\\ldots & \\hat{u}_{n,G}\\hat{u}_{1,G} & \\hat{u}_{n,G}\\hat{u}_{2,G} & \\ldots &  \\hat{u}_{n,G}^2 \\end{matrix}\\right)\\]"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-estándar-agrupados-4",
+    "href": "diapositivas/errores-estandar.html#errores-estándar-agrupados-4",
+    "title": "Errores estándar",
+    "section": "Errores estándar agrupados",
+    "text": "Errores estándar agrupados\nEl resultado asintótico de consistencia depende de que \\(G\\to\\infty\\)\nSi \\(G\\) está fijo, no importa qué tan grande sea \\(N\\), \\(\\hat{V}_{CRVE}(\\hat{\\beta})\\) no será consistente\nAlgunos paquetes ajustan esta matriz de varianzas haciendo una corrección parecida a \\(HC1\\), pero ahora tomando en cuanta también \\(G\\) y no solo \\(N\\) (ver por ejemplo, vcovCR en R)\nCon pocos grupos, subestimamos los errores estándar y rechazamos la \\(H_0\\) más veces de lo que deberíamos (over-rejection)\nSi tenemos pocos grupos, recurrimos a otras soluciones (ver Cameron y Miller, 2015) - Inflar los errores con un corrector de sesgo - Bootstrap agrupado con refinamiento asintótico\nLa recomendación práctica es que se tomen en serio el problema de los pocos clusters\n¿Cuánto es poco? Cameron y Miller (2015) citan 50. (¡Qué raro, el número de estados en EUA!)"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#bootstrap-1",
+    "href": "diapositivas/errores-estandar.html#bootstrap-1",
+    "title": "Errores estándar",
+    "section": "Bootstrap",
+    "text": "Bootstrap\nA veces es difícil encontrar una expresión analítica de los errores estándar\nLa idea de las técnicas bootstrap es consutrir una distribución empírica del estimador de interés\nUna muestra bootstrap es una muestra tomada de los mismos datos\nEn las rutinas para errores bootstrap, pensamos en \\(\\{(y_1,x_1),\\ldots,(y_N,X_n)\\}\\) como la población\nUna muestra bootstrap es una muestra de tamaño \\(N\\) tomada de la muestra original\nEl procedimiento bootstrap más usado es el bootstrap no paramétrico o boostrap en parejas (nos enfocaremos en este tipo de bootstrap en el curso)\nLa idea es remuestrear la pareja completa \\((y_i,x_i)\\)"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#algoritmo-para-errores-estándar-bootstrap",
+    "href": "diapositivas/errores-estandar.html#algoritmo-para-errores-estándar-bootstrap",
+    "title": "Errores estándar",
+    "section": "Algoritmo para errores estándar bootstrap",
+    "text": "Algoritmo para errores estándar bootstrap\n\nDada una muestra \\(W_1,\\ldots,W_N\\), obtener una muestra de tamaño \\(N\\), remuestreando de la muestra original con reemplazo\nCalcular el estadístico \\(\\hat{\\theta}_b\\) usado con la muestra bootstrap (coeficiente de regresión, diferencia de medias, función de coeficientes)\nRepetir los pasos 1 y 2 \\(B\\) veces, donde \\(B\\) es lo suficientemente grande (usualmente 1000 es suficiente)\nUsar las \\(B\\) repeticiones para obtener el error estándar del estadístico como la raíz cuadrada de \\(s^2_{\\hat{\\theta},B}\\):\n\n\\[s^2_{\\hat{\\theta},B}=\\frac{1}{B-1}\\sum_{b=1}^B(\\hat{\\theta}_{b}-\\bar{\\hat{\\theta}})^2\\] donde \\(\\bar{\\hat{\\theta}}=\\frac{1}{B}\\sum_{b=1}^B\\hat{\\theta}_b\\)"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#aplicaciones-comunes-de-bootstrap",
+    "href": "diapositivas/errores-estandar.html#aplicaciones-comunes-de-bootstrap",
+    "title": "Errores estándar",
+    "section": "Aplicaciones comunes de bootstrap",
+    "text": "Aplicaciones comunes de bootstrap\nMétodos de varias etapas (por ejemplo, el estimador de dos etapas de Heckman)\nFunciones de estimadores (aunque aquí el método Delta también podría ser usado)\nDatos agrupados con pocos grupos (remuestrear grupos en vez de individuos)\nEl consejo práctico es usar resultados teóricos cuando se puede (por ejemplo, las matrices robustas descritas antes)\nPensemos siempre en la estructura de los datos antes de hacer boostrap\nUsar una semilla siempre para poder reproducir sus resultados"
   }
 ]

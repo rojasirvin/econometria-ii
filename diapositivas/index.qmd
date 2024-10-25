@@ -12,3 +12,5 @@ title: "Diapositivas"
 [Variables instrumentales en la práctica](./variables-instrumentales-practica.qmd){target="_blank"}
 
 [Panel](./panel.qmd){target="_blank"}
+
+[Errores estándar](./errores-estandar.qmd){target="_blank"}
