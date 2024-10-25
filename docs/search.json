@@ -1542,7 +1542,7 @@
     "href": "diapositivas/panel.html#breve-desviación-a-mínimos-cuadrados-generalizados-1",
     "title": "Modelos y datos de panel",
     "section": "Breve desviación a mínimos cuadrados generalizados",
-    "text": "Breve desviación a mínimos cuadrados generalizados\n\nEs decir, los errores del modelo transformado son iid\nAsí que podemos estimar \\(\\beta\\) eficientemente por MCO al modelo transformado\nEl estimador mínimos cuadrados generalizados (MCG) es\n\n\\[\\hat{\\beta}_{MCG}=(X'\\Omega^{-1}X)^{-1}X'\\Omega^{-1}y\\]\n\nEn la práctica, no conocemos \\(\\Omega\\)\nPodemos proponer un modelo para \\(V(u|x)\\) y obtener un estimador consistente para \\(\\Omega\\)\nEsto da lugar al estimador de mínimos cuadrados generalizados feasibles\n\n\\[\\hat{\\beta}_{MCGF}=(X'\\hat{\\Omega}^{-1}X)^{-1}X'\\hat{\\Omega}^{-1}y\\] # Estimador between\n\nAunque es de poca utilidad práctica, el estimador between nos servirá de auxiliar más adelante\nExplota la variación entre unidades\nAl promediar sobre el tiempo recordemos que obtenemos\n\n\\[\n\\begin{aligned}\n\\bar{y}_{i}&=\\alpha_i+ \\bar{x}_i\\beta+\\bar{\\varepsilon}_i\n\\end{aligned}\n\\] - Sumando 0 obtenemos:\n\\[\n\\begin{aligned}\n\\bar{y}_{i}&=\\alpha + \\bar{x}_i\\beta+(\\alpha_i - \\alpha + \\bar{\\varepsilon}_i)\n\\end{aligned}\n\\]\n\nEl estimador between es MCO a la ecuación transformada (con intercepto)\nSolo es consistente si \\(\\bar{x}_\\) es independiente de el error compuesto \\(\\alpha_i - \\alpha + \\bar{\\varepsilon}_i\\)\nEs equivalente a una regresión de sección cruzada con \\(T=1\\)"
+    "text": "Breve desviación a mínimos cuadrados generalizados\n\nEs decir, los errores del modelo transformado son iid\nAsí que podemos estimar \\(\\beta\\) eficientemente por MCO al modelo transformado\nEl estimador mínimos cuadrados generalizados (MCG) es\n\n\\[\\hat{\\beta}_{MCG}=(X'\\Omega^{-1}X)^{-1}X'\\Omega^{-1}y\\]\n\nEn la práctica, no conocemos \\(\\Omega\\)\nPodemos proponer un modelo para \\(V(u|x)\\) y obtener un estimador consistente para \\(\\Omega\\)\nEsto da lugar al estimador de mínimos cuadrados generalizados feasibles\n\n\\[\\hat{\\beta}_{MCGF}=(X'\\hat{\\Omega}^{-1}X)^{-1}X'\\hat{\\Omega}^{-1}y\\] # Estimador between"
   },
   {
     "objectID": "diapositivas/panel.html#estimador-de-efectos-aleatorios-2",
@@ -1669,5 +1669,12 @@
     "title": "Errores estándar",
     "section": "Aplicaciones comunes de bootstrap",
     "text": "Aplicaciones comunes de bootstrap\nMétodos de varias etapas (por ejemplo, el estimador de dos etapas de Heckman)\nFunciones de estimadores (aunque aquí el método Delta también podría ser usado)\nDatos agrupados con pocos grupos (remuestrear grupos en vez de individuos)\nEl consejo práctico es usar resultados teóricos cuando se puede (por ejemplo, las matrices robustas descritas antes)\nPensemos siempre en la estructura de los datos antes de hacer boostrap\nUsar una semilla siempre para poder reproducir sus resultados"
+  },
+  {
+    "objectID": "diapositivas/panel.html#estimador-between",
+    "href": "diapositivas/panel.html#estimador-between",
+    "title": "Modelos y datos de panel",
+    "section": "Estimador between",
+    "text": "Estimador between\n\nAunque es de poca utilidad práctica, el estimador between nos servirá de auxiliar más adelante\nExplota la variación entre unidades\nAl promediar sobre el tiempo recordemos que obtenemos\n\n\\[\n\\begin{aligned}\n\\bar{y}_{i}&=\\alpha_i+ \\bar{x}_i\\beta+\\bar{\\varepsilon}_i\n\\end{aligned}\n\\] - Sumando 0 obtenemos:\n\\[\n\\begin{aligned}\n\\bar{y}_{i}&=\\alpha + \\bar{x}_i\\beta+(\\alpha_i - \\alpha + \\bar{\\varepsilon}_i)\n\\end{aligned}\n\\]\n\nEl estimador between es MCO a la ecuación transformada (con intercepto)\nSolo es consistente si \\(\\bar{x}_\\) es independiente de el error compuesto \\(\\alpha_i - \\alpha + \\bar{\\varepsilon}_i\\)\nEs equivalente a una regresión de sección cruzada con \\(T=1\\)"
   }
 ]

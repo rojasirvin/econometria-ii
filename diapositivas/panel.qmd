@@ -220,6 +220,9 @@ $$\hat{\beta}_{MCG}=(X'\Omega^{-1}X)^{-1}X'\Omega^{-1}y$$
 $$\hat{\beta}_{MCGF}=(X'\hat{\Omega}^{-1}X)^{-1}X'\hat{\Omega}^{-1}y$$
 # Estimador between
 
+## Estimador between
+
+
 - Aunque es de poca utilidad práctica, el estimador *between* nos servirá de auxiliar más adelante
 
 - Explota la variación entre unidades
