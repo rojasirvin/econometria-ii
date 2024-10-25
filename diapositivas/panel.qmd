@@ -245,7 +245,7 @@ $$
 
 - El estimador between es MCO a la ecuación transformada (con intercepto)
 
-- Solo es consistente si $\bar{x}_$ es independiente de el error compuesto $\alpha_i - \alpha + \bar{\varepsilon}_i$
+- Solo es consistente si $\bar{x}_i$ es independiente de el error compuesto $\alpha_i - \alpha + \bar{\varepsilon}_i$
 
 - Es equivalente a una regresión de sección cruzada con $T=1$
 
