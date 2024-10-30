@@ -492,40 +492,6 @@ Irvin Rojas
 <p>Si tenemos pocos grupos, recurrimos a otras soluciones (ver Cameron y Miller, 2015) - Inflar los errores con un corrector de sesgo - Bootstrap agrupado con refinamiento asintótico</p>
 <p>La recomendación práctica es que se tomen en serio el problema de los pocos clusters</p>
 <p>¿Cuánto es poco? Cameron y Miller (2015) citan 50. (¡Qué raro, el número de estados en EUA!)</p>
-</section></section>
-<section>
-<section id="bootstrap" class="title-slide slide level1 center">
-<h1>Bootstrap</h1>
-
-</section>
-<section id="bootstrap-1" class="slide level2">
-<h2>Bootstrap</h2>
-<p>A veces es difícil encontrar una expresión analítica de los errores estándar</p>
-<p>La idea de las técnicas bootstrap es consutrir una distribución empírica del estimador de interés</p>
-<p>Una muestra bootstrap es una muestra tomada de los mismos datos</p>
-<p>En las rutinas para errores bootstrap, pensamos en <span class="math inline">\(\{(y_1,x_1),\ldots,(y_N,X_n)\}\)</span> como la población</p>
-<p>Una muestra bootstrap es una muestra de tamaño <span class="math inline">\(N\)</span> tomada de la muestra original</p>
-<p>El procedimiento bootstrap más usado es el bootstrap no paramétrico o boostrap en parejas (nos enfocaremos en este tipo de bootstrap en el curso)</p>
-<p>La idea es remuestrear la pareja completa <span class="math inline">\((y_i,x_i)\)</span></p>
-</section>
-<section id="algoritmo-para-errores-estándar-bootstrap" class="slide level2">
-<h2>Algoritmo para errores estándar bootstrap</h2>
-<ol type="1">
-<li><p>Dada una muestra <span class="math inline">\(W_1,\ldots,W_N\)</span>, obtener una muestra de tamaño <span class="math inline">\(N\)</span>, remuestreando de la muestra original <strong>con reemplazo</strong></p></li>
-<li><p>Calcular el estadístico <span class="math inline">\(\hat{\theta}_b\)</span> usado con la muestra bootstrap (coeficiente de regresión, diferencia de medias, función de coeficientes)</p></li>
-<li><p>Repetir los pasos 1 y 2 <span class="math inline">\(B\)</span> veces, donde <span class="math inline">\(B\)</span> es lo suficientemente grande (usualmente 1000 es suficiente)</p></li>
-<li><p>Usar las <span class="math inline">\(B\)</span> repeticiones para obtener el error estándar del estadístico como la raíz cuadrada de <span class="math inline">\(s^2_{\hat{\theta},B}\)</span>:</p></li>
-</ol>
-<p><span class="math display">\[s^2_{\hat{\theta},B}=\frac{1}{B-1}\sum_{b=1}^B(\hat{\theta}_{b}-\bar{\hat{\theta}})^2\]</span> donde <span class="math inline">\(\bar{\hat{\theta}}=\frac{1}{B}\sum_{b=1}^B\hat{\theta}_b\)</span></p>
-</section>
-<section id="aplicaciones-comunes-de-bootstrap" class="slide level2">
-<h2>Aplicaciones comunes de bootstrap</h2>
-<p>Métodos de varias etapas (por ejemplo, el estimador de dos etapas de Heckman)</p>
-<p>Funciones de estimadores (aunque aquí el método Delta también podría ser usado)</p>
-<p>Datos agrupados con pocos grupos (remuestrear grupos en vez de individuos)</p>
-<p>El consejo práctico es usar resultados teóricos cuando se puede (por ejemplo, las matrices robustas descritas antes)</p>
-<p>Pensemos siempre en la estructura de los datos antes de hacer boostrap</p>
-<p>Usar una semilla siempre para poder reproducir sus resultados</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

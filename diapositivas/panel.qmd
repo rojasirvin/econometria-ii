@@ -273,6 +273,7 @@ donde $\nu_{it}=(1-\lambda)\alpha_i+(\varepsilon_{it}-\lambda\bar{\varepsilon}_i
 - Construimos un estimador consistente de $\lambda$ usando estimadores consistentes de $\sigma^2_{\varepsilon}$ y $\hat{\alpha}^2$
 
 $$\hat{\lambda}=1-\frac{\hat{\sigma}_{\varepsilon}}{\sqrt{T\hat{\sigma}_{\alpha}^2+\hat{\sigma}_{\varepsilon}^2}}$$
+
 ## Estimación de $\hat{\lambda}$
 
 - El software estadístico hace estas estimaciones basadas en las ecuaciones 21.48 y 21.49 en CT

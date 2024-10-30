@@ -663,7 +663,7 @@
     "href": "diapositivas/index.html",
     "title": "Diapositivas",
     "section": "",
-    "text": "Muestra seleccionada\nVariables instrumentales\nMétodo generalizado de momentos\nVariables instrumentales en la práctica\nPanel\nErrores estándar",
+    "text": "Muestra seleccionada\nVariables instrumentales\nMétodo generalizado de momentos\nVariables instrumentales en la práctica\nPanel\nErrores estándar\nBootstrap",
     "crumbs": [
       "Diapositivas"
     ]
@@ -1500,7 +1500,7 @@
     "href": "diapositivas/panel.html#estimador-de-efectos-aleatorios-1",
     "title": "Modelos y datos de panel",
     "section": "Estimador de efectos aleatorios",
-    "text": "Estimador de efectos aleatorios\n\nEl estimador de MCG de \\(\\mu\\) y \\(\\beta\\) puede implementarse como MCO a la ecuación transformada\n\n\\[y_{it}-\\lambda\\bar{y}_i=(1-\\lambda)\\mu+(x_{it}-\\lambda\\bar{x}_i)'\\beta+\\nu_{it}\\] donde \\(\\nu_{it}=(1-\\lambda)\\alpha_i+(\\varepsilon_{it}-\\lambda\\bar{\\varepsilon}_i)\\)\n\nConstruimos un estimador consistente de \\(\\lambda\\) usando estimadores consistentes de \\(\\sigma^2_{\\varepsilon}\\) y \\(\\hat{\\alpha}^2\\)\n\n\\[\\hat{\\lambda}=1-\\frac{\\hat{\\sigma}_{\\varepsilon}}{\\sqrt{T\\hat{\\sigma}_{\\alpha}^2+\\hat{\\sigma}_{\\varepsilon}^2}}\\] ## Estimación de \\(\\hat{\\lambda}\\)\n\nEl software estadístico hace estas estimaciones basadas en las ecuaciones 21.48 y 21.49 en CT\nPara \\(\\sigma_{\\varepsilon}^2\\) usamos el estimador within \\(\\hat{\\beta}_W\\) para obtener:\n\n\\[\\hat{\\sigma_{\\varepsilon}}^2=\\frac{1}{N(T-1)-k}\\sum_i\\sum_t\\left((y_{it}-\\bar{y}_i)-(x_{it}-\\bar{x}_i)'\\hat{\\beta}_W\\right)^2\\] - Para \\(\\sigma_{\\alpha}^2\\), usamos el estimador between \\(\\hat{\\beta}_B\\) para obtener\n\\[\\hat{\\sigma_{\\alpha}}^2=\\frac{1}{N-(k-1)}\\sum_i\\left(\\bar{y}_i-\\hat{\\alpha}_B-\\bar{x}_i'\\hat{\\beta}_B\\right)^2-\\frac{1}{T}\\hat{\\sigma_{\\varepsilon}}^2\\]"
+    "text": "Estimador de efectos aleatorios\n\nEl estimador de MCG de \\(\\mu\\) y \\(\\beta\\) puede implementarse como MCO a la ecuación transformada\n\n\\[y_{it}-\\lambda\\bar{y}_i=(1-\\lambda)\\mu+(x_{it}-\\lambda\\bar{x}_i)'\\beta+\\nu_{it}\\] donde \\(\\nu_{it}=(1-\\lambda)\\alpha_i+(\\varepsilon_{it}-\\lambda\\bar{\\varepsilon}_i)\\)\n\nConstruimos un estimador consistente de \\(\\lambda\\) usando estimadores consistentes de \\(\\sigma^2_{\\varepsilon}\\) y \\(\\hat{\\alpha}^2\\)\n\n\\[\\hat{\\lambda}=1-\\frac{\\hat{\\sigma}_{\\varepsilon}}{\\sqrt{T\\hat{\\sigma}_{\\alpha}^2+\\hat{\\sigma}_{\\varepsilon}^2}}\\]"
   },
   {
     "objectID": "diapositivas/panel.html#propiedades-del-estimador-de-efectos-aleatorios",
@@ -1676,5 +1676,75 @@
     "title": "Modelos y datos de panel",
     "section": "Estimador between",
     "text": "Estimador between\n\nAunque es de poca utilidad práctica, el estimador between nos servirá de auxiliar más adelante\nExplota la variación entre unidades\nAl promediar sobre el tiempo recordemos que obtenemos\n\n\\[\n\\begin{aligned}\n\\bar{y}_{i}&=\\alpha_i+ \\bar{x}_i\\beta+\\bar{\\varepsilon}_i\n\\end{aligned}\n\\] - Sumando 0 obtenemos:\n\\[\n\\begin{aligned}\n\\bar{y}_{i}&=\\alpha + \\bar{x}_i\\beta+(\\alpha_i - \\alpha + \\bar{\\varepsilon}_i)\n\\end{aligned}\n\\]\n\nEl estimador between es MCO a la ecuación transformada (con intercepto)\nSolo es consistente si \\(\\bar{x}_i\\) es independiente de el error compuesto \\(\\alpha_i - \\alpha + \\bar{\\varepsilon}_i\\)\nEs equivalente a una regresión de sección cruzada con \\(T=1\\)"
+  },
+  {
+    "objectID": "diapositivas/panel.html#estimación-de-hatlambda",
+    "href": "diapositivas/panel.html#estimación-de-hatlambda",
+    "title": "Modelos y datos de panel",
+    "section": "Estimación de \\(\\hat{\\lambda}\\)",
+    "text": "Estimación de \\(\\hat{\\lambda}\\)\n\nEl software estadístico hace estas estimaciones basadas en las ecuaciones 21.48 y 21.49 en CT\nPara \\(\\sigma_{\\varepsilon}^2\\) usamos el estimador within \\(\\hat{\\beta}_W\\) para obtener:\n\n\\[\\hat{\\sigma_{\\varepsilon}}^2=\\frac{1}{N(T-1)-k}\\sum_i\\sum_t\\left((y_{it}-\\bar{y}_i)-(x_{it}-\\bar{x}_i)'\\hat{\\beta}_W\\right)^2\\] - Para \\(\\sigma_{\\alpha}^2\\), usamos el estimador between \\(\\hat{\\beta}_B\\) para obtener\n\\[\\hat{\\sigma_{\\alpha}}^2=\\frac{1}{N-(k-1)}\\sum_i\\left(\\bar{y}_i-\\hat{\\alpha}_B-\\bar{x}_i'\\hat{\\beta}_B\\right)^2-\\frac{1}{T}\\hat{\\sigma_{\\varepsilon}}^2\\]"
+  },
+  {
+    "objectID": "diapositivas/bootstrap.html#introducción-a-bootstrap",
+    "href": "diapositivas/bootstrap.html#introducción-a-bootstrap",
+    "title": "Bootstrap",
+    "section": "Introducción a bootstrap",
+    "text": "Introducción a bootstrap\n\nA veces es difícil encontrar una expresión analítica de los errores estándar\nLa idea de las técnicas bootstrap es consutrir una distribución empírica del estimador de interés\nUna muestra bootstrap es una muestra tomada de los mismos datos\nEn las rutinas para errores bootstrap, pensamos en \\(\\{(y_1,x_1),\\ldots,(y_N,X_n)\\}\\) como la población\nUna muestra bootstrap es una muestra de tamaño \\(N\\) tomada de la muestra original\nEl procedimiento bootstrap más usado es el bootstrap no paramétrico o boostrap en parejas (nos enfocaremos en este tipo de bootstrap en el curso)\nLa idea es remuestrear la pareja completa \\((y_i,x_i)\\)"
+  },
+  {
+    "objectID": "diapositivas/bootstrap.html#algoritmo-para-errores-estándar-bootstrap",
+    "href": "diapositivas/bootstrap.html#algoritmo-para-errores-estándar-bootstrap",
+    "title": "Bootstrap",
+    "section": "Algoritmo para errores estándar bootstrap",
+    "text": "Algoritmo para errores estándar bootstrap\n\nDada una muestra \\(W_1,\\ldots,W_N\\), obtener una muestra de tamaño \\(N\\), remuestreando de la muestra original con reemplazo\nCalcular el estadístico \\(\\hat{\\theta}_b\\) usado con la muestra bootstrap (coeficiente de regresión, diferencia de medias, función de coeficientes)\nRepetir los pasos 1 y 2 \\(B\\) veces, donde \\(B\\) es lo suficientemente grande (usualmente 1000 es suficiente)\nUsar las \\(B\\) repeticiones para obtener el error estándar del estadístico como la raíz cuadrada de \\(s^2_{\\hat{\\theta},B}\\):\n\n\\[s^2_{\\hat{\\theta},B}=\\frac{1}{B-1}\\sum_{b=1}^B(\\hat{\\theta}_{b}-\\bar{\\hat{\\theta}})^2\\] donde \\(\\bar{\\hat{\\theta}}=\\frac{1}{B}\\sum_{b=1}^B\\hat{\\theta}_b\\)"
+  },
+  {
+    "objectID": "diapositivas/bootstrap.html#cómo-hacer-remuestreo-en-r",
+    "href": "diapositivas/bootstrap.html#cómo-hacer-remuestreo-en-r",
+    "title": "Bootstrap",
+    "section": "¿Cómo hacer remuestreo en R?",
+    "text": "¿Cómo hacer remuestreo en R?\n\nset.seed(927)\n\ndata.ingresos &lt;- read.csv(\"./ingresos_iv.csv\")\n\nobs &lt;- nrow(data.ingresos)\nobs\n\n[1] 3010\n\n#En la muestra original\nmean(data.ingresos$lwage)\n\n[1] 6.261832"
+  },
+  {
+    "objectID": "diapositivas/bootstrap.html#cómo-hacer-remuestreo-en-r-1",
+    "href": "diapositivas/bootstrap.html#cómo-hacer-remuestreo-en-r-1",
+    "title": "Bootstrap",
+    "section": "¿Cómo hacer remuestreo en R?",
+    "text": "¿Cómo hacer remuestreo en R?\n\n#Una muestra bootstrap\ndata.b &lt;-data.ingresos[sample(nrow(data.ingresos),obs, replace = TRUE),]\n\nmean(data.b$lwage)\n\n[1] 6.261918\n\n#Otra muestra bootstrap\ndata.b &lt;-data.ingresos[sample(nrow(data.ingresos),obs, replace = TRUE),]\n\nmean(data.b$lwage)\n\n[1] 6.262326"
+  },
+  {
+    "objectID": "diapositivas/bootstrap.html#aplicaciones-comunes-de-bootstrap",
+    "href": "diapositivas/bootstrap.html#aplicaciones-comunes-de-bootstrap",
+    "title": "Bootstrap",
+    "section": "Aplicaciones comunes de bootstrap",
+    "text": "Aplicaciones comunes de bootstrap\n\nMétodos de varias etapas (por ejemplo, el estimador de dos etapas de Heckman)\nFunciones de estimadores (aunque aquí el método Delta también podría ser usado)\nDatos agrupados con pocos grupos (remuestrear grupos en vez de individuos)\nEl consejo práctico es usar resultados teóricos cuando se puede (por ejemplo, las matrices robustas descritas antes)\nPensemos siempre en la estructura de los datos antes de hacer boostrap\nUsar una semilla siempre para poder reproducir sus resultados"
+  },
+  {
+    "objectID": "diapositivas/bootstrap.html#bootstrap-salvaje",
+    "href": "diapositivas/bootstrap.html#bootstrap-salvaje",
+    "title": "Bootstrap",
+    "section": "Bootstrap salvaje",
+    "text": "Bootstrap salvaje\n\nEn presencia de heterocedasticidad se prefiere usar bootstrap salvaje (wild bootstrap) (MacKinnon, 2012)\nPropuesto originalmente por Liu (1988), cada muestra bootstrap tiene la siguiente forma:\n\n\\[y_i^*=X_i\\hat{\\beta}+f(\\hat{u}_i)v_i^*\\] - Noten que mantiene fijos los \\(X_i\\) en cada muestra bootstrap\n\nUna especificación comúnmente usada es hacer es \\(f(\\hat{u}_i)=\\hat{u}_i\\) y \\[v_i^*=\\begin{cases} 1 \\quad\\text{con probabilidad 0.5} \\\\ -1 \\quad\\text{con probabilidad 0.5} \\end{cases}\\]\n\\(\\hat{\\beta}\\) y \\(\\hat{u}_i\\) son estimados con la muestra original"
+  },
+  {
+    "objectID": "diapositivas/bootstrap.html#bootstrap-salvaje-1",
+    "href": "diapositivas/bootstrap.html#bootstrap-salvaje-1",
+    "title": "Bootstrap",
+    "section": "Bootstrap salvaje",
+    "text": "Bootstrap salvaje\n\nEn cada una de las \\(B\\) muestras bootstrap, mantenemos a los mismos individuos (no hay remuestreo)\nTendremos \\(B\\) muestras bootstrap, pero ahora la aleatoriedad viene por \\(f(\\hat{u}_i)v_i^*\\)\nPueden usarse otras funciones más complicadas para \\(f(\\hat{u}_i)\\)\nLa ventaja de este método es que conserva la relación entre las varianzas residuales y las \\(X_i\\) observadas en los datos originales\nDavidson & Flachaire (2008) utilizan simulaciones para mostrar que con esta forma para \\(f(\\hat{u}_i)v_i^*\\) la inferencia es más confiable que con otras especificaciones"
+  },
+  {
+    "objectID": "diapositivas/bootstrap.html#refinamiento-asintótico",
+    "href": "diapositivas/bootstrap.html#refinamiento-asintótico",
+    "title": "Bootstrap",
+    "section": "Refinamiento asintótico",
+    "text": "Refinamiento asintótico\n\nUna aplicación de las técnicas bootstrap es el refinamiento asintótico de la prueba \\(t\\) de coeficientes de regresión\nSupongamos que \\(H_0:\\quad \\beta=0\\) y trabajamos con un nivel \\(\\alpha\\)\nEn cada repetición bootstrap el estadístico calculado es \\(t_b\\)\nOrdenamos los \\(B\\) estadísticos obtenidos\nRechazamos \\(H_0\\) si \\(|t|\\) está por encima del \\((1-\\alpha)\\)ésimo percentil de los \\(|t_b|\\) en la distribución bootstrap\nA pesar de sus propiedades teóricas, el refinamiento asintótico es poco usado"
+  },
+  {
+    "objectID": "diapositivas/bootstrap.html#jacknife",
+    "href": "diapositivas/bootstrap.html#jacknife",
+    "title": "Bootstrap",
+    "section": "Jacknife",
+    "text": "Jacknife\n\nFormalmente no es un método bootstrap\nUna muestra jacknife es una muestra de tamaño \\(N-1\\) construida a partir de la muestra original donde una observación es eliminada a la vez\nEn cada muestra jacknife estimamos el estadístico de interés \\(\\hat{\\theta}_{(j)}\\) (tendremos \\(N\\) estadísticos)\nEl error estándar jacknife será\n\n\\[\\hat{se}(\\hat{\\theta})=\\left(\\frac{N-1}{N}\\sum_{j=1}^N\\left(\\hat{\\theta}_{(j)}-\\hat{\\theta}\\right)^2\\right)^{1/2}\\]\n\nFunciona bien para estadísticas suaves y funciones lineales\nSe puede hacer jacknife por bloques (Cameron y Miller, 2015)"
   }
 ]

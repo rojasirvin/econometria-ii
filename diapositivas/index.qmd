@@ -14,3 +14,5 @@ title: "Diapositivas"
 [Panel](./panel.qmd){target="_blank"}
 
 [Errores estándar](./errores-estandar.qmd){target="_blank"}
+
+[Bootstrap](./bootstrap.qmd){target="_blank"}
