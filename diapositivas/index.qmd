@@ -16,3 +16,7 @@ title: "Diapositivas"
 [Errores estándar](./errores-estandar.qmd){target="_blank"}
 
 [Bootstrap](./bootstrap.qmd){target="_blank"}
+
+[Regresión cuantil](./cuantil.qmd){target="_blank"}
+
+[Métodos no paramétricos y semiparamétricos](./no-parametricos.qmd){target="_blank"}

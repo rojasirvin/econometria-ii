@@ -1,0 +1,360 @@
+---
+title: "Regresión cuantil"
+author: "Irvin Rojas"
+format: 
+  revealjs:
+    slide-number: c/t
+    width: 1600
+    height: 900
+---
+
+
+```{r setup}
+#| echo: false
+#| warning: false 
+#| message: false
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+library(tidyverse)
+library(magick)
+library(reticulate)
+library(sandwich)
+library(stargazer)
+library(foreign)
+library(AER)
+library(clubSandwich)
+library(quantreg)
+
+```
+
+
+
+# Regresión cuantil
+
+## Motivación
+
+- Cuando vemos estadística descriptiva, muchas veces necesitamos más que la media para tener una idea de cómo se ven los datos
+
+- Similarmente, la regresión por MCO nos sirve para descubrir relaciones promedio basadas en $E(y|x)$
+
+- En muchos problemas nos interesan aspectos distribucionales
+
+- ¿Cómo es la distribución del ingreso para las personas con grado universitario comparada con la distribución del ingreso de las personas sin primaria completada?
+
+## Conceptos
+
+- El cuantil poblacional $q$ de la variable aleatoria $y$, con $q\in(0,1)$, es el valor $\mu_q$ tal que $y\leq \mu_q$ con probabilidad $q$
+
+$$q=P(y\leq \mu_q)=F_y(\mu_q)$$
+
+donde $F_y$ es la función de distribución acumulada de $y$
+
+- Por tanto, $\mu_q=F_y^{-1}(q)$
+
+- Algunos cuantiles comúnmente usados son
+
+  - $q=0.5$ es la mediana
+  
+  - $q=0.25$ es el cuartil inferior
+  
+  - $q=0.75$ es el cuartil superior
+
+- Por ejemplo, si $y$ es el salario mensual y $\mu_{0.75}=6,000$, entonces la probabilidad de que $y\leq 6,000$ es 0.75 (75% de los individuos tiene un salario menor o igual que 6,000)
+
+
+## Regresión cuantil
+
+- Consideremos ahora la regresión de $y$ dado $x$
+
+- El cuantil poblacional $q$ de $y$ dado $x$ es la función $\mu_q(x)$ tal que $y$ condicional en $x$ es menor o igual que $\mu_q(x)$ con probabilidad $q$
+
+- Análogamente
+
+$$\mu_q(x)=F^{-1}_{y|x}(q)$$
+
+donde $F_{y|x}$ es la cdf de $y$ dado $x$
+
+## Cuantiles muestrales
+
+- Con una variable aleatoria $y$, podemos estimar el cuantil $\hat{\mu}_q$ como sigue
+
+  1. Ordenamos la muestra en orden ascendente
+  
+  1. $\hat{\mu}_q$ será la $[Nq]$ésima observación más pequeña, donde $[X]$ significa *redondear al siguiente entero*
+
+- Por ejemplo, si $N=97$ y buscamos el cuartil inferior, $q=0.25$
+
+  - $\hat{\mu}_{0.25}$ es el valor de $y$ de la observación 25 porque $[97*0.25]=[24.25]=25$
+  
+- Kroenker & Bassett (1978) mostraron que $\hat{\mu}_q$ puede ser estimado como la solución al siguiente problema de minimización
+
+$$\hat{\mu}_q=\arg\min_{\beta} \sum_{i|y_i\geq \beta}^N q|y_i-\beta|+\sum_{i|y_i <\beta}^N(1-q)|y_i-\beta|$$
+
+
+## Estimador de regresión cuantil
+
+- El **estimador de regresión cuantil** es la solución al problema análogo de regresión lineal
+
+$$\hat{\beta}_q=\arg\min_{\beta_q} \sum_{i|y_i\geq x_i'\beta}^N q|y_i-x_i'\beta_q|+\sum_{i|y_i <x_i'\beta}^N(1-q)|y_i-x_i'\beta_q|$$
+
+- Se hace explícito que $\beta_q$ depende de $q$, es decir, el cuantil elegido
+
+- Este es un problema de minimización de una función de pérdida
+
+- En el caso de la regresión cuantil tiene la característica de pesar asimétricamente los errores
+  - $(1-q)$ es la penalización para las sobrepredicciones
+  - $q$ es la penalización para las subpredicciones
+
+- El caso especial de $q=0.5$ se conoce como **estimador de regresión en la mediana** o **estimador de mínimas desviaciones absolutas**
+
+## Regresión en la mediana
+
+- MCO minimiza $\sum_i e_i^2$
+
+- Regresión en la mediana minimiza $\sum_i |e_i|$
+
+- En el caso de regresión en la mediana, el problema es encontrar $\hat{\beta}_{0.5}$ que minimiza
+
+$$\sum_i |y_i-x_i'\beta| $$
+
+- Una ventaja del estimador de regresión en la mediana es que es más robusto a la presencia de observaciones atípicas (*outliers*) que MCO
+
+## Estimación
+
+- Claramente la función objetivo no es diferenciable
+
+- El problema puede formularse como uno de programación matemática
+
+- [Koenker describe](http://www.econ.uiuc.edu/~roger/research/rq/rq.pdf) algunos de los primeros algoritmos 
+
+- Buchinsky (1998) mostró además que 
+
+$$\sqrt{N}(\hat{\beta}_q-\beta_q)\stackrel{d}{\sim}\mathcal{N}\left(0,A^{-1}BA^{-1}\right)$$
+con $$A=p\lim\frac{1}{N}\sum_i f_{u_q}(0|x_i)x_ix_i' \\ B=p\lim\frac{1}{N}\sum_i q(1-q)x_ix_i'$$
+
+- $f_{u_q}(0|x)$ es la densidad condicional del término de error, $u_q=y-x'\beta_q$
+
+## Ejemplo
+
+- Usamos los datos en [vietnam_hogares.csv](/diapositivas/vietnam_hogares.csv)
+
+- Datos de una encuesta levantada en Vietnam en 1997 (tipo ENIGH)
+
+- Datos de 5,006 hogares con gastos médicos
+
+- Consideremos solo la relación entre el gasto médico y el gasto total (como proxy del ingreso total)
+
+- Una elasticidad menor que uno indica que el bien es una *necesidad*
+
+- Usaremos la paquetería *quantreg*
+
+## Ejemplo
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Vemos que pasa con MCO
+
+- MCO indica que los gastos médicos son una necesidad
+
+- La demanda es inelástica
+
+
+```{r}
+#| echo: true
+data.wb<-read_csv("vietnam_hogares.csv",
+                        locale = locale(encoding = "latin1")) %>% 
+  filter(!is.na(lhhex12m)) %>% 
+  rename(lnmed=lhhex12m, lntotal=lhhexp1)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+
+summary(r.mco <- lm(lnmed  ~ lntotal, data=data.wb))
+
+```
+:::
+
+::::
+
+
+
+
+
+## Ejemplo
+
+- Estimemos la regresión cuantil en el cuantil 90, es decir, estimemos $\hat{\beta}_{90}$
+
+```{r}
+#| echo: true
+summary(r.q90 <- rq(lnmed  ~ lntotal, data=data.wb, tau=0.9))
+```
+
+
+- El cuantil 90 de la distribución del gasto en medicamentos se incrementa en 0.8% cuando el ingreso cambia en 1%
+
+
+
+## Ejemplo
+
+
+
+- Gráficamente
+
+```{r}
+#| echo: true
+#| output-location: column
+
+data.wb %>% 
+  ggplot(aes(x=lntotal,y=lnmed)) + 
+  geom_point(alpha=0.3, size=.1) + 
+  geom_abline(intercept=coef(r.q90)[1], slope=coef(r.q90)[2], color="black", linetype="dashed")+
+  geom_abline(intercept=coef(r.mco)[1], slope=coef(r.mco)[2], color="red")
+```
+
+
+
+---
+
+## Ejemplo
+
+- Cuando se emplea regresión cuantil, comúnmente se presenta el efecto estimado en múltiples cuantiles
+
+```{r}
+#| echo: true
+r.q1_9 <- rq(lnmed  ~ lntotal, data=data.wb, tau= 1:9/10)
+```
+
+- Podemos ver los coeficientes estimados
+
+```{r}
+#| echo: true
+
+coef(r.q1_9)
+```
+
+
+## Ejemplo
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Lo que es más ilustrativo es un gráfico con los coeficientes de regresión cuantil y su intervalo de confianza
+
+- Sobreponemos el coeficiente de MCO y su intervalo de confianza
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+plot(summary(r.q1_9),
+     mar = c(5.1, 4.1, 2.1, 2.1), 
+     parm="lntotal", 
+     main = "Coeficientes de regresión cuantil",
+     ylab="Coeficiente de lntotal",
+     xlab="Cuantil")
+```
+:::
+
+::::
+
+
+
+
+## Interpretación
+
+- En nuestro ejemplo, cuando estimamos el coeficiente de regresión cuantil con $\hat{\beta}_{90}$, interpretamos que cuando el ingreso cambia en 1% en hogares en el percentil 90 de la distriubción condicional del (log) gasto en medicamentos, entonces el gasto en medicamentos se incrementa 0.8%
+
+- Un incremento de 1% del ingreso tiene un efecto más grande en el gasto en medicamentos en hogares más ricos que en hogares más pobres (porque $\hat{\beta}_q$ va creciendo conforme $q$ crece)
+
+## Interpretación incorrecta
+
+- El coeficiente de regresión cuantil con $\hat{\beta}_{90}$ **no dice** que un incremento en el salario incrementa el gasto en medicamentos en el 10% de hogares más ricos en 0.8%
+
+- **Tampoco** dice que un incremento en el salario incrementa el gasto en medicamenos en el 10% de hogares con más gasto en medicamentos en 0.8%
+
+- Lo anterior equivaldría a quedarnos con un subconjunto de la muestra de hogares (el 10% más rico o el 10% con más gasto en medicamentos)
+
+- Cuando usamos regresión cuantil usamos **toda** la muestra para estimar los coeficientes para el $q$ elegido
+
+## Interpretación
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Regresión cuantil le pasa un línea al gráfico de puntos de tal manera que los valores del gasto en medicamentos tengan una probabilidad $q$ de esstar arriba de dicha línea **para cada valor** del ingreso
+
+- El 90% de los puntos están debajo de la recta con pendiente $\hat{\beta}_{90}$
+
+- $\hat{\beta}_{90}$ indica cómo afecta un incremento en el ingreso al gasto en medicamentos de hogares tienen un alto gasto en medicamentos relativo a otros hogares, para un nivel dado de ingreso
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+data.wb %>% 
+  ggplot(aes(x=lntotal,y=lnmed)) + 
+  geom_point(alpha=0.3, size=.1) + 
+  geom_abline(intercept=coef(r.q90)[1], slope=coef(r.q90)[2], color="black", linetype="dashed")
+```
+:::
+
+::::
+
+
+
+## Cuantiles vs percentiles
+
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+[Leeds (2014)](https://www.researchgate.net/publication/281764022_Quantile_Regression_for_Sports_Economics?_iepl%5BgeneralViewId%5D=sKkaCuHYNzrCrfkfhPJW82MeqZfZegD1non1&_iepl%5Bcontexts%5D%5B0%5D=searchReact&_iepl%5BviewId%5D=AbSsMt0q9B1B5DIqHv5G6lpomp66SLQg2V1R&_iepl%5BsearchType%5D=publication&_iepl%5Bdata%5D%5BcountLessEqual20%5D=1&_iepl%5Bdata%5D%5BinteractedWithPosition1%5D=1&_iepl%5Bdata%5D%5BwithoutEnrichment%5D=1&_iepl%5Bposition%5D=1&_iepl%5BrgKey%5D=PB%3A281764022&_iepl%5BtargetEntityId%5D=PB%3A281764022&_iepl%5BinteractionType%5D=publicationTitle) hace la distinción entre cuantiles y percentiles
+
+- Se enfoca en la relación entre salarios y goles en jugadores de hockey
+
+- La línea que marca el cuantil con $q=0.9$ pasa por la cola superior de las dos distribuciones
+
+- El cuantil 90 puede corresponder a jugadores de salario bajo
+
+- La línea del percentil 90 muestra el salario por arriba del cual se encuentra el 10% de los jugadores mejor pagados
+
+:::
+
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics("quantile_goals.png", error=F,
+                        dpi = 10)
+```
+:::
+
+::::
+
+## Recomendaciones
+
+- Regresión cuantil nos ayuda a presentar un panorama más completo del problema (así como los cuantiles nos ayudan a describir los datos más allá de la media)
+
+- Algunos autores emplean regresión cuantil como evidencia de errores heterocedásticos cuando el modelo es lineal
+
+- No confundir regresión cuantil con lo siguiente:
+
+  - Partimos la muestra en $Q$ segmentos y hacemos MCO en cada uno de ellos
+  
+  - Ya vimos que truncar la muestra en general es mala idea
+  
+- Los efectos cuantil nos dicen efectos sobre distribuciones, no sobre individuos

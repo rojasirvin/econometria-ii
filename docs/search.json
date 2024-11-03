@@ -663,7 +663,7 @@
     "href": "diapositivas/index.html",
     "title": "Diapositivas",
     "section": "",
-    "text": "Muestra seleccionada\nVariables instrumentales\nMétodo generalizado de momentos\nVariables instrumentales en la práctica\nPanel\nErrores estándar\nBootstrap",
+    "text": "Muestra seleccionada\nVariables instrumentales\nMétodo generalizado de momentos\nVariables instrumentales en la práctica\nPanel\nErrores estándar\nBootstrap\nRegresión cuantil\nMétodos no paramétricos y semiparamétricos",
     "crumbs": [
       "Diapositivas"
     ]
@@ -1746,5 +1746,383 @@
     "title": "Bootstrap",
     "section": "Jacknife",
     "text": "Jacknife\n\nFormalmente no es un método bootstrap\nUna muestra jacknife es una muestra de tamaño \\(N-1\\) construida a partir de la muestra original donde una observación es eliminada a la vez\nEn cada muestra jacknife estimamos el estadístico de interés \\(\\hat{\\theta}_{(j)}\\) (tendremos \\(N\\) estadísticos)\nEl error estándar jacknife será\n\n\\[\\hat{se}(\\hat{\\theta})=\\left(\\frac{N-1}{N}\\sum_{j=1}^N\\left(\\hat{\\theta}_{(j)}-\\hat{\\theta}\\right)^2\\right)^{1/2}\\]\n\nFunciona bien para estadísticas suaves y funciones lineales\nSe puede hacer jacknife por bloques (Cameron y Miller, 2015)"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#motivación",
+    "href": "diapositivas/cuantil.html#motivación",
+    "title": "Regresión cuantil",
+    "section": "Motivación",
+    "text": "Motivación\n\nCuando vemos estadística descriptiva, muchas veces necesitamos más que la media para tener una idea de cómo se ven los datos\nSimilarmente, la regresión por MCO nos sirve para descubrir relaciones promedio basadas en \\(E(y|x)\\)\nEn muchos problemas nos interesan aspectos distribucionales\n¿Cómo es la distribución del ingreso para las personas con grado universitario comparada con la distribución del ingreso de las personas sin primaria completada?"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#conceptos",
+    "href": "diapositivas/cuantil.html#conceptos",
+    "title": "Regresión cuantil",
+    "section": "Conceptos",
+    "text": "Conceptos\n\nEl cuantil poblacional \\(q\\) de la variable aleatoria \\(y\\), con \\(q\\in(0,1)\\), es el valor \\(\\mu_q\\) tal que \\(y\\leq \\mu_q\\) con probabilidad \\(q\\)\n\n\\[q=P(y\\leq \\mu_q)=F_y(\\mu_q)\\]\ndonde \\(F_y\\) es la función de distribución acumulada de \\(y\\)\n\nPor tanto, \\(\\mu_q=F_y^{-1}(q)\\)\nAlgunos cuantiles comúnmente usados son\n\n\\(q=0.5\\) es la mediana\n\\(q=0.25\\) es el cuartil inferior\n\\(q=0.75\\) es el cuartil superior\n\nPor ejemplo, si \\(y\\) es el salario mensual y \\(\\mu_{0.75}=6,000\\), entonces la probabilidad de que \\(y\\leq 6,000\\) es 0.75 (75% de los individuos tiene un salario menor o igual que 6,000)"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#regresión-cuantil-1",
+    "href": "diapositivas/cuantil.html#regresión-cuantil-1",
+    "title": "Regresión cuantil",
+    "section": "Regresión cuantil",
+    "text": "Regresión cuantil\n\nConsideremos ahora la regresión de \\(y\\) dado \\(x\\)\nEl cuantil poblacional \\(q\\) de \\(y\\) dado \\(x\\) es la función \\(\\mu_q(x)\\) tal que \\(y\\) condicional en \\(x\\) es menor o igual que \\(\\mu_q(x)\\) con probabilidad \\(q\\)\nAnálogamente\n\n\\[\\mu_q(x)=F^{-1}_{y|x}(q)\\]\ndonde \\(F_{y|x}\\) es la cdf de \\(y\\) dado \\(x\\)"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#cuantiles-muestrales",
+    "href": "diapositivas/cuantil.html#cuantiles-muestrales",
+    "title": "Regresión cuantil",
+    "section": "Cuantiles muestrales",
+    "text": "Cuantiles muestrales\n\nCon una variable aleatoria \\(y\\), podemos estimar el cuantil \\(\\hat{\\mu}_q\\) como sigue\n\nOrdenamos la muestra en orden ascendente\n\\(\\hat{\\mu}_q\\) será la \\([Nq]\\)ésima observación más pequeña, donde \\([X]\\) significa redondear al siguiente entero\n\nPor ejemplo, si \\(N=97\\) y buscamos el cuartil inferior, \\(q=0.25\\)\n\n\\(\\hat{\\mu}_{0.25}\\) es el valor de \\(y\\) de la observación 25 porque \\([97*0.25]=[24.25]=25\\)\n\nKroenker & Bassett (1978) mostraron que \\(\\hat{\\mu}_q\\) puede ser estimado como la solución al siguiente problema de minimización\n\n\\[\\hat{\\mu}_q=\\arg\\min_{\\beta} \\sum_{i|y_i\\geq \\beta}^N q|y_i-\\beta|+\\sum_{i|y_i &lt;\\beta}^N(1-q)|y_i-\\beta|\\]"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#estimador-de-regresión-cuantil",
+    "href": "diapositivas/cuantil.html#estimador-de-regresión-cuantil",
+    "title": "Regresión cuantil",
+    "section": "Estimador de regresión cuantil",
+    "text": "Estimador de regresión cuantil\n\nEl estimador de regresión cuantil es la solución al problema análogo de regresión lineal\n\n\\[\\hat{\\beta}_q=\\arg\\min_{\\beta_q} \\sum_{i|y_i\\geq x_i'\\beta}^N q|y_i-x_i'\\beta_q|+\\sum_{i|y_i &lt;x_i'\\beta}^N(1-q)|y_i-x_i'\\beta_q|\\]\n\nSe hace explícito que \\(\\beta_q\\) depende de \\(q\\), es decir, el cuantil elegido\nEste es un problema de minimización de una función de pérdida\nEn el caso de la regresión cuantil tiene la característica de pesar asimétricamente los errores\n\n\\((1-q)\\) es la penalización para las sobrepredicciones\n\\(q\\) es la penalización para las subpredicciones\n\nEl caso especial de \\(q=0.5\\) se conoce como estimador de regresión en la mediana o estimador de mínimas desviaciones absolutas"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#regresión-en-la-mediana",
+    "href": "diapositivas/cuantil.html#regresión-en-la-mediana",
+    "title": "Regresión cuantil",
+    "section": "Regresión en la mediana",
+    "text": "Regresión en la mediana\n\nMCO minimiza \\(\\sum_i e_i^2\\)\nRegresión en la mediana minimiza \\(\\sum_i |e_i|\\)\nEn el caso de regresión en la mediana, el problema es encontrar \\(\\hat{\\beta}_{0.5}\\) que minimiza\n\n\\[\\sum_i |y_i-x_i'\\beta| \\]\n\nUna ventaja del estimador de regresión en la mediana es que es más robusto a la presencia de observaciones atípicas (outliers) que MCO"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#estimación",
+    "href": "diapositivas/cuantil.html#estimación",
+    "title": "Regresión cuantil",
+    "section": "Estimación",
+    "text": "Estimación\n\nClaramente la función objetivo no es diferenciable\nEl problema puede formularse como uno de programación matemática\nKoenker describe algunos de los primeros algoritmos\nBuchinsky (1998) mostró además que\n\n\\[\\sqrt{N}(\\hat{\\beta}_q-\\beta_q)\\stackrel{d}{\\sim}\\mathcal{N}\\left(0,A^{-1}BA^{-1}\\right)\\] con \\[A=p\\lim\\frac{1}{N}\\sum_i f_{u_q}(0|x_i)x_ix_i' \\\\ B=p\\lim\\frac{1}{N}\\sum_i q(1-q)x_ix_i'\\]\n\n\\(f_{u_q}(0|x)\\) es la densidad condicional del término de error, \\(u_q=y-x'\\beta_q\\)"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#ejemplo",
+    "href": "diapositivas/cuantil.html#ejemplo",
+    "title": "Regresión cuantil",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\nUsamos los datos en vietnam_hogares.csv\nDatos de una encuesta levantada en Vietnam en 1997 (tipo ENIGH)\nDatos de 5,006 hogares con gastos médicos\nConsideremos solo la relación entre el gasto médico y el gasto total (como proxy del ingreso total)\nUna elasticidad menor que uno indica que el bien es una necesidad\nUsaremos la paquetería quantreg"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#ejemplo-1",
+    "href": "diapositivas/cuantil.html#ejemplo-1",
+    "title": "Regresión cuantil",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\n\n\nVemos que pasa con MCO\nMCO indica que los gastos médicos son una necesidad\nLa demanda es inelástica\n\n\ndata.wb&lt;-read_csv(\"vietnam_hogares.csv\",\n                        locale = locale(encoding = \"latin1\")) %&gt;% \n  filter(!is.na(lhhex12m)) %&gt;% \n  rename(lnmed=lhhex12m, lntotal=lhhexp1)\n\n\n\nsummary(r.mco &lt;- lm(lnmed  ~ lntotal, data=data.wb))\n\n\nCall:\nlm(formula = lnmed ~ lntotal, data = data.wb)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.5305 -0.9480  0.1062  1.0636  5.4642 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  0.93521    0.30515   3.065  0.00219 ** \nlntotal      0.57365    0.03248  17.661  &lt; 2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.546 on 5004 degrees of freedom\nMultiple R-squared:  0.05867,   Adjusted R-squared:  0.05849 \nF-statistic: 311.9 on 1 and 5004 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#ejemplo-2",
+    "href": "diapositivas/cuantil.html#ejemplo-2",
+    "title": "Regresión cuantil",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\nEstimemos la regresión cuantil en el cuantil 90, es decir, estimemos \\(\\hat{\\beta}_{90}\\)\n\n\nsummary(r.q90 &lt;- rq(lnmed  ~ lntotal, data=data.wb, tau=0.9))\n\n\nCall: rq(formula = lnmed ~ lntotal, tau = 0.9, data = data.wb)\n\ntau: [1] 0.9\n\nCoefficients:\n            Value    Std. Error t value  Pr(&gt;|t|)\n(Intercept)  0.67510  0.43925    1.53692  0.12438\nlntotal      0.80036  0.04688   17.07153  0.00000\n\n\n\nEl cuantil 90 de la distribución del gasto en medicamentos se incrementa en 0.8% cuando el ingreso cambia en 1%"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#ejemplo-3",
+    "href": "diapositivas/cuantil.html#ejemplo-3",
+    "title": "Regresión cuantil",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\nGráficamente\n\n\n\ndata.wb %&gt;% \n  ggplot(aes(x=lntotal,y=lnmed)) + \n  geom_point(alpha=0.3, size=.1) + \n  geom_abline(intercept=coef(r.q90)[1], slope=coef(r.q90)[2], color=\"black\", linetype=\"dashed\")+\n  geom_abline(intercept=coef(r.mco)[1], slope=coef(r.mco)[2], color=\"red\")"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#ejemplo-4",
+    "href": "diapositivas/cuantil.html#ejemplo-4",
+    "title": "Regresión cuantil",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\nCuando se emplea regresión cuantil, comúnmente se presenta el efecto estimado en múltiples cuantiles\n\n\nr.q1_9 &lt;- rq(lnmed  ~ lntotal, data=data.wb, tau= 1:9/10)\n\n\nPodemos ver los coeficientes estimados\n\n\ncoef(r.q1_9)\n\n            tau= 0.1  tau= 0.2  tau= 0.3  tau= 0.4  tau= 0.5  tau= 0.6\n(Intercept) 2.825071 1.7402326 1.0971052 0.6808687 0.5921625 0.6631984\nlntotal     0.151201 0.3552251 0.4797725 0.5691746 0.6210917 0.6531126\n             tau= 0.7  tau= 0.8  tau= 0.9\n(Intercept) 0.4732287 0.3966890 0.6750989\nlntotal     0.7147830 0.7675658 0.8003567"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#ejemplo-5",
+    "href": "diapositivas/cuantil.html#ejemplo-5",
+    "title": "Regresión cuantil",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\n\n\nLo que es más ilustrativo es un gráfico con los coeficientes de regresión cuantil y su intervalo de confianza\nSobreponemos el coeficiente de MCO y su intervalo de confianza\n\n\n\nplot(summary(r.q1_9),\n     mar = c(5.1, 4.1, 2.1, 2.1), \n     parm=\"lntotal\", \n     main = \"Coeficientes de regresión cuantil\",\n     ylab=\"Coeficiente de lntotal\",\n     xlab=\"Cuantil\")"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#interpretación",
+    "href": "diapositivas/cuantil.html#interpretación",
+    "title": "Regresión cuantil",
+    "section": "Interpretación",
+    "text": "Interpretación\n\nEn nuestro ejemplo, cuando estimamos el coeficiente de regresión cuantil con \\(\\hat{\\beta}_{90}\\), interpretamos que cuando el ingreso cambia en 1% en hogares en el percentil 90 de la distriubción condicional del (log) gasto en medicamentos, entonces el gasto en medicamentos se incrementa 0.8%\nUn incremento de 1% del ingreso tiene un efecto más grande en el gasto en medicamentos en hogares más ricos que en hogares más pobres (porque \\(\\hat{\\beta}_q\\) va creciendo conforme \\(q\\) crece)"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#interpretación-incorrecta",
+    "href": "diapositivas/cuantil.html#interpretación-incorrecta",
+    "title": "Regresión cuantil",
+    "section": "Interpretación incorrecta",
+    "text": "Interpretación incorrecta\n\nEl coeficiente de regresión cuantil con \\(\\hat{\\beta}_{90}\\) no dice que un incremento en el salario incrementa el gasto en medicamentos en el 10% de hogares más ricos en 0.8%\nTampoco dice que un incremento en el salario incrementa el gasto en medicamenos en el 10% de hogares con más gasto en medicamentos en 0.8%\nLo anterior equivaldría a quedarnos con un subconjunto de la muestra de hogares (el 10% más rico o el 10% con más gasto en medicamentos)\nCuando usamos regresión cuantil usamos toda la muestra para estimar los coeficientes para el \\(q\\) elegido"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#interpretación-1",
+    "href": "diapositivas/cuantil.html#interpretación-1",
+    "title": "Regresión cuantil",
+    "section": "Interpretación",
+    "text": "Interpretación\n\n\n\nRegresión cuantil le pasa un línea al gráfico de puntos de tal manera que los valores del gasto en medicamentos tengan una probabilidad \\(q\\) de esstar arriba de dicha línea para cada valor del ingreso\nEl 90% de los puntos están debajo de la recta con pendiente \\(\\hat{\\beta}_{90}\\)\n\\(\\hat{\\beta}_{90}\\) indica cómo afecta un incremento en el ingreso al gasto en medicamentos de hogares tienen un alto gasto en medicamentos relativo a otros hogares, para un nivel dado de ingreso\n\n\n\ndata.wb %&gt;% \n  ggplot(aes(x=lntotal,y=lnmed)) + \n  geom_point(alpha=0.3, size=.1) + \n  geom_abline(intercept=coef(r.q90)[1], slope=coef(r.q90)[2], color=\"black\", linetype=\"dashed\")"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#cuantiles-vs-percentiles",
+    "href": "diapositivas/cuantil.html#cuantiles-vs-percentiles",
+    "title": "Regresión cuantil",
+    "section": "Cuantiles vs percentiles",
+    "text": "Cuantiles vs percentiles\n\n\nLeeds (2014) hace la distinción entre cuantiles y percentiles\n\nSe enfoca en la relación entre salarios y goles en jugadores de hockey\nLa línea que marca el cuantil con \\(q=0.9\\) pasa por la cola superior de las dos distribuciones\nEl cuantil 90 puede corresponder a jugadores de salario bajo\nLa línea del percentil 90 muestra el salario por arriba del cual se encuentra el 10% de los jugadores mejor pagados"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#recomendaciones",
+    "href": "diapositivas/cuantil.html#recomendaciones",
+    "title": "Regresión cuantil",
+    "section": "Recomendaciones",
+    "text": "Recomendaciones\n\nRegresión cuantil nos ayuda a presentar un panorama más completo del problema (así como los cuantiles nos ayudan a describir los datos más allá de la media)\nAlgunos autores emplean regresión cuantil como evidencia de errores heterocedásticos cuando el modelo es lineal\nNo confundir regresión cuantil con lo siguiente:\n\nPartimos la muestra en \\(Q\\) segmentos y hacemos MCO en cada uno de ellos\nYa vimos que truncar la muestra en general es mala idea\n\nLos efectos cuantil nos dicen efectos sobre distribuciones, no sobre individuos"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#motivación",
+    "href": "diapositivas/no-parametricos.html#motivación",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Motivación",
+    "text": "Motivación\n\nHemos trabajado hasta ahora modelando las distribuciones de variables aleatorias o la media condicional\nMuchos problemas nos dan cierta estructura (restricciones de homogeneidad, por ejemplo) que nos hacen asumir ciertos modelos\nEn otras ocasiones, podemos analizar los datos sin imponer supuestos distribucionales\nLos métodos no paramétricos son buenos aliados para la representación de relaciones\nFrecuentemente complementamos análisis paramétricos con sus contrapartes no paramétricas"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#histograma",
+    "href": "diapositivas/no-parametricos.html#histograma",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Histograma",
+    "text": "Histograma\n\nConsideremos una variable aleatoria continua \\(x\\)\nUn histograma es un estimador de la densidad formado al partir el rango de \\(x\\) en intervalos iguales y calculando la fracción de dados en cada intervalo\nQueremos estimar la densidad \\(f(x_0)\\), es decir, la densidad de \\(x\\) en \\(x_0\\)\nUn histograma está definido por\n\n\\[\\hat{f}_{hist}(x_0)=\\frac{1}{N}\\sum_i\\frac{\\mathbf{1}(x_0-h&lt;x_i&lt;x_0+h)}{2h}\\]\n\n\\(h\\) es el ancho de banda\nA \\(2h\\) se le llama el ancho de ventana\nEl histograma pesa igual a las observaciones que están dentro el rango dado por \\((-h,h)\\)"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#histograma-1",
+    "href": "diapositivas/no-parametricos.html#histograma-1",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Histograma",
+    "text": "Histograma\n\nEste peso igual queda claro al reescribir el histograma como\n\n\\[\\hat{f}_{hist}(x_0)=\\frac{1}{Nh}\\sum_i\\frac{1}{2}\\mathbf{1}\\left(\\Bigg|\\frac{x_i-x_0}{h}\\Bigg|&lt;1\\right)\\]\n\nUsemos datos sobre salarios de 175 mujeres usados en CT: salarios.csv\nUsamos 20 ventanas"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-histograma",
+    "href": "diapositivas/no-parametricos.html#ejemplo-histograma",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: histograma",
+    "text": "Ejemplo: histograma\n\n\ndata.salarios&lt;-read_csv(\"salarios.csv\",\n                        locale = locale(encoding = \"latin1\"))\n\ndata.salarios %&gt;% \n  ggplot(aes(x=lnhwage)) +\n  geom_histogram(aes(y=..density..),\n                 bins=20,\n                 fill=\"#69b3a2\",\n                 color=\"#e9ecef\",\n                 alpha=0.9) +\n  ggtitle(\"Histograma del log del salario por horar\") +\n  theme(plot.title = element_text(size=15))"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#densidad-kernel",
+    "href": "diapositivas/no-parametricos.html#densidad-kernel",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Densidad Kernel",
+    "text": "Densidad Kernel\n\nEl estimador de densidad Kernel (Rosenblatt, 1956) es la generalización del histograma\nDefinimos la densidad estimada Kernel como\n\n\\[\\hat{k}(x_0)=\\frac{1}{Nh}\\sum_i \\mathit{K}\\left(\\frac{x_i-x_0}{h}\\right)\\] - \\(\\mathit{K}\\) es una función de pesos Kernel\n\n\\(h\\) es el ancho de banda o parámetro de suavizaición\nLa función Kernel evalúa más datos alrededor de \\(x_0\\) que el histograma (posiblemente todos los datos)"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#función-kernel",
+    "href": "diapositivas/no-parametricos.html#función-kernel",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Función Kernel",
+    "text": "Función Kernel\n\nLa función \\(\\mathit{K}\\) cumple con\n\n\\(\\mathit{K}(z)\\) es simétrica alrededor de 0 y es continua\n\\(\\int\\mathit{K}(z)dz=1\\), \\(\\int z\\mathit{K}(z)dz=0\\) y \\(\\int|\\mathit{K}(z)|dz&lt;\\infty\\)\nYa sea\n\n\\(K(z)=0\\) si \\(|z|\\geq z_0\\) para algún \\(z_0\\), o\n\\(|z|K(z)\\to 0\\) si \\(|z|\\to\\infty\\)\n\n\\(\\int z^2 \\mathit{K}(z)dz=\\kappa\\), donde \\(\\kappa\\) es una constante\n\nUna función que satisface estas condiciones puede ser una función Kernel para pesar las observaciones y estimar la densidad en \\(x_0\\)\nAl proveer \\(\\mathit{K}\\) y \\(h\\), es relativamente fácil obtener el estimador de la densidad"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#funciones-kernel-comúnmente-usadas",
+    "href": "diapositivas/no-parametricos.html#funciones-kernel-comúnmente-usadas",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Funciones Kernel comúnmente usadas",
+    "text": "Funciones Kernel comúnmente usadas\n\n\n\nKernel\n\\(\\mathit{K}\\)\n\n\n\n\nUniforme, box o rectangular\n\\(\\frac{1}{2} \\mathbf{1}(abs(z)&lt;1)\\)\n\n\nTriangular\n\\((1-abs(z))\\mathbf{1}(abs(z)&lt;1)\\)\n\n\nEpanechnikov o cuadrático\n\\(\\frac{3}{4}(1-z^2)\\mathbf{1}(abs(z)&lt;1)\\)\n\n\nNormal o gausiano\n\\(\\frac{1}{\\sqrt{2\\pi}}exp(-z^2/2)\\)"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#elección-del-ancho-de-banda",
+    "href": "diapositivas/no-parametricos.html#elección-del-ancho-de-banda",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Elección del ancho de banda",
+    "text": "Elección del ancho de banda\n\nUn ancho de banda pequeño reduce el sesgo (usamos observaciones muy parecidas, aunque pocas)\nUn ancho de banda grande mejora la suavización\nEl ancho de banda es una decisión más importante que la elección del tipo de Kernel\nConsideremos el error cuadrático medio como una medida de desempeño\n\n\\[MSE(\\hat{f}(x_0))=E\\left(\\hat{f}\n(x_0)-f(x_0)\\right) ^2\\]\n\nUna medida global de qué tan buena es la aproximación es el error cuadrado promedio integrado\n\n\\[MISE(h)=\\int MSE(\\hat{f}(x_0))dx_0\\]"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#elección-del-ancho-de-banda-1",
+    "href": "diapositivas/no-parametricos.html#elección-del-ancho-de-banda-1",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Elección del ancho de banda",
+    "text": "Elección del ancho de banda\n\nSilverman (1986) muestra que\n\n\\[h^*=\\delta \\left(\\int f'' (x_0)^2dx_0\\right)^{-0.2}N^{-0.2}\\] donde \\(\\delta=\\left(\\frac{\\int \\mathit{K}(z)^2dz}{(\\int z^2\\mathit{K}(z)dz})^2\\right)\\)\n\nNoten que \\(h^*\\) depende de la curvatura de la densidad\nSi \\(f(x)\\) es muy variable, \\(h\\) será pequeña"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#estimación-kernel-en-la-práctica",
+    "href": "diapositivas/no-parametricos.html#estimación-kernel-en-la-práctica",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Estimación Kernel en la práctica",
+    "text": "Estimación Kernel en la práctica\n\nUsamos \\(\\delta\\) estimador por Silverman, dependiendo del Kernel elegido\n\n\n\n\n\n\n\n\n\nKernel\n\\(\\mathit{K}\\)\n\\(\\delta\\)\n\n\n\n\nUniforme, box o rectangular\n\\(\\frac{1}{2}\\mathbf{1}(abs(z)&lt;1)\\)\n1.3510\n\n\nTriangular\n\\((1-abs(z))\\mathbf{1}(abs(z)&lt;1)\\)\n-\n\n\nEpanechnikov o cuadrático\n\\(\\frac{3}{4}(1-z^2)\\mathbf{1}(abs(z)&lt;1)\\)\n1.7188\n\n\nNormal o gausiano\n\\(\\frac{1}{\\sqrt{2\\pi}}exp(-z^2/2)\\)\n0.7764\n\n\n\n\nEl estimador plug-in de Silverman funciona casi siempre\n\n\\[h^*_{Silverman}=1.3643\\delta\\left(\\min \\left\\{s,\\frac{iqr}{1.349}\\right\\}\\right)N^{-0.2}\\] donde \\(s\\) es la desviación estándar de los datos, \\(iqr\\) es el rango intercuartil y \\(\\frac{iqr}{1.349}\\) protege en presencia de observaciones atípicas"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-densidad-kernel-estimada",
+    "href": "diapositivas/no-parametricos.html#ejemplo-densidad-kernel-estimada",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: densidad Kernel estimada",
+    "text": "Ejemplo: densidad Kernel estimada\n\nEstimamos un Kernel epanechnikov con el ancho de banda óptimo\nPrimero calculemos el ancho de banda óptimo\nUsamos \\(\\delta\\) calculado por Silverman\n\n\ndelta &lt;- 1.7188 # Ver CT\nw.sd &lt;- sd(data.salarios$lnhwage)\nw.iqr.adj &lt;- IQR(data.salarios$lnhwage)/1.349\nw.N &lt;- nrow(data.salarios)\nconstante &lt;- 1.3643\najuste &lt;- min(w.sd,w.iqr.adj)\nh &lt;- constante*delta*ajuste*w.N^(-0.2) # ancho de banda\nh\n\n[1] 0.5453854"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-densidad-kernel-estimada-1",
+    "href": "diapositivas/no-parametricos.html#ejemplo-densidad-kernel-estimada-1",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: densidad Kernel estimada",
+    "text": "Ejemplo: densidad Kernel estimada\n\nEl parámetro bw en geom_density especifica la mitad del ancho de ventana\nDebemos de especificar la mitad de \\(h\\) que acabamos de calcular\n\n\n\ndata.salarios %&gt;% \n  ggplot(aes(x=lnhwage)) +\n  geom_histogram(aes(y=..density..),\n                 bins=20,\n                 fill=\"#69b3a2\",\n                 color=\"#e9ecef\",\n                 alpha=0.9) +\n  geom_density(kernel=\"epanechnikov\",\n               bw=h/2,\n               linetype=\"solid\")+\n  theme(plot.title = element_text(size=15))"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-densidad-kernel-estimada-2",
+    "href": "diapositivas/no-parametricos.html#ejemplo-densidad-kernel-estimada-2",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: densidad Kernel estimada",
+    "text": "Ejemplo: densidad Kernel estimada\n\nVemos cómo el ancho de banda seleccionado modifica el Kernel estimado\n\n\n\ndata.salarios %&gt;% \n  ggplot(aes(x=lnhwage)) +\n  geom_histogram(aes(y=..density..),\n                 bins=20, fill=\"#69b3a2\", color=\"#e9ecef\", alpha=0.9)+\n  geom_density(aes(x=lnhwage, color='Óptimo'), kernel=\"epanechnikov\", bw=h/2, adjust=1)+\n  geom_density(aes(x=lnhwage, color='1/2 óptimo'), kernel=\"epanechnikov\", bw=h/2, adjust=0.5)+\n  geom_density(aes(x=lnhwage, color='2 óptimo'), kernel=\"epanechnikov\", bw=h/2, adjust=2)+\n  theme(legend.position = 'right')+\n  scale_color_manual(\"h\",values = c('Óptimo' = 'black', '1/2 óptimo' = 'red', '2 óptimo'='blue'))"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-densidad-kernel-estimada-3",
+    "href": "diapositivas/no-parametricos.html#ejemplo-densidad-kernel-estimada-3",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: densidad Kernel estimada",
+    "text": "Ejemplo: densidad Kernel estimada\n\nNotamos que la elección del tipo de Kernel es menos relevante\n\n\n\ndelta.gausiano &lt;- 0.7764\ndelta.uniforme &lt;- 1.3510\ndelta.cuartico &lt;- 2.0362\n\nh.gausiano &lt;- constante*delta.gausiano*ajuste*w.N^(-0.2)\nh.uniforme &lt;- constante*delta.uniforme*ajuste*w.N^(-0.2)\nh.cuartico &lt;- constante*delta.cuartico*ajuste*w.N^(-0.2)\n\ndata.salarios %&gt;%\n  ggplot(aes(x=lnhwage)) +\n  geom_histogram(aes(y=..density..), bins=20, fill=\"#69b3a2\", color=\"#e9ecef\", alpha=0.9)+\n  geom_density(aes(x=lnhwage, color='epanechnikov'), kernel=\"epanechnikov\", bw=h/2, adjust=1)+\n  geom_density(aes(x=lnhwage, color='gausiano'), kernel=\"gaussian\", bw=h.gausiano/2, adjust=1)+\n  geom_density(aes(x=lnhwage, color='uniforme'), kernel=\"rectangular\", bw=h.uniforme/2, adjust=1)+\n  geom_density(aes(x=lnhwage, color='cuártico'), kernel=\"biweight\", bw=h.cuartico/2, adjust=1)+\n  theme(legend.position = 'right')+\n  scale_color_manual(\"Kernel\", values = c('epanechnikov' = 'black', 'gausiano' = 'red', 'uniforme'='blue', 'cuártico'='green'))"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#regresión-local-no-paramétrica-1",
+    "href": "diapositivas/no-parametricos.html#regresión-local-no-paramétrica-1",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Regresión local no paramétrica",
+    "text": "Regresión local no paramétrica\n\nConsideremos el siguiente modelo con un regresor escalar\n\n\\[y_i=m(x_i)+\\varepsilon_i\\]\n\nTenemos \\(N\\) observaciones y \\(\\varepsilon_i\\sim iid(0,\\sigma^2_{\\varepsilon})\\)\nQueremos usar las \\(x\\) para decir algo sobre \\(y\\) pero no queremos darle un modelo paramétrico"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#promedios-locales-ponderados",
+    "href": "diapositivas/no-parametricos.html#promedios-locales-ponderados",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Promedios locales ponderados",
+    "text": "Promedios locales ponderados\n\nSupongamos que para un valor de \\(x\\), digamos \\(x_0\\), observamos \\(N_0\\) valores de \\(y\\)\nUna forma de estimar \\(m(x_0)\\) es con la media muestral \\(\\tilde{m}(x_0)\\)\nEl problema es que este estimador puede ser muy ruidoso con regresores discretos y muestras pequeñas\nUna alternativa es mirar en una vecindad de \\(x_0\\)\nDefinimos un estimador de medias ponderadas local\n\n\\[\\hat{m}(x_0)=\\sum_{i=1}^Nw_{i0,h}y_i\\]\n\nLos pesos \\(w_{i0,h}\\), con \\(\\sum_i w_{i0,h}=1\\) indican cuánto pesan las observaciones alrededor de \\(x_0\\), dándole más peso a las más cercanas\n\\(h\\) es el ancho de ventana"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#promedios-locales-ponderados-1",
+    "href": "diapositivas/no-parametricos.html#promedios-locales-ponderados-1",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Promedios locales ponderados",
+    "text": "Promedios locales ponderados\n\nSi decidimos que cada observación en la vecindad dada por \\(h\\) pese lo mismo, el estimador local es\n\n\\[\\hat{m}(x_0)=\\frac{\\sum_i\\mathbf{1}\\left(\\Bigg|\\frac{x_i-x_0}{h}\\Bigg|&lt;1\\right)y_i}{\\sum_i\\mathbf{1}\\left(\\Bigg|\\frac{x_i-x_0}{h}\\Bigg|&lt;1\\right)}\\] - El numerador es la suma de \\(y_i\\) para las observaciones dentro del ancho de banda\n\nEl denominador es el número de unidades sobre las que se está sumando"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#promedios-locales-ponderados-2",
+    "href": "diapositivas/no-parametricos.html#promedios-locales-ponderados-2",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Promedios locales ponderados",
+    "text": "Promedios locales ponderados\n\nDe hecho, las predicciones de MCO también pueden expresarse como un estimador de medias ponderadas\nAlgo de álgebra resulta en\n\n\\[\\hat{m}_{MCO}(x_0)=\\sum_i\\left\\{\\frac{1}{N}+\\frac{(x_0-\\bar{x})(x_i-\\bar{x})}{\\sum_j (x_j-\\bar{x})^2}\\right\\}y_i\\]"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#estimador-de-vecinos-más-cercanos",
+    "href": "diapositivas/no-parametricos.html#estimador-de-vecinos-más-cercanos",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Estimador de vecinos más cercanos",
+    "text": "Estimador de vecinos más cercanos\n\nOtra forma de estimación local no paramétrica es la de vecinos más cercanos\nConsideremos una vecindad de \\(k\\) vecinos alrededor de \\(X_0\\), donde tenemos \\((k-1)/2\\) observaciones con \\(x&lt;x_0\\) y otras tantas para \\(x&gt;x_0\\)\nEntonces, el estimador de k vecinos más cercanos, de media móvil o de media móvil local\n\n\\[\\hat{m}_{k-NN}(x_0)=\\frac{1}{k}\\sum_i \\mathbf{1}(x_i\\in N_k(x_0))y_i\\]\n\nAquí \\(k\\) juega el papel de \\(h\\)\n\\(h\\) es variable: \\(h_0\\) es igual a la distancia entre \\(x_0\\) y el más lejano de los \\(k\\) vecinos más cercanos\nA \\(k/N\\) se le conoce como lapso o span"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#regresión-kernel",
+    "href": "diapositivas/no-parametricos.html#regresión-kernel",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Regresión kernel",
+    "text": "Regresión kernel\n\nUna extensión natural el estimador de promedios locales ponderados es usar una función Kernel para pesar más las observaciones más cercanas a \\(x_0\\)\nEsto resulta en el estimador de regresión Kernel\n\n\\[\\hat{m}(x_0)=\\frac{\\frac{1}{Nh}\\sum_i\\mathit{K}\\left(\\frac{x_i-x_0}{h}\\right)y_i}{\\frac{1}{Nh}\\sum_i\\mathit{K}\\left(\\frac{x_i-x_0}{h}\\right)}\\]"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#regresión-local-lineal",
+    "href": "diapositivas/no-parametricos.html#regresión-local-lineal",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Regresión local lineal",
+    "text": "Regresión local lineal\n\nPodemos asumir que \\(m(x)\\) es lineal en la vecindad de \\(x_0\\)\n\n\\[m(x)=a_0+b_o(x-x_0)\\]\n\nEl estimador de regresión local lineal se obtiene al esocoger \\(a_0\\) y \\(b_0\\) que minimizan\n\n\\[\\sum_i \\mathit{K}\\left(\\frac{x_i-x_0}{h}\\right)(y_i-a_0-b_0(x_i-x_0))^2\\]\n\nObtenemos \\(\\hat{m}(x)=\\hat{a}_0+\\hat{b}_0(x-x_0)\\)\nEn general, podemos asumir un polinomio de orden \\(p\\) para \\(m(x)\\) y resolver\n\n\\[\\sum_i \\mathit{K}\\left(\\frac{x_i-x_0}{h}\\right)\\left(y_i-a_{0,0}-a_{0,1}(x_i-x_0)-\\ldots-a_{0,p}\\frac{(x_i-x_0)^p}{p!}\\right)^2\\]"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#estimador-lowess",
+    "href": "diapositivas/no-parametricos.html#estimador-lowess",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Estimador Lowess",
+    "text": "Estimador Lowess\n\nUn estimador comúnmente usado es el estimador suavizador de puntos con pesos locales (locally weighted scatterplot smoothing estimator) o Lowess\nCaso especial del estimador polinomial\n\nUsa un ancho de banda variable dado por la distancia entre \\(x_0\\) y el \\(k\\)-ésimo vecino más cercano\nKernel tricúbico, \\(\\mathit{K}=(70/81)(1-abs(z)^3)^3\\mathbf{1}(abs(z)&lt;1)\\)\nOtorga menor peso a observaciones con residuales grandes\n\nResulta robusto a la presencia de observaciones atípicas\nSe desempeña bien por su ventana variable y no es sensible a observaciones atípicas\nEs intensivo en cómputo"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-regresión-no-paramétrica",
+    "href": "diapositivas/no-parametricos.html#ejemplo-regresión-no-paramétrica",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: regresión no paramétrica",
+    "text": "Ejemplo: regresión no paramétrica\n\nSimulamos un proceso\n\n\nset.seed(911)\nN &lt;- 100\nu &lt;- rnorm(n=N, mean=0, sd=25)\nx &lt;- seq(1:N)\ny &lt;- 150 + 6.5*x -0.15*x^2+0.001*x^3+u\n\ndata.sim &lt;- as.data.frame(cbind(x,y))\n\n\nUsamos la función knn.reg de la paquetería FNN\n\n\nknn5 &lt;- knn.reg(data.sim$x, y=data.sim$y, k=5)\nknn25 &lt;- knn.reg(data.sim$x, y=data.sim$y, k=25)\n\ndata.sim &lt;- data.sim %&gt;% \n  mutate(y5=knn5$pred) %&gt;% \n  mutate(y25=knn25$pred)"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-regresión-no-paramétrica-1",
+    "href": "diapositivas/no-parametricos.html#ejemplo-regresión-no-paramétrica-1",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: regresión no paramétrica",
+    "text": "Ejemplo: regresión no paramétrica\n\nNotamos que \\(k\\) más grande genera una función más suave\n\n\n\ndata.sim %&gt;% \n  ggplot(aes(x=x,y=y))+\n  geom_point()+\n  geom_smooth(aes(x=x, y=y, color='MCO'),\n              method=lm,\n              se=FALSE)+\n  geom_line(aes(x=x, y=y5, color='kNN, k=5'))+\n  geom_line(aes(x=x, y=y25, color='kNN, k=25'))+\n  theme(legend.position = 'right')+\n  scale_color_manual(\"Método\",\n                     values = c('kNN, k=5' = 'blue', 'kNN, k=25'='green', 'MCO'='black'))"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-regresión-no-paramétrica-2",
+    "href": "diapositivas/no-parametricos.html#ejemplo-regresión-no-paramétrica-2",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: regresión no paramétrica",
+    "text": "Ejemplo: regresión no paramétrica\n\nY ahora incluimos la función generada por Lowess\n\n\n\nfit.lowess &lt;- lowess(data.sim$x, y=data.sim$y, f=25/100)\n\ndata.sim &lt;- data.sim %&gt;% \n  mutate(y.lowess=fit.lowess$y)\n  \ndata.sim %&gt;% \n  ggplot(aes(x=x, y=y))+\n  geom_point()+\n  geom_smooth(aes(x=x, y=y, color='MCO cúbico'),\n              method=lm,\n              formula= y ~ x+I(x^2)+I(x^3),\n              se=FALSE)+\n  geom_line(aes(x=x, y=y.lowess, color='Lowess k=25'))+\n  theme(legend.position = 'right')+\n  scale_color_manual(\"Método\",\n                     values = c('MCO cúbico' = 'blue', 'Lowess k=25' = 'red'))"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#regresión-semiparamétrica-1",
+    "href": "diapositivas/no-parametricos.html#regresión-semiparamétrica-1",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Regresión semiparamétrica",
+    "text": "Regresión semiparamétrica\n\nLa teoría económica puede informar sobre la estructura de problemas y queremos introducir esta estructura en los modelos\nCon muchos regresores, la estimación no paramétrica se vuelve impráctica\nPodemos usar modelos híbridos que tengan una parte paramétrica y otra no paramétrica\nAlgunos de estos modelos son más usados que otros en microeconometría"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#modelos-lineal-parcial",
+    "href": "diapositivas/no-parametricos.html#modelos-lineal-parcial",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Modelos lineal parcial",
+    "text": "Modelos lineal parcial\n\nEspecificamos\n\n\\[E(y|x,z)=x'\\beta+\\lambda(z)\\]\ndonde \\(\\lambda(\\cdot)\\) es una función escalar no especificada\n\nPor ejemplo, la demanda de cierto bien puede ser lineal en \\(x\\) y no lineal en \\(z\\)\nEl modelo de regresión es\n\n\\[\n\\begin{aligned}\n&y_i=x_i'\\beta+\\lambda(z_i)+\\varepsilon_i \\\\\n&E(\\varepsilon_i | x_i,z_i)=0\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#transformación-de-robinson",
+    "href": "diapositivas/no-parametricos.html#transformación-de-robinson",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Transformación de Robinson",
+    "text": "Transformación de Robinson\n\nRobinson (1988) propone lo siguiente\n\nAplicando el operador de esperanza y por la ley de expectativas iteradas\n\n\\[E(y_i|z_i)=E(x_i'\\beta|z_i)+E(\\lambda(z_i)|z_i)+E(\\varepsilon_i|z_i) = E(x_i|z_i)'\\beta+\\lambda(z_i)\\]\n\nRestando a la ecuación de \\(y_i\\) original\n\n\\[y_i-E(y_i|z_i)=(x_i-E(x_i|z_i))'\\beta+\\varepsilon_i\\]"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#estimador-de-robinson",
+    "href": "diapositivas/no-parametricos.html#estimador-de-robinson",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Estimador de Robinson",
+    "text": "Estimador de Robinson\n\nEl estimador de Robinson consiste en hacer MCO a la ecuación transformada\n\n\\[y_i-\\hat{m}_{yi}=(x-\\hat{m}_{xi})'\\beta_{LP}+\\nu\\]\n\n\\(\\hat{m}_{yi}\\) y \\(\\hat{m}_{xi}\\) son predicciones obtenidas por regresiones no paramétricas de \\(y\\) y \\(x\\) sobre \\(z\\)\nRobinson (1988) muestra que el estimador LP es consistente y asintóticamente normal\nVer CT, Sección 9.7.3, con las expresiones de la varianza del estimador de Robinson"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson",
+    "href": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: estimador de Robinson",
+    "text": "Ejemplo: estimador de Robinson\n\nUsamos la función npplreg de la paquetería np\nUsaremos una base de datos que viene con np con 524 observaciones\nTenemos datos de edad, raza, salarios, educación, experiencia\n\n\ndata(wage1)\ncolnames(wage1)\n\n [1] \"wage\"     \"educ\"     \"exper\"    \"tenure\"   \"nonwhite\" \"female\"  \n [7] \"married\"  \"numdep\"   \"smsa\"     \"northcen\" \"south\"    \"west\"    \n[13] \"construc\" \"ndurman\"  \"trcommpu\" \"trade\"    \"services\" \"profserv\"\n[19] \"profocc\"  \"clerocc\"  \"servocc\"  \"lwage\"    \"expersq\"  \"tenursq\""
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-1",
+    "href": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-1",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: estimador de Robinson",
+    "text": "Ejemplo: estimador de Robinson\n\nPropongamos un modelo donde el salario por hora depende no paramétricamente de la experiencia\n\n\\[\\ln w_i= \\beta_0+\\beta_1 educ_i + \\beta_2 tenure_i + \\lambda(exper_i) \\]\n\nLa función npplregbw nos permite obtener los anchos de banda apropiados para cada variable\n\n\nbw &lt;- npplregbw(formula=lwage~educ+ tenure |\n                  exper,\n                data=wage1,\n                regtype=\"ll\")\n\n\nPasamos el objeto bw a la función npplreg\n\n\nmodel.pl &lt;- npplreg(bw)"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-2",
+    "href": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-2",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: estimador de Robinson",
+    "text": "Ejemplo: estimador de Robinson\n\nVemos el resumen\n\n\n\nsummary(model.pl)\n\n\n\nPartially Linear Model\nRegression data: 526 training points, in 3 variable(s)\nWith 2 linear parametric regressor(s), 1 nonparametric regressor(s)\n\n                  y(z)\nBandwidth(s): 3.176922\n\n                  x(z)\nBandwidth(s): 3.945161\n              1.044574\n\n                      educ     tenure\nCoefficient(s): 0.08373704 0.02174876\n\nKernel Regression Estimator: Local-Linear\nBandwidth Type: Fixed\n\nResidual standard error: 0.4203625\nR-squared: 0.3734032\n\nContinuous Kernel Type: Second-Order Gaussian\nNo. Continuous Explanatory Vars.: 1"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-3",
+    "href": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-3",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: estimador de Robinson",
+    "text": "Ejemplo: estimador de Robinson\n\nGraficamos resultados\n\n\n\npar(mar = c(1, 1, 1, 1))\n\nnpplot(bw,\n       plot.errors.method = \"asymptotic\",\n       plot.behavior=\"plot-data\")\n\n\n\n\n\n\n\n\n\n$plr1\n\nPartially Linear Model\nRegression data: 526 training points, and 50 evaluation points, in 3 variable(s)\nWith 2 linear parametric regressor(s), 1 nonparametric regressor(s)\n\n                  y(z)\nBandwidth(s): 3.176922\n\n                  x(z)\nBandwidth(s): 3.945161\n              1.044574\n                        V1         V2\nCoefficient(s): 0.08373704 0.02174876\n\nKernel Regression Estimator: Local-Linear\nBandwidth Type: Fixed\n\nContinuous Kernel Type: Second-Order Gaussian\nNo. Continuous Explanatory Vars.: 1\n\n\n$plr2\n\nPartially Linear Model\nRegression data: 526 training points, and 50 evaluation points, in 3 variable(s)\nWith 2 linear parametric regressor(s), 1 nonparametric regressor(s)\n\n                  y(z)\nBandwidth(s): 3.176922\n\n                  x(z)\nBandwidth(s): 3.945161\n              1.044574\n                        V1         V2\nCoefficient(s): 0.08373704 0.02174876\n\nKernel Regression Estimator: Local-Linear\nBandwidth Type: Fixed\n\nContinuous Kernel Type: Second-Order Gaussian\nNo. Continuous Explanatory Vars.: 1\n\n\n$plr3\n\nPartially Linear Model\nRegression data: 526 training points, and 50 evaluation points, in 3 variable(s)\nWith 2 linear parametric regressor(s), 1 nonparametric regressor(s)\n\n                  y(z)\nBandwidth(s): 3.176922\n\n                  x(z)\nBandwidth(s): 3.945161\n              1.044574\n                        V1         V2\nCoefficient(s): 0.08373704 0.02174876\n\nKernel Regression Estimator: Local-Linear\nBandwidth Type: Fixed\n\nContinuous Kernel Type: Second-Order Gaussian\nNo. Continuous Explanatory Vars.: 1"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#estimador-de-silverman",
+    "href": "diapositivas/no-parametricos.html#estimador-de-silverman",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Estimador de Silverman",
+    "text": "Estimador de Silverman\n\nUsamos \\(\\delta\\) estimador por Silverman, dependiendo del Kernel elegido\n\n\n\n\n\n\n\n\n\nKernel\n\\(\\mathit{K}\\)\n\\(\\delta\\)\n\n\n\n\nUniforme, box o rectangular\n\\(\\frac{1}{2}\\mathbf{1}(abs(z)&lt;1)\\)\n1.3510\n\n\nTriangular\n\\((1-abs(z))\\mathbf{1}(abs(z)&lt;1)\\)\n-\n\n\nEpanechnikov o cuadrático\n\\(\\frac{3}{4}(1-z^2)\\mathbf{1}(abs(z)&lt;1)\\)\n1.7188\n\n\nNormal o gausiano\n\\(\\frac{1}{\\sqrt{2\\pi}}exp(-z^2/2)\\)\n0.7764\n\n\n\n\nEl estimador plug-in de Silverman funciona casi siempre\n\n\\[h^*_{Silverman}=1.3643\\delta\\left(\\min \\left\\{s,\\frac{iqr}{1.349}\\right\\}\\right)N^{-0.2}\\] donde \\(s\\) es la desviación estándar de los datos, \\(iqr\\) es el rango intercuartil y \\(\\frac{iqr}{1.349}\\) protege en presencia de observaciones atípicas"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-4",
+    "href": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-4",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: estimador de Robinson",
+    "text": "Ejemplo: estimador de Robinson\n\nPodemos especificar otras formas de estimar los intervalos de confianza\nRecuperamos los objetos estimados guardados en g.robinson para hacer un gráfico con mejor edición\n\n\n\npar(mar = c(1, 1, 1, 1))\n\ng.robinson &lt;- npplot(bw,\n       plot.errors.method = \"bootstrap\",\n       plot.behavior=\"plot-data\")"
+  },
+  {
+    "objectID": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-5",
+    "href": "diapositivas/no-parametricos.html#ejemplo-estimador-de-robinson-5",
+    "title": "Métodos no paramétricos y semiparamétricos",
+    "section": "Ejemplo: estimador de Robinson",
+    "text": "Ejemplo: estimador de Robinson\n\nConstruimos el gráfico solo para la experiencia\n\n\n\ng &lt;- fitted(g.robinson$plr3)\nse &lt;- g.robinson[[\"plr3\"]][[\"merr\"]]\nlci &lt;- g - se[,1]\nuci &lt;- g + se[,2]\n\n#Este objeto nos dicen dónde fueron evaluados\nexp.eval &lt;- g.robinson[[\"plr3\"]][[\"evalz\"]][[\"V1\"]]\n\nfitted &lt;- data.frame(exp.eval, g,lci,uci)\n\nggplot() + \n  geom_point(data=wage1, aes(exper,lwage), color='black', alpha=0.5) + \n  geom_line(data=fitted, aes(exp.eval, g), linetype='solid')+\n  geom_line(data=fitted, aes(exp.eval, uci), linetype='dashed')+\n  geom_line(data=fitted, aes(exp.eval, lci), linetype='dashed')"
   }
 ]
