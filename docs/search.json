@@ -1766,7 +1766,7 @@
     "href": "diapositivas/cuantil.html#regresión-cuantil-1",
     "title": "Regresión cuantil",
     "section": "Regresión cuantil",
-    "text": "Regresión cuantil\n\nConsideremos ahora la regresión de \\(y\\) dado \\(x\\)\nEl cuantil poblacional \\(q\\) de \\(y\\) dado \\(x\\) es la función \\(\\mu_q(x)\\) tal que \\(y\\) condicional en \\(x\\) es menor o igual que \\(\\mu_q(x)\\) con probabilidad \\(q\\)\nAnálogamente\n\n\\[\\mu_q(x)=F^{-1}_{y|x}(q)\\]\ndonde \\(F_{y|x}\\) es la cdf de \\(y\\) dado \\(x\\)"
+    "text": "Regresión cuantil\n\nConsideremos ahora la regresión de \\(y\\) dado \\(x\\)\nEl cuantil poblacional \\(q\\) de \\(y\\) dado \\(x\\) es la función \\(\\mu_q(x)\\) tal que \\(y\\) condicional en \\(x\\) es menor o igual que \\(\\mu_q(x)\\) con probabilidad \\(q\\)\nAnálogamente\n\n\\[q=P(y\\leq\\mu_q(x)|X=x)=F_{y|x}(\\mu_q(x))\\]\n\nPor tanto\n\n\\[\\mu_q(x)=F^{-1}_{y|x}(q)\\]\ndonde \\(F_{y|x}\\) es la cdf de \\(y\\) dado \\(x\\)"
   },
   {
     "objectID": "diapositivas/cuantil.html#cuantiles-muestrales",
@@ -1857,7 +1857,7 @@
     "href": "diapositivas/cuantil.html#interpretación-1",
     "title": "Regresión cuantil",
     "section": "Interpretación",
-    "text": "Interpretación\n\n\n\nRegresión cuantil le pasa un línea al gráfico de puntos de tal manera que los valores del gasto en medicamentos tengan una probabilidad \\(q\\) de esstar arriba de dicha línea para cada valor del ingreso\nEl 90% de los puntos están debajo de la recta con pendiente \\(\\hat{\\beta}_{90}\\)\n\\(\\hat{\\beta}_{90}\\) indica cómo afecta un incremento en el ingreso al gasto en medicamentos de hogares tienen un alto gasto en medicamentos relativo a otros hogares, para un nivel dado de ingreso\n\n\n\ndata.wb %&gt;% \n  ggplot(aes(x=lntotal,y=lnmed)) + \n  geom_point(alpha=0.3, size=.1) + \n  geom_abline(intercept=coef(r.q90)[1], slope=coef(r.q90)[2], color=\"black\", linetype=\"dashed\")"
+    "text": "Interpretación\n\n\n\nRegresión cuantil le pasa un línea al gráfico de puntos de tal manera que los valores del gasto en medicamentos tengan una probabilidad \\(q\\) de estar arriba de dicha línea para cada valor del ingreso\nEl 90% de los puntos están debajo de la recta con pendiente \\(\\hat{\\beta}_{90}\\)\n\\(\\hat{\\beta}_{90}\\) indica cómo afecta un incremento en el ingreso al gasto en medicamentos de hogares tienen un alto gasto en medicamentos relativo a otros hogares, para un nivel dado de ingreso\n\n\n\ndata.wb %&gt;% \n  ggplot(aes(x=lntotal,y=lnmed)) + \n  geom_point(alpha=0.3, size=.1) + \n  geom_abline(intercept=coef(r.q90)[1], slope=coef(r.q90)[2], color=\"black\", linetype=\"dashed\")"
   },
   {
     "objectID": "diapositivas/cuantil.html#cuantiles-vs-percentiles",
@@ -2124,5 +2124,33 @@
     "title": "Métodos no paramétricos y semiparamétricos",
     "section": "Ejemplo: estimador de Robinson",
     "text": "Ejemplo: estimador de Robinson\n\nConstruimos el gráfico solo para la experiencia\n\n\n\ng &lt;- fitted(g.robinson$plr3)\nse &lt;- g.robinson[[\"plr3\"]][[\"merr\"]]\nlci &lt;- g - se[,1]\nuci &lt;- g + se[,2]\n\n#Este objeto nos dicen dónde fueron evaluados\nexp.eval &lt;- g.robinson[[\"plr3\"]][[\"evalz\"]][[\"V1\"]]\n\nfitted &lt;- data.frame(exp.eval, g,lci,uci)\n\nggplot() + \n  geom_point(data=wage1, aes(exper,lwage), color='black', alpha=0.5) + \n  geom_line(data=fitted, aes(exp.eval, g), linetype='solid')+\n  geom_line(data=fitted, aes(exp.eval, uci), linetype='dashed')+\n  geom_line(data=fitted, aes(exp.eval, lci), linetype='dashed')"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#cuantiles",
+    "href": "diapositivas/cuantil.html#cuantiles",
+    "title": "Regresión cuantil",
+    "section": "Cuantiles",
+    "text": "Cuantiles\n\nEl cuantil poblacional \\(q\\) de la variable aleatoria \\(y\\), con \\(q\\in(0,1)\\), es el valor \\(\\mu_q\\) tal que \\(y\\leq \\mu_q\\) con probabilidad \\(q\\)\n\n\\[q=P(y\\leq \\mu_q)=F_y(\\mu_q)\\]\ndonde \\(F_y\\) es la función de distribución acumulada de \\(y\\)\n\nPor tanto, \\(\\mu_q=F_y^{-1}(q)\\)\nAlgunos cuantiles comúnmente usados son\n\n\\(q=0.5\\) es la mediana\n\\(q=0.25\\) es el cuartil inferior\n\\(q=0.75\\) es el cuartil superior\n\nPor ejemplo, si \\(y\\) es el salario mensual y \\(\\mu_{0.75}=6,000\\), entonces la probabilidad de que \\(y\\leq 6,000\\) es 0.75 (75% de los individuos tiene un salario menor o igual que 6,000)"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#funciones-de-regresión-cuantiles",
+    "href": "diapositivas/cuantil.html#funciones-de-regresión-cuantiles",
+    "title": "Regresión cuantil",
+    "section": "Funciones de regresión cuantiles",
+    "text": "Funciones de regresión cuantiles\n\n\n\nConsideremos las relación entre educación e ingreso por hora\nGraficamos los cuantiles \\(q=\\{0.1, 0.3, 0.5, 0.7, 0.9\\}\\)\nCada línea punteada es una función de regresión cuantil\nPara cada nivel de educación, los cuantiles condicionales \\(\\mu_q(x)\\) están ordenados en \\(q\\)\nPara niveles bajos de educación, los cuantiles condicionales están más juntos, en comparación con los niveles altos\n\n\n\n\n\n\n\nFuente: Hansen (2022)"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#funciones-de-pérdida",
+    "href": "diapositivas/cuantil.html#funciones-de-pérdida",
+    "title": "Regresión cuantil",
+    "section": "Funciones de pérdida",
+    "text": "Funciones de pérdida\n\n\n\nLa diferencia entre regresión cuantil y MCO radica en cómo se penalizan los errores de la aproximación \\(x'\\beta\\) para \\(y\\)\nEn MCO, la penalización ocurre con una función de pérdida cuadrática\nCon regresión en la mediana, los errores grandes son penalizados menos severamente que en MCO\nLas penalizaciones son no simétricas en el caso de regresión cuantil en general\n\n\n\n\n\n\n\nFuente: Hansen (2022)"
+  },
+  {
+    "objectID": "diapositivas/cuantil.html#funciones-de-pérdida-1",
+    "href": "diapositivas/cuantil.html#funciones-de-pérdida-1",
+    "title": "Regresión cuantil",
+    "section": "Funciones de pérdida",
+    "text": "Funciones de pérdida\n\n\n\nLa diferencia entre regresión cuantil y MCO radica en cómo se penalizan los errores de la aproximación \\(x'\\beta\\) para \\(y\\)\nEn MCO, la penalización ocurre con una función de pérdida cuadrática\nCon regresión en la mediana, los errores grandes son penalizados menos severamente que en MCO\nLas penalizaciones son no simétricas en el caso de regresión cuantil en general\n\n\n\n\n\n\n\nFuente: Hansen (2022)"
   }
 ]

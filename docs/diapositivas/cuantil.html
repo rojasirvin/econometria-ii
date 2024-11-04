@@ -416,8 +416,8 @@ Irvin Rojas
 <li><p>¿Cómo es la distribución del ingreso para las personas con grado universitario comparada con la distribución del ingreso de las personas sin primaria completada?</p></li>
 </ul>
 </section>
-<section id="conceptos" class="slide level2">
-<h2>Conceptos</h2>
+<section id="cuantiles" class="slide level2">
+<h2>Cuantiles</h2>
 <ul>
 <li>El cuantil poblacional <span class="math inline">\(q\)</span> de la variable aleatoria <span class="math inline">\(y\)</span>, con <span class="math inline">\(q\in(0,1)\)</span>, es el valor <span class="math inline">\(\mu_q\)</span> tal que <span class="math inline">\(y\leq \mu_q\)</span> con probabilidad <span class="math inline">\(q\)</span></li>
 </ul>
@@ -434,16 +434,6 @@ Irvin Rojas
 <li><p>Por ejemplo, si <span class="math inline">\(y\)</span> es el salario mensual y <span class="math inline">\(\mu_{0.75}=6,000\)</span>, entonces la probabilidad de que <span class="math inline">\(y\leq 6,000\)</span> es 0.75 (75% de los individuos tiene un salario menor o igual que 6,000)</p></li>
 </ul>
 </section>
-<section id="regresión-cuantil-1" class="slide level2">
-<h2>Regresión cuantil</h2>
-<ul>
-<li><p>Consideremos ahora la regresión de <span class="math inline">\(y\)</span> dado <span class="math inline">\(x\)</span></p></li>
-<li><p>El cuantil poblacional <span class="math inline">\(q\)</span> de <span class="math inline">\(y\)</span> dado <span class="math inline">\(x\)</span> es la función <span class="math inline">\(\mu_q(x)\)</span> tal que <span class="math inline">\(y\)</span> condicional en <span class="math inline">\(x\)</span> es menor o igual que <span class="math inline">\(\mu_q(x)\)</span> con probabilidad <span class="math inline">\(q\)</span></p></li>
-<li><p>Análogamente</p></li>
-</ul>
-<p><span class="math display">\[\mu_q(x)=F^{-1}_{y|x}(q)\]</span></p>
-<p>donde <span class="math inline">\(F_{y|x}\)</span> es la cdf de <span class="math inline">\(y\)</span> dado <span class="math inline">\(x\)</span></p>
-</section>
 <section id="cuantiles-muestrales" class="slide level2">
 <h2>Cuantiles muestrales</h2>
 <ul>
@@ -459,6 +449,45 @@ Irvin Rojas
 <li><p>Kroenker &amp; Bassett (1978) mostraron que <span class="math inline">\(\hat{\mu}_q\)</span> puede ser estimado como la solución al siguiente problema de minimización</p></li>
 </ul>
 <p><span class="math display">\[\hat{\mu}_q=\arg\min_{\beta} \sum_{i|y_i\geq \beta}^N q|y_i-\beta|+\sum_{i|y_i &lt;\beta}^N(1-q)|y_i-\beta|\]</span></p>
+</section>
+<section id="regresión-cuantil-1" class="slide level2">
+<h2>Regresión cuantil</h2>
+<ul>
+<li><p>Consideremos ahora la regresión de <span class="math inline">\(y\)</span> dado <span class="math inline">\(x\)</span></p></li>
+<li><p>El cuantil poblacional <span class="math inline">\(q\)</span> de <span class="math inline">\(y\)</span> dado <span class="math inline">\(x\)</span> es la función <span class="math inline">\(\mu_q(x)\)</span> tal que <span class="math inline">\(y\)</span> condicional en <span class="math inline">\(x\)</span> es menor o igual que <span class="math inline">\(\mu_q(x)\)</span> con probabilidad <span class="math inline">\(q\)</span></p></li>
+<li><p>Análogamente</p></li>
+</ul>
+<p><span class="math display">\[q=P(y\leq\mu_q(x)|X=x)=F_{y|x}(\mu_q(x))\]</span></p>
+<ul>
+<li>Por tanto</li>
+</ul>
+<p><span class="math display">\[\mu_q(x)=F^{-1}_{y|x}(q)\]</span></p>
+<p>donde <span class="math inline">\(F_{y|x}\)</span> es la cdf de <span class="math inline">\(y\)</span> dado <span class="math inline">\(x\)</span></p>
+</section>
+<section id="funciones-de-regresión-cuantiles" class="slide level2">
+<h2>Funciones de regresión cuantiles</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Consideremos las relación entre educación e ingreso por hora</p></li>
+<li><p>Graficamos los cuantiles <span class="math inline">\(q=\{0.1, 0.3, 0.5, 0.7, 0.9\}\)</span></p></li>
+<li><p>Cada línea punteada es una función de regresión cuantil</p></li>
+<li><p>Para cada nivel de educación, los cuantiles condicionales <span class="math inline">\(\mu_q(x)\)</span> están ordenados en <span class="math inline">\(q\)</span></p></li>
+<li><p>Para niveles bajos de educación, los cuantiles condicionales están más juntos, en comparación con los niveles altos</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="funcion-cuantiles.png" width="8381"></p>
+<figcaption>Fuente: Hansen (2022)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="estimador-de-regresión-cuantil" class="slide level2">
 <h2>Estimador de regresión cuantil</h2>
@@ -488,6 +517,54 @@ Irvin Rojas
 <ul>
 <li>Una ventaja del estimador de regresión en la mediana es que es más robusto a la presencia de observaciones atípicas (<em>outliers</em>) que MCO</li>
 </ul>
+</section>
+<section id="funciones-de-pérdida" class="slide level2">
+<h2>Funciones de pérdida</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>La diferencia entre regresión cuantil y MCO radica en cómo se penalizan los errores de la aproximación <span class="math inline">\(x'\beta\)</span> para <span class="math inline">\(y\)</span></p></li>
+<li><p>En MCO, la penalización ocurre con una función de pérdida cuadrática</p></li>
+<li><p>Con regresión en la mediana, los errores grandes son penalizados menos severamente que en MCO</p></li>
+<li><p>Las penalizaciones son no simétricas en el caso de regresión cuantil en general</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="comparaciones-penalizaciones.png" width="8342"></p>
+<figcaption>Fuente: Hansen (2022)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="funciones-de-pérdida-1" class="slide level2">
+<h2>Funciones de pérdida</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>La diferencia entre regresión cuantil y MCO radica en cómo se penalizan los errores de la aproximación <span class="math inline">\(x'\beta\)</span> para <span class="math inline">\(y\)</span></p></li>
+<li><p>En MCO, la penalización ocurre con una función de pérdida cuadrática</p></li>
+<li><p>Con regresión en la mediana, los errores grandes son penalizados menos severamente que en MCO</p></li>
+<li><p>Las penalizaciones son no simétricas en el caso de regresión cuantil en general</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="funcion-check.png" width="8026"></p>
+<figcaption>Fuente: Hansen (2022)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="estimación" class="slide level2">
 <h2>Estimación</h2>
@@ -594,7 +671,7 @@ lntotal      0.80036  0.04688   17.07153  0.00000</code></pre>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="cuantil_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="cuantil_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -643,7 +720,7 @@ lntotal     0.7147830 0.7675658 0.8003567</code></pre>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="cuantil_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<p><img data-src="cuantil_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -672,7 +749,7 @@ lntotal     0.7147830 0.7675658 0.8003567</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><p>Regresión cuantil le pasa un línea al gráfico de puntos de tal manera que los valores del gasto en medicamentos tengan una probabilidad <span class="math inline">\(q\)</span> de esstar arriba de dicha línea <strong>para cada valor</strong> del ingreso</p></li>
+<li><p>Regresión cuantil le pasa un línea al gráfico de puntos de tal manera que los valores del gasto en medicamentos tengan una probabilidad <span class="math inline">\(q\)</span> de estar arriba de dicha línea <strong>para cada valor</strong> del ingreso</p></li>
 <li><p>El 90% de los puntos están debajo de la recta con pendiente <span class="math inline">\(\hat{\beta}_{90}\)</span></p></li>
 <li><p><span class="math inline">\(\hat{\beta}_{90}\)</span> indica cómo afecta un incremento en el ingreso al gasto en medicamentos de hogares tienen un alto gasto en medicamentos relativo a otros hogares, para un nivel dado de ingreso</p></li>
 </ul>
@@ -685,7 +762,7 @@ lntotal     0.7147830 0.7675658 0.8003567</code></pre>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="cuantil_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="cuantil_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
