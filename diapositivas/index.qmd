@@ -20,3 +20,5 @@ title: "Diapositivas"
 [Regresión cuantil](./cuantil.qmd){target="_blank"}
 
 [Métodos no paramétricos y semiparamétricos](./no-parametricos.qmd){target="_blank"}
+
+[Diferencia en diferencias](./did.qmd){target="_blank"}
