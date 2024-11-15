@@ -726,6 +726,1712 @@ F-statistic:   NaN on 3 and 0 DF,  p-value: NA</code></pre>
 
 <img data-src="trends_3.png" width="3898" class="r-stretch"></section></section>
 <section>
+<section id="modelo-canónico-2x2" class="title-slide slide level1 center">
+<h1>Modelo canónico 2x2</h1>
+
+</section>
+<section id="notación" class="slide level2">
+<h2>Notación</h2>
+<ul>
+<li><p>Notación basada en <a href="https://www.sciencedirect.com/science/article/pii/S0304407623001318?casa_token=uID5K1tUoCkAAAAA:fu6BhPOhjQTti8tyxACl14raIRFs_RAvzgqui7h2-KGu4b9BdcOTP5mtcrsNTQaj0LvvYsUrK0Sp">Roth et al.</a></p></li>
+<li><p>Estado de tratamiennto: <span class="math display">\[
+D_i=
+\begin{cases}
+1\quad\quad \text{si intervenido} \\
+0\quad\quad \text{si no} \\
+\end{cases}
+\]</span></p></li>
+<li><p><span class="math inline">\(N\)</span> unidades</p></li>
+<li><p><span class="math inline">\(y_{it}\)</span> es la variable de impacto</p></li>
+<li><p>Nos interesa</p></li>
+</ul>
+<p><span class="math display">\[\tau=E(y_{i1}(1)-y_{i1}(0)| D_i=1)\]</span></p>
+<ul>
+<li><p>Es el la diferencia en valor esperado de la variable de impacto en las unidades tratadas en los dos regímenes de tratamiento</p></li>
+<li><p><span class="math inline">\(y_{i1}(0)\)</span> es el contrafactual no observado</p></li>
+</ul>
+</section>
+<section id="supuestos" class="slide level2">
+<h2>Supuestos</h2>
+<p>S1. Tendencias paralelas</p>
+<p><span class="math display">\[E(y_{i1}(0)-y_{i0}(0)|D_i=1)=E(y_{i1}(0)-y_{i0}(0)|D_i=0)\]</span></p>
+<ul>
+<li>En estado contrafactual de no tratamiento, los dos grupos tendrían la misma trayectoria</li>
+</ul>
+<p>S2. No hay efectos de anticipación</p>
+<p><span class="math display">\[y_{i0}(0)=y_{i0}(1)\quad \forall i \quad \text{con}\quad D_i=1\]</span></p>
+<ul>
+<li>En el periodo inicial, el estado de tratamiento no afecta la variable de impacto</li>
+</ul>
+</section>
+<section id="estimación-del-contrafactual" class="slide level2">
+<h2>Estimación del contrafactual</h2>
+<ul>
+<li>Partiendo del supuesto de tendencias paralelas, podemos despejar el término contrafactual</li>
+</ul>
+<p><span class="math display">\[E(y_{i1}(0)|D_i=1)=E(y_{i0}(0)|D_i=1)+E(y_{i1}(0)-y_{i0}(0)|D_i=0)\]</span> - Usando el supuesto de no anticipación</p>
+<p><span class="math display">\[E(y_{i1}(0)|D_i=1)=E(y_{i0}(1)|D_i=1)+E(y_{i1}(0)-y_{i0}(0)|D_i=0)\]</span></p>
+<ul>
+<li>Es decir:</li>
+</ul>
+<p><span class="math display">\[E(y_{i1}(0)|D_i=1)=E(y_{i0}|D_i=1)+E(y_{i1}-y_{i0}|D_i=0)\]</span></p>
+<ul>
+<li>Podemos recuperar el contrafactual no observado <span class="math inline">\(E(y_{i0}(0)|D_i=1)\)</span> usando el valor esperado de <span class="math inline">\(y\)</span> en el periodo <span class="math inline">\(t=0\)</span> para el grupo tratado y sumándole el cambio promedio experimentado por el grupo no tratado</li>
+</ul>
+</section>
+<section id="efecto-de-tratamiento" class="slide level2">
+<h2>Efecto de tratamiento</h2>
+<ul>
+<li>Sustituyendo la expresión de <span class="math inline">\(E(y_{i0}(0)|D_i=1)\)</span> en la definición del efecto de tratamiento</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+\tau&amp;=E(y_{i1}(1)-y_{i1}(0)| D_i=1) \\
+&amp;=E(y_{i1}| D_i=1)-(E(y_{i0}|D_i=1)+E(y_{i1}-y_{i0}|D_i=0))
+\end{aligned}
+\]</span></p>
+<ul>
+<li>Reordenando:</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+\tau&amp;=E(y_{i1}-y_{i0}| D_i=1)-E(y_{i1}-y_{i0}|D_i=0)
+\end{aligned}
+\]</span></p>
+<ul>
+<li>Es decir, la diferencia de las diferencias</li>
+</ul>
+</section>
+<section id="estimación" class="slide level2">
+<h2>Estimación</h2>
+<ul>
+<li>Podemos implementar el estimador con los análogos muestrales</li>
+</ul>
+<p><span class="math display">\[\hat{\tau}=(\bar{y}_{t=1,D=1}-\bar{y}_{t=0,D=1})-(\bar{y}_{t=1,D=0}-\bar{y}_{t=0,D=0})\]</span></p>
+</section>
+<section id="estimación-1" class="slide level2">
+<h2>Estimación</h2>
+<ul>
+<li>Sin embargo, como vimos antes, una regresión permite recuperar el efecto de tratamiento</li>
+</ul>
+<p><span class="math display">\[y_{it}=\alpha+\gamma D_{i}+\lambda POST_{t}+\tau(D_i\times POST_{t}) + \varepsilon_{it}\]</span></p>
+<p><span class="math inline">\(E(y_{it}|D_i=0, POST_t=0)=\alpha\)</span></p>
+<p><span class="math inline">\(E(y_{it}|D_i=1, POST_t=0)=\alpha+\gamma\)</span></p>
+<p><span class="math inline">\(E(y_{it}|D_i=0, POST_t=1)=\alpha+\lambda\)</span></p>
+<p><span class="math inline">\(E(y_{it}|D_i=1, POST_t=1)=\alpha+\gamma+\lambda+\tau\)</span></p>
+<ul>
+<li>Y por tanto</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+(E(y_{it}|D_i=1&amp;, POST_t=1)-E(y_{it}|D_i=1, POST_t=0))-(E(y_{it}|D_i=0, POST_t=1)-E(y_{it}|D_i=0, POST_t=0))=\\
+&amp;=((\alpha+\gamma+\lambda+\tau)-(\alpha-\gamma))-((\alpha+\lambda)-\alpha)  \\
+&amp;=(\lambda+\tau)-(\lambda)\\
+&amp;=\tau
+\end{aligned}
+\]</span></p>
+</section>
+<section id="estimación-2" class="slide level2">
+<h2>Estimación</h2>
+<ul>
+<li>La practica más común es usar efectos fijos</li>
+</ul>
+<p><span class="math display">\[y_{it}=\alpha_i+\phi_t + \mathbf{1}(t=1)D_i\tau+\varepsilon_{it}\]</span> - Donde <span class="math inline">\(\mathbf{1}(t=1)\)</span> es la función indicadora que toma el valor de 1 cuando la condición <span class="math inline">\((t=1)\)</span> es verdadera</p>
+<ul>
+<li><p>Esta especificación se conoce como efectos fijos en dos vías (!) o <em>two-way fixed effects</em></p></li>
+<li><p><span class="math inline">\(\alpha_i\)</span> es una variable dummy que identifica a las observaciones de la unidad <span class="math inline">\(i\)</span></p></li>
+<li><p><span class="math inline">\(\phi_t\)</span> es una variable dummy que identifica a cada periodo <span class="math inline">\(t\)</span></p></li>
+<li><p>En R esto equivale a:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">factor</span>(id) <span class="sc">+</span> <span class="fu">factor</span>(periodo) <span class="sc">+</span> D<span class="sc">*</span>POST,</span>
+<span id="cb9-2"><a></a>   <span class="at">data =</span> db)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="extensión-a-varios-periodos" class="slide level2">
+<h2>Extensión a varios periodos</h2>
+<ul>
+<li><p>La especificación de efectos fijos permite extender el caso en el que hay varios periodos pre y post intervención</p></li>
+<li><p>Supongamos que el tratamiento ocurre en <span class="math inline">\(t_0\)</span></p></li>
+</ul>
+<p><span class="math display">\[y_{it}=\alpha_i+\phi_t + \mathbf{1}(t&gt;t_0)D_i\tau+\varepsilon_{it}\]</span> - También podríamos reducir el problema a uno con solo dos periodos al promediar los valores de la variable dependiente en los periodos pre y post intervención</p>
+</section></section>
+<section>
+<section id="ejemplo" class="title-slide slide level1 center">
+<h1>Ejemplo</h1>
+
+</section>
+<section id="ejemplo-1" class="slide level2">
+<h2>Ejemplo</h2>
+<ul>
+<li><p>Accedemos a los datos del paquete <em>causaldata</em>, que incluye los datos empleados en (The Effect)[https://theeffectbook.net/ch-DifferenceinDifference.html]</p></li>
+<li><p>Implementamos la estimación por MCO</p></li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>od <span class="ot">&lt;-</span> causaldata<span class="sc">::</span>organ_donations</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a>od <span class="ot">&lt;-</span> od <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a></a>     <span class="fu">mutate</span>(<span class="at">tratado =</span> <span class="fu">case_when</span>(State <span class="sc">==</span> <span class="st">'California'</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb10-5"><a></a>                                <span class="at">.default =</span> <span class="dv">0</span>),</span>
+<span id="cb10-6"><a></a>            <span class="at">post =</span> <span class="fu">case_when</span>(Quarter <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'Q32011'</span>,<span class="st">'Q42011'</span>,<span class="st">'Q12012'</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb10-7"><a></a>                             <span class="at">.default =</span> <span class="dv">0</span>))</span>
+<span id="cb10-8"><a></a></span>
+<span id="cb10-9"><a></a>m.mco <span class="ot">&lt;-</span> <span class="fu">lm</span>(Rate <span class="sc">~</span> <span class="fu">factor</span>(tratado) <span class="sc">+</span> <span class="fu">factor</span>(post) <span class="sc">+</span> <span class="fu">factor</span>(tratado)<span class="sc">*</span><span class="fu">factor</span>(post),</span>
+<span id="cb10-10"><a></a>          <span class="at">data=</span> od)</span>
+<span id="cb10-11"><a></a></span>
+<span id="cb10-12"><a></a><span class="fu">modelsummary</span>(<span class="at">models =</span> <span class="fu">list</span>(<span class="st">"MCO"</span><span class="ot">=</span>m.mco),</span>
+<span id="cb10-13"><a></a>          <span class="at">output =</span> <span class="st">'gt'</span>,</span>
+<span id="cb10-14"><a></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">'**'</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>),</span>
+<span id="cb10-15"><a></a>          <span class="at">gof_map =</span> <span class="st">"nobs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div id="bsbcjfhxjc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bsbcjfhxjc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bsbcjfhxjc thead, #bsbcjfhxjc tbody, #bsbcjfhxjc tfoot, #bsbcjfhxjc tr, #bsbcjfhxjc td, #bsbcjfhxjc th {
+  border-style: none;
+}
+
+#bsbcjfhxjc p {
+  margin: 0;
+  padding: 0;
+}
+
+#bsbcjfhxjc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bsbcjfhxjc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bsbcjfhxjc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bsbcjfhxjc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bsbcjfhxjc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bsbcjfhxjc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bsbcjfhxjc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bsbcjfhxjc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bsbcjfhxjc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bsbcjfhxjc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bsbcjfhxjc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bsbcjfhxjc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bsbcjfhxjc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bsbcjfhxjc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bsbcjfhxjc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bsbcjfhxjc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bsbcjfhxjc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bsbcjfhxjc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bsbcjfhxjc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bsbcjfhxjc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bsbcjfhxjc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bsbcjfhxjc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bsbcjfhxjc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bsbcjfhxjc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bsbcjfhxjc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bsbcjfhxjc .gt_left {
+  text-align: left;
+}
+
+#bsbcjfhxjc .gt_center {
+  text-align: center;
+}
+
+#bsbcjfhxjc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bsbcjfhxjc .gt_font_normal {
+  font-weight: normal;
+}
+
+#bsbcjfhxjc .gt_font_bold {
+  font-weight: bold;
+}
+
+#bsbcjfhxjc .gt_font_italic {
+  font-style: italic;
+}
+
+#bsbcjfhxjc .gt_super {
+  font-size: 65%;
+}
+
+#bsbcjfhxjc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bsbcjfhxjc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bsbcjfhxjc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bsbcjfhxjc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bsbcjfhxjc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bsbcjfhxjc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bsbcjfhxjc .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id=" " class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="MCO" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">MCO</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="">(Intercept)</td>
+<td class="gt_row gt_center" headers="MCO">0.445***</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers=""></td>
+<td class="gt_row gt_center" headers="MCO">(0.017)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="">factor(tratado)1</td>
+<td class="gt_row gt_center" headers="MCO">-0.174*</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers=""></td>
+<td class="gt_row gt_center" headers="MCO">(0.089)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="">factor(post)1</td>
+<td class="gt_row gt_center" headers="MCO">0.014</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers=""></td>
+<td class="gt_row gt_center" headers="MCO">(0.024)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="">factor(tratado)1 × factor(post)1</td>
+<td class="gt_row gt_center" headers="MCO">-0.022</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000"></td>
+<td class="gt_row gt_center" headers="MCO" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000">(0.125)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="">Num.Obs.</td>
+<td class="gt_row gt_center" headers="MCO">162</td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="even">
+<td colspan="2" class="gt_sourcenote">* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejemplo-2" class="slide level2">
+<h2>Ejemplo</h2>
+<ul>
+<li><p>La forma en que se implementa típicamente es por TWFE</p></li>
+<li><p>Podemos hacer esto con <em>lm</em> o con un paquete para datos en panel, como <em>plm</em></p></li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>m.twfe <span class="ot">&lt;-</span> <span class="fu">lm</span>(Rate <span class="sc">~</span> <span class="fu">factor</span>(State) <span class="sc">+</span> <span class="fu">factor</span>(Quarter) <span class="sc">+</span> tratado<span class="sc">*</span>post,</span>
+<span id="cb11-2"><a></a>          <span class="at">data=</span> od)</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a>m.plm <span class="ot">&lt;-</span> <span class="fu">plm</span>( Rate <span class="sc">~</span> <span class="fu">factor</span>(State) <span class="sc">+</span> <span class="fu">factor</span>(Quarter) <span class="sc">+</span> tratado<span class="sc">*</span>post,</span>
+<span id="cb11-6"><a></a>                 <span class="at">data=</span>od,</span>
+<span id="cb11-7"><a></a>                 <span class="at">model=</span><span class="st">"within"</span>,</span>
+<span id="cb11-8"><a></a>                 <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"State"</span>, <span class="st">"Quarter"</span>))</span>
+<span id="cb11-9"><a></a> </span>
+<span id="cb11-10"><a></a></span>
+<span id="cb11-11"><a></a><span class="fu">modelsummary</span>(<span class="at">models =</span> <span class="fu">list</span>(<span class="st">"MCO"</span><span class="ot">=</span>m.mco,</span>
+<span id="cb11-12"><a></a>                           <span class="st">"TWFE"</span><span class="ot">=</span>m.twfe,</span>
+<span id="cb11-13"><a></a>                           <span class="st">"TWFE, plm"</span><span class="ot">=</span>m.plm),</span>
+<span id="cb11-14"><a></a>             <span class="at">coef_map =</span> <span class="fu">c</span>(<span class="st">'tratado:post'</span>,</span>
+<span id="cb11-15"><a></a>                          <span class="st">'factor(tratado)1:factor(post)1'</span>),</span>
+<span id="cb11-16"><a></a>          <span class="at">output =</span> <span class="st">'gt'</span>,</span>
+<span id="cb11-17"><a></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">'**'</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>),</span>
+<span id="cb11-18"><a></a>          <span class="at">gof_map =</span> <span class="st">"nobs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div id="wwewoianps" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wwewoianps table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wwewoianps thead, #wwewoianps tbody, #wwewoianps tfoot, #wwewoianps tr, #wwewoianps td, #wwewoianps th {
+  border-style: none;
+}
+
+#wwewoianps p {
+  margin: 0;
+  padding: 0;
+}
+
+#wwewoianps .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wwewoianps .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wwewoianps .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wwewoianps .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wwewoianps .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wwewoianps .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwewoianps .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wwewoianps .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wwewoianps .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wwewoianps .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wwewoianps .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wwewoianps .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wwewoianps .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wwewoianps .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wwewoianps .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wwewoianps .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wwewoianps .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wwewoianps .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wwewoianps .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwewoianps .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wwewoianps .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wwewoianps .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wwewoianps .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwewoianps .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wwewoianps .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wwewoianps .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwewoianps .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwewoianps .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wwewoianps .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwewoianps .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wwewoianps .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwewoianps .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wwewoianps .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwewoianps .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wwewoianps .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwewoianps .gt_left {
+  text-align: left;
+}
+
+#wwewoianps .gt_center {
+  text-align: center;
+}
+
+#wwewoianps .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wwewoianps .gt_font_normal {
+  font-weight: normal;
+}
+
+#wwewoianps .gt_font_bold {
+  font-weight: bold;
+}
+
+#wwewoianps .gt_font_italic {
+  font-style: italic;
+}
+
+#wwewoianps .gt_super {
+  font-size: 65%;
+}
+
+#wwewoianps .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wwewoianps .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wwewoianps .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wwewoianps .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wwewoianps .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wwewoianps .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wwewoianps .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id=" " class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="MCO" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">MCO</th>
+<th id="TWFE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">TWFE</th>
+<th id="TWFE, plm" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">TWFE, plm</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="">tratado:post</td>
+<td class="gt_row gt_center" headers="MCO"></td>
+<td class="gt_row gt_center" headers="TWFE">-0.022</td>
+<td class="gt_row gt_center" headers="TWFE, plm">-0.022</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers=""></td>
+<td class="gt_row gt_center" headers="MCO"></td>
+<td class="gt_row gt_center" headers="TWFE">(0.020)</td>
+<td class="gt_row gt_center" headers="TWFE, plm">(0.020)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="">factor(tratado)1:factor(post)1</td>
+<td class="gt_row gt_center" headers="MCO">-0.022</td>
+<td class="gt_row gt_center" headers="TWFE"></td>
+<td class="gt_row gt_center" headers="TWFE, plm"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000"></td>
+<td class="gt_row gt_center" headers="MCO" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000">(0.125)</td>
+<td class="gt_row gt_center" headers="TWFE" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000"></td>
+<td class="gt_row gt_center" headers="TWFE, plm" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="">Num.Obs.</td>
+<td class="gt_row gt_center" headers="MCO">162</td>
+<td class="gt_row gt_center" headers="TWFE">162</td>
+<td class="gt_row gt_center" headers="TWFE, plm">162</td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="even">
+<td colspan="4" class="gt_sourcenote">* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Solo con dos periodos los errores estándar son idénticos</li>
+</ul>
+</section>
+<section id="ejemplo-3" class="slide level2">
+<h2>Ejemplo</h2>
+<ul>
+<li><p>Sabemos que cuando usamos datos en panel debemos ajustar la matriz de varianzas por correlación serial</p></li>
+<li><p>Afortunadamente tenemos paquetes que nos permite hacer eso de forma automática, como por ejemplo <em>lfe</em></p></li>
+</ul>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>m.lfe <span class="ot">&lt;-</span> <span class="fu">felm</span>(Rate <span class="sc">~</span> tratado<span class="sc">*</span>post <span class="sc">|</span> State <span class="sc">+</span> Quarter <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> State,</span>
+<span id="cb12-2"><a></a>              <span class="at">data =</span> od)</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a><span class="fu">modelsummary</span>(<span class="at">models =</span> <span class="fu">list</span>(<span class="st">"MCO"</span><span class="ot">=</span>m.mco,</span>
+<span id="cb12-5"><a></a>                           <span class="st">"TWFE"</span><span class="ot">=</span>m.twfe,</span>
+<span id="cb12-6"><a></a>                           <span class="st">"TWFE, plm"</span><span class="ot">=</span>m.plm,</span>
+<span id="cb12-7"><a></a>                           <span class="st">"TWFE, lfe"</span><span class="ot">=</span>m.lfe),</span>
+<span id="cb12-8"><a></a>             <span class="at">coef_map =</span> <span class="fu">c</span>(<span class="st">'tratado:post'</span>,</span>
+<span id="cb12-9"><a></a>                          <span class="st">'factor(tratado)1:factor(post)1'</span>),</span>
+<span id="cb12-10"><a></a>          <span class="at">output =</span> <span class="st">'gt'</span>,</span>
+<span id="cb12-11"><a></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'***'</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">'**'</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">'*'</span> <span class="ot">=</span> <span class="fl">0.1</span>),</span>
+<span id="cb12-12"><a></a>          <span class="at">gof_map =</span> <span class="st">"nobs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div id="ytcajbncpf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ytcajbncpf table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ytcajbncpf thead, #ytcajbncpf tbody, #ytcajbncpf tfoot, #ytcajbncpf tr, #ytcajbncpf td, #ytcajbncpf th {
+  border-style: none;
+}
+
+#ytcajbncpf p {
+  margin: 0;
+  padding: 0;
+}
+
+#ytcajbncpf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ytcajbncpf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ytcajbncpf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ytcajbncpf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ytcajbncpf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ytcajbncpf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ytcajbncpf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ytcajbncpf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ytcajbncpf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ytcajbncpf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ytcajbncpf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ytcajbncpf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ytcajbncpf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ytcajbncpf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ytcajbncpf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ytcajbncpf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ytcajbncpf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ytcajbncpf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ytcajbncpf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ytcajbncpf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ytcajbncpf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ytcajbncpf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ytcajbncpf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ytcajbncpf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ytcajbncpf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ytcajbncpf .gt_left {
+  text-align: left;
+}
+
+#ytcajbncpf .gt_center {
+  text-align: center;
+}
+
+#ytcajbncpf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ytcajbncpf .gt_font_normal {
+  font-weight: normal;
+}
+
+#ytcajbncpf .gt_font_bold {
+  font-weight: bold;
+}
+
+#ytcajbncpf .gt_font_italic {
+  font-style: italic;
+}
+
+#ytcajbncpf .gt_super {
+  font-size: 65%;
+}
+
+#ytcajbncpf .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ytcajbncpf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ytcajbncpf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ytcajbncpf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ytcajbncpf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ytcajbncpf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ytcajbncpf .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id=" " class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="MCO" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">MCO</th>
+<th id="TWFE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">TWFE</th>
+<th id="TWFE, plm" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">TWFE, plm</th>
+<th id="TWFE, lfe" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">TWFE, lfe</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="">tratado:post</td>
+<td class="gt_row gt_center" headers="MCO"></td>
+<td class="gt_row gt_center" headers="TWFE">-0.022</td>
+<td class="gt_row gt_center" headers="TWFE, plm">-0.022</td>
+<td class="gt_row gt_center" headers="TWFE, lfe">-0.022***</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers=""></td>
+<td class="gt_row gt_center" headers="MCO"></td>
+<td class="gt_row gt_center" headers="TWFE">(0.020)</td>
+<td class="gt_row gt_center" headers="TWFE, plm">(0.020)</td>
+<td class="gt_row gt_center" headers="TWFE, lfe">(0.006)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="">factor(tratado)1:factor(post)1</td>
+<td class="gt_row gt_center" headers="MCO">-0.022</td>
+<td class="gt_row gt_center" headers="TWFE"></td>
+<td class="gt_row gt_center" headers="TWFE, plm"></td>
+<td class="gt_row gt_center" headers="TWFE, lfe"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000"></td>
+<td class="gt_row gt_center" headers="MCO" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000">(0.125)</td>
+<td class="gt_row gt_center" headers="TWFE" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000"></td>
+<td class="gt_row gt_center" headers="TWFE, plm" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000"></td>
+<td class="gt_row gt_center" headers="TWFE, lfe" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="">Num.Obs.</td>
+<td class="gt_row gt_center" headers="MCO">162</td>
+<td class="gt_row gt_center" headers="TWFE">162</td>
+<td class="gt_row gt_center" headers="TWFE, plm">162</td>
+<td class="gt_row gt_center" headers="TWFE, lfe">162</td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="even">
+<td colspan="5" class="gt_sourcenote">* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
 <section id="adopción-escalonada" class="title-slide slide level1 center">
 <h1>Adopción escalonada</h1>
 
@@ -964,7 +2670,7 @@ F-statistic:   NaN on 3 and 0 DF,  p-value: NA</code></pre>
 <p>Definamos el efecto del tratamiento al periodo <span class="math inline">\(t\)</span> para el cohorte que empezó a ser tratado en <span class="math inline">\(g\)</span>:</p>
 <p><span class="math display">\[ATT(g,t)=E(y_{it}(g)-y_{it}(\infty)|G_i=g)\]</span> Por ejemplo, <span class="math inline">\(ATT(2014,2016)\)</span> es el efecto del tratamiento en 2016 para aquellos tratados empezando en 2014</p>
 </section>
-<section id="supuestos" class="slide level2">
+<section id="supuestos-1" class="slide level2">
 <h2>Supuestos</h2>
 <p><strong>Tendencias paralelas en el contexto escalonado</strong></p>
 <p><span class="math display">\[E(y_{it}(\infty)-y_{it'}(\infty)|G_i=g)=E(y_{it}(\infty)-y_{it'}(\infty)|G_i=g')\quad\forall\;t\neq t',\; g\neq q'\]</span></p>
@@ -972,7 +2678,7 @@ F-statistic:   NaN on 3 and 0 DF,  p-value: NA</code></pre>
 <p><strong>Tendencias paralelas en el contexto escalonado (a)</strong></p>
 <p>Modifica el supuesto anterior pero <span class="math inline">\(\forall \;t,t'\geq g_{min}-1\)</span> donde <span class="math inline">\(g_{min}=\min G\)</span> es el primer periodo en donde alguna unidad es tratada (Callaway y Sant’Anna solo usan este supuesto más débil)</p>
 </section>
-<section id="supuestos-1" class="slide level2">
+<section id="supuestos-2" class="slide level2">
 <h2>Supuestos</h2>
 <p><strong>No anticipación en el contexto escalonado</strong></p>
 <p><span class="math display">\[y_{it}(g)=y_{it}(\infty)\quad \forall\;i \;\text{y}\;\forall\;t&lt;g\]</span></p>
@@ -1017,6 +2723,18 @@ F-statistic:   NaN on 3 and 0 DF,  p-value: NA</code></pre>
 <p>Toma en cuenta la heterogeneidad de los efectos de tratamiento</p>
 <p>Los pesos son especificados por el investigador y no mecánicamente con en TWFE</p>
 <p>Hace explícito el grupo de comparación (nunca tratados o aún no tratados)</p>
+</section></section>
+<section>
+<section id="referencias-recomendadas" class="title-slide slide level1 center">
+<h1>Referencias recomendadas</h1>
+
+</section>
+<section id="referencias-recomendadas-1" class="slide level2">
+<h2>Referencias recomendadas</h2>
+<ul>
+<li><p>Roth, J., Sant’Anna, P. H., Bilinski, A., &amp; Poe, J. (2023). <a href="https://www.sciencedirect.com/science/article/pii/S0304407623001318?casa_token=8KY9wpOi6rEAAAAA:8T5yj82wECuxhmBvkggsJgsDVS65i0VFcVBkeS7xfeECrWxSUTTZfGtF1ldtX9RTx6tvgFKpzCZ0">What’s trending in difference-in-differences? A synthesis of the recent econometrics literature</a>. <em>Journal of Econometrics</em>, 235(2), 2218-2244.</p></li>
+<li><p>Callaway, B., &amp; Sant’Anna, P. H. (2021). <a href="https://www.sciencedirect.com/science/article/pii/S0304407620303948?casa_token=T4b4lObaSC4AAAAA:UmDeziMcwM4vh4azo_R8ZVrDlMypg3JzGOdrJgt_K8G9E2XEn5l8LQEAyhkMkhkpjEp9w4t4CrlH">Difference-in-differences with multiple time periods</a>. <em>Journal of Econometrics</em>, 225(2), 200-230.</p></li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

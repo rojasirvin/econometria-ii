@@ -25,7 +25,9 @@ library(nnet)
 library(marginaleffects)
 library(foreign)
 library(AER)
-library(ggbrace)
+library(modelsummary)
+library(plm)
+library(lfe)
 ```
 
 
@@ -317,8 +319,234 @@ knitr::include_graphics("trends_3.png",
 ```
 
 
+# Modelo canónico 2x2
+
+## Notación
+
+- Notación basada en [Roth et al.](https://www.sciencedirect.com/science/article/pii/S0304407623001318?casa_token=uID5K1tUoCkAAAAA:fu6BhPOhjQTti8tyxACl14raIRFs_RAvzgqui7h2-KGu4b9BdcOTP5mtcrsNTQaj0LvvYsUrK0Sp)
+
+- Estado de tratamiennto:
+$$
+D_i=
+\begin{cases}
+1\quad\quad \text{si intervenido} \\
+0\quad\quad \text{si no} \\
+\end{cases}
+$$
+- $N$ unidades
+
+- $y_{it}$ es la variable de impacto
+
+- Nos interesa
+
+$$\tau=E(y_{i1}(1)-y_{i1}(0)| D_i=1)$$
+
+- Es el la diferencia en valor esperado de la variable de impacto en las unidades tratadas en los dos regímenes de tratamiento
+
+- $y_{i1}(0)$ es el contrafactual no observado
 
 
+
+## Supuestos
+
+S1. Tendencias paralelas
+
+$$E(y_{i1}(0)-y_{i0}(0)|D_i=1)=E(y_{i1}(0)-y_{i0}(0)|D_i=0)$$
+
+- En estado contrafactual de no tratamiento, los dos grupos tendrían la misma trayectoria
+
+S2. No hay efectos de anticipación
+
+$$y_{i0}(0)=y_{i0}(1)\quad \forall i \quad \text{con}\quad D_i=1$$
+
+- En el periodo inicial, el estado de tratamiento no afecta la variable de impacto
+
+## Estimación del contrafactual
+
+- Partiendo del supuesto de tendencias paralelas, podemos despejar el término contrafactual
+
+$$E(y_{i1}(0)|D_i=1)=E(y_{i0}(0)|D_i=1)+E(y_{i1}(0)-y_{i0}(0)|D_i=0)$$
+- Usando el supuesto de no anticipación
+
+$$E(y_{i1}(0)|D_i=1)=E(y_{i0}(1)|D_i=1)+E(y_{i1}(0)-y_{i0}(0)|D_i=0)$$
+
+- Es decir:
+
+$$E(y_{i1}(0)|D_i=1)=E(y_{i0}|D_i=1)+E(y_{i1}-y_{i0}|D_i=0)$$
+
+- Podemos recuperar el contrafactual no observado $E(y_{i0}(0)|D_i=1)$ usando el valor esperado de $y$ en el periodo $t=0$ para el grupo tratado y sumándole el cambio promedio experimentado por el grupo no tratado 
+
+## Efecto de tratamiento
+
+- Sustituyendo la expresión de $E(y_{i0}(0)|D_i=1)$ en la definición del efecto de tratamiento
+
+
+$$
+\begin{aligned}
+\tau&=E(y_{i1}(1)-y_{i1}(0)| D_i=1) \\
+&=E(y_{i1}| D_i=1)-(E(y_{i0}|D_i=1)+E(y_{i1}-y_{i0}|D_i=0))
+\end{aligned} 
+$$
+
+- Reordenando:
+
+$$
+\begin{aligned}
+\tau&=E(y_{i1}-y_{i0}| D_i=1)-E(y_{i1}-y_{i0}|D_i=0)
+\end{aligned} 
+$$
+
+- Es decir, la diferencia de las diferencias
+
+## Estimación
+
+- Podemos implementar el estimador con los análogos muestrales
+
+$$\hat{\tau}=(\bar{y}_{t=1,D=1}-\bar{y}_{t=0,D=1})-(\bar{y}_{t=1,D=0}-\bar{y}_{t=0,D=0})$$
+
+## Estimación
+
+- Sin embargo, como vimos antes, una regresión permite recuperar el efecto de tratamiento
+
+$$y_{it}=\alpha+\gamma D_{i}+\lambda POST_{t}+\tau(D_i\times POST_{t}) + \varepsilon_{it}$$
+
+$E(y_{it}|D_i=0, POST_t=0)=\alpha$
+
+$E(y_{it}|D_i=1, POST_t=0)=\alpha+\gamma$
+
+$E(y_{it}|D_i=0, POST_t=1)=\alpha+\lambda$
+
+$E(y_{it}|D_i=1, POST_t=1)=\alpha+\gamma+\lambda+\tau$
+
+- Y por tanto
+
+$$
+\begin{aligned}
+(E(y_{it}|D_i=1&, POST_t=1)-E(y_{it}|D_i=1, POST_t=0))-(E(y_{it}|D_i=0, POST_t=1)-E(y_{it}|D_i=0, POST_t=0))=\\
+&=((\alpha+\gamma+\lambda+\tau)-(\alpha-\gamma))-((\alpha+\lambda)-\alpha)  \\
+&=(\lambda+\tau)-(\lambda)\\
+&=\tau
+\end{aligned}
+$$
+
+
+## Estimación
+
+- La practica más común es usar efectos fijos
+
+$$y_{it}=\alpha_i+\phi_t + \mathbf{1}(t=1)D_i\tau+\varepsilon_{it}$$
+- Donde $\mathbf{1}(t=1)$ es la función indicadora que toma el valor de 1 cuando la condición $(t=1)$ es verdadera
+
+- Esta especificación se conoce como efectos fijos en dos vías (!) o *two-way fixed effects*
+
+- $\alpha_i$ es una variable dummy que identifica a las observaciones de la unidad $i$
+
+- $\phi_t$ es una variable dummy que identifica a cada periodo $t$
+
+- En R esto equivale a:
+
+```{r}
+#| eval: false
+
+lm(y ~ factor(id) + factor(periodo) + D*POST,
+   data = db)
+
+```
+
+## Extensión a varios periodos
+
+- La especificación de efectos fijos permite extender el caso en el que hay varios periodos pre y post intervención
+
+- Supongamos que el tratamiento ocurre en $t_0$
+
+$$y_{it}=\alpha_i+\phi_t + \mathbf{1}(t>t_0)D_i\tau+\varepsilon_{it}$$
+- También podríamos reducir el problema a uno con solo dos periodos al promediar los valores de la variable dependiente en los periodos pre y post intervención
+
+
+# Ejemplo
+
+## Ejemplo
+
+- Accedemos a los datos del paquete *causaldata*, que incluye los datos empleados en (The Effect)[https://theeffectbook.net/ch-DifferenceinDifference.html]
+
+
+- Implementamos la estimación por MCO
+
+```{r}
+#| output-location: column
+od <- causaldata::organ_donations
+
+od <- od %>%
+     mutate(tratado = case_when(State == 'California' ~ 1,
+                                .default = 0),
+            post = case_when(Quarter %in% c('Q32011','Q42011','Q12012') ~ 1,
+                             .default = 0))
+
+m.mco <- lm(Rate ~ factor(tratado) + factor(post) + factor(tratado)*factor(post),
+          data= od)
+
+modelsummary(models = list("MCO"=m.mco),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          gof_map = "nobs")
+
+
+```
+
+
+
+## Ejemplo
+
+- La forma en que se implementa típicamente es por TWFE
+
+- Podemos hacer esto con *lm* o con un paquete para datos en panel, como *plm*
+
+```{r}
+#| output-location: column
+m.twfe <- lm(Rate ~ factor(State) + factor(Quarter) + tratado*post,
+          data= od)
+
+
+m.plm <- plm( Rate ~ factor(State) + factor(Quarter) + tratado*post,
+                 data=od,
+                 model="within",
+                 index = c("State", "Quarter"))
+ 
+
+modelsummary(models = list("MCO"=m.mco,
+                           "TWFE"=m.twfe,
+                           "TWFE, plm"=m.plm),
+             coef_map = c('tratado:post',
+                          'factor(tratado)1:factor(post)1'),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          gof_map = "nobs")
+
+```
+
+- Solo con dos periodos los errores estándar son idénticos
+
+## Ejemplo
+
+- Sabemos que cuando usamos datos en panel debemos ajustar la matriz de varianzas por correlación serial
+
+- Afortunadamente tenemos paquetes que nos permite hacer eso de forma automática, como por ejemplo *lfe*
+
+```{r}
+#| output-location: column
+m.lfe <- felm(Rate ~ tratado*post | State + Quarter | 0 | State,
+              data = od)
+
+modelsummary(models = list("MCO"=m.mco,
+                           "TWFE"=m.twfe,
+                           "TWFE, plm"=m.plm,
+                           "TWFE, lfe"=m.lfe),
+             coef_map = c('tratado:post',
+                          'factor(tratado)1:factor(post)1'),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          gof_map = "nobs")
+```
 
 # Adopción escalonada
 
@@ -656,3 +884,11 @@ Toma en cuenta la heterogeneidad de los efectos de tratamiento
 Los pesos son especificados por el investigador y no mecánicamente con en TWFE
 
 Hace explícito el grupo de comparación (nunca tratados o aún no tratados)
+
+# Referencias recomendadas
+
+## Referencias recomendadas
+
+- Roth, J., Sant’Anna, P. H., Bilinski, A., & Poe, J. (2023). [What’s trending in difference-in-differences? A synthesis of the recent econometrics literature](https://www.sciencedirect.com/science/article/pii/S0304407623001318?casa_token=8KY9wpOi6rEAAAAA:8T5yj82wECuxhmBvkggsJgsDVS65i0VFcVBkeS7xfeECrWxSUTTZfGtF1ldtX9RTx6tvgFKpzCZ0). *Journal of Econometrics*, 235(2), 2218-2244.
+
+- Callaway, B., & Sant’Anna, P. H. (2021). [Difference-in-differences with multiple time periods](https://www.sciencedirect.com/science/article/pii/S0304407620303948?casa_token=T4b4lObaSC4AAAAA:UmDeziMcwM4vh4azo_R8ZVrDlMypg3JzGOdrJgt_K8G9E2XEn5l8LQEAyhkMkhkpjEp9w4t4CrlH). *Journal of Econometrics*, 225(2), 200-230.

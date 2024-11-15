@@ -2424,14 +2424,14 @@
     "href": "diapositivas/did.html#supuestos",
     "title": "Diferencia en diferencias",
     "section": "Supuestos",
-    "text": "Supuestos\nTendencias paralelas en el contexto escalonado\n\\[E(y_{it}(\\infty)-y_{it'}(\\infty)|G_i=g)=E(y_{it}(\\infty)-y_{it'}(\\infty)|G_i=g')\\quad\\forall\\;t\\neq t',\\; g\\neq q'\\]\nEste supuesto indica que en el estado contrafactual de nunca haber sido tratados, dos grupos tratados en dos momentos diferentes \\(g\\) y \\(g'\\) habrían tenido una trayectoria igual entre los periodos \\(t\\) y \\(t'\\)\nTendencias paralelas en el contexto escalonado (a)\nModifica el supuesto anterior pero \\(\\forall \\;t,t'\\geq g_{min}-1\\) donde \\(g_{min}=\\min G\\) es el primer periodo en donde alguna unidad es tratada (Callaway y Sant’Anna solo usan este supuesto más débil)"
+    "text": "Supuestos\nS1. Tendencias paralelas\n\\[E(y_{i1}(0)-y_{i0}(0)|D_i=1)=E(y_{i1}(0)-y_{i0}(0)|D_i=0)\\]\n\nEn estado contrafactual de no tratamiento, los dos grupos tendrían la misma trayectoria\n\nS2. No hay efectos de anticipación\n\\[y_{i0}(0)=y_{i0}(1)\\quad \\forall i \\quad \\text{con}\\quad D_i=1\\]\n\nEn el periodo inicial, el estado de tratamiento no afecta la variable de impacto"
   },
   {
     "objectID": "diapositivas/did.html#supuestos-1",
     "href": "diapositivas/did.html#supuestos-1",
     "title": "Diferencia en diferencias",
     "section": "Supuestos",
-    "text": "Supuestos\nNo anticipación en el contexto escalonado\n\\[y_{it}(g)=y_{it}(\\infty)\\quad \\forall\\;i \\;\\text{y}\\;\\forall\\;t&lt;g\\]"
+    "text": "Supuestos\nTendencias paralelas en el contexto escalonado\n\\[E(y_{it}(\\infty)-y_{it'}(\\infty)|G_i=g)=E(y_{it}(\\infty)-y_{it'}(\\infty)|G_i=g')\\quad\\forall\\;t\\neq t',\\; g\\neq q'\\]\nEste supuesto indica que en el estado contrafactual de nunca haber sido tratados, dos grupos tratados en dos momentos diferentes \\(g\\) y \\(g'\\) habrían tenido una trayectoria igual entre los periodos \\(t\\) y \\(t'\\)\nTendencias paralelas en el contexto escalonado (a)\nModifica el supuesto anterior pero \\(\\forall \\;t,t'\\geq g_{min}-1\\) donde \\(g_{min}=\\min G\\) es el primer periodo en donde alguna unidad es tratada (Callaway y Sant’Anna solo usan este supuesto más débil)"
   },
   {
     "objectID": "diapositivas/did.html#estimador-de-callaway-santanna-2",
@@ -2460,5 +2460,96 @@
     "title": "Diferencia en diferencias",
     "section": "Ventajas del estimador",
     "text": "Ventajas del estimador\nToma en cuenta la heterogeneidad de los efectos de tratamiento\nLos pesos son especificados por el investigador y no mecánicamente con en TWFE\nHace explícito el grupo de comparación (nunca tratados o aún no tratados)"
+  },
+  {
+    "objectID": "diapositivas/did.html#notación",
+    "href": "diapositivas/did.html#notación",
+    "title": "Diferencia en diferencias",
+    "section": "Notación",
+    "text": "Notación\n\nNotación basada en Roth et al.\nEstado de tratamiennto: \\[\nD_i=\n\\begin{cases}\n1\\quad\\quad \\text{si intervenido} \\\\\n0\\quad\\quad \\text{si no} \\\\\n\\end{cases}\n\\]\n\\(N\\) unidades\n\\(y_{it}\\) es la variable de impacto\nNos interesa\n\n\\[\\tau=E(y_{i1}(1)-y_{i1}(0)| D_i=1)\\]\n\nEs el la diferencia en valor esperado de la variable de impacto en las unidades tratadas en los dos regímenes de tratamiento\n\\(y_{i1}(0)\\) es el contrafactual no observado"
+  },
+  {
+    "objectID": "diapositivas/did.html#estimación-del-contrafactual",
+    "href": "diapositivas/did.html#estimación-del-contrafactual",
+    "title": "Diferencia en diferencias",
+    "section": "Estimación del contrafactual",
+    "text": "Estimación del contrafactual\n\nPartiendo del supuesto de tendencias paralelas, podemos despejar el término contrafactual\n\n\\[E(y_{i1}(0)|D_i=1)=E(y_{i0}(0)|D_i=1)+E(y_{i1}(0)-y_{i0}(0)|D_i=0)\\] - Usando el supuesto de no anticipación\n\\[E(y_{i1}(0)|D_i=1)=E(y_{i0}(1)|D_i=1)+E(y_{i1}(0)-y_{i0}(0)|D_i=0)\\]\n\nEs decir:\n\n\\[E(y_{i1}(0)|D_i=1)=E(y_{i0}|D_i=1)+E(y_{i1}-y_{i0}|D_i=0)\\]\n\nPodemos recuperar el contrafactual no observado \\(E(y_{i0}(0)|D_i=1)\\) usando el valor esperado de \\(y\\) en el periodo \\(t=0\\) para el grupo tratado y sumándole el cambio promedio experimentado por el grupo no tratado"
+  },
+  {
+    "objectID": "diapositivas/did.html#estimación-del-contrafactual-1",
+    "href": "diapositivas/did.html#estimación-del-contrafactual-1",
+    "title": "Diferencia en diferencias",
+    "section": "Estimación del contrafactual",
+    "text": "Estimación del contrafactual\n\nPodemos recuperar el contrafactual no observado \\(E(y_{i0}(0)|D_i=1)\\) usando el valor esperado de \\(y\\) en el periodo \\(t=0\\) para el grupo tratado y sumándole el cambio promedio experimentado por el grupo no tratado"
+  },
+  {
+    "objectID": "diapositivas/did.html#supuestos-2",
+    "href": "diapositivas/did.html#supuestos-2",
+    "title": "Diferencia en diferencias",
+    "section": "Supuestos",
+    "text": "Supuestos\nNo anticipación en el contexto escalonado\n\\[y_{it}(g)=y_{it}(\\infty)\\quad \\forall\\;i \\;\\text{y}\\;\\forall\\;t&lt;g\\]"
+  },
+  {
+    "objectID": "diapositivas/did.html#efecto-de-tratamiento",
+    "href": "diapositivas/did.html#efecto-de-tratamiento",
+    "title": "Diferencia en diferencias",
+    "section": "Efecto de tratamiento",
+    "text": "Efecto de tratamiento\n\nSustituyendo la expresión de \\(E(y_{i0}(0)|D_i=1)\\) en la definición del efecto de tratamiento\n\n\\[\n\\begin{aligned}\n\\tau&=E(y_{i1}(1)-y_{i1}(0)| D_i=1) \\\\\n&=E(y_{i1}| D_i=1)-(E(y_{i0}|D_i=1)+E(y_{i1}-y_{i0}|D_i=0))\n\\end{aligned}\n\\]\n\nReordenando:\n\n\\[\n\\begin{aligned}\n\\tau&=E(y_{i1}-y_{i0}| D_i=1)-E(y_{i1}-y_{i0}|D_i=0)\n\\end{aligned}\n\\]\n\nEs decir, la diferencia de las diferencias"
+  },
+  {
+    "objectID": "diapositivas/did.html#estimación",
+    "href": "diapositivas/did.html#estimación",
+    "title": "Diferencia en diferencias",
+    "section": "Estimación",
+    "text": "Estimación\n\nPodemos implementar el estimador con los análogos muestrales\n\n\\[\\hat{\\tau}=(\\bar{y}_{t=1,D=1}-\\bar{y}_{t=0,D=1})-(\\bar{y}_{t=1,D=0}-\\bar{y}_{t=0,D=0})\\]"
+  },
+  {
+    "objectID": "diapositivas/did.html#estimación-1",
+    "href": "diapositivas/did.html#estimación-1",
+    "title": "Diferencia en diferencias",
+    "section": "Estimación",
+    "text": "Estimación\n\nSin embargo, como vimos antes, una regresión permite recuperar el efecto de tratamiento\n\n\\[y_{it}=\\alpha+\\gamma D_{i}+\\lambda POST_{t}+\\tau(D_i\\times POST_{t}) + \\varepsilon_{it}\\]\n\\(E(y_{it}|D_i=0, POST_t=0)=\\alpha\\)\n\\(E(y_{it}|D_i=1, POST_t=0)=\\alpha+\\gamma\\)\n\\(E(y_{it}|D_i=0, POST_t=1)=\\alpha+\\lambda\\)\n\\(E(y_{it}|D_i=1, POST_t=1)=\\alpha+\\gamma+\\lambda+\\tau\\)\n\nY por tanto\n\n\\[\n\\begin{aligned}\n(E(y_{it}|D_i=1&, POST_t=1)-E(y_{it}|D_i=1, POST_t=0))-(E(y_{it}|D_i=0, POST_t=1)-E(y_{it}|D_i=0, POST_t=0))=\\\\\n&=((\\alpha+\\gamma+\\lambda+\\tau)-(\\alpha-\\gamma))-((\\alpha+\\lambda)-\\alpha)  \\\\\n&=(\\lambda+\\tau)-(\\lambda)\\\\\n&=\\tau\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "diapositivas/did.html#ejemplo-1",
+    "href": "diapositivas/did.html#ejemplo-1",
+    "title": "Diferencia en diferencias",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\nAccedemos a los datos del paquete causaldata, que incluye los datos empleados en (The Effect)[https://theeffectbook.net/ch-DifferenceinDifference.html]\nImplementamos la estimación por MCO\n\n\n\nod &lt;- causaldata::organ_donations\n\nod &lt;- od %&gt;%\n     mutate(tratado = case_when(State == 'California' ~ 1,\n                                .default = 0),\n            post = case_when(Quarter %in% c('Q32011','Q42011','Q12012') ~ 1,\n                             .default = 0))\n\nm.mco &lt;- lm(Rate ~ factor(tratado) + factor(post) + factor(tratado)*factor(post),\n          data= od)\n\nmodelsummary(models = list(\"MCO\"=m.mco),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\n\n\n\n\n(Intercept)\n0.445***\n\n\n\n(0.017)\n\n\nfactor(tratado)1\n-0.174*\n\n\n\n(0.089)\n\n\nfactor(post)1\n0.014\n\n\n\n(0.024)\n\n\nfactor(tratado)1 × factor(post)1\n-0.022\n\n\n\n(0.125)\n\n\nNum.Obs.\n162\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/did.html#ejemplo-2",
+    "href": "diapositivas/did.html#ejemplo-2",
+    "title": "Diferencia en diferencias",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\nLa forma en que se implementa típicamente es por TWFE\nPodemos hacer esto con lm o con un paquete para datos en panel, como plm\n\n\n\nm.twfe &lt;- lm(Rate ~ factor(State) + factor(Quarter) + tratado*post,\n          data= od)\n\n\nm.plm &lt;- plm( Rate ~ factor(State) + factor(Quarter) + tratado*post,\n                 data=od,\n                 model=\"within\",\n                 index = c(\"State\", \"Quarter\"))\n \n\nmodelsummary(models = list(\"MCO\"=m.mco,\n                           \"TWFE\"=m.twfe,\n                           \"TWFE, plm\"=m.plm),\n             coef_map = c('tratado:post',\n                          'factor(tratado)1:factor(post)1'),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nTWFE\nTWFE, plm\n\n\n\n\ntratado:post\n\n-0.022\n-0.022\n\n\n\n\n(0.020)\n(0.020)\n\n\nfactor(tratado)1:factor(post)1\n-0.022\n\n\n\n\n\n(0.125)\n\n\n\n\nNum.Obs.\n162\n162\n162\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01\n\n\n\n\n\n\n\n\n\n\nSolo con dos periodos los errores estándar son idénticos"
+  },
+  {
+    "objectID": "diapositivas/did.html#ejemplo-3",
+    "href": "diapositivas/did.html#ejemplo-3",
+    "title": "Diferencia en diferencias",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\nSabemos que cuando usamos datos en panel debemos ajustar la matriz de varianzas por correlación serial\nAfortunadamente tenemos paquetes que nos permite hacer eso de forma automática, como por ejemplo lfe\n\n\n\nm.lfe &lt;- felm(Rate ~ tratado*post | State + Quarter | 0 | State,\n              data = od)\n\nmodelsummary(models = list(\"MCO\"=m.mco,\n                           \"TWFE\"=m.twfe,\n                           \"TWFE, plm\"=m.plm,\n                           \"TWFE, lfe\"=m.lfe),\n             coef_map = c('tratado:post',\n                          'factor(tratado)1:factor(post)1'),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nTWFE\nTWFE, plm\nTWFE, lfe\n\n\n\n\ntratado:post\n\n-0.022\n-0.022\n-0.022***\n\n\n\n\n(0.020)\n(0.020)\n(0.006)\n\n\nfactor(tratado)1:factor(post)1\n-0.022\n\n\n\n\n\n\n(0.125)\n\n\n\n\n\nNum.Obs.\n162\n162\n162\n162\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/did.html#estimación-2",
+    "href": "diapositivas/did.html#estimación-2",
+    "title": "Diferencia en diferencias",
+    "section": "Estimación",
+    "text": "Estimación\n\nLa practica más común es usar efectos fijos\n\n\\[y_{it}=\\alpha_i+\\phi_t + \\mathbf{1}(t=1)D_i\\tau+\\varepsilon_{it}\\] - Donde \\(\\mathbf{1}(t=1)\\) es la función indicadora que toma el valor de 1 cuando la condición \\((t=1)\\) es verdadera\n\nEsta especificación se conoce como efectos fijos en dos vías (!) o two-way fixed effects\n\\(\\alpha_i\\) es una variable dummy que identifica a las observaciones de la unidad \\(i\\)\n\\(\\phi_t\\) es una variable dummy que identifica a cada periodo \\(t\\)\nEn R esto equivale a:\n\n\nlm(y ~ factor(id) + factor(periodo) + D*POST,\n   data = db)"
+  },
+  {
+    "objectID": "diapositivas/did.html#extensión-a-varios-periodos",
+    "href": "diapositivas/did.html#extensión-a-varios-periodos",
+    "title": "Diferencia en diferencias",
+    "section": "Extensión a varios periodos",
+    "text": "Extensión a varios periodos\n\nLa especificación de efectos fijos permite extender el caso en el que hay varios periodos pre y post intervención\nSupongamos que el tratamiento ocurre en \\(t_0\\)\n\n\\[y_{it}=\\alpha_i+\\phi_t + \\mathbf{1}(t&gt;t_0)D_i\\tau+\\varepsilon_{it}\\] - También podríamos reducir el problema a uno con solo dos periodos al promediar los valores de la variable dependiente en los periodos pre y post intervención"
+  },
+  {
+    "objectID": "diapositivas/did.html#referencias-recomendadas-1",
+    "href": "diapositivas/did.html#referencias-recomendadas-1",
+    "title": "Diferencia en diferencias",
+    "section": "Referencias recomendadas",
+    "text": "Referencias recomendadas\n\nRoth, J., Sant’Anna, P. H., Bilinski, A., & Poe, J. (2023). What’s trending in difference-in-differences? A synthesis of the recent econometrics literature. Journal of Econometrics, 235(2), 2218-2244.\nCallaway, B., & Sant’Anna, P. H. (2021). Difference-in-differences with multiple time periods. Journal of Econometrics, 225(2), 200-230."
   }
 ]
