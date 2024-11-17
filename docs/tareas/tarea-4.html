@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Econometría II 2024 - Tareas</title>
+<title>Econometría II 2024 - Tarea 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -66,6 +100,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -79,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tareas/index.html">Tareas</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Tarea 4</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -145,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tareas/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../tareas/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tareas</span></a>
   </div>
 </li>
@@ -165,10 +228,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#tarea-1" id="toc-tarea-1" class="nav-link active" data-scroll-target="#tarea-1">Tarea 1</a></li>
-  <li><a href="#tarea-2" id="toc-tarea-2" class="nav-link" data-scroll-target="#tarea-2">Tarea 2</a></li>
-  <li><a href="#tarea-3" id="toc-tarea-3" class="nav-link" data-scroll-target="#tarea-3">Tarea 3</a></li>
-  <li><a href="#tarea-4" id="toc-tarea-4" class="nav-link" data-scroll-target="#tarea-4">Tarea 4</a></li>
+  <li><a href="#preguntas" id="toc-preguntas" class="nav-link active" data-scroll-target="#preguntas">Preguntas</a></li>
+  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
+  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
+  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
   </ul>
 </nav>
     </div>
@@ -177,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tareas</h1>
+<h1 class="title">Tarea 4</h1>
 </div>
 
 
@@ -194,39 +257,56 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="tarea-1" class="level1">
-<h1>Tarea 1</h1>
-<ul>
-<li><p>Fecha de entrega: viernes 13 de septiembre a las 20:00 en Teams</p></li>
-<li><p><a href="../tareas/tarea-1.html">Preguntas</a></p></li>
-<li><p><a href="../tareas/tarea-1-respuestas.html">Respuestas</a></p></li>
-</ul>
-<hr>
+<section id="preguntas" class="level2">
+<h2 class="anchored" data-anchor-id="preguntas">Preguntas</h2>
+<p>Fecha de entrega: <strong>viernes 29 de noviembre a las 20:00 en Teams</strong></p>
+<p>La tarea deberá entregarse en Teams. Deberá incluir dos documentos:</p>
+<p>Un primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.</p>
+<p>Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.</p>
 </section>
-<section id="tarea-2" class="level1">
-<h1>Tarea 2</h1>
-<ul>
-<li><p>Fecha de entrega: viernes 4 de octubre a las 20:00 en Teams</p></li>
-<li><p><a href="../tareas/tarea-2.html">Preguntas</a></p></li>
-<li><p><a href="../tareas/tarea-2-respuestas.html">Respuestas</a></p></li>
-</ul>
-<hr>
+<section id="pregunta-1" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
+<p>Considere los datos en el archivo <em>capital_trabajo.csv</em>. Con una función de producción Cobb-Douglas las participaciones del capital y el trabajo en el valor de la producción se pueden estimar usando una regresión lineal. En algunas aplicaciones es de interés conocer el cociente de las participaciones estimadas.</p>
+<ol type="a">
+<li><p>[10 puntos] Usando 500 repeticiones bootstrap estime el error estándar del cociente capital-trabajo. Para ello realice el siguiente procedimiento:</p>
+<ol type="i">
+<li>Genere una matriz vacía de 500 filas para coleccionar sus relaciones estimadas.</li>
+<li>En cada una de las repeticiones obtenga una muestra con remplazo a partir de la muestra original.</li>
+<li>Estime por MCO los coeficientes sobre el log del capital y el log del trabajo. La variable dependiente es el log del valor de la producción. Calcule el cociente de los coeficientes estimados. Guarde el cociente en la matriz.</li>
+<li>Repita ii. y iii. 500 veces.</li>
+<li>Calcule la desviación estándar de los cocientes estimados.</li>
+</ol></li>
+<li><p>[10 puntos] Calcule ahora el error estándar jackknife, para lo que realizará <span class="math inline">\(N\)</span> estimaciones de la ecuación del valor de la producción y en cada una de ellas calculará el cociente de interés. En cada una de las <span class="math inline">\(i=1,\ldots,N\)</span> repeticiones, eliminará de la muestra la observación <span class="math inline">\(i\)</span>, por lo que cada regresión será estimada con <span class="math inline">\(N-1\)</span> observaciones. Obtenga la desviación estándar de los <span class="math inline">\(N\)</span> cocientes estimados.</p></li>
+<li><p>[10 puntos] Compruebe que sus cálculos aproximan el error estándar obtenido con el Método Delta. Para ello, después de estimar la ecuación del valor de la producción con la muestra original, use la función <em>deltaMethod</em> del paquete <em>car</em>.</p></li>
+</ol>
 </section>
-<section id="tarea-3" class="level1">
-<h1>Tarea 3</h1>
-<ul>
-<li><p>Fecha de entrega: viernes 8 de noviembre a las 20:00 en Teams</p></li>
-<li><p><a href="../tareas/tarea-3.html">Preguntas</a></p></li>
-<li><p><a href="../tareas/tarea-3-respuestas.html">Respuestas</a></p></li>
-</ul>
-<hr>
+<section id="pregunta-2" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
+<p>Considere los datos en <em>MunichRent.rda</em>. Estos archivos contienen información sobre rentas en la ciudad de Munich, <strong>rent</strong>. Se desea explicar la renta en función de la antiguedad de los edificios en renta, controlando por el área, <strong>area</strong>. La variable <strong>yearc</strong> indica cuándo fue construido el edificio. Construya la antiguedad como <em>antiguedad=2023-yearc</em>. Para leer los datos basta con ejecutar <em>load(“MunichRent.rda”)</em>.</p>
+<ol type="a">
+<li><p>[10 puntos] Estime por MCO la relación entre la renta, <strong>rent</strong> y la antiguedad del edificio, controlando por <strong>area</strong> y efectos fijos de <strong>bath</strong> y <strong>kitchen</strong>. Interprete el coeficiente sobre la antiguedad.</p></li>
+<li><p>[10 puntos] Estime la misma relación que en la parte a., pero con una regresión mediana. Interprete el coeficiente sobre la antiguedad.</p></li>
+<li><p>[10 puntos] Estime ahora una regresión cuantil para cada uno de los deciles de la distribución condicional de la renta y represente en una gráfica los coeficientes por regresión cuantil junto con el coeficiente de MCO para las variables del área y la antiguedad. ¿Concluye que vale la pena modelar la relación de las rentas en función del área y la antiguedad usando regresión cuantil?</p></li>
+<li><p>[10 puntos] Suponga que no está dispuesto a imponer una relación lineal entre la antiguedad y la renta. Considere entonces el siguiente modelo:</p>
+<p><span class="math display">\[rent_i=\beta_0+\beta_1 area + \lambda(antiguedad_i)+\varepsilon_i\]</span></p>
+<p>Use el estimador de Robinson (1988) para estimar este modelo parcialmente lineal. Grafique sus resultados e interprételos.</p></li>
+</ol>
 </section>
-<section id="tarea-4" class="level1">
-<h1>Tarea 4</h1>
-<ul>
-<li><p>Fecha de entrega: viernes 29 de noviembre a las 20:00 en Teams</p></li>
-<li><p><a href="../tareas/tarea-4.html">Preguntas</a></p></li>
-</ul>
+<section id="pregunta-3" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
+<p><a href="https://academic.oup.com/qje/article-abstract/121/1/267/1849020">Stevenson &amp; Wolfers (2006)</a> estudian los efectos de la introducción de leyes que permiten el divorcio unilateral. La librería <em>bacondecomp</em> incluye los datos usados en dicho artículo. Usaremos los datos de 1964 a 1996 para mostrar cómo impactan las leyes de divorcio express (unilateral) a la tasa de suicidios en mujeres. Comience llamando los datos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>wd <span class="ot">&lt;-</span> divorce <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">&gt;</span><span class="dv">1964</span> <span class="sc">&amp;</span> year<span class="sc">&lt;</span><span class="dv">1996</span> <span class="sc">&amp;</span> sex<span class="sc">==</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">suicide_rate=</span>suicide<span class="sc">*</span><span class="dv">1000000</span><span class="sc">/</span>(stpop<span class="sc">*</span>fshare),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">year=</span><span class="fu">as.numeric</span>(year))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li><p>[5 puntos] Estime el efecto de diferencia en diferencias asumiendo tendencias paralelas y el estimador de <em>two-way fixed effects</em>. Obtenga los errores estándar primero asumiendo errores clásicos y luego usando una matriz agrupada a nivel estado.</p></li>
+<li><p>[5 puntos] Realice la descomposición de Goodman-Bacon (2021). Construya un gráfico donde muestre en el eje el peso otorgado a cada comparación 2x2 que el estimador de TWFE realiza mecánicamente y en el eje el efecto estimado correspondiente a cada comparación. Interprete el gráfico obtenido.</p></li>
+<li><p>[10 puntos] Implemente el estimador de Callaway &amp; Sant’Anna (2021) para estimar los efectos del tratamiento específicos para cada cohorte, usando el paquete <em>did</em>. Utilice como grupo de comparación los estados <em>que nunca son tratados</em>. La columna <strong>stid</strong> es un identificador numérico de los estados (lo requerirá cuando use <em>att_gt</em> del paquete <em>did</em>).</p></li>
+<li><p>[10 puntos] Reporte los resultados agregados obtenidos a partir del estimador Callaway &amp; Sant’Anna (2021), usando una agregación dinámica que muestre los efectos promedio para cada periodo antes y después del tratamiento. Grafique e interprete los resultados.</p></li>
+</ol>
 
 
 </section>

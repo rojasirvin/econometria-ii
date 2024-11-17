@@ -1,0 +1,90 @@
+---
+title: "Tarea 4"
+lang: es
+---
+
+
+## Preguntas
+
+Fecha de entrega: **viernes 29 de noviembre a las 20:00 en Teams**
+
+La tarea deberá entregarse en Teams. Deberá incluir dos documentos:
+
+Un primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.
+
+Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.
+
+```{r setup}
+#| echo: false
+#| warning: false 
+#| message: false
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+library(tidyverse)
+library(janitor)
+library(sandwich)
+library(clubSandwich)
+library(plm)
+library(stargazer)
+library(lmtest)
+library(AER)
+library(quantreg)
+library(np)
+library(bacondecomp)
+library(did)
+library(lfe)
+library(modelsummary)
+```
+
+## Pregunta 1
+
+Considere los datos en el archivo *capital_trabajo.csv*. Con una función de producción Cobb-Douglas las participaciones del capital y el trabajo en el valor de la producción se pueden estimar usando una regresión lineal. En algunas aplicaciones es de interés conocer el cociente de las participaciones estimadas.
+
+a. [10 puntos] Usando 500 repeticiones bootstrap estime el error estándar del cociente capital-trabajo. Para ello realice el siguiente procedimiento:
+    i. Genere una matriz vacía de 500 filas para coleccionar sus relaciones estimadas.
+    i. En cada una de las repeticiones obtenga una muestra con remplazo a partir de la muestra original.
+    i. Estime por MCO los coeficientes sobre el log del capital y el log del trabajo. La variable dependiente es el log del valor de la producción. Calcule el cociente de los coeficientes estimados. Guarde el cociente en la matriz.
+    i. Repita ii. y iii. 500 veces.
+    i. Calcule la desviación estándar de los cocientes estimados.
+
+a. [10 puntos] Calcule ahora el error estándar jackknife, para lo que realizará $N$ estimaciones de la ecuación del valor de la producción y en cada una de ellas calculará el cociente de interés. En cada una de las $i=1,\ldots,N$ repeticiones, eliminará de la muestra la observación $i$, por lo que cada regresión será estimada con $N-1$ observaciones. Obtenga la desviación estándar de los $N$ cocientes estimados.
+
+a. [10 puntos] Compruebe que sus cálculos aproximan el error estándar obtenido con el Método Delta. Para ello, después de estimar la ecuación del valor de la producción con la muestra original, use la función *deltaMethod* del paquete *car*.
+
+## Pregunta 2
+
+Considere los datos en *MunichRent.rda*. Estos archivos contienen información sobre rentas en la ciudad de Munich, **rent**. Se desea explicar la renta en función de la antiguedad de los edificios en renta, controlando por el área, **area**. La variable **yearc** indica cuándo fue construido el edificio. Construya la antiguedad como *antiguedad=2023-yearc*. Para leer los datos basta con ejecutar *load("MunichRent.rda")*.
+
+a. [10 puntos] Estime por MCO la relación entre la renta, **rent** y la antiguedad del edificio, controlando por **area** y efectos fijos de **bath** y **kitchen**. Interprete el coeficiente sobre la antiguedad.
+
+
+a. [10 puntos] Estime la misma relación que en la parte a., pero con una regresión mediana. Interprete el coeficiente sobre la antiguedad.
+
+a. [10 puntos] Estime ahora una regresión cuantil para cada uno de los deciles de la distribución condicional de la renta y represente en una gráfica los coeficientes por regresión cuantil junto con el coeficiente de MCO para las variables del área y la antiguedad. ¿Concluye que vale la pena modelar la relación de las rentas en función del área y la antiguedad usando regresión cuantil?
+
+a. [10 puntos] Suponga que no está dispuesto a imponer una relación lineal entre la antiguedad y la renta. Considere entonces el siguiente modelo:
+
+   $$rent_i=\beta_0+\beta_1 area + \lambda(antiguedad_i)+\varepsilon_i$$
+   
+   Use el estimador de Robinson (1988) para estimar este modelo parcialmente lineal. Grafique sus resultados e interprételos.
+
+## Pregunta 3
+
+[Stevenson & Wolfers (2006)](https://academic.oup.com/qje/article-abstract/121/1/267/1849020) estudian los efectos de la introducción de leyes que permiten el divorcio unilateral. La librería *bacondecomp* incluye los datos usados en dicho artículo. Usaremos los datos de 1964 a 1996 para mostrar cómo impactan las leyes de divorcio express (unilateral) a la tasa de suicidios en mujeres. Comience llamando los datos:
+
+```{r}
+wd <- divorce %>% 
+  filter(year>1964 & year<1996 & sex==2) %>% 
+  mutate(suicide_rate=suicide*1000000/(stpop*fshare),
+         year=as.numeric(year))
+```
+
+a. [5 puntos] Estime el efecto de diferencia en diferencias asumiendo tendencias paralelas y el estimador de *two-way fixed effects*. Obtenga los errores estándar primero asumiendo errores clásicos y luego usando una matriz agrupada a nivel estado.
+
+a. [5 puntos] Realice la descomposición de Goodman-Bacon (2021). Construya un gráfico donde muestre en el eje el peso otorgado a cada comparación 2x2 que el estimador de TWFE realiza mecánicamente y en el eje el efecto estimado correspondiente a cada comparación. Interprete el gráfico obtenido.
+
+a. [10 puntos] Implemente el estimador de Callaway & Sant’Anna (2021) para estimar los efectos del tratamiento específicos para cada cohorte, usando el paquete *did*. Utilice como grupo de comparación los estados *que nunca son tratados*. La columna **stid** es un identificador numérico de los estados (lo requerirá cuando use *att_gt* del paquete *did*).
+
+a. [10 puntos] Reporte los resultados agregados obtenidos a partir del estimador Callaway & Sant’Anna (2021), usando una agregación dinámica que muestre los efectos promedio para cada periodo antes y después del tratamiento. Grafique e interprete los resultados.
+
