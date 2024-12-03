@@ -40,3 +40,4 @@ lang: es
 
 - [Preguntas](./tarea-4.qmd)
 
+- [Respuestas](./tarea-4-respuestas.qmd)
