@@ -1,5 +1,5 @@
 ---
-title: "Econometría II 2024"
+title: "Econometría Aplicada y Ciencia de Datos 2025"
 ---
 
 ---

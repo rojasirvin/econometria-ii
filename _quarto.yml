@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Econometría II 2024"
+  title: "Econometría Aplicada y Ciencia de Datos"
   sidebar:
     background: primary
     logo: "iconoEconometria.jpg"
