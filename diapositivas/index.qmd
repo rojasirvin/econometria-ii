@@ -2,9 +2,6 @@
 title: "Diapositivas"
 ---
 
-
-[Muestra seleccionada](./muestra-seleccionada.qmd){target="_blank"}
-
 [Variables instrumentales](./variables-instrumentales.qmd){target="_blank"}
 
 [Método generalizado de momentos](./mgm.qmd){target="_blank"}
@@ -16,9 +13,3 @@ title: "Diapositivas"
 [Errores estándar](./errores-estandar.qmd){target="_blank"}
 
 [Bootstrap](./bootstrap.qmd){target="_blank"}
-
-[Regresión cuantil](./cuantil.qmd){target="_blank"}
-
-[Métodos no paramétricos y semiparamétricos](./no-parametricos.qmd){target="_blank"}
-
-[Diferencia en diferencias](./did.qmd){target="_blank"}
