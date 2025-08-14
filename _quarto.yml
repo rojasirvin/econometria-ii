@@ -23,8 +23,6 @@ website:
         text: Reglas
       - href: lecturas.qmd
         text: Lecturas
-      - href: presentaciones.qmd
-        text: Presentaciones
       - href: cronograma.qmd
         text: Cronograma
       - href: tareas/index.qmd
