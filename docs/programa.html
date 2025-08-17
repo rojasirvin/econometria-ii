@@ -165,8 +165,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#evaluación-del-curso" id="toc-evaluación-del-curso" class="nav-link" data-scroll-target="#evaluación-del-curso">Evaluación del curso</a></li>
   <li><a href="#tareas" id="toc-tareas" class="nav-link" data-scroll-target="#tareas">Tareas</a></li>
   <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
-  <li><a href="#exámenes" id="toc-exámenes" class="nav-link" data-scroll-target="#exámenes">Exámenes</a></li>
-  <li><a href="#exposición" id="toc-exposición" class="nav-link" data-scroll-target="#exposición">Exposición</a></li>
   <li><a href="#lista-de-lecturas" id="toc-lista-de-lecturas" class="nav-link" data-scroll-target="#lista-de-lecturas">Lista de lecturas</a></li>
   </ul>
 </nav>
@@ -195,6 +193,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="objetivos" class="level2">
 <h2 class="anchored" data-anchor-id="objetivos">Objetivos</h2>
+<p>El objetivo del curso es dotar al alumno con las herramientas teóricas y prácticas necesarias para entender y aplicar las técnicas econométricas avanzadas en el análisis de la relación entre variables económicas y su integración con la ciencia de datos.</p>
 <ul>
 <li>Conocer la teoría sobre la que se fundamentan los métodos para la estimación de relaciones empíricas y la inferencia usando datos de sección cruzada y de panel.</li>
 <li>Diseñar estrategias econométricas usando los modelos adecuados de acuerdo con la pregunta de investigación.</li>
@@ -207,8 +206,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="referencias">Referencias</h2>
 <p>El curso se basa en los siguientes textos:</p>
 <ul>
-<li>(MHE) Angrist, J.D. y Pischke, J.S. (2013). Mostly <em>Harmless Econometrics: An Empiricists Companion</em>. Princeton University Press.</li>
 <li>* (CT) Cameron, A.C. y Trivedi, P.K. (2005). <em>Microeconometrics: Methods and applications</em>. Oxford University Press.</li>
+<li>* Cunningham, S. (2021). <em>Causal Inference: The Mixtape</em>. Yale University Press. (https://mixtape.scunning.com/index.html)[https://mixtape.scunning.com/index.html]</li>
+<li>* Gareth, J., Witten D., Robert T., Trevor H., y Taylor J. (2023). <em>An Introduction to Statistical Learning: with Applications in Python</em>. Springer.</li>
 <li>Hansen, B. (2022). Econometrics. Princeton University Press.</li>
 <li>Hayashi, F. (2000). <em>Econometrics</em>. Princeton University Press.</li>
 <li>* (W) Wooldridge, J.M. (2010). <em>Econometric analysis of cross section and panel data</em>. Segunda edición, MIT Press.</li>
@@ -216,61 +216,29 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="contenido-temático" class="level2">
 <h2 class="anchored" data-anchor-id="contenido-temático">Contenido temático</h2>
-<p>Unidad 1. Introducción</p>
-<ul>
-<li>Revisión de fundamentos de estadística y regresión lineal</li>
-<li>Teoría asintótica</li>
-<li>Estimadores extremos</li>
-<li>Máxima verosimilitud</li>
-<li>Mínimos cuadrados no lineales</li>
-<li>Inferencia estadística</li>
-</ul>
-<p>Unidad 2. Modelos de variable dependiente no continua</p>
-<ul>
-<li>Modelos de variable dependiente binaria<br>
-</li>
-<li>Modelos de conteo</li>
-</ul>
-<p>Unidad 3. Modelos de selección</p>
-<ul>
-<li>Modelo de Tobit</li>
-<li>Modelo de Heckman</li>
-</ul>
-<p>Unidad 4. Endogeneidad</p>
+<p>Tema 1. Endogeneidad</p>
 <ul>
 <li>Variables instrumentales</li>
 <li>Método generalizado de momentos</li>
 <li>Estimación con instrumentos débiles</li>
 </ul>
-<p>Unidad 5. Datos de panel</p>
+<p>Tema 2. Datos de panel</p>
 <ul>
 <li>Modelos de efectos fijos y de efectos aleatorios</li>
-<li>Estimadores between y within</li>
+<li>Estimadores <em>between</em> y <em>within</em></li>
 <li>Estimadores de primeras diferencias y de efectos aleatorios</li>
 <li>Errores estándar agrupados</li>
-</ul>
-<p>Unidad 6. Extensiones</p>
-<ul>
-<li>Bootstrap</li>
-<li>Regresión por cuantiles</li>
-<li>Métodos semi paramétricos y no paramétricos</li>
-<li>Modelos de panel no lineales</li>
-<li>Modelos de panel con endogeneidad</li>
-<li>Modelos de riesgo y de sobrevivencia</li>
 </ul>
 </section>
 <section id="evaluación-del-curso" class="level2">
 <h2 class="anchored" data-anchor-id="evaluación-del-curso">Evaluación del curso</h2>
 <ul>
-<li>Examen parcial: 30%.</li>
-<li>Examen final acumulativo: 45%</li>
-<li>Tareas (4): 20% (5% cada una)</li>
-<li>Exposición: 5%</li>
+<li>Tareas (2): 100% (50% cada una)</li>
 </ul>
 </section>
 <section id="tareas" class="level2">
 <h2 class="anchored" data-anchor-id="tareas">Tareas</h2>
-<p>Cuatro tareas teórico-prácticas. Las tareas deben entregarse de manera individual, pero se recomienda ampliamente colaborar en grupos de estudio. Las tareas deberán entregarse en Teams antes de la fecha y hora señalada. No se aceptarán tareas fuera de tiempo. Por favor, <strong>no comprima</strong> los archivos en carpetas comprimidas. Las tareas deberán contener dos archivos:</p>
+<p>Dos tareas teórico-prácticas. Las tareas deben entregarse de manera individual, pero se recomienda ampliamente colaborar en grupos de estudio. Las tareas deberán entregarse en Teams antes de la fecha y hora señalada. No se aceptarán tareas fuera de tiempo. Por favor, <strong>no comprima</strong> los archivos en carpetas comprimidas. Las tareas deberán contener dos archivos:</p>
 <p>Un primer documento de respuestas donde se incluyan las respuestas a las preguntas teóricas y conceptuales. Este documento debe estar en formato pdf y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los leguajes LaTeX o Markdown. En este documento también se deben incluir las respuestas a preguntas sobre conclusiones que se desprenden de las secciones prácticas. Por ejemplo, si una pregunta pide obtener la media de la variable x en cierta base de datos, entonces el documento de respuestas debe incluir la pregunta y respuesta correspondiente: “la media de la variable x es 32.6”. En este documento también deberán incluirse las tablas y gráficas que se soliciten.</p>
 <p>Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad de manera aleatoria.</p>
 </section>
@@ -278,20 +246,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="software">Software</h2>
 <p>R será el paquete standard usado en las sesiones prácticas. Más aún, el uso de cualquier software es aceptado siempre que se cumplan con los requisitos de replicabilidad y reportes de las tareas y exámenes. Habrá una sesión especial para introducir el uso de Quarto para la generación de reportes científicos.</p>
 </section>
-<section id="exámenes" class="level2">
-<h2 class="anchored" data-anchor-id="exámenes">Exámenes</h2>
-<ul>
-<li>Examen parcial: miércoles 9 de octubre en el horario de clase.</li>
-<li>Examen final: por definir.</li>
-</ul>
-</section>
-<section id="exposición" class="level2">
-<h2 class="anchored" data-anchor-id="exposición">Exposición</h2>
-<p>Cada alumno realizará una presentación de uno de los artículos aplicados marcados con negritas en la lista de lecturas. Cada presentación deberá ser de máximo 15 minutos y deberá incluir el contenido que el presentador considere más relevante. La presentación deberá abordar, mínimamente: 1) el problema a investigar, 2) la metodología empleada, 3) la relación entre la metodología y la teoría vista en el curso, 4) los datos empleados, 5) los principales resultados, y 6) una crítica sobre la validez y las conclusiones del estudio.</p>
-</section>
 <section id="lista-de-lecturas" class="level2">
 <h2 class="anchored" data-anchor-id="lista-de-lecturas">Lista de lecturas</h2>
-<p>Todas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase. Las lecturas marcadas con “*” no serán cubiertas en clase, pero son ampliamente recomendables. En las sesiones de exposiciones cada alumno presentará uno de los artículos enlistados con negritas, por lo que se espera que el resto de la clase tenga el conocimiento suficiente para participar en la discusión.</p>
+<p>Todas las lecturas de capítulos de libro son obligatorias pues permiten una discusión informada en la clase.</p>
 <p>La lista de lecturas está disponible <a href="https://rojasirvin.github.io/econometria-ii/lecturas.html">aquí</a>.</p>
 
 
