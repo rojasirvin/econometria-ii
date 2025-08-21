@@ -74,7 +74,7 @@ Calculando la covarianza con $z$ de $y=\beta_0+\beta_1 x+u$ obtenemos:
 
 $$cov(y,z)=\beta_1 cov(x,z)+cov(u,z)$$
 
-Y, si $cov(u,z)$, resolviendo para $\hat{\beta}_1$
+Y, si $cov(u,z)=0$, resolviendo para $\hat{\beta}_1$
 
 $$\hat{\beta}_1=\frac{cov(y,z)}{cov(x,z)}$$
 
