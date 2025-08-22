@@ -125,7 +125,7 @@ La **primera etapa** especifica la relación entre la variable endógena y el in
 
 $$x_{1i}=\pi_0+\pi_1 z_i+\pi_2x_{2i}+\nu_i$$
 
-Donde se cumple que $cov(z_i,\nu_i=0)$ y $cov(x_{2i},\nu_i)=0$
+Donde se cumple que $cov(z_i,\nu_i)=0$ y $cov(x_{2i},\nu_i)=0$
 
 Entonces, la condición de relevancia puede escribirse también como $\pi_1\neq 0$
 
