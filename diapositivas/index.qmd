@@ -5,7 +5,6 @@ title: "Diapositivas"
 
 [Teoría asintótica para MCO](./asintotica.qmd){target="_blank"}
 
-
 [Variables instrumentales](./variables-instrumentales.qmd){target="_blank"}
 
 [Método generalizado de momentos](./mgm.qmd){target="_blank"}
