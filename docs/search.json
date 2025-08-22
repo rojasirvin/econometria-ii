@@ -2840,7 +2840,7 @@
     "href": "diapositivas/asintotica.html#lgn-y-tlc-en-acción-8",
     "title": "Teoría asintótica para MCO",
     "section": "LGN y TLC en acción",
-    "text": "LGN y TLC en acción\nArreglo el data frame\n\n#Quito la primera fila, que son NAs\ncoleccion_estimadores_mco &lt;- coleccion_estimadores_mco[-1,]\n\ncoleccion_estimadores_mco &lt;- data.frame(coleccion_estimadores_mco) %&gt;% \n  rename(alpha=X1,\n         beta=X2,\n         tamano=X3)\n\n#Aquí veremos la funcionalidad de los factores\ncoleccion_estimadores_mco &lt;- coleccion_estimadores_mco %&gt;% \n  mutate(tamano=factor(tamano,\n                       levels = c(50, 100, 1000, 10000),\n                       labels = c(\"N=50\", \"N=100\", \"N=1,000\", \"N=10,000\")))"
+    "text": "LGN y TLC en acción\nArreglamos el objeto\n\n#Quito la primera fila, que son NAs\ncoleccion_estimadores_mco &lt;- coleccion_estimadores_mco[-1,]\n\ncoleccion_estimadores_mco &lt;- data.frame(coleccion_estimadores_mco) %&gt;% \n  rename(alpha=X1,\n         beta=X2,\n         tamano=X3)\n\n#Aquí veremos la funcionalidad de los factores\ncoleccion_estimadores_mco &lt;- coleccion_estimadores_mco %&gt;% \n  mutate(tamano=factor(tamano,\n                       levels = c(50, 100, 1000, 10000),\n                       labels = c(\"N=50\", \"N=100\", \"N=1,000\", \"N=10,000\")))"
   },
   {
     "objectID": "diapositivas/asintotica.html#lgn-y-tlc-en-acción-9",
