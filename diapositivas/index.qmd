@@ -3,7 +3,7 @@ title: "Diapositivas"
 ---
 [MCO con muestras finitas](./mco-finitas.qmd){target="_blank"}
 
-[Teoría asintótica para MCO](./mco-finitas.qmd){target="_blank"}
+[Teoría asintótica para MCO](./asintotica.qmd){target="_blank"}
 
 
 [Variables instrumentales](./variables-instrumentales.qmd){target="_blank"}
