@@ -212,9 +212,9 @@
   {
     "objectID": "tareas/index.html",
     "href": "tareas/index.html",
-    "title": "Tareas",
+    "title": "Proyectos",
     "section": "",
-    "text": "Tarea 1\n\nFecha de entrega: viernes 5 de septiembre a las 20:00 en Teams\n\n\n\n\nTarea 2\n\nFecha de entrega: viernes 19 de septiembre a las 20:00 en Teams",
+    "text": "Proyecto 1\n\nFecha de entrega: viernes 12 de septiembre a las 20:00 en Teams\nProyecto\n\n\n\n\nProyecto 2\n\nFecha de entrega: viernes 3 de octubre a las 20:00 en Teams",
     "crumbs": [
       "Tareas"
     ]
@@ -2509,23 +2509,23 @@
   {
     "objectID": "tareas/tareap-1.html",
     "href": "tareas/tareap-1.html",
-    "title": "Tarea 1",
+    "title": "Proyecto 1",
     "section": "",
-    "text": "Fecha de entrega: viernes 5 de septiembre a las 20:00 en Teams\nLa tarea deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
+    "text": "Fecha de entrega: viernes 12 de septiembre a las 20:00 en Teams\nLa tarea deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
   },
   {
     "objectID": "tareas/tareap-1.html#preguntas",
     "href": "tareas/tareap-1.html#preguntas",
     "title": "Tarea 1",
     "section": "",
-    "text": "Fecha de entrega: viernes 5 de septiembre a las 20:00 en Teams\nLa tarea deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
+    "text": "Fecha de entrega: viernes 12 de septiembre a las 20:00 en Teams\nLa tarea deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
   },
   {
     "objectID": "tareas/tareap-1.html#instrucciones",
     "href": "tareas/tareap-1.html#instrucciones",
-    "title": "Tarea 1",
-    "section": "Instrucciones",
-    "text": "Instrucciones\nDurante la clase hemos visto que un problema de mucho interés en economía es el de los retornos a la educación, es decir, cómo cambia el salario cuando cambia en un año la educación formal. En este proyecto usará los datos de la ENIGH 2024 para estimar los retornos a la educación en México. Escriba un reporte de máximo cinco páginas que incluya lo siguiente:\n\n¿Qué son los retornos a la educación y por qué es importante este parámetro económico?\nEl modelo econométrico para estimar los retornos a la educación en México.\nDiscuta la pertinencia de emplear MCO para su estimación y por qué usar variables instrumentales sería una alternativa viable.\nDé una propuesta de un instrumento y argumente por qué es un buen instrumento.\nDescriba la base de datos que utilizará para estimar los retornos a la educación. Describa qué subconjunto de la población utilizará.\nReporte los resultados de estimar los retornos a la educación por MCO y por variables instrumentales."
+    "title": "Proyecto 1",
+    "section": "",
+    "text": "Fecha de entrega: viernes 12 de septiembre a las 20:00 en Teams\nLa tarea deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
   },
   {
     "objectID": "diapositivas/asintotica.html#funciones-de-pérdida",
@@ -2855,5 +2855,12 @@
     "title": "Teoría asintótica para MCO",
     "section": "LGN y TLC en acción",
     "text": "LGN y TLC en acción\nPara \\(\\beta\\)\n\n\ncoleccion_estimadores_mco %&gt;% \n  ggplot(aes(x=beta, color=tamano))+\n  geom_density()+\n  xlim(1,3)"
+  },
+  {
+    "objectID": "tareas/tareap-1.html#proyecto",
+    "href": "tareas/tareap-1.html#proyecto",
+    "title": "Proyecto 1",
+    "section": "Proyecto",
+    "text": "Proyecto\nDurante la clase hemos visto que un problema de mucho interés en economía es el de los retornos a la educación, es decir, cómo cambia el salario cuando cambia en un año la educación formal. En este proyecto se sugiere usar los datos de la ENIGH 2016 y su módulo de movilidad social para estimar los retornos a la educación en México. Note que deberá unir la parte regular de la ENIGH con el módulo especial. Escriba un reporte de máximo cinco páginas que incluya lo siguiente:\n\n¿Qué son los retornos a la educación y por qué es importante este parámetro económico?\nEl modelo econométrico para estimar los retornos a la educación en México.\nDiscuta la pertinencia de emplear MCO para su estimación y por qué usar variables instrumentales sería una alternativa preferida.\nUn posible instrumento es la educación del padre y/o de la madre. Argumente qué condiciones deben cumplir estas propuestas para ser buenos instrumentos.\nDescriba la base de datos y las variables que utilizará para estimar los retornos a la educación. Describa qué subconjunto de la población utilizará, de ser el caso.\nReporte los resultados de estimar los retornos a la educación por MCO y por variables instrumentales, usando los instrumentos antes propuestos."
   }
 ]

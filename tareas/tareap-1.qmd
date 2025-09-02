@@ -1,11 +1,11 @@
 ---
-title: "Tarea 1"
+title: "Proyecto 1"
 lang: es
 ---
 
-## Preguntas
+## Instrucciones
 
-Fecha de entrega: **viernes 5 de septiembre a las 20:00 en Teams**
+Fecha de entrega: **viernes 12 de septiembre a las 20:00 en Teams**
 
 La tarea deberá entregarse en Teams. Deberá incluir dos documentos:
 
@@ -13,14 +13,16 @@ Un primer documento de respuestas donde se reporten las conclusiones del anális
 
 Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.
 
-## Instrucciones
+## Proyecto
 
-Durante la clase hemos visto que un problema de mucho interés en economía es el de los retornos a la educación, es decir, cómo cambia el salario cuando cambia en un año la educación formal. En este proyecto usará los datos de la ENIGH 2024 para estimar los retornos a la educación en México. Escriba un reporte de máximo cinco páginas que incluya lo siguiente:
+Durante la clase hemos visto que un problema de mucho interés en economía es el de los retornos a la educación, es decir, cómo cambia el salario cuando cambia en un año la educación formal. En este proyecto se sugiere usar los datos de la [ENIGH 2016](https://www.inegi.org.mx/programas/enigh/nc/2016/
+) y su [módulo de movilidad social](https://www.inegi.org.mx/programas/mmsi/2016/) para estimar los retornos a la educación en México. Note que deberá unir la parte regular de la ENIGH con el módulo especial. Escriba un reporte de máximo cinco páginas que incluya lo siguiente:
 
 1. ¿Qué son los retornos a la educación y por qué es importante este parámetro económico?
 1. El modelo econométrico para estimar los retornos a la educación en México.
-1. Discuta la pertinencia de emplear MCO para su estimación y por qué usar variables instrumentales sería una alternativa viable.
-1. Dé una propuesta de un instrumento y argumente por qué es un buen instrumento.
-1. Describa la base de datos que utilizará para estimar los retornos a la educación. Describa qué subconjunto de la población utilizará.
-1. Reporte los resultados de estimar los retornos a la educación por MCO y por variables instrumentales.
+1. Discuta la pertinencia de emplear MCO para su estimación y por qué usar variables instrumentales sería una alternativa preferida.
+1. Un posible instrumento es la educación del padre y/o de la madre. Argumente qué condiciones deben cumplir estas propuestas para ser buenos instrumentos.
+1. Describa la base de datos y las variables que utilizará para estimar los retornos a la educación. Describa qué subconjunto de la población utilizará, de ser el caso.
+1. Reporte los resultados de estimar los retornos a la educación por MCO y por variables instrumentales, usando los instrumentos antes propuestos.
+1. Realice e interprete las pruebas de Hausman, de Sargan y de instrumentos débiles para su estimación por variables instrumentales.
 

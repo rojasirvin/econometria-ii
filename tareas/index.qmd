@@ -1,16 +1,17 @@
 ---
-title: "Tareas"
+title: "Proyectos"
 lang: es
 ---
 
-# Tarea 1
+# Proyecto 1
 
-- Fecha de entrega: viernes 5 de septiembre a las 20:00 en Teams
+- Fecha de entrega: viernes 12 de septiembre a las 20:00 en Teams
 
+- [Proyecto](./tareap-1.html)
 
 ---
 
-# Tarea 2
+# Proyecto 2
 
-- Fecha de entrega: viernes 19 de septiembre a las 20:00 en Teams
+- Fecha de entrega: viernes 3 de octubre a las 20:00 en Teams
 
