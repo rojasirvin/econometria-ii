@@ -7,7 +7,7 @@ lang: es
 
 Fecha de entrega: **viernes 12 de septiembre a las 20:00 en Teams**
 
-La tarea deberá entregarse en Teams. Deberá incluir dos documentos:
+El proyecto deberá entregarse en Teams. Deberá incluir dos documentos:
 
 Un primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.
 
