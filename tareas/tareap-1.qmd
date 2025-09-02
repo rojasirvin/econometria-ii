@@ -19,7 +19,7 @@ Durante la clase hemos visto que un problema de mucho interés en economía es e
 ) y su [módulo de movilidad social](https://www.inegi.org.mx/programas/mmsi/2016/) para estimar los retornos a la educación en México. Note que deberá unir la parte regular de la ENIGH con el módulo especial. Escriba un reporte de máximo cinco páginas que incluya lo siguiente:
 
 1. ¿Qué son los retornos a la educación y por qué es importante este parámetro económico?
-1. El modelo econométrico para estimar los retornos a la educación en México.
+1. Describa el modelo econométrico para estimar los retornos a la educación en México.
 1. Discuta la pertinencia de emplear MCO para su estimación y por qué usar variables instrumentales sería una alternativa preferida.
 1. Un posible instrumento es la educación del padre y/o de la madre. Argumente qué condiciones deben cumplir estas propuestas para ser buenos instrumentos.
 1. Describa la base de datos y las variables que utilizará para estimar los retornos a la educación. Describa qué subconjunto de la población utilizará, de ser el caso.
