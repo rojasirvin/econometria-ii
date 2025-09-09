@@ -749,7 +749,7 @@
     "href": "diapositivas/index.html",
     "title": "Diapositivas",
     "section": "",
-    "text": "MCO con muestras finitas\nTeoría asintótica para MCO\nVariables instrumentales\nMétodo generalizado de momentos\nVariables instrumentales en la práctica\nPanel\nErrores estándar\nBootstrap",
+    "text": "MCO con muestras finitas\nTeoría asintótica para MCO\nVariables instrumentales\nMétodo generalizado de momentos\nVariables instrumentales en la práctica\nPanel\nErrores estándar\nPanel en la práctica\nBootstrap",
     "crumbs": [
       "Diapositivas"
     ]
@@ -2862,5 +2862,180 @@
     "title": "Proyecto 1",
     "section": "Proyecto",
     "text": "Proyecto\nDurante la clase hemos visto que un problema de mucho interés en economía es el de los retornos a la educación, es decir, cómo cambia el salario cuando cambia en un año la educación formal. En este proyecto se sugiere usar los datos de la ENIGH 2016 y su módulo de movilidad social para estimar los retornos a la educación en México. Note que deberá unir la parte regular de la ENIGH con el módulo especial. Escriba un reporte de máximo cinco páginas que incluya lo siguiente:\n\n¿Qué son los retornos a la educación y por qué es importante este parámetro económico?\nDescriba el modelo econométrico para estimar los retornos a la educación en México.\nDiscuta la pertinencia de emplear MCO para su estimación y por qué usar variables instrumentales sería una alternativa preferida.\nUn posible instrumento es la educación del padre y/o de la madre. Argumente qué condiciones deben cumplir estas propuestas para ser buenos instrumentos.\nDescriba la base de datos y las variables que utilizará para estimar los retornos a la educación. Describa qué subconjunto de la población utilizará, de ser el caso.\nReporte los resultados de estimar los retornos a la educación por MCO y por variables instrumentales, usando los instrumentos antes propuestos.\nRealice e interprete las pruebas de Hausman, de Sargan y de instrumentos débiles para su estimación por variables instrumentales."
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#formatos-de-datos-en-panel",
+    "href": "diapositivas/panel-practica.html#formatos-de-datos-en-panel",
+    "title": "Datos en panel en R",
+    "section": "Formatos de datos en panel",
+    "text": "Formatos de datos en panel\nTrabajaremos con los datos comportamiento_wide.csv, que contienen información individual de niñas y niños, incluyendo su género, edad, raza e información de sus madres. Además, se incluye una medida auto reportada de autoestima (self) y una evaluación de comportamiento antisocial (anti). Se quiere conocer cómo influye la autoestima en el comportamiento antisocial. Para cada niño o niña hay tres observaciones en el tiempo. Se busca explicar el comportamiento antisocial en función de la autoestima y la condición de pobreza (pov): \\[anti_{it}=\\alpha_i+\\beta_1 self_{it}+\\beta_2 pov_{it}+\\varepsilon_{it}\\]"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#formatos-de-datos-en-panel-1",
+    "href": "diapositivas/panel-practica.html#formatos-de-datos-en-panel-1",
+    "title": "Datos en panel en R",
+    "section": "Formatos de datos en panel",
+    "text": "Formatos de datos en panel\nLa base se encuentra en formato wide. Ponemos la base en formato long, donde haya una columna para cada variable y donde las filas representen a un individuo en un periodo.\n\ndata.comp &lt;-read_csv(\"../files/comportamiento_wide.csv\",\n                      locale = locale(encoding = \"latin1\"))\ncolnames(data.comp)\n\n [1] \"id\"       \"momage\"   \"anti90\"   \"anti92\"   \"anti94\"   \"gender\"  \n [7] \"childage\" \"hispanic\" \"black\"    \"momwork\"  \"married\"  \"self90\"  \n[13] \"self92\"   \"self94\"   \"pov90\"    \"pov92\"    \"pov94\"   \n\n\nLa base transformada:\n\ndata.comp &lt;- data.comp %&gt;% \n  pivot_longer(c(anti90:anti94,self90:self94,pov90:pov94),\n               names_to = c(\"measure\", \"year\"),\n               names_pattern = \"(.*)(..)\")  %&gt;%\n  pivot_wider(names_from = measure,\n              values_from = value)\n    \ncolnames(data.comp)\n\n [1] \"id\"       \"momage\"   \"gender\"   \"childage\" \"hispanic\" \"black\"   \n [7] \"momwork\"  \"married\"  \"year\"     \"anti\"     \"self\"     \"pov\""
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#estimador-de-mco",
+    "href": "diapositivas/panel-practica.html#estimador-de-mco",
+    "title": "Datos en panel en R",
+    "section": "Estimador de MCO",
+    "text": "Estimador de MCO\nEstimamos la ecuación de comportamiento antisocial empleando MCO pooled.\n\n\nm.mco &lt;- plm( anti ~ self + pov,\n                      data=data.comp,\n                      model=\"pooling\",\n                      index = c(\"id\", \"year\"))\n\n\n\nmodelsummary(models = list(\"MCO\"=m.mco),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov = c(\"iid\"),\n          fmt = 5,\n          coef_map = c('self', 'pov'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\n\n\n\n\nself\n-0.06510***\n\n\n\n(0.01108)\n\n\npov\n0.51581***\n\n\n\n(0.07873)\n\n\nNum.Obs.\n1743\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01\n\n\n\n\n\n\n\n\nLa variable self tiene un efecto negativo y estadísticamente significativo sobre anti. La variable pov tiene un efecto positivo y estadísticamente significativo. El estimador de MCO será consistente solo si las variables self y pov no están correlacionadas con el error. Además, para estimar este modelo, asumimos que la heterogeneidad no observada \\(\\alpha_i\\) puede escribirse simplemente como \\(\\alpha\\). Otra forma de pensar sobre este modelo es si el mismo modelo es válido para todos los periodos como para asumir una ordenada al origen y una pendiente común."
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#estimador-de-mco-1",
+    "href": "diapositivas/panel-practica.html#estimador-de-mco-1",
+    "title": "Datos en panel en R",
+    "section": "Estimador de MCO",
+    "text": "Estimador de MCO\nLa variable self tiene un efecto negativo y estadísticamente significativo sobre anti. La variable pov tiene un efecto positivo y estadísticamente significativo. El estimador de MCO será consistente solo si las variables self y pov no están correlacionadas con el error. Además, para estimar este modelo, asumimos que la heterogeneidad no observada \\(\\alpha_i\\) puede escribirse simplemente como \\(\\alpha\\). Otra forma de pensar sobre este modelo es si el mismo modelo es válido para todos los periodos como para asumir una ordenada al origen y una pendiente común."
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#estimador-de-mco-y-errores-agrupados",
+    "href": "diapositivas/panel-practica.html#estimador-de-mco-y-errores-agrupados",
+    "title": "Datos en panel en R",
+    "section": "Estimador de MCO y errores agrupados",
+    "text": "Estimador de MCO y errores agrupados\nEl modelo pooled ignora la naturaleza en panel de los datos. Sin embargo, como tenemos a los mismos individuos en varios puntos del tiempo, los errores están agrupados, así que se deben de estimar errores con esta estructura. En este caso, al tomar en cuenta esta correlación entre individuos, los errores estándar son más grandes, pero los resultados siguen siendo significativos. En muchos casos, no tomar en cuenta la estructura agrupada de los errores puede llevar a rechazar hipótesis nulas que son ciertas.\n\n\nmodelsummary(models = list(\"MCO\"=m.mco,\n                           \"MCO, errores agrupados\"=m.mco),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(NULL, clubSandwich::vcovCR(m.mco, type='CR1', cluster=data.comp$id)),\n          fmt = 5,\n          coef_map = c('self', 'pov'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nMCO, errores agrupados\n\n\n\n\nself\n-0.06510***\n-0.06510***\n\n\n\n(0.01108)\n(0.01369)\n\n\npov\n0.51581***\n0.51581***\n\n\n\n(0.07873)\n(0.10496)\n\n\nNum.Obs.\n1743\n1743\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#estimador-de-efectos-fijos",
+    "href": "diapositivas/panel-practica.html#estimador-de-efectos-fijos",
+    "title": "Datos en panel en R",
+    "section": "Estimador de efectos fijos",
+    "text": "Estimador de efectos fijos\nEstimamos la ecuación de comportamiento antisocial empleando el estimador within.\n\n\nm.fe &lt;- plm( anti ~ self + pov,\n             data=data.comp,\n             model=\"within\",\n             index = c(\"id\", \"year\"))\n\nmodelsummary(models = list(\"MCO\"=m.mco,\n                           \"MCO, errores agrupados\"=m.mco,\n                           \"Efectos fijos\"=m.fe),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(NULL, clubSandwich::vcovCR(m.mco, type='CR1', cluster=data.comp$id), clubSandwich::vcovCR(m.fe, type='CR1', cluster=data.comp$id)),\n          fmt = 5,\n          coef_map = c('self', 'pov'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nMCO, errores agrupados\nEfectos fijos\n\n\n\n\nself\n-0.06510***\n-0.06510***\n-0.05150***\n\n\n\n(0.01108)\n(0.01369)\n(0.01131)\n\n\npov\n0.51581***\n0.51581***\n0.10490\n\n\n\n(0.07873)\n(0.10496)\n(0.09922)\n\n\nNum.Obs.\n1743\n1743\n1743\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01\n\n\n\n\n\n\n\n\nSi asumimos que la heterogeneidad no observada y el error están potencialmente correlacionados, entonces podemos usar un estimador de efectos fijos para deshacernos de la heterogeneidad no observada y estimar consistentemente los parámetros sobre self y pov."
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#estimador-de-efectos-fijos-1",
+    "href": "diapositivas/panel-practica.html#estimador-de-efectos-fijos-1",
+    "title": "Datos en panel en R",
+    "section": "Estimador de efectos fijos",
+    "text": "Estimador de efectos fijos\nEstimamos la ecuación de calificación usando MCO y efectos fijos de escuela.\nAl incluir efectos fijos a nivel escuela controlamos por características no observadas a nivel escuela. Estas diferencias se incorporan en el modelo como desplazamientos de la ordenada al origen. Este procedimiento no tiene nada que ver con la agrupación de errores.\n\n\nm.mco.ef &lt;- lm(langpost ~ iq_verb + sex + minority + repeatgr + factor(schoolnr),\n               data=data.examen)\n\nmodelsummary(models = list(\"MCO\"=m.mco,\n                           \"MCO, errores robustos\"=m.mco,\n                           \"Efectos fijos\"=m.mco.ef),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(NULL,\n                    \"HC1\",\n                    \"HC1\"),\n          fmt = 5,\n          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nMCO, errores robustos\nEfectos fijos\n\n\n\n\niq_verb\n2.48635***\n2.48635***\n2.25997***\n\n\n\n(0.07233)\n(0.07587)\n(0.07310)\n\n\nsex\n2.42228***\n2.42228***\n2.41900***\n\n\n\n(0.28871)\n(0.28852)\n(0.26990)\n\n\nminority\n-0.03701\n-0.03701\n0.23262\n\n\n\n(0.62762)\n(0.61245)\n(0.70803)\n\n\nrepeatgr\n-4.40860***\n-4.40860***\n-4.43503***\n\n\n\n(0.43222)\n(0.44862)\n(0.42731)\n\n\nNum.Obs.\n2287\n2287\n2287\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#estimador-de-efectos-aleatorios",
+    "href": "diapositivas/panel-practica.html#estimador-de-efectos-aleatorios",
+    "title": "Datos en panel en R",
+    "section": "Estimador de efectos aleatorios",
+    "text": "Estimador de efectos aleatorios\nEstimamos la ecuación de comportamiento antisocial empleando efectos aleatorios.\n\n\nm.re &lt;- plm( anti ~ self + pov,\n             data=data.comp,\n             model=\"random\",\n             index = c(\"id\", \"year\"))\n\n\nmodelsummary(models = list(\"MCO\"=m.mco,\n                           \"MCO, errores agrupados\"=m.mco,\n                           \"Efectos fijos\"=m.fe,\n                           \"Efectos aleatorios\"=m.re),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(NULL,\n                    clubSandwich::vcovCR(m.mco, type='CR1',cluster=data.comp$id),\n                    clubSandwich::vcovCR(m.fe, type='CR1', cluster=data.comp$id),\n                    clubSandwich::vcovCR(m.re, type='CR1', cluster=data.comp$id)),\n          fmt = 5,\n          coef_map = c('self', 'pov'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nMCO, errores agrupados\nEfectos fijos\nEfectos aleatorios\n\n\n\n\nself\n-0.06510***\n-0.06510***\n-0.05150***\n-0.05673***\n\n\n\n(0.01108)\n(0.01369)\n(0.01131)\n(0.01022)\n\n\npov\n0.51581***\n0.51581***\n0.10490\n0.29241***\n\n\n\n(0.07873)\n(0.10496)\n(0.09922)\n(0.08196)\n\n\nNum.Obs.\n1743\n1743\n1743\n1743\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01\n\n\n\n\n\n\n\n\nSi estamos dispuestos a asumir que la heterogeneidad no observada y el error son independientes, podemos emplear el estimador de efectos aleatorios. MCO pooled también es consistente pero no es eficiente."
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#estimador-de-efectos-aleatorios-1",
+    "href": "diapositivas/panel-practica.html#estimador-de-efectos-aleatorios-1",
+    "title": "Datos en panel en R",
+    "section": "Estimador de efectos aleatorios",
+    "text": "Estimador de efectos aleatorios\nSi estamos dispuestos a asumir que la heterogeneidad no observada y el error son independientes, podemos emplear el estimador de efectos aleatorios. MCO pooled también es consistente pero no es eficiente."
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#inclusión-de-características-invariantes-en-el-tiempo",
+    "href": "diapositivas/panel-practica.html#inclusión-de-características-invariantes-en-el-tiempo",
+    "title": "Datos en panel en R",
+    "section": "Inclusión de características invariantes en el tiempo",
+    "text": "Inclusión de características invariantes en el tiempo\nSi deseamos incorporar en el análisis el género (gender).\nSabemos que no es posible estimar los coeficientes sobre variables que no varían en el tiempo usando efectos fijos, por lo que este modelo queda descartado. Podríamos usar MCO pooled, que impone supuestos muy fuertes. La otra alternativa es un modelo de efectos aleatorios, que asume que la heterogeneidad no observada y el error no están correlacionados.\n\n\nm.sex.f &lt;- plm( anti ~ self + pov + gender,\n              data=data.comp,\n              model=\"within\",\n              index = c(\"id\", \"year\"))\n\n\nm.sex.a &lt;- plm( anti ~ self + pov + gender,\n              data=data.comp,\n              model=\"random\",\n              index = c(\"id\", \"year\"))\n\n\nmodelsummary(models = list(\"Efectos aleatorios con género\"=m.sex.f,\n                           \"Efectos aleatorios con género\"=m.sex.a),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(clubSandwich::vcovCR(m.sex.f, type='CR1', cluster=data.comp$id),\n                    clubSandwich::vcovCR(m.sex.a, type='CR1', cluster=data.comp$id)),\n          fmt = 5,\n          coef_map = c('self', 'pov', 'gender'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nEfectos aleatorios con género\nEfectos aleatorios con género\n\n\n\n\nself\n-0.05150***\n-0.05856***\n\n\n\n(0.01131)\n(0.01022)\n\n\npov\n0.10490\n0.30500***\n\n\n\n(0.09922)\n(0.08146)\n\n\ngender\n\n-0.48047***\n\n\n\n\n(0.10710)\n\n\nNum.Obs.\n1743\n1743\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#prueba-de-hausman",
+    "href": "diapositivas/panel-practica.html#prueba-de-hausman",
+    "title": "Datos en panel en R",
+    "section": "Prueba de Hausman",
+    "text": "Prueba de Hausman\nRegresamos al modelo que incluye solo la autoestima y el estado de pobreza como covariables. Realizamos una prueba de Hausman para determinar si se prefiere un modelo de efectos fijos o uno de efectos aleatorios.\nLa implementación de la prueba de Hausman indica que se rechaza la H0 de que los coeficientes estimados son iguales (y que el modelo de efectos aleatorios es el adecuado). Hay evidencia de que se prefiere un modelo de efectos fijos, aunque tendremos que vivir con el hecho de no poder estimar el coeficiente asociado a las variables que no varían en el tiempo en este caso.\n\n\nphtest(m.fe, m.re)\n\n\n\n    Hausman Test\n\ndata:  anti ~ self + pov\nchisq = 13.578, df = 2, p-value = 0.001126\nalternative hypothesis: one model is inconsistent"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#equivalencia-de-estimadores",
+    "href": "diapositivas/panel-practica.html#equivalencia-de-estimadores",
+    "title": "Datos en panel en R",
+    "section": "Equivalencia de estimadores",
+    "text": "Equivalencia de estimadores\nComprobamos que el estimador de efectos fijos es equivalente a MCO con dummies de individuos.\n\n\nm.fe &lt;- plm( anti ~ self + pov,\n             data=data.comp,\n             model=\"within\",\n             index = c(\"id\", \"year\"))\n    \nm.dummy &lt;- lm(anti ~ self + pov + factor(id),\n              data=data.comp)\n\n\nmodelsummary(models = list(\"MCO\"=m.fe,\n                           \"MCO con dummies\"=m.dummy),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(clubSandwich::vcovCR(m.fe, type='CR1',cluster=data.comp$id),\n                    clubSandwich::vcovCR(m.dummy, type='CR1',cluster=data.comp$id)),\n          fmt = 5,\n          coef_map = c('self', 'pov'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nMCO con dummies\n\n\n\n\nself\n-0.05150***\n-0.05150***\n\n\n\n(0.01131)\n(0.01131)\n\n\npov\n0.10490\n0.10490\n\n\n\n(0.09922)\n(0.09922)\n\n\nNum.Obs.\n1743\n1743\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#equivalencia-de-estimadores-1",
+    "href": "diapositivas/panel-practica.html#equivalencia-de-estimadores-1",
+    "title": "Datos en panel en R",
+    "section": "Equivalencia de estimadores",
+    "text": "Equivalencia de estimadores\nComprobamos que el estimador de efectos fijos es equivalente a MCO con dummies de individuos.\n\n\nm.fe &lt;- plm( anti ~ self + pov,\n             data=data.comp,\n             model=\"within\",\n             index = c(\"id\", \"year\"))\n    \nm.dummy &lt;- lm(anti ~ self + pov + factor(id),\n              data=data.comp)\n\n\nmodelsummary(models = list(\"MCO\"=m.fe,\n                           \"MCO con dummies\"=m.dummy),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(clubSandwich::vcovCR(m.fe, type='CR1',cluster=data.comp$id),\n                    clubSandwich::vcovCR(m.dummy, type='CR1',cluster=data.comp$id)),\n          fmt = 5,\n          coef_map = c('self', 'pov'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nMCO con dummies\n\n\n\n\nself\n-0.05150***\n-0.05150***\n\n\n\n(0.01131)\n(0.01131)\n\n\npov\n0.10490\n0.10490\n\n\n\n(0.09922)\n(0.09922)\n\n\nNum.Obs.\n1743\n1743\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#equivalencia-de-estimadores-2",
+    "href": "diapositivas/panel-practica.html#equivalencia-de-estimadores-2",
+    "title": "Datos en panel en R",
+    "section": "Equivalencia de estimadores",
+    "text": "Equivalencia de estimadores\nComprobamos que en un modelo de efectos fijos las características que no varían en el tiempo no pueden ser identificadas. Añadimos la variable black para comprobarlo.\n\n\nsummary(plm( anti ~ self + pov + black,\n             data=data.comp,\n             model=\"within\",\n             index = c(\"id\", \"year\")))\n\n\nOneway (individual) effect Within Model\n\nCall:\nplm(formula = anti ~ self + pov + black, data = data.comp, model = \"within\", \n    index = c(\"id\", \"year\"))\n\nBalanced Panel: n = 581, T = 3, N = 1743\n\nResiduals:\n      Min.    1st Qu.     Median    3rd Qu.       Max. \n-3.7868224 -0.4706542 -0.0012721  0.4534891  3.2646729 \n\nCoefficients:\n      Estimate Std. Error t-value  Pr(&gt;|t|)    \nself -0.051495   0.010530 -4.8902 1.149e-06 ***\npov   0.104899   0.093880  1.1174    0.2641    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nTotal Sum of Squares:    1190.7\nResidual Sum of Squares: 1165.4\nR-Squared:      0.021182\nAdj. R-Squared: -0.46991\nF-statistic: 12.5514 on 2 and 1160 DF, p-value: 4.0471e-06"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#equivalencia-de-estimadores-3",
+    "href": "diapositivas/panel-practica.html#equivalencia-de-estimadores-3",
+    "title": "Datos en panel en R",
+    "section": "Equivalencia de estimadores",
+    "text": "Equivalencia de estimadores\nComprobamos que el estimador de efectos fijos es equivalente a MCO sobre el modelo en diferencias con respecto a la media. Para esto, conservamos dos periodos consecutivos de datos y solo observaciones que tengan datos para las variables dependientes e independientes en los dos años que elija. Luego estimamos por MCO el modelo con variables transformadas.\n\n\ndata.comp.sub &lt;- data.comp %&gt;% \n  dplyr::select(id, year, anti, self, pov) %&gt;% \n  filter(year==90 | year==92)\n\n#Nos quedamos con los que no son NA\ndata.comp.sub &lt;- data.comp.sub[complete.cases(data.comp.sub), ]"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#equivalencia-de-estimadores-4",
+    "href": "diapositivas/panel-practica.html#equivalencia-de-estimadores-4",
+    "title": "Datos en panel en R",
+    "section": "Equivalencia de estimadores",
+    "text": "Equivalencia de estimadores\nCreamos las variables como diferencias respecto a la media y estimamos el modelo within y el modelo de MCO en las variables transformadas:\n\n\ndata.comp.sub &lt;- data.comp.sub %&gt;%\n  group_by(id) %&gt;% \n  mutate(m.anti = mean(anti),\n         m.self = mean(self),\n         m.pov = mean(pov)) %&gt;% \n  mutate(dm.anti = anti - m.anti,\n         dm.self = self - m.self,\n         dm.pov = pov - m.pov)\n\nm.fe.sub &lt;- plm( anti ~ self + pov,\n                 data=data.comp.sub,\n                 model=\"within\",\n                 index = c(\"id\", \"year\"))\n \n    \nm.demean &lt;- lm(dm.anti ~ dm.self + dm.pov,\n               data.comp.sub)\n\n\nmodelsummary(models = list(\"Efectos fijos\"=m.fe.sub,\n                           \"MCO demean\"=m.demean),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(clubSandwich::vcovCR(m.fe.sub, type='CR1',cluster=data.comp.sub$id),\n                    clubSandwich::vcovCR(m.demean, type='CR1',cluster=data.comp.sub$id)),\n          fmt = 5,\n          coef_map = c('self', 'pov', 'dm.self', 'dm.pov'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nEfectos fijos\nMCO demean\n\n\n\n\nself\n-0.03835**\n\n\n\n\n(0.01487)\n\n\n\npov\n0.19469\n\n\n\n\n(0.14506)\n\n\n\ndm.self\n\n-0.03835**\n\n\n\n\n(0.01487)\n\n\ndm.pov\n\n0.19469\n\n\n\n\n(0.14506)\n\n\nNum.Obs.\n1162\n1162\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#estructura-de-los-datos",
+    "href": "diapositivas/panel-practica.html#estructura-de-los-datos",
+    "title": "Datos en panel en R",
+    "section": "Estructura de los datos",
+    "text": "Estructura de los datos\nTomamos los datos mlbook1.csv con información sobre 2287 estudiantes en 131 escuelas. Nos interesa la relación entre una medida de aptitud verbal, (iq_vert) y el resultado de un examen de inglés (langpost). Las variables schoolnr y pupilnr identifican a las escuelas y los estudiantes, respectivamente. El modelo a estimar es el siguiente:\n\\[langpost_{i}=\\alpha+\\beta iqvert_{i}+BX_{i}+\\varepsilon_{i}\\]\ndonde \\(i\\) indexa y \\(X_i\\) son tres características usadas como control: el sexo, sex, si el estudiante es de una población minoritaria, minority y el número de años repetidos, repeatgr.\nEs muy posible que estemos ante un problema de errores agrupados pues los datos están agrupados a nivel escuela. Los estudiantes en una misma escuela comparten características observadas y no observadas que hacen altamente probable que los factores no observables estén correlacionados entre los individuos, rompiendo el supuesto de independencia."
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#errores-clásicos",
+    "href": "diapositivas/panel-practica.html#errores-clásicos",
+    "title": "Datos en panel en R",
+    "section": "Errores clásicos",
+    "text": "Errores clásicos\nEstimamos la ecuación de calificación usando MCO ignorando la agrupación de datos.\nSe concluye que una hora más en la prueba de aptitud incrementa en 2.49 puntos la calificación del examen. El error estándar es 0.072.\n\n\ndata.examen&lt;-read_csv(\"../files/mlbook1.csv\",\n                      locale = locale(encoding = \"latin1\")) \n\nm.mco &lt;- lm(langpost ~ iq_verb + sex + minority + repeatgr,\n            data=data.examen)\n\n\n\nmodelsummary(models = list(\"MCO\"=m.mco),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(NULL),\n          fmt = 5,\n          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\n\n\n\n\niq_verb\n2.48635***\n\n\n\n(0.07233)\n\n\nsex\n2.42228***\n\n\n\n(0.28871)\n\n\nminority\n-0.03701\n\n\n\n(0.62762)\n\n\nrepeatgr\n-4.40860***\n\n\n\n(0.43222)\n\n\nNum.Obs.\n2287\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#errores-robustos",
+    "href": "diapositivas/panel-practica.html#errores-robustos",
+    "title": "Datos en panel en R",
+    "section": "Errores robustos",
+    "text": "Errores robustos\nEstimamos ahora los errores robustos a heteroscedasticidad del tipo HC1.\nEl coeficiente estimado es el mismo. La fórmula empleada para calcular la varianza es una en forma de sándwich, que toma en cuenta la posible heterocedasticidad. El error estándar es apromximadamente 5% más grande, 0.076.\n\n\nmodelsummary(models = list(\"MCO\"=m.mco,\n                           \"MCO, errores robustos\"=m.mco),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(NULL,\n                    \"HC1\"),\n          fmt = 5,\n          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nMCO, errores robustos\n\n\n\n\niq_verb\n2.48635***\n2.48635***\n\n\n\n(0.07233)\n(0.07587)\n\n\nsex\n2.42228***\n2.42228***\n\n\n\n(0.28871)\n(0.28852)\n\n\nminority\n-0.03701\n-0.03701\n\n\n\n(0.62762)\n(0.61245)\n\n\nrepeatgr\n-4.40860***\n-4.40860***\n\n\n\n(0.43222)\n(0.44862)\n\n\nNum.Obs.\n2287\n2287\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#equivalencia-de-estimadores-5",
+    "href": "diapositivas/panel-practica.html#equivalencia-de-estimadores-5",
+    "title": "Datos en panel en R",
+    "section": "Equivalencia de estimadores",
+    "text": "Equivalencia de estimadores\nComprobamos que el estimador de efectos fijos es equivalente a MCO sobre el modelo en primeras diferencias. Partimos de la muestra con dos años de la parte d. para estimar por MCO el modelo con variables transformadas.\n\n\ndata.comp.sub &lt;- data.comp.sub %&gt;%\n  group_by(id) %&gt;% \n  mutate(d.anti = anti-dplyr::lag(anti, order_by = year),\n         d.self = self-dplyr::lag(self, order_by = year),\n         d.pov = pov-dplyr::lag(pov, order_by = year)) %&gt;% \n  ungroup()\n\n\nm.difs &lt;- lm(d.anti ~ -1 + d.self + d.pov,\n             data=data.comp.sub)\n\n\n\nmodelsummary(models = list(\"Efectos fijos\"=m.fe.sub,\n                           \"MCO demean\"=m.demean,\n                           \"MCO primeras diferencias\"=m.difs),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(clubSandwich::vcovCR(m.fe.sub, type='CR1',cluster=data.comp.sub$id),\n                    clubSandwich::vcovCR(m.demean, type='CR1',cluster=data.comp.sub$id),\n                    clubSandwich::vcovCR(m.difs, type='CR1',cluster=data.comp.sub$id)),\n          fmt = 5,\n          coef_map = c('self', 'pov', 'dm.self', 'dm.pov', 'd.self', 'd.pov'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nEfectos fijos\nMCO demean\nMCO primeras diferencias\n\n\n\n\nself\n-0.03835**\n\n\n\n\n\n(0.01487)\n\n\n\n\npov\n0.19469\n\n\n\n\n\n(0.14506)\n\n\n\n\ndm.self\n\n-0.03835**\n\n\n\n\n\n(0.01487)\n\n\n\ndm.pov\n\n0.19469\n\n\n\n\n\n(0.14506)\n\n\n\nd.self\n\n\n-0.03835**\n\n\n\n\n\n(0.01487)\n\n\nd.pov\n\n\n0.19469\n\n\n\n\n\n(0.14506)\n\n\nNum.Obs.\n1162\n1162\n581\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#errores-agrupados",
+    "href": "diapositivas/panel-practica.html#errores-agrupados",
+    "title": "Datos en panel en R",
+    "section": "Errores agrupados",
+    "text": "Errores agrupados\nEstimamos la ecuación de calificación usando MCO y con errores agrupados a nivel escuela (sin efectos fijos de escuela).\nAl estimar los errores agrupados y robustos a heterocedasticidad se toma en cuenta la correlación que existe en los errores dentro de cada escuela. Los errores agrupados estimados con la opción cluster asumen correlación de errores dentro del grupo, pero no entre grupos. Con respecto a las partes b. y c., el error estándar asociado al tiempo dedicado a la tarea es aproximadamente 20% mayor. Este es un ejemplo típico en el que los errores agrupados se inflan con respecto a los errores de MCO clásicos y los errores robustos.\n\n\nmodelsummary(models = list(\"MCO\"=m.mco,\n                           \"MCO, errores robustos\"=m.mco,\n                           \"Efectos fijos\"=m.mco.ef,\n                           \"MCO, errores agrupados\"=m.mco),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(NULL,\n                    \"HC1\",\n                    \"HC1\",\n                    clubSandwich::vcovCR(m.mco, type='CR1',cluster=data.examen$schoolnr)),\n          fmt = 5,\n          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nMCO, errores robustos\nEfectos fijos\nMCO, errores agrupados\n\n\n\n\niq_verb\n2.48635***\n2.48635***\n2.25997***\n2.48635***\n\n\n\n(0.07233)\n(0.07587)\n(0.07310)\n(0.08986)\n\n\nsex\n2.42228***\n2.42228***\n2.41900***\n2.42228***\n\n\n\n(0.28871)\n(0.28852)\n(0.26990)\n(0.28436)\n\n\nminority\n-0.03701\n-0.03701\n0.23262\n-0.03701\n\n\n\n(0.62762)\n(0.61245)\n(0.70803)\n(0.85396)\n\n\nrepeatgr\n-4.40860***\n-4.40860***\n-4.43503***\n-4.40860***\n\n\n\n(0.43222)\n(0.44862)\n(0.42731)\n(0.39547)\n\n\nNum.Obs.\n2287\n2287\n2287\n2287\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#errores-agrupados-1",
+    "href": "diapositivas/panel-practica.html#errores-agrupados-1",
+    "title": "Datos en panel en R",
+    "section": "Errores agrupados",
+    "text": "Errores agrupados\nNota: es posible que los errores agrupados sean menores que los errores de MCO. Para ver eso, considere un modelo simple con datos agrupados de la forma siguiente: \\[y_{ig=\\alpha+\\beta x_{ig}+u_{ig}}\\] donde \\(x_{ig}\\) es un regresor escalar.\nSe asume que el tamaño promedio de los grupos es \\(\\bar{N}_g\\). Moulton (1990) muestra que el error estándar de MCO esta sesgado hacia abajo por una cantidad igual a la raíz de \\(\\tau \\approx 1 +\\rho_x \\rho_u (\\bar{N}_g-1)\\), donde \\(\\rho_x\\) es la correlación dentro de los grupos de \\(x\\) y \\(\\rho_u\\) es la correlación dentro de los grupos de los errores. Esto implica que para obtener el error correcto que toma en cuenta la agrupación hay que multiplicar el error de MCO por la raíz de \\(\\tau\\). Sin embargo, note que dependiendo del signo y la magnitud de \\(\\rho_x\\) y \\(\\rho_u\\), la raíz de \\(\\tau\\) puede llegar a ser menor que 1 y, por tanto, el error agrupado puede llegar a ser menor que el de MCO. \\(\\tau\\) se conoce como el factor de Moulton y puede ser extendido para un modelo más complicado. La intuición funciona de manera similar para un modelo más complicado: todo depende de las correlaciones entre grupos de los regresores y la correlación de los errores."
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#estimador-de-efectos-fijos-y-errores-agrupados",
+    "href": "diapositivas/panel-practica.html#estimador-de-efectos-fijos-y-errores-agrupados",
+    "title": "Datos en panel en R",
+    "section": "Estimador de efectos fijos y errores agrupados",
+    "text": "Estimador de efectos fijos y errores agrupados\nEstimamos la ecuación de calificación usando MCO, efectos fijos de escuela y con errores agrupados a nivel escuela.\nAl controlar por características no observadas de las escuelas empleando efectos fijos por escuela y además estimando los errores que toman en cuenta la estructura agrupada de los errores obtenemos un coeficiente estimado de 2.26, pero con un error estándar mayor, 0.08879.\n\n\nmodelsummary(models = list(\"MCO\"=m.mco,\n                           \"MCO, errores robustos\"=m.mco,\n                           \"Efectos fijos\"=m.mco.ef,\n                           \"MCO, errores agrupados\"=m.mco,\n                           \"Efectos fijos, errores agrupados\"=m.mco.ef),\n          output = 'gt',\n          stars = c('***' = .01, '**' = .05, '*' = 0.1),\n          vcov=list(NULL,\n                    \"HC1\",\n                    \"HC1\",\n                    clubSandwich::vcovCR(m.mco, type='CR1',cluster=data.examen$schoolnr),\n                    clubSandwich::vcovCR(m.mco.ef, type='CR1',cluster=data.examen$schoolnr)),\n          fmt = 5,\n          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),\n          gof_map = \"nobs\")\n\n\n\n\n\n\n\n\n\nMCO\nMCO, errores robustos\nEfectos fijos\nMCO, errores agrupados\nEfectos fijos, errores agrupados\n\n\n\n\niq_verb\n2.48635***\n2.48635***\n2.25997***\n2.48635***\n2.25997***\n\n\n\n(0.07233)\n(0.07587)\n(0.07310)\n(0.08986)\n(0.08879)\n\n\nsex\n2.42228***\n2.42228***\n2.41900***\n2.42228***\n2.41900***\n\n\n\n(0.28871)\n(0.28852)\n(0.26990)\n(0.28436)\n(0.27519)\n\n\nminority\n-0.03701\n-0.03701\n0.23262\n-0.03701\n0.23262\n\n\n\n(0.62762)\n(0.61245)\n(0.70803)\n(0.85396)\n(0.69585)\n\n\nrepeatgr\n-4.40860***\n-4.40860***\n-4.43503***\n-4.40860***\n-4.43503***\n\n\n\n(0.43222)\n(0.44862)\n(0.42731)\n(0.39547)\n(0.39617)\n\n\nNum.Obs.\n2287\n2287\n2287\n2287\n2287\n\n\n\n* p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#datos-en-panel",
+    "href": "diapositivas/panel-practica.html#datos-en-panel",
+    "title": "Datos en panel en R",
+    "section": "Datos en panel",
+    "text": "Datos en panel\nTrabajaremos con los datos comportamiento_wide.csv, que contienen información individual de niñas y niños, incluyendo su género, edad, raza e información de sus madres. Además, se incluye una medida auto reportada de autoestima (self) y una evaluación de comportamiento antisocial (anti). Se quiere conocer cómo influye la autoestima en el comportamiento antisocial. Para cada niño o niña hay tres observaciones en el tiempo. Se busca explicar el comportamiento antisocial en función de la autoestima y la condición de pobreza (pov): \\[anti_{it}=\\alpha_i+\\beta_1 self_{it}+\\beta_2 pov_{it}+\\varepsilon_{it}\\]"
+  },
+  {
+    "objectID": "diapositivas/panel-practica.html#datos-en-panel-1",
+    "href": "diapositivas/panel-practica.html#datos-en-panel-1",
+    "title": "Datos en panel en R",
+    "section": "Datos en panel",
+    "text": "Datos en panel\nLa base se encuentra en formato wide. Ponemos la base en formato long, donde haya una columna para cada variable y donde las filas representen a un individuo en un periodo.\n\ndata.comp &lt;-read_csv(\"../files/comportamiento_wide.csv\",\n                      locale = locale(encoding = \"latin1\"))\ncolnames(data.comp)\n\n [1] \"id\"       \"momage\"   \"anti90\"   \"anti92\"   \"anti94\"   \"gender\"  \n [7] \"childage\" \"hispanic\" \"black\"    \"momwork\"  \"married\"  \"self90\"  \n[13] \"self92\"   \"self94\"   \"pov90\"    \"pov92\"    \"pov94\"   \n\n\nLa base transformada:\n\ndata.comp &lt;- data.comp %&gt;% \n  pivot_longer(c(anti90:anti94,self90:self94,pov90:pov94),\n               names_to = c(\"measure\", \"year\"),\n               names_pattern = \"(.*)(..)\")  %&gt;%\n  pivot_wider(names_from = measure,\n              values_from = value)\n    \ncolnames(data.comp)\n\n [1] \"id\"       \"momage\"   \"gender\"   \"childage\" \"hispanic\" \"black\"   \n [7] \"momwork\"  \"married\"  \"year\"     \"anti\"     \"self\"     \"pov\""
   }
 ]

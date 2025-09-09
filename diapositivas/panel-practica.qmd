@@ -1,0 +1,481 @@
+---
+title: "Datos en panel en R"
+author: "Irvin Rojas"
+format: 
+  revealjs:
+    slide-number: c/t
+    width: 1600
+    height: 900
+---
+
+```{r setup}
+#| echo: false
+#| warning: false 
+#| message: false
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+
+
+library(tidyverse)
+library(janitor)
+library(sandwich)
+library(clubSandwich)
+library(plm)
+library(modelsummary)
+library(lmtest)
+library(AER)
+library(Rxtsum)
+
+```
+
+
+## Datos en panel
+
+
+Trabajaremos con los datos *comportamiento_wide.csv*, que contienen información individual de niñas y niños, incluyendo su género, edad, raza e información de sus madres. Además, se incluye una medida auto reportada de autoestima (**self**) y una evaluación de comportamiento antisocial (**anti**). Se quiere conocer cómo influye la autoestima en el comportamiento antisocial. Para cada niño o niña hay tres observaciones en el tiempo. Se busca explicar el comportamiento antisocial en función de la autoestima y la condición de pobreza (**pov**): $$anti_{it}=\alpha_i+\beta_1 self_{it}+\beta_2 pov_{it}+\varepsilon_{it}$$
+
+
+
+## Datos en panel
+
+La base se encuentra en formato *wide*. Ponemos la base en formato *long*, donde haya una columna para cada variable y donde las filas representen a un individuo en un periodo.
+
+```{r}
+data.comp <-read_csv("../files/comportamiento_wide.csv",
+                      locale = locale(encoding = "latin1"))
+colnames(data.comp)
+```
+
+La base transformada:
+
+```{r}
+data.comp <- data.comp %>% 
+  pivot_longer(c(anti90:anti94,self90:self94,pov90:pov94),
+               names_to = c("measure", "year"),
+               names_pattern = "(.*)(..)")  %>%
+  pivot_wider(names_from = measure,
+              values_from = value)
+    
+colnames(data.comp)
+```
+
+
+# Estimadores para modelos de datos en panel
+
+## Estimador de MCO
+
+Estimamos la ecuación de comportamiento antisocial empleando MCO *pooled*. 
+
+```{r}
+#| output-location: column 
+m.mco <- plm( anti ~ self + pov,
+                      data=data.comp,
+                      model="pooling",
+                      index = c("id", "year"))
+
+
+
+modelsummary(models = list("MCO"=m.mco),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov = c("iid"),
+          fmt = 5,
+          coef_map = c('self', 'pov'),
+          gof_map = "nobs")
+```
+
+La variable self tiene un efecto negativo y estadísticamente significativo sobre anti. La variable pov tiene un efecto positivo y estadísticamente significativo. El estimador de MCO será consistente solo si las variables self y pov no están correlacionadas con el error. Además, para estimar este modelo, asumimos que la heterogeneidad no observada $\alpha_i$ puede escribirse simplemente como $\alpha$. Otra forma de pensar sobre este modelo es si el mismo modelo es válido para todos los periodos como para asumir una ordenada al origen y una pendiente común.
+
+## Estimador de MCO y errores agrupados
+   
+El modelo pooled ignora la naturaleza en panel de los datos. Sin embargo, como tenemos a los mismos individuos en varios puntos del tiempo, los errores están agrupados, así que se deben de estimar errores con esta estructura. En este caso, al tomar en cuenta esta correlación entre individuos, los errores estándar son más grandes, pero los resultados siguen siendo significativos. En muchos casos, no tomar en cuenta la estructura agrupada de los errores puede llevar a rechazar hipótesis nulas que son ciertas.
+
+```{r}
+#| output-location: column 
+
+modelsummary(models = list("MCO"=m.mco,
+                           "MCO, errores agrupados"=m.mco),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(NULL, clubSandwich::vcovCR(m.mco, type='CR1', cluster=data.comp$id)),
+          fmt = 5,
+          coef_map = c('self', 'pov'),
+          gof_map = "nobs")
+
+```   
+
+## Estimador de efectos fijos
+
+Estimamos la ecuación de comportamiento antisocial empleando el estimador *within*.
+
+```{r}
+#| output-location: column 
+
+m.fe <- plm( anti ~ self + pov,
+             data=data.comp,
+             model="within",
+             index = c("id", "year"))
+
+modelsummary(models = list("MCO"=m.mco,
+                           "MCO, errores agrupados"=m.mco,
+                           "Efectos fijos"=m.fe),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(NULL, clubSandwich::vcovCR(m.mco, type='CR1', cluster=data.comp$id), clubSandwich::vcovCR(m.fe, type='CR1', cluster=data.comp$id)),
+          fmt = 5,
+          coef_map = c('self', 'pov'),
+          gof_map = "nobs")
+
+```  
+
+Si asumimos que la heterogeneidad no observada y el error están potencialmente correlacionados, entonces podemos usar un estimador de efectos fijos para deshacernos de la heterogeneidad no observada y estimar consistentemente los parámetros sobre self y pov.
+
+
+## Estimador de efectos aleatorios
+
+Estimamos la ecuación de comportamiento antisocial empleando efectos aleatorios.
+
+```{r}
+#| output-location: column 
+
+
+m.re <- plm( anti ~ self + pov,
+             data=data.comp,
+             model="random",
+             index = c("id", "year"))
+
+
+modelsummary(models = list("MCO"=m.mco,
+                           "MCO, errores agrupados"=m.mco,
+                           "Efectos fijos"=m.fe,
+                           "Efectos aleatorios"=m.re),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(NULL,
+                    clubSandwich::vcovCR(m.mco, type='CR1',cluster=data.comp$id),
+                    clubSandwich::vcovCR(m.fe, type='CR1', cluster=data.comp$id),
+                    clubSandwich::vcovCR(m.re, type='CR1', cluster=data.comp$id)),
+          fmt = 5,
+          coef_map = c('self', 'pov'),
+          gof_map = "nobs")
+```  
+
+Si estamos dispuestos a asumir que la heterogeneidad no observada y el error son independientes, podemos emplear el estimador de efectos aleatorios. MCO pooled también es consistente pero no es eficiente.
+
+
+## Inclusión de características invariantes en el tiempo
+
+Si deseamos incorporar en el análisis el género (**gender**).
+
+Sabemos que no es posible estimar los coeficientes sobre variables que no varían en el tiempo usando efectos fijos, por lo que este modelo queda descartado. Podríamos usar MCO pooled, que impone supuestos muy fuertes. La otra alternativa es un modelo de efectos aleatorios, que asume que la heterogeneidad no observada y el error no están correlacionados.
+
+```{r}
+#| output-location: column 
+
+m.sex.f <- plm( anti ~ self + pov + gender,
+              data=data.comp,
+              model="within",
+              index = c("id", "year"))
+
+
+m.sex.a <- plm( anti ~ self + pov + gender,
+              data=data.comp,
+              model="random",
+              index = c("id", "year"))
+
+
+modelsummary(models = list("Efectos aleatorios con género"=m.sex.f,
+                           "Efectos aleatorios con género"=m.sex.a),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(clubSandwich::vcovCR(m.sex.f, type='CR1', cluster=data.comp$id),
+                    clubSandwich::vcovCR(m.sex.a, type='CR1', cluster=data.comp$id)),
+          fmt = 5,
+          coef_map = c('self', 'pov', 'gender'),
+          gof_map = "nobs")
+```  
+
+## Prueba de Hausman
+
+Regresamos al modelo que incluye solo la autoestima y el estado de pobreza como covariables. Realizamos una prueba de Hausman para determinar si se prefiere un modelo de efectos fijos o uno de efectos aleatorios.
+
+La implementación de la prueba de Hausman indica que se rechaza la H0 de que los coeficientes estimados son iguales (y que el modelo de efectos aleatorios es el adecuado). Hay evidencia de que se prefiere un modelo de efectos fijos, aunque tendremos que vivir con el hecho de no poder estimar el coeficiente asociado a las variables que no varían en el tiempo en este caso.
+    
+```{r}
+#| output-location: column 
+
+phtest(m.fe, m.re)
+```  
+
+
+# Equivalencia de estimadores
+
+## Equivalencia de estimadores
+
+Comprobamos que el estimador de efectos fijos es equivalente a MCO con dummies de individuos.
+
+```{r}
+#| output-location: column 
+
+m.fe <- plm( anti ~ self + pov,
+             data=data.comp,
+             model="within",
+             index = c("id", "year"))
+    
+m.dummy <- lm(anti ~ self + pov + factor(id),
+              data=data.comp)
+
+
+modelsummary(models = list("MCO"=m.fe,
+                           "MCO con dummies"=m.dummy),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(clubSandwich::vcovCR(m.fe, type='CR1',cluster=data.comp$id),
+                    clubSandwich::vcovCR(m.dummy, type='CR1',cluster=data.comp$id)),
+          fmt = 5,
+          coef_map = c('self', 'pov'),
+          gof_map = "nobs")
+```      
+
+## Equivalencia de estimadores
+
+Comprobamos que en un modelo de efectos fijos las características que no varían en el tiempo no pueden ser identificadas. Añadimos la variable **black** para comprobarlo.
+
+
+```{r include=T, echo=T, eval=T}
+#| output-location: column 
+
+summary(plm( anti ~ self + pov + black,
+             data=data.comp,
+             model="within",
+             index = c("id", "year")))
+
+```  
+
+## Equivalencia de estimadores
+
+Comprobamos que el estimador de efectos fijos es equivalente a MCO sobre el modelo en diferencias con respecto a la media. Para esto, conservamos dos periodos consecutivos de datos y solo observaciones que tengan datos para las variables dependientes e independientes en los dos años que elija. Luego estimamos por MCO el modelo con variables transformadas.
+
+```{r}
+#| output-location: column 
+
+data.comp.sub <- data.comp %>% 
+  dplyr::select(id, year, anti, self, pov) %>% 
+  filter(year==90 | year==92)
+
+#Nos quedamos con los que no son NA
+data.comp.sub <- data.comp.sub[complete.cases(data.comp.sub), ]
+```  
+
+## Equivalencia de estimadores
+
+Creamos las variables como diferencias respecto a la media y estimamos el modelo within y el modelo de MCO en las variables transformadas:
+
+```{r}
+#| output-location: column 
+
+data.comp.sub <- data.comp.sub %>%
+  group_by(id) %>% 
+  mutate(m.anti = mean(anti),
+         m.self = mean(self),
+         m.pov = mean(pov)) %>% 
+  mutate(dm.anti = anti - m.anti,
+         dm.self = self - m.self,
+         dm.pov = pov - m.pov)
+
+m.fe.sub <- plm( anti ~ self + pov,
+                 data=data.comp.sub,
+                 model="within",
+                 index = c("id", "year"))
+ 
+    
+m.demean <- lm(dm.anti ~ dm.self + dm.pov,
+               data.comp.sub)
+
+
+modelsummary(models = list("Efectos fijos"=m.fe.sub,
+                           "MCO demean"=m.demean),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(clubSandwich::vcovCR(m.fe.sub, type='CR1',cluster=data.comp.sub$id),
+                    clubSandwich::vcovCR(m.demean, type='CR1',cluster=data.comp.sub$id)),
+          fmt = 5,
+          coef_map = c('self', 'pov', 'dm.self', 'dm.pov'),
+          gof_map = "nobs")
+```  
+
+## Equivalencia de estimadores
+
+Comprobamos que el estimador de efectos fijos es equivalente a MCO sobre el modelo en primeras diferencias. Partimos de la muestra con dos años de la parte d. para estimar por MCO el modelo con variables transformadas.
+
+```{r}
+#| output-location: column 
+
+data.comp.sub <- data.comp.sub %>%
+  group_by(id) %>% 
+  mutate(d.anti = anti-dplyr::lag(anti, order_by = year),
+         d.self = self-dplyr::lag(self, order_by = year),
+         d.pov = pov-dplyr::lag(pov, order_by = year)) %>% 
+  ungroup()
+
+
+m.difs <- lm(d.anti ~ -1 + d.self + d.pov,
+             data=data.comp.sub)
+
+
+
+modelsummary(models = list("Efectos fijos"=m.fe.sub,
+                           "MCO demean"=m.demean,
+                           "MCO primeras diferencias"=m.difs),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(clubSandwich::vcovCR(m.fe.sub, type='CR1',cluster=data.comp.sub$id),
+                    clubSandwich::vcovCR(m.demean, type='CR1',cluster=data.comp.sub$id),
+                    clubSandwich::vcovCR(m.difs, type='CR1',cluster=data.comp.sub$id)),
+          fmt = 5,
+          coef_map = c('self', 'pov', 'dm.self', 'dm.pov', 'd.self', 'd.pov'),
+          gof_map = "nobs")
+```  
+
+# Errores estándar
+
+## Estructura de los datos
+
+Tomamos los datos *mlbook1.csv* con información sobre 2287 estudiantes en 131 escuelas. Nos interesa la relación entre una medida de aptitud verbal,  (**iq_vert**) y el resultado de un examen de inglés (**langpost**). Las variables **schoolnr** y **pupilnr** identifican a las escuelas y los estudiantes, respectivamente. El modelo a estimar es el siguiente: 
+
+$$langpost_{i}=\alpha+\beta iqvert_{i}+BX_{i}+\varepsilon_{i}$$
+
+donde $i$ indexa y $X_i$ son tres características usadas como control: el sexo, **sex**, si el estudiante es de una población minoritaria, **minority** y el número de años repetidos, **repeatgr**.
+
+Es muy posible que estemos ante un problema de errores agrupados pues los datos están agrupados a nivel escuela. Los estudiantes en una misma escuela comparten características observadas y no observadas que hacen altamente probable que los factores no observables estén correlacionados entre los individuos, rompiendo el supuesto de independencia.
+
+## Errores clásicos
+
+Estimamos la ecuación de calificación usando MCO ignorando la agrupación de datos.
+
+Se concluye que una hora más en la prueba de aptitud incrementa en 2.49 puntos la calificación del examen. El error estándar es 0.072.
+
+```{r}
+#| output-location: column 
+
+data.examen<-read_csv("../files/mlbook1.csv",
+                      locale = locale(encoding = "latin1")) 
+
+m.mco <- lm(langpost ~ iq_verb + sex + minority + repeatgr,
+            data=data.examen)
+
+
+
+modelsummary(models = list("MCO"=m.mco),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(NULL),
+          fmt = 5,
+          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),
+          gof_map = "nobs")
+```   
+
+## Errores robustos
+
+Estimamos ahora los errores robustos a heteroscedasticidad del tipo HC1.
+
+El coeficiente estimado es el mismo. La fórmula empleada para calcular la varianza es una en forma de sándwich, que toma en cuenta la posible heterocedasticidad. El error estándar es apromximadamente 5% más grande, 0.076.
+    
+```{r}
+#| output-location: column 
+
+modelsummary(models = list("MCO"=m.mco,
+                           "MCO, errores robustos"=m.mco),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(NULL,
+                    "HC1"),
+          fmt = 5,
+          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),
+          gof_map = "nobs")
+```  
+
+## Estimador de efectos fijos
+
+Estimamos la ecuación de calificación usando MCO y efectos fijos de escuela.
+
+Al incluir efectos fijos a nivel escuela controlamos por características no observadas a nivel escuela. Estas diferencias se incorporan en el modelo como desplazamientos de la ordenada al origen. Este procedimiento no tiene nada que ver con la agrupación de errores.
+    
+```{r}
+#| output-location: column 
+
+m.mco.ef <- lm(langpost ~ iq_verb + sex + minority + repeatgr + factor(schoolnr),
+               data=data.examen)
+
+modelsummary(models = list("MCO"=m.mco,
+                           "MCO, errores robustos"=m.mco,
+                           "Efectos fijos"=m.mco.ef),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(NULL,
+                    "HC1",
+                    "HC1"),
+          fmt = 5,
+          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),
+          gof_map = "nobs")
+```  
+
+## Errores agrupados
+
+Estimamos la ecuación de calificación usando MCO y con errores agrupados a nivel escuela (sin efectos fijos de escuela).
+
+Al estimar los errores agrupados y robustos a heterocedasticidad se toma en cuenta la correlación que existe en los errores dentro de cada escuela. Los errores agrupados estimados con la opción cluster asumen correlación de errores dentro del grupo, pero no entre grupos. Con respecto a las partes b. y c., el error estándar asociado al tiempo dedicado a la tarea es aproximadamente 20% mayor. Este es un ejemplo típico en el que los errores agrupados se inflan con respecto a los errores de MCO clásicos y los errores robustos.
+
+    
+```{r}
+#| output-location: column 
+
+modelsummary(models = list("MCO"=m.mco,
+                           "MCO, errores robustos"=m.mco,
+                           "Efectos fijos"=m.mco.ef,
+                           "MCO, errores agrupados"=m.mco),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(NULL,
+                    "HC1",
+                    "HC1",
+                    clubSandwich::vcovCR(m.mco, type='CR1',cluster=data.examen$schoolnr)),
+          fmt = 5,
+          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),
+          gof_map = "nobs")
+``` 
+  
+## Errores agrupados
+
+Nota: es posible que los errores agrupados sean menores que los errores de MCO. Para ver eso, considere un modelo simple con datos agrupados de la forma siguiente: $$y_{ig=\alpha+\beta x_{ig}+u_{ig}}$$ donde $x_{ig}$ es un regresor escalar.
+
+Se asume que el tamaño promedio de los grupos es $\bar{N}_g$. Moulton (1990) muestra que el error estándar de MCO esta sesgado hacia abajo por una cantidad igual a la raíz de $\tau \approx 1 +\rho_x \rho_u (\bar{N}_g-1)$, donde $\rho_x$ es la correlación dentro de los grupos de $x$ y $\rho_u$ es la correlación dentro de los grupos de los errores. Esto implica que para obtener el error correcto que toma en cuenta la agrupación hay que multiplicar el error de MCO por la raíz de $\tau$. Sin embargo, note que dependiendo del signo y la magnitud de $\rho_x$ y $\rho_u$, la raíz de $\tau$ puede llegar a ser menor que 1 y, por tanto, el error agrupado puede llegar a ser menor que el de MCO. $\tau$ se conoce como el factor de Moulton y puede ser extendido para un modelo más complicado. La intuición funciona de manera similar para un modelo más complicado: todo depende de las correlaciones entre grupos de los regresores y la correlación de los errores.
+
+## Estimador de efectos fijos y errores agrupados
+
+Estimamos la ecuación de calificación usando MCO, efectos fijos de escuela y con errores agrupados a nivel escuela.
+
+Al controlar por características no observadas de las escuelas empleando efectos fijos por escuela y además estimando los errores que toman en cuenta la estructura agrupada de los errores obtenemos un coeficiente estimado de 2.26, pero con un error estándar mayor, 0.08879.
+
+```{r}
+#| output-location: column 
+
+modelsummary(models = list("MCO"=m.mco,
+                           "MCO, errores robustos"=m.mco,
+                           "Efectos fijos"=m.mco.ef,
+                           "MCO, errores agrupados"=m.mco,
+                           "Efectos fijos, errores agrupados"=m.mco.ef),
+          output = 'gt',
+          stars = c('***' = .01, '**' = .05, '*' = 0.1),
+          vcov=list(NULL,
+                    "HC1",
+                    "HC1",
+                    clubSandwich::vcovCR(m.mco, type='CR1',cluster=data.examen$schoolnr),
+                    clubSandwich::vcovCR(m.mco.ef, type='CR1',cluster=data.examen$schoolnr)),
+          fmt = 5,
+          coef_map = c('iq_verb', 'sex', 'minority', 'repeatgr'),
+          gof_map = "nobs")
+
+``` 
+
