@@ -218,6 +218,7 @@ $$\hat{\beta}_{MCG}=(X'\Omega^{-1}X)^{-1}X'\Omega^{-1}y$$
 - Esto da lugar al estimador de **mínimos cuadrados generalizados feasibles**
 
 $$\hat{\beta}_{MCGF}=(X'\hat{\Omega}^{-1}X)^{-1}X'\hat{\Omega}^{-1}y$$
+
 # Estimador between
 
 ## Estimador between
