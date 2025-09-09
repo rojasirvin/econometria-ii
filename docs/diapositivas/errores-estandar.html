@@ -141,6 +141,10 @@ Irvin Rojas
 <section>
 <section id="errores-estándar-robustos" class="title-slide slide level1 center">
 <h1>Errores estándar robustos</h1>
+
+</section>
+<section id="errores-estándar-robustos-1" class="slide level2">
+<h2>Errores estándar robustos</h2>
 <p>Recordemos que con errores homocedásticos, la matriz de varianzas del estimador de MCO puede ser estimada como:</p>
 <p><span class="math display">\[\hat{V}(\beta_{MCO}^H)=\hat{\sigma}^2(X'X)^{-1}\]</span></p>
 <p>donde <span class="math inline">\(\hat{\sigma}^2=\frac{1}{N-k}\hat{u}_i^2\)</span> y <span class="math inline">\(\hat{u}_i^2=(y_i-X_i'\hat{\beta}_{MCO})^2\)</span></p>
@@ -156,7 +160,7 @@ Irvin Rojas
 <p>Consideremos la <em>carnita</em> del sándiwch</p>
 <p><span class="math display">\[\sum_i\hat{u}_i^2x_ix_i \equiv \sum_i \hat{\psi}_i x_ix_i'\]</span></p>
 </section>
-<section id="errores-estándar-robustos-1" class="slide level2">
+<section id="errores-estándar-robustos-2" class="slide level2">
 <h2>Errores estándar robustos</h2>
 <p>Dependiendo de cómo se especifique <span class="math inline">\(\hat{\psi}_i\)</span>, obtenemos distintas versiones del estimador de varianzas robusto</p>
 <p>La propuesta de White original es:</p>
@@ -175,7 +179,7 @@ Irvin Rojas
 <p><span class="math display">\[h_{ii}=\frac{1}{N}+\frac{(x_i-\bar{x})^2}{\sum(x_j-\bar{x})^2}\]</span> es decir, que la influencia se incrementa cuando <span class="math inline">\(x_i\)</span> se aleja de la media</p>
 <p>La influencia es un número entre 0 y 1 y además <span class="math inline">\(\sum_i h_{ii}=k\)</span>, siendo <span class="math inline">\(k\)</span> el número de regresores</p>
 </section>
-<section id="errores-estándar-robustos-2" class="slide level2">
+<section id="errores-estándar-robustos-3" class="slide level2">
 <h2>Errores estándar robustos</h2>
 <p>Algunos autores sugieren usar la influencia en la matriz de varianzas robusta</p>
 <p>Se proponen algunas alternativas:</p>
@@ -184,14 +188,13 @@ Irvin Rojas
 <p>Long &amp; Ervin (2000) realizaron un experimento de simulación y recomendaron usar <span class="math inline">\(HC3\)</span> en muestras pequeñas, por lo que el paquete <em>sandwich</em> en R usa <span class="math inline">\(HC3\)</span> por default</p>
 <p>Es importante tener en cuenta qué tipo de errores estándar piden que el software calcule</p>
 </section></section>
+<section>
 <section id="errores-agrupados" class="title-slide slide level1 center">
 <h1>Errores agrupados</h1>
 
 </section>
-
-<section>
-<section id="errores-agrupados-1" class="title-slide slide level1 center">
-<h1>Errores agrupados</h1>
+<section id="errores-agrupados-1" class="slide level2">
+<h2>Errores agrupados</h2>
 <p>Surgen naturalmente cuando las observaciones están agrupadas</p>
 <ul>
 <li>Niños en salones de clase</li>

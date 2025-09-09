@@ -1343,7 +1343,7 @@
     "href": "diapositivas/errores-estandar.html#errores-estándar-robustos-1",
     "title": "Errores estándar",
     "section": "Errores estándar robustos",
-    "text": "Errores estándar robustos\nDependiendo de cómo se especifique \\(\\hat{\\psi}_i\\), obtenemos distintas versiones del estimador de varianzas robusto\nLa propuesta de White original es:\n\\[HC0:\\quad\\hat{\\psi}_i=\\hat{u}_i^2\\]\nEste estimador asintóticamente consistente\nEn muestras pequeñas, muchas veces se emplea la siguiente corrección:\n\\[HC1:\\quad\\hat{\\psi}_i=\\frac{N}{N-k}\\hat{u}_i^2\\]"
+    "text": "Errores estándar robustos\nRecordemos que con errores homocedásticos, la matriz de varianzas del estimador de MCO puede ser estimada como:\n\\[\\hat{V}(\\beta_{MCO}^H)=\\hat{\\sigma}^2(X'X)^{-1}\\]\ndonde \\(\\hat{\\sigma}^2=\\frac{1}{N-k}\\hat{u}_i^2\\) y \\(\\hat{u}_i^2=(y_i-X_i'\\hat{\\beta}_{MCO})^2\\)\nUna primera desviación respecto a los errores clásicos ocurre cuando relajamos el supuesto de homocedasticidad\nLa varianza asintótica robusta a heterocedasticidad\n\\[V(\\hat{\\beta}_{MCO}^{R})=(X'X)^{-1}X'\\Omega X(X'X)^{-1}\\]"
   },
   {
     "objectID": "diapositivas/errores-estandar.html#desviación-a-la-influencia",
@@ -1357,7 +1357,7 @@
     "href": "diapositivas/errores-estandar.html#errores-estándar-robustos-2",
     "title": "Errores estándar",
     "section": "Errores estándar robustos",
-    "text": "Errores estándar robustos\nAlgunos autores sugieren usar la influencia en la matriz de varianzas robusta\nSe proponen algunas alternativas:\n\\[HC2:\\quad\\hat{\\psi}_i=\\frac{1}{1-h_{ii}}\\hat{u}_i^2\\]\n\\[HC3:\\quad\\hat{\\psi}_i=\\frac{1}{(1-h_{ii})^2}\\hat{u}_i^2\\]\nLong & Ervin (2000) realizaron un experimento de simulación y recomendaron usar \\(HC3\\) en muestras pequeñas, por lo que el paquete sandwich en R usa \\(HC3\\) por default\nEs importante tener en cuenta qué tipo de errores estándar piden que el software calcule"
+    "text": "Errores estándar robustos\nDependiendo de cómo se especifique \\(\\hat{\\psi}_i\\), obtenemos distintas versiones del estimador de varianzas robusto\nLa propuesta de White original es:\n\\[HC0:\\quad\\hat{\\psi}_i=\\hat{u}_i^2\\]\nEste estimador asintóticamente consistente\nEn muestras pequeñas, muchas veces se emplea la siguiente corrección:\n\\[HC1:\\quad\\hat{\\psi}_i=\\frac{N}{N-k}\\hat{u}_i^2\\]"
   },
   {
     "objectID": "diapositivas/errores-estandar.html#errores-agrupados-2",
@@ -3044,5 +3044,19 @@
     "title": "Modelos y datos de panel",
     "section": "Estimador between",
     "text": "Estimador between\n\nAunque es de poca utilidad práctica, el estimador between nos servirá de auxiliar más adelante\nExplota la variación entre unidades\nAl promediar sobre el tiempo recordemos que obtenemos\n\n\\[\n\\begin{aligned}\n\\bar{y}_{i}&=\\alpha_i+ \\bar{x}_i\\beta+\\bar{\\varepsilon}_i\n\\end{aligned}\n\\] - Sumando 0 obtenemos:\n\\[\n\\begin{aligned}\n\\bar{y}_{i}&=\\alpha + \\bar{x}_i\\beta+(\\alpha_i - \\alpha + \\bar{\\varepsilon}_i)\n\\end{aligned}\n\\]\n\nEl estimador between es MCO a la ecuación transformada (con intercepto)\nSolo es consistente si \\(\\bar{x}_i\\) es independiente de el error compuesto \\(\\alpha_i - \\alpha + \\bar{\\varepsilon}_i\\)\nEs equivalente a una regresión de sección cruzada con \\(T=1\\)"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-estándar-robustos-3",
+    "href": "diapositivas/errores-estandar.html#errores-estándar-robustos-3",
+    "title": "Errores estándar",
+    "section": "Errores estándar robustos",
+    "text": "Errores estándar robustos\nAlgunos autores sugieren usar la influencia en la matriz de varianzas robusta\nSe proponen algunas alternativas:\n\\[HC2:\\quad\\hat{\\psi}_i=\\frac{1}{1-h_{ii}}\\hat{u}_i^2\\]\n\\[HC3:\\quad\\hat{\\psi}_i=\\frac{1}{(1-h_{ii})^2}\\hat{u}_i^2\\]\nLong & Ervin (2000) realizaron un experimento de simulación y recomendaron usar \\(HC3\\) en muestras pequeñas, por lo que el paquete sandwich en R usa \\(HC3\\) por default\nEs importante tener en cuenta qué tipo de errores estándar piden que el software calcule"
+  },
+  {
+    "objectID": "diapositivas/errores-estandar.html#errores-agrupados-1",
+    "href": "diapositivas/errores-estandar.html#errores-agrupados-1",
+    "title": "Errores estándar",
+    "section": "Errores agrupados",
+    "text": "Errores agrupados\nSurgen naturalmente cuando las observaciones están agrupadas\n\nNiños en salones de clase\nHogares en localidades\nSolicitudes de empleo en una empresa\nAhorradoras en un banco\n\nEl supuesto de errores independientes claramente no se cumple\nPensemos en un problema simple para entender la intución:\n\\[y_{ig}=\\beta_0+\\beta_1 x_g+e_{ig}\\]\nAquí, \\(x_g\\) es un regresor que es el mismo para todos los miembros del grupo \\(g\\)\nAsumamos que todos los grupos tienen tamaño \\(n\\)"
   }
 ]

@@ -8,8 +8,10 @@ format:
     height: 900
 ---
 
-
 # Errores estándar robustos
+
+
+## Errores estándar robustos
 
 Recordemos que con errores homocedásticos, la matriz de varianzas del estimador de MCO puede ser estimada como:
 
@@ -85,7 +87,7 @@ Es importante tener en cuenta qué tipo de errores estándar piden que el softwa
 # Errores agrupados
 
 
-# Errores agrupados
+## Errores agrupados
 
 Surgen naturalmente cuando las observaciones están agrupadas
 
