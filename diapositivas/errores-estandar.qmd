@@ -243,8 +243,9 @@ Algunos paquetes ajustan esta matriz de varianzas haciendo una corrección parec
 Con pocos grupos, subestimamos los errores estándar y rechazamos la $H_0$ más veces de lo que deberíamos (*over-rejection*)
 
 Si tenemos pocos grupos, recurrimos a otras soluciones (ver Cameron y Miller, 2015)
-  - Inflar los errores con un corrector de sesgo
-  - Bootstrap agrupado con refinamiento asintótico
+
+- Inflar los errores con un corrector de sesgo
+- Bootstrap agrupado con refinamiento asintótico
   
 La recomendación práctica es que se tomen en serio el problema de los pocos clusters
 
