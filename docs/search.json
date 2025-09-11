@@ -214,7 +214,7 @@
     "href": "tareas/index.html",
     "title": "Proyectos",
     "section": "",
-    "text": "Proyecto 1\n\nFecha de entrega: viernes 12 de septiembre a las 20:00 en Teams\nProyecto\n\n\n\n\nProyecto 2\n\nFecha de entrega: viernes 3 de octubre a las 20:00 en Teams",
+    "text": "Proyecto 1\n\nFecha de entrega: lunes 15 de septiembre a las 20:00 en Teams\nProyecto\n\n\n\n\nProyecto 2\n\nFecha de entrega: viernes 3 de octubre a las 20:00 en Teams",
     "crumbs": [
       "Proyectos"
     ]
@@ -2511,7 +2511,7 @@
     "href": "tareas/tareap-1.html",
     "title": "Proyecto 1",
     "section": "",
-    "text": "Fecha de entrega: viernes 12 de septiembre a las 20:00 en Teams\nEl proyecto deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
+    "text": "Fecha de entrega: lunes 15 de septiembre a las 20:00 en Teams\nEl proyecto deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
   },
   {
     "objectID": "tareas/tareap-1.html#preguntas",
@@ -2525,7 +2525,7 @@
     "href": "tareas/tareap-1.html#instrucciones",
     "title": "Proyecto 1",
     "section": "",
-    "text": "Fecha de entrega: viernes 12 de septiembre a las 20:00 en Teams\nEl proyecto deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
+    "text": "Fecha de entrega: lunes 15 de septiembre a las 20:00 en Teams\nEl proyecto deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
   },
   {
     "objectID": "diapositivas/asintotica.html#funciones-de-pérdida",

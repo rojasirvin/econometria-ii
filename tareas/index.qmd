@@ -5,7 +5,7 @@ lang: es
 
 # Proyecto 1
 
-- Fecha de entrega: viernes 12 de septiembre a las 20:00 en Teams
+- Fecha de entrega: lunes 15 de septiembre a las 20:00 en Teams
 
 - [Proyecto](./tareap-1.html)
 
