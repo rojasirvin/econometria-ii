@@ -5,7 +5,7 @@ lang: es
 
 ## Instrucciones
 
-Fecha de entrega: **viernes 12 de septiembre a las 20:00 en Teams**
+Fecha de entrega: **lunes 15 de septiembre a las 20:00 en Teams**
 
 El proyecto deberá entregarse en Teams. Deberá incluir dos documentos:
 
@@ -15,8 +15,7 @@ Un segundo archivo deberá contener el código replicable usado para generar los
 
 ## Proyecto
 
-Durante la clase hemos visto que un problema de mucho interés en economía es el de los retornos a la educación, es decir, cómo cambia el salario cuando cambia en un año la educación formal. En este proyecto se sugiere usar los datos de la [ENIGH 2016](https://www.inegi.org.mx/programas/enigh/nc/2016/
-) y su [módulo de movilidad social](https://www.inegi.org.mx/programas/mmsi/2016/) para estimar los retornos a la educación en México. Note que deberá unir la parte regular de la ENIGH con el módulo especial. Escriba un reporte de máximo cinco páginas que incluya lo siguiente:
+Durante la clase hemos visto que un problema de mucho interés en economía es el de los retornos a la educación, es decir, cómo cambia el salario cuando cambia en un año la educación formal. En este proyecto se sugiere usar los datos de la [Encuesta de Movilidad Social 2015](https://movilidadsocial.colmex.mx/encuesta/) para estimar los retornos a la educación en México. Escriba un reporte de máximo cinco páginas que incluya lo siguiente:
 
 1. ¿Qué son los retornos a la educación y por qué es importante este parámetro económico?
 1. Describa el modelo econométrico para estimar los retornos a la educación en México.
