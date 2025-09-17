@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Proyectos – Econometría Aplicada y Ciencia de Datos</title>
+<title>Proyecto 2 – Econometría Aplicada y Ciencia de Datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,6 +66,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -79,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tareas/index.html">Proyectos</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Proyecto 2</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -139,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tareas/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../tareas/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Proyectos</span></a>
   </div>
 </li>
@@ -159,8 +188,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#proyecto-1" id="toc-proyecto-1" class="nav-link active" data-scroll-target="#proyecto-1">Proyecto 1</a></li>
-  <li><a href="#proyecto-2" id="toc-proyecto-2" class="nav-link" data-scroll-target="#proyecto-2">Proyecto 2</a></li>
+  <li><a href="#instrucciones" id="toc-instrucciones" class="nav-link active" data-scroll-target="#instrucciones">Instrucciones</a></li>
+  <li><a href="#proyecto" id="toc-proyecto" class="nav-link" data-scroll-target="#proyecto">Proyecto</a></li>
   </ul>
 </nav>
     </div>
@@ -169,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Proyectos</h1>
+<h1 class="title">Proyecto 2</h1>
 </div>
 
 
@@ -186,20 +215,30 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="proyecto-1" class="level1">
-<h1>Proyecto 1</h1>
-<ul>
-<li><p>Fecha de entrega: lunes 15 de septiembre a las 20:00 en Teams</p></li>
-<li><p><a href="./tareap-1.html">Proyecto</a></p></li>
-</ul>
-<hr>
+<section id="instrucciones" class="level2">
+<h2 class="anchored" data-anchor-id="instrucciones">Instrucciones</h2>
+<p>Fecha de entrega: <strong>viernes 3 de octubre a las 20:00 en Teams</strong></p>
+<p>El proyecto deberá entregarse en Teams. Deberá incluir dos documentos:</p>
+<p>Un primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.</p>
+<p>Un segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad.</p>
 </section>
-<section id="proyecto-2" class="level1">
-<h1>Proyecto 2</h1>
+<section id="proyecto" class="level2">
+<h2 class="anchored" data-anchor-id="proyecto">Proyecto</h2>
+<p>En este proyecto trabajará con la base de datos del proyecto <em>Cooperative Congressional Election Study</em>, un estudio que capturó la opinión de ciudadanos estadounidenses sobre diversos aspectos de la política y la vida pública de esa nación en 2010, 2012 y 2014. En este proyecto, buscamos conocer la relación que hay entre la aprobación del presidente en turno, Barack Obama, y la condición de empleo.</p>
+<p>Planteamos entonces el siguiente modelo econométrico: <span class="math display">\[y_{it} = \alpha_i +\beta empleo_{it} + BX_{it} +\varepsilon_{it}\]</span></p>
+<p><a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/TOE8I1">En esta liga</a> encontrará la base de datos y el catálogo de variables.</p>
+<p>La base de datos contiene 1,629 columnas, pero no todas se usarán en este proyecto. Recomiendo usar las siguientes:</p>
 <ul>
-<li><p>Fecha de entrega: viernes 3 de octubre a las 20:00 en Teams</p></li>
-<li><p><a href="./tareap-2.html">Proyecto</a></p></li>
+<li><p>Las variables <strong>CC10_308a</strong>, <strong>CC12_308a</strong> y <strong>CC14_308a</strong> representan la aprobación del presidente Obama en una escala del 1 al 5 (revisar el catálogo de variables). Deberá elegir cómo codificar la aprobación para construir <span class="math inline">\(y_{it}\)</span>. Por ejemplo, puede colapsar las distintas categorías en dos: aprueba y desaprueba.</p></li>
+<li><p>Las variables que comienzan con <strong>marstat</strong>, <strong>child18num</strong> representan el estado civil y el número de hijos menores de 18 años, respectivamente. Estás variables serán los controles incluidos en <span class="math inline">\(X_{it}\)</span>.</p></li>
+<li><p>Las variables que comienzan con <strong>employ</strong> indican el estatus ocupacional. Deberá elegir cómo codificar esta variable para construir <span class="math inline">\(empleo_{it}\)</span>. Por ejemplo, puede colapsar las distintas categorías en dos: empleado (si tiene un empleo de tiempo completo) y no empleado (en cualquier otro caso.</p></li>
 </ul>
+<p>En su reporte, responda a la pregunta de cómo afecta la condición de empleo a la aprobación del presidente Obama usando tres estimadores:</p>
+<ol type="1">
+<li>Reporte la estimación de la relación de interés usando un estimador <em>pooled</em> e indique bajo qué condiciones el vector de parámetros estimados es consistente. Indique qué tipo de errores estándar eligió estimar y por qué.</li>
+<li>Reporte la estimación de la relación de interés usando un estimador de efectos aleatorios e indique bajo qué condiciones el vector de parámetros estimados es consistente. Indique qué tipo de errores estándar eligió estimar y por qué.</li>
+<li>Reporte la estimación de la relación de interés usando un estimador de efectos fijos e indique bajo qué condiciones el vector de parámetros estimados es consistente. Indique qué tipo de errores estándar eligió estimar y por qué.</li>
+</ol>
 
 
 </section>

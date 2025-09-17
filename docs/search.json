@@ -214,7 +214,7 @@
     "href": "tareas/index.html",
     "title": "Proyectos",
     "section": "",
-    "text": "Proyecto 1\n\nFecha de entrega: lunes 15 de septiembre a las 20:00 en Teams\nProyecto\n\n\n\n\nProyecto 2\n\nFecha de entrega: viernes 3 de octubre a las 20:00 en Teams",
+    "text": "Proyecto 1\n\nFecha de entrega: lunes 15 de septiembre a las 20:00 en Teams\nProyecto\n\n\n\n\nProyecto 2\n\nFecha de entrega: viernes 3 de octubre a las 20:00 en Teams\nProyecto",
     "crumbs": [
       "Proyectos"
     ]
@@ -3058,5 +3058,26 @@
     "title": "Errores estándar",
     "section": "Errores agrupados",
     "text": "Errores agrupados\nSurgen naturalmente cuando las observaciones están agrupadas\n\nNiños en salones de clase\nHogares en localidades\nSolicitudes de empleo en una empresa\nAhorradoras en un banco\n\nEl supuesto de errores independientes claramente no se cumple\nPensemos en un problema simple para entender la intución:\n\\[y_{ig}=\\beta_0+\\beta_1 x_g+e_{ig}\\]\nAquí, \\(x_g\\) es un regresor que es el mismo para todos los miembros del grupo \\(g\\)\nAsumamos que todos los grupos tienen tamaño \\(n\\)"
+  },
+  {
+    "objectID": "tareas/tareap-2.html",
+    "href": "tareas/tareap-2.html",
+    "title": "Proyecto 2",
+    "section": "",
+    "text": "Fecha de entrega: viernes 3 de octubre a las 20:00 en Teams\nEl proyecto deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
+  },
+  {
+    "objectID": "tareas/tareap-2.html#instrucciones",
+    "href": "tareas/tareap-2.html#instrucciones",
+    "title": "Proyecto 2",
+    "section": "",
+    "text": "Fecha de entrega: viernes 3 de octubre a las 20:00 en Teams\nEl proyecto deberá entregarse en Teams. Deberá incluir dos documentos:\nUn primer documento de respuestas donde se reporten las conclusiones del análisis y debe ser generado usando un software de procesamiento de textos científicos, por ejemplo, usando los lenguajes LaTeX o Markdown.\nUn segundo archivo deberá contener el código replicable usado para generar los resultados de la sección práctica. El código debe también crear las tablas y gráficas solicitadas. Los archivos de código se verificarán para comprobar su replicabilidad."
+  },
+  {
+    "objectID": "tareas/tareap-2.html#proyecto",
+    "href": "tareas/tareap-2.html#proyecto",
+    "title": "Proyecto 2",
+    "section": "Proyecto",
+    "text": "Proyecto\nEn este proyecto trabajará con la base de datos del proyecto Cooperative Congressional Election Study, un estudio que capturó la opinión de ciudadanos estadounidenses sobre diversos aspectos de la política y la vida pública de esa nación en 2010, 2012 y 2014. En este proyecto, buscamos conocer la relación que hay entre la aprobación del presidente en turno, Barack Obama, y la condición de empleo.\nPlanteamos entonces el siguiente modelo econométrico: \\[y_{it} = \\alpha_i +\\beta empleo_{it} + BX_{it} +\\varepsilon_{it}\\]\nEn esta liga encontrará la base de datos y el catálogo de variables.\nLa base de datos contiene 1,629 columnas, pero no todas se usarán en este proyecto. Recomiendo usar las siguientes:\n\nLas variables CC10_308a, CC12_308a y CC14_308a representan la aprobación del presidente Obama en una escala del 1 al 5 (revisar el catálogo de variables). Deberá elegir cómo codificar la aprobación para construir \\(y_{it}\\). Por ejemplo, puede colapsar las distintas categorías en dos: aprueba y desaprueba.\nLas variables que comienzan con marstat, child18num representan el estado civil y el número de hijos menores de 18 años, respectivamente. Estás variables serán los controles incluidos en \\(X_{it}\\).\nLas variables que comienzan con employ indican el estatus ocupacional. Deberá elegir cómo codificar esta variable para construir \\(empleo_{it}\\). Por ejemplo, puede colapsar las distintas categorías en dos: empleado (si tiene un empleo de tiempo completo) y no empleado (en cualquier otro caso.\n\nEn su reporte, responda a la pregunta de cómo afecta la condición de empleo a la aprobación del presidente Obama usando tres estimadores:\n\nReporte la estimación de la relación de interés usando un estimador pooled e indique bajo qué condiciones el vector de parámetros estimados es consistente. Indique qué tipo de errores estándar eligió estimar y por qué.\nReporte la estimación de la relación de interés usando un estimador de efectos aleatorios e indique bajo qué condiciones el vector de parámetros estimados es consistente. Indique qué tipo de errores estándar eligió estimar y por qué.\nReporte la estimación de la relación de interés usando un estimador de efectos fijos e indique bajo qué condiciones el vector de parámetros estimados es consistente. Indique qué tipo de errores estándar eligió estimar y por qué."
   }
 ]
